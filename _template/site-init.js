@@ -302,6 +302,20 @@
                 '</div>';
         });
         servicesGrid.innerHTML = sHtml;
+
+        // Mobile accordion: tap to expand/collapse description
+        if (window.matchMedia('(max-width: 768px)').matches) {
+            servicesGrid.addEventListener('click', function (e) {
+                var card = e.target.closest('.service-card');
+                if (!card) return;
+                var isOpen = card.classList.contains('open');
+                // Close all others
+                servicesGrid.querySelectorAll('.service-card.open').forEach(function (c) {
+                    if (c !== card) c.classList.remove('open');
+                });
+                card.classList.toggle('open', !isOpen);
+            });
+        }
     }
 
 

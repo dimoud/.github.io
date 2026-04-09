@@ -1221,8 +1221,32 @@
             .footer-links { display: none; }
             footer { padding: 52px 5% 36px; }
 
-            /* Services — description hidden, title only */
-            .service-card p { display: none; }
+            /* Services — description collapsed, expands on tap */
+            .service-card { cursor: pointer; overflow: visible; }
+            .service-card p {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.38s ease, opacity 0.3s ease;
+                opacity: 0;
+                margin-top: 0;
+            }
+            .service-card.open p {
+                max-height: 300px;
+                opacity: 1;
+                margin-top: 10px;
+            }
+            /* Chevron toggle indicator */
+            .service-card h3::after {
+                content: ' ▾';
+                font-size: 0.7em;
+                opacity: 0.5;
+                display: inline-block;
+                transition: transform 0.3s ease;
+                vertical-align: middle;
+            }
+            .service-card.open h3::after {
+                transform: rotate(180deg);
+            }
 
             /* Gold — slightly more golden on mobile screens */
             :root { --gold: #c6ab5e; --gold2: #dbbe78; }
