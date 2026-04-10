@@ -837,19 +837,19 @@
     const totalTimeHrs = timeHrs * N;
     const hh = Math.floor(totalTimeHrs);
     const mm = Math.round((totalTimeHrs - hh) * 60);
-    timeEl.textContent = hh > 0 ? `${hh}h ${mm}m` : `${mm}m`;
+    // timeEl.textContent = hh > 0 ? `${hh}h ${mm}m` : `${mm}m`;
 
     dimsEl.textContent = state.bbox
       ? `Bounding box: ${state.bbox.x.toFixed(1)} × ${state.bbox.y.toFixed(1)} × ${state.bbox.z.toFixed(1)} mm  ·  Volume ≈ ${V.toFixed(2)} cm³`
       : `Estimated volume: ~${V.toFixed(2)} cm³`;
 
-    const filamentEl = document.getElementById('prEstFilamentRow');
-    if (filamentEl) {
-      const totalW = (W * N).toFixed(1);
-      const totalL = ((filamentLenMm * N) / 1000).toFixed(2);
-      filamentEl.innerHTML =
-        `Material: <span>${totalW}g</span>&nbsp;&nbsp;·&nbsp;&nbsp;Filament: <span>${totalL}m</span>&nbsp;&nbsp;·&nbsp;&nbsp;1.75mm / 0.4mm nozzle`;
-    }
+    // const filamentEl = document.getElementById('prEstFilamentRow');
+    // if (filamentEl) {
+    //   const totalW = (W * N).toFixed(1);
+    //   const totalL = ((filamentLenMm * N) / 1000).toFixed(2);
+    //   filamentEl.innerHTML =
+    //     `Material: <span>${totalW}g</span>&nbsp;&nbsp;·&nbsp;&nbsp;Filament: <span>${totalL}m</span>&nbsp;&nbsp;·&nbsp;&nbsp;1.75mm / 0.4mm nozzle`;
+    // }
 
     result.style.display = '';
   }
