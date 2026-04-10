@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script>(function(){var l=localStorage.getItem('lang');if(l)document.documentElement.lang=l;})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>3D Print · Laser Cut & Engrave — Expertease Designs</title>
 <meta name="description" content="Custom 3D printing, laser cutting and engraving in Athens, Greece. FDM prototypes, reverse-engineered parts, custom designs, decorative laser work and functional fabrication.">
@@ -21,7 +22,7 @@
 <meta name="twitter:image" content="https://expertease.eu/images/logo.png">
 <link rel="dns-prefetch" href="//fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=Oswald:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500&family=Oswald:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="expertease-credit.css">
 <style>
@@ -899,10 +900,10 @@
 <!-- ══ SELF-PRINT PROMO ════════════════════════════════════════ -->
 <section class="pr-selfprint" id="prSelfPrint">
   <div class="pr-selfprint-inner">
-    <div class="pr-selfprint-badge">// For Makers &amp; Designers</div>
-    <h2 class="pr-selfprint-title">Want to Print Your Own Parts?</h2>
-    <p class="pr-selfprint-sub">Have your own 3D printer? Use our free cost calculator below — upload your STL or STEP file and get an instant estimate on material usage, print time, and cost. No account needed.</p>
-    <a href="#prEstimator" class="pr-selfprint-cta">Try the Calculator</a>
+    <div class="pr-selfprint-badge" id="pr-selfprint-badge">// For Makers &amp; Designers</div>
+    <h2 class="pr-selfprint-title" id="pr-selfprint-title">Want to Print Your Own Parts?</h2>
+    <p class="pr-selfprint-sub" id="pr-selfprint-sub">Have your own 3D printer? Use our free cost calculator below — upload your STL or STEP file and get an instant estimate on material usage, print time, and cost. No account needed.</p>
+    <a href="#prEstimator" class="pr-selfprint-cta" id="pr-selfprint-cta">Try the Calculator</a>
   </div>
 </section>
 
@@ -925,15 +926,15 @@
             </svg>
           </div>
           <div class="pr-est-drop-text" id="prEstDropText">Drop your <strong>STL</strong> or <strong>STEP</strong> file here</div>
-          <div class="pr-est-drop-sub">or</div>
-          <label class="pr-est-file-btn" for="prEstFileInput">Browse File</label>
+          <div class="pr-est-drop-sub" id="pr-est-drop-or">or</div>
+          <label class="pr-est-file-btn" for="prEstFileInput" id="pr-est-browse">Browse File</label>
           <input type="file" id="prEstFileInput" accept=".stl,.stp,.step" style="display:none">
           <div class="pr-est-file-types">STL · STP · STEP — max 50 MB</div>
         </div>
 
         <div class="pr-est-params" id="prEstParams">
           <div class="pr-est-param-row">
-            <label class="pr-est-param-label">Material</label>
+            <label class="pr-est-param-label" id="pr-est-lbl-material">Material</label>
             <select class="pr-est-select" id="prEstMaterial">
               <option value="pla">PLA — Standard</option>
               <option value="pla+">PLA+ — Enhanced</option>
@@ -942,7 +943,7 @@
             </select>
           </div>
           <div class="pr-est-param-row">
-            <label class="pr-est-param-label">Infill</label>
+            <label class="pr-est-param-label" id="pr-est-lbl-infill">Infill</label>
             <div class="pr-est-infill-btns">
               <button class="pr-est-infill-btn" data-infill="0.15">15% — Draft</button>
               <button class="pr-est-infill-btn active" data-infill="0.20">20% — Standard</button>
@@ -951,7 +952,7 @@
             </div>
           </div>
           <div class="pr-est-param-row">
-            <label class="pr-est-param-label">Layer Height</label>
+            <label class="pr-est-param-label" id="pr-est-lbl-layer">Layer Height</label>
             <div class="pr-est-infill-btns">
               <button class="pr-est-layer-btn" data-layer="0.08">0.08 mm</button>
               <button class="pr-est-layer-btn" data-layer="0.16">0.16 mm</button>
@@ -960,7 +961,7 @@
             </div>
           </div>
           <div class="pr-est-param-row">
-            <label class="pr-est-param-label">Strength / Walls</label>
+            <label class="pr-est-param-label" id="pr-est-lbl-strength">Strength / Walls</label>
             <div class="pr-est-infill-btns">
               <button class="pr-est-strength-btn" data-strength="1.0">Light</button>
               <button class="pr-est-strength-btn active" data-strength="1.1">Default</button>
@@ -969,7 +970,7 @@
             </div>
           </div>
           <div class="pr-est-param-row">
-            <label class="pr-est-param-label">Colour</label>
+            <label class="pr-est-param-label" id="pr-est-lbl-colour">Colour</label>
             <div style="display:flex;flex-direction:column;gap:10px;">
               <div class="pr-est-colour-strip" id="prEstColours">
                 <button class="pr-est-colour-btn"        data-colour="black"   title="Black"   style="background:#111;"></button>
@@ -982,13 +983,13 @@
                 <button class="pr-est-colour-btn"        data-colour="orange"  title="Orange"  style="background:#ea580c;"></button>
               </div>
               <div class="pr-est-multicolor-row" style="display:flex;align-items:center;gap:10px;">
-                <button class="pr-est-infill-btn" id="prEstMulticolor" style="flex:none;padding:6px 14px;">Single Colour</button>
-                <span style="font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,.35);letter-spacing:1px;">Toggle AMS multicolor (+2× material)</span>
+                <button class="pr-est-infill-btn" id="prEstMulticolor" style="flex:none;padding:6px 14px;"><span id="pr-est-single-colour">Single Colour</span></button>
+                <span style="font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,.35);letter-spacing:1px;" id="pr-est-ams-toggle">Toggle AMS multicolor (+2× material)</span>
               </div>
             </div>
           </div>
           <div class="pr-est-param-row">
-            <label class="pr-est-param-label">Quantity</label>
+            <label class="pr-est-param-label" id="pr-est-lbl-qty">Quantity</label>
             <div class="pr-est-qty-wrap">
               <button class="pr-est-qty-btn" id="prEstQtyMinus">−</button>
               <span class="pr-est-qty-val" id="prEstQtyVal">1</span>
@@ -1009,16 +1010,16 @@
               <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
               <line x1="12" y1="22.08" x2="12" y2="12"/>
             </svg>
-            <span>3D preview appears here</span>
+            <span id="pr-est-preview-empty">3D preview appears here</span>
           </div>
-          <div class="pr-est-viewer-hint" id="prEstViewerHint" style="display:none">drag to rotate · scroll to zoom</div>
+          <div class="pr-est-viewer-hint" id="prEstViewerHint" style="display:none"><span id="pr-est-viewer-hint-text">drag to rotate · scroll to zoom</span></div>
         </div>
 
         <div class="pr-est-result" id="prEstResult" style="display:none">
           <div class="pr-est-dims" id="prEstDims"></div>
           <div class="pr-est-price-row">
             <div class="pr-est-price-block">
-              <span class="pr-est-price-label">Total Quote</span>
+              <span class="pr-est-price-label" id="pr-est-price-label">Total Quote</span>
               <span class="pr-est-price-val" id="prEstPrice">€0</span>
             </div>
             <!-- <div class="pr-est-time-block">
@@ -1027,7 +1028,7 @@
             </div> -->
           </div>
           <!-- <div class="pr-est-filament-row" id="prEstFilamentRow"></div> -->
-          <p class="pr-est-disclaimer">Estimate only — final price confirmed after review. <a href="contact.html" class="pr-est-quote-link">Get exact quote</a></p>
+          <p class="pr-est-disclaimer" id="pr-est-disclaimer">Estimate only — final price confirmed after review. <a href="contact.html" class="pr-est-quote-link" id="pr-est-quote-link">Get exact quote</a></p>
         </div>
 
       </div>
@@ -1056,7 +1057,7 @@
 
 <footer>
   <div class="footer-contact-bar">
-    <span>Athens, Greece</span>
+    <span id="footer-loc-bar">Athens, Greece</span>
     <span class="fc-sep"></span>
     <a href="tel:+302107561836">210 075 6183</a>
     <span class="fc-sep"></span>

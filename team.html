@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script>(function(){var l=localStorage.getItem('lang');if(l)document.documentElement.lang=l;})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Team — Expertease Designs</title>
 <meta name="description" content="Meet the founder of Expertease Designs — Dimitrios Moudiotis, Mechanical Engineer with degrees from 5 universities in 3 countries.">
@@ -42,7 +43,7 @@
 </script>
 <link rel="dns-prefetch" href="//fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=Oswald:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500&family=Oswald:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="expertease-credit.css">
 <style>
@@ -715,33 +716,33 @@
     <div class="founder-photo-wrap">
       <div class="founder-photo-frame">
         <img src="images/founder.png" alt="Dimitrios Moudiotis — Founder & Lead Engineer">
-        <div class="founder-photo-accent">Founder</div>
+        <div class="founder-photo-accent" id="founder-photo-accent">Founder</div>
       </div>
     </div>
 
     <!-- Bio column -->
     <div class="founder-bio">
-      <div class="founder-mono-label">Founder &amp; Lead Engineer</div>
-      <h2 class="founder-name">Dimitrios Moudiotis</h2>
-      <p class="founder-text">Mechanical Engineer (AUTH) with 9+ years of hands-on experience across robotics, safety equipment, sheet metal fabrication, and precision 3D printing. Holds five university degrees from leading institutions in Greece, France and the USA — combining deep technical expertise with strong project management and product development skills.</p>
+      <div class="founder-mono-label" id="founder-mono-label">Founder &amp; Lead Engineer</div>
+      <h2 class="founder-name" id="founder-name-team">Dimitrios Moudiotis</h2>
+      <p class="founder-text" id="founder-text">Mechanical Engineer (AUTH) with 9+ years of hands-on experience across robotics, safety equipment, sheet metal fabrication, and precision 3D printing. Holds five university degrees from leading institutions in Greece, France and the USA — combining deep technical expertise with strong project management and product development skills.</p>
 
       <!-- Stats -->
       <div class="founder-stats">
         <div class="founder-stat">
           <div class="founder-stat-num" id="years-stat">9<span>+</span></div>
-          <div class="founder-stat-label">Years</div>
+          <div class="founder-stat-label" id="fcs-years">Years</div>
         </div>
         <div class="founder-stat">
           <div class="founder-stat-num">50<span>+</span></div>
-          <div class="founder-stat-label">Projects</div>
+          <div class="founder-stat-label" id="fcs-projects">Projects</div>
         </div>
         <div class="founder-stat">
           <div class="founder-stat-num">5</div>
-          <div class="founder-stat-label">Univ. Degrees</div>
+          <div class="founder-stat-label" id="fcs-degrees">Univ. Degrees</div>
         </div>
         <div class="founder-stat">
           <div class="founder-stat-num">9</div>
-          <div class="founder-stat-label">Scholarships</div>
+          <div class="founder-stat-label" id="fcs-scholarships">Scholarships</div>
         </div>
       </div>
 
@@ -760,8 +761,8 @@
 <!-- ══ EDUCATION ════════════════════════════════════════════════ -->
 <section id="team">
   <div class="edu-section-header">
-    <div class="edu-section-label">Academic Background</div>
-    <div class="edu-section-heading">5 Universities &middot; 3 Countries</div>
+    <div class="edu-section-label" id="edu-section-label">Academic Background</div>
+    <div class="edu-section-heading" id="edu-section-heading">5 Universities &middot; 3 Countries</div>
   </div>
   <div class="edu-cards">
 
@@ -828,43 +829,43 @@
     <div class="process-flow-inner">
       <div class="pf-node">
         <div class="pf-icon"><div class="pf-icon-pulse"></div>💡</div>
-        <div class="pf-label">Concept</div>
-        <div class="pf-sub">Requirements &amp; brief</div>
+        <div class="pf-label" id="pf-label-1">Concept</div>
+        <div class="pf-sub" id="pf-sub-1">Requirements &amp; brief</div>
       </div>
       <div class="pf-arrow"><div class="pf-arrow-dot"></div></div>
       <div class="pf-node">
         <div class="pf-icon"><div class="pf-icon-pulse"></div>📐</div>
-        <div class="pf-label">CAD Design</div>
-        <div class="pf-sub">3D model · BOM · drawings</div>
+        <div class="pf-label" id="pf-label-2">CAD Design</div>
+        <div class="pf-sub" id="pf-sub-2">3D model · BOM · drawings</div>
       </div>
       <div class="pf-arrow"><div class="pf-arrow-dot"></div></div>
       <div class="pf-node">
         <div class="pf-icon"><div class="pf-icon-pulse"></div>🔬</div>
-        <div class="pf-label">FEA &amp; Simulation</div>
-        <div class="pf-sub">Stress · fatigue · manufacturing</div>
+        <div class="pf-label" id="pf-label-3">FEA &amp; Simulation</div>
+        <div class="pf-sub" id="pf-sub-3">Stress · fatigue · manufacturing</div>
       </div>
       <div class="pf-arrow"><div class="pf-arrow-dot"></div></div>
       <div class="pf-node">
         <div class="pf-icon"><div class="pf-icon-pulse"></div>🏭</div>
-        <div class="pf-label">Fabrication</div>
-        <div class="pf-sub">Machining · printing · welding</div>
+        <div class="pf-label" id="pf-label-4">Fabrication</div>
+        <div class="pf-sub" id="pf-sub-4">Machining · printing · welding</div>
       </div>
       <div class="pf-arrow"><div class="pf-arrow-dot"></div></div>
       <div class="pf-node">
         <div class="pf-icon"><div class="pf-icon-pulse"></div>✅</div>
-        <div class="pf-label">Quality Check</div>
-        <div class="pf-sub">Testing · inspection · sign-off</div>
+        <div class="pf-label" id="pf-label-5">Quality Check</div>
+        <div class="pf-sub" id="pf-sub-5">Testing · inspection · sign-off</div>
       </div>
       <div class="pf-arrow"><div class="pf-arrow-dot"></div></div>
       <div class="pf-node">
         <div class="pf-icon"><div class="pf-icon-pulse"></div>🤝</div>
-        <div class="pf-label">Customer</div>
-        <div class="pf-sub">Delivery &amp; feedback</div>
+        <div class="pf-label" id="pf-label-6">Customer</div>
+        <div class="pf-sub" id="pf-sub-6">Delivery &amp; feedback</div>
       </div>
     </div>
     <div class="pf-loop">
       <div class="pf-loop-line"></div>
-      <div class="pf-loop-label">Continuous improvement loop</div>
+      <div class="pf-loop-label" id="pf-loop-label">Continuous improvement loop</div>
       <div class="pf-loop-line"></div>
     </div>
   </div>
@@ -888,7 +889,7 @@
             <span class="en">Integrity</span>
             <span class="el">Ακεραιότητα</span>
           </div>
-          <p class="value-text">Honest estimates, full accountability from sketch to delivery. No surprises, no shortcuts.</p>
+          <p class="value-text" id="val-integrity-text">Honest estimates, full accountability from sketch to delivery. No surprises, no shortcuts.</p>
         </div>
         <div class="value-card vc-green">
           <div class="value-icon">03</div>
@@ -896,7 +897,7 @@
             <span class="en">Innovation</span>
             <span class="el">Καινοτομία</span>
           </div>
-          <p class="value-text">Classical engineering meets a drive for smarter solutions — DFM geometry, cross-disciplinary insight.</p>
+          <p class="value-text" id="val-innovation-text">Classical engineering meets a drive for smarter solutions — DFM geometry, cross-disciplinary insight.</p>
         </div>
 
         <!-- ── Principles (JS-populated) ── -->
@@ -924,7 +925,7 @@
 <!-- ══ FOOTER ════════════════════════════════════════════════════ -->
 <footer>
   <div class="footer-contact-bar">
-    <span>Athens, Greece</span>
+    <span id="footer-loc-bar">Athens, Greece</span>
     <span class="fc-sep"></span>
     <a href="tel:+302107561836">210 075 6183</a>
     <span class="fc-sep"></span>

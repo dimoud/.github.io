@@ -114,16 +114,68 @@ const LANG = {
     sw_fc2_name:'Πλαίσιο & Κατασκευή', sw_fc2_1:'Απλοί & σύνθετοι τύποι πλαισίου', sw_fc2_2:'Υπολογισμοί ροπών κάμψης & τεμνουσών', sw_fc2_3:'Ανάλυση κοχλιωτών συνδέσεων', sw_fc2_4:'Υπολογισμοί συγκολλήσεων υπερκατασκευής',
     sw_fc3_name:'Ασφάλεια & Ευστάθεια', sw_fc3_1:'Έλεγχος συστήματος πέδησης', sw_fc3_2:'Ακτίνα στροφής & ευστάθεια', sw_fc3_3:'Έλεγχος ανατροπής γερανού', sw_fc3_4:'Υπολογισμοί ελατηριωτής ανάρτησης',
     sw_fc4_name:'Εξαγωγή & Αναφορές', sw_fc4_1:'Γρήγορη εξαγωγή PDF', sw_fc4_2:'Τεχνικά σχέδια A3', sw_fc4_3:'Αυτόματη δημιουργία μελέτης Word', sw_fc4_4:'Διαδικτυακές βιβλιοθήκες & πρότυπα',
-    team_heading:'Ομάδα',
+    team_heading:'Ομάδα', team_page_heading:'Ομάδα',
+    proc_exp_text:'{yrs} χρόνια σε ρομποτική, εξοπλισμό ασφαλείας και ακριβή κατασκευή — πέντε πτυχία, τρεις χώρες.',
     founder_name:'Δημήτρης<br>Μουδιώτης',
     founder_label:'Ιδρυτής &amp; Επικεφαλής Μηχανικός',
     founder_bio:'Μηχανολόγος Μηχανικός (ΑΠΘ) με ' + EXP_YEARS + '+ χρόνια εμπειρίας σε ρομποτική, εξοπλισμό ασφαλείας, βιομηχανικά μηχανήματα και ακριβή κατασκευή. Σπούδασε σε πέντε πανεπιστήμια στην Ελλάδα, τη Γαλλία και τις ΗΠΑ.',
     fcs_years:'Χρόνια', fcs_projects:'Έργα', fcs_degrees:'Πτυχία', fcs_scholarships:'Υποτροφίες',
     founder_profile_btn:'Πλήρες Προφίλ →',
+    founder_photo_accent:'Ιδρυτής',
+    founder_mono_label:'Ιδρυτής &amp; Επικεφαλής Μηχανικός',
+    founder_name_team:'Δημήτριος Μουδιώτης',
+    founder_text:'Μηχανολόγος Μηχανικός (ΑΠΘ) με ' + EXP_YEARS + '+ χρόνια πρακτικής εμπειρίας σε ρομποτική, εξοπλισμό ασφαλείας, κατασκευή φύλλου μετάλλου και ακριβές 3D printing. Κατέχει πέντε πανεπιστημιακά πτυχία από κορυφαία ιδρύματα στην Ελλάδα, τη Γαλλία και τις ΗΠΑ — συνδυάζοντας βαθιά τεχνική εξειδίκευση με ισχυρές δεξιότητες διαχείρισης έργων και ανάπτυξης προϊόντων.',
+    edu_section_label:'Ακαδημαϊκό Υπόβαθρο',
+    edu_section_heading:'5 Πανεπιστήμια &middot; 3 Χώρες',
+    val_integrity_text:'Ειλικρινείς εκτιμήσεις, πλήρης υπευθυνότητα από το σκίτσο ως την παράδοση. Χωρίς εκπλήξεις, χωρίς συντομεύσεις.',
+    val_innovation_text:'Κλασική μηχανική συναντά την ανάγκη για έξυπνες λύσεις — DFM γεωμετρία, διεπιστημονική γνώση.',
+    ticker: ['3D Σχεδιασμός','3D Printing','Laser Cut & Engrave','Φύλλο Μετάλλου','Γρήγορη Πρωτοτυποποίηση','Λίστα Υλικών (BOM)','Διαχείριση Έργου','Ανάλυση FEA','από ιδέα σε πραγματικότητα','FDM · SLA · SLS'],
+    pf_labels:['Ιδέα','CAD Σχεδιασμός','FEA & Προσομοίωση','Κατασκευή','Ποιοτικός Έλεγχος','Παράδοση'],
+    pf_subs:['Απαιτήσεις & brief','3D μοντέλο · BOM · σχέδια','Τάσεις · κόπωση · κατασκευή','Κατεργασία · printing · συγκόλληση','Δοκιμές · επιθεώρηση · παραλαβή','Παράδοση & ανατροφοδότηση'],
+    pf_loop:'Βρόχος συνεχούς βελτίωσης',
+    pr_selfprint_badge:'// Για Makers &amp; Designers',
+    pr_selfprint_title:'Θέλετε να Εκτυπώσετε Μόνοι σας;',
+    pr_selfprint_sub:'Έχετε δικό σας 3D printer; Χρησιμοποιήστε τον δωρεάν υπολογιστή κόστους παρακάτω — ανεβάστε το STL ή STEP αρχείο σας και λάβετε άμεση εκτίμηση υλικού, χρόνου εκτύπωσης και κόστους. Χωρίς εγγραφή.',
+    pr_selfprint_cta:'Δοκιμάστε τον Υπολογιστή',
+    pr_est_drop_or:'ή', pr_est_browse:'Επιλογή Αρχείου',
+    pr_est_lbl_material:'Υλικό', pr_est_lbl_infill:'Πλήρωση',
+    pr_est_lbl_layer:'Ύψος Στρώματος', pr_est_lbl_strength:'Αντοχή / Τοιχώματα',
+    pr_est_lbl_colour:'Χρώμα', pr_est_lbl_qty:'Ποσότητα',
+    pr_est_single_colour:'Μονόχρωμο',
+    pr_est_ams_toggle:'Εναλλαγή AMS πολύχρωμο (+2× υλικό)',
+    pr_est_preview_empty:'Η 3D προεπισκόπηση εμφανίζεται εδώ',
+    pr_est_viewer_hint:'σύρε για περιστροφή · κύλιση για ζουμ',
+    pr_est_price_label:'Συνολική Εκτίμηση',
+    pr_est_disclaimer:'Εκτίμηση μόνο — τελική τιμή επιβεβαιώνεται μετά από έλεγχο.',
+    pr_est_quote_link:'Ζητήστε ακριβή προσφορά',
+    pr_est_mat:{'pla':'PLA — Τυπικό','pla+':'PLA+ — Ενισχυμένο','petg':'PETG — Ανθεκτικό','abs':'ABS — Θερμοανθεκτικό'},
+    pr_est_infill:['15% — Σχέδιο','20% — Τυπικό','40% — Ισχυρό','100% — Συμπαγές'],
+    pr_est_strength:['Ελαφρύ','Τυπικό','Ισχυρό','Πολύ Ισχυρό'],
     contact_label:'// Ας Δουλέψουμε Μαζί',
     contact_heading:'Έχετε κάποιο project;',
     contact_sub:'Ένα εξάρτημα ή ολόκληρο project — η Expertease είναι εδώ.',
-    footer_copy:'© 2026 Expertease Designs', footer_loc:'Αθήνα, Ελλάδα',
+    midcta_label:'// Έτοιμοι να Ξεκινήσουμε;',
+    midcta_heading:'Έχετε κάποιο project;',
+    midcta_sub:'Από ένα εξάρτημα ως πλήρη διαχείριση έργου — ας μιλήσουμε για αυτό που χρειάζεστε.',
+    midcta_btn:'Δωρεάν Αρχική Ενημέρωση',
+    contact_label_static:'// Επικοινωνήστε',
+    contact_heading_static:'Ας Δουλέψουμε Μαζί',
+    contact_sub_static:'Έχετε κάποιο project; Συμπληρώστε τη φόρμα και θα επικοινωνήσουμε εντός μιας εργάσιμης ημέρας.',
+    form_direct_label:'Στείλτε μας άμεσο μήνυμα!',
+    form_lbl_name:'ΟΝΟΜΑ', form_lbl_email:'EMAIL',
+    form_lbl_phone:'ΤΗΛΕΦΩΝΟ', form_lbl_subject:'ΘΕΜΑ', form_lbl_message:'ΜΗΝΥΜΑ',
+    form_ph_name:'Το όνομά σας', form_ph_message:'Πείτε μας για το project σας...',
+    form_opt_default:'Επιλέξτε υπηρεσία…',
+    form_opt_1:'Μηχανολογικός Σχεδιασμός',
+    form_opt_2:'3D Printing',
+    form_opt_3:'Laser Cut &amp; Engrave',
+    form_opt_4:'3D Μοντέλα / CAD',
+    form_opt_5:'Web Design',
+    form_opt_6:'Λογισμικό',
+    form_opt_7:'Γενική Ερώτηση',
+    form_submit_label:'ΑΠΟΣΤΟΛΗ ΜΗΝΥΜΑΤΟΣ',
+    footer_copy:'© 2026 Expertease Designs', footer_loc:'Αθήνα, Ελλάδα', footer_loc_bar:'Αθήνα, Ελλάδα',
+    ec_ad_question:'Σας άρεσε το site;', ec_ad_cta:'Φτιάξτε το δικό σας', ec_label:'Σχεδιάστηκε από',
     pr_label:'Εξατομικευμένη Κατασκευή · Αθήνα',
     pr_title:'3D Print<br>Laser Cut<br>&amp; Engrave',
     pr_desc:'Από ιδέα σε έτοιμο εξάρτημα — αναλαμβάνουμε εξατομικευμένο 3D printing, αντίστροφη μηχανική και laser cutting &amp; engraving. Λειτουργικά πρωτότυπα, μεμονωμένα εξαρτήματα και διακοσμητικές εργασίες εσωτερικά.',
@@ -277,16 +329,68 @@ const LANG = {
     sw_fc2_name:'Frame & Structure', sw_fc2_1:'Simple & complex frame types', sw_fc2_2:'Bending moment & shear calcs', sw_fc2_3:'Bolted connection analysis', sw_fc2_4:'Superstructure weld calcs',
     sw_fc3_name:'Safety & Stability', sw_fc3_1:'Braking system verification', sw_fc3_2:'Turning radius & stability', sw_fc3_3:'Crane overturning checks', sw_fc3_4:'Spring suspension calcs',
     sw_fc4_name:'Output & Export', sw_fc4_1:'Quick PDF export', sw_fc4_2:'A3 technical drawings', sw_fc4_3:'Auto Word report generation', sw_fc4_4:'Online libraries & templates',
-    team_heading:'Team',
+    team_heading:'Team', team_page_heading:'Team',
+    proc_exp_text:'Nine years across robotics, safety equipment and precision fabrication — five degrees, three countries.',
     founder_name:'Dimitrios<br>Moudiotis',
     founder_label:'Founder &amp; Lead Engineer',
     founder_bio:'Mechanical Engineer (AUTH) with ' + EXP_YEARS + '+ years of experience across robotics, safety equipment, industrial machinery, and precision fabrication. Studied at five universities in Greece, France, and the USA.',
     fcs_years:'Years', fcs_projects:'Projects', fcs_degrees:'Univ. Degrees', fcs_scholarships:'Scholarships',
     founder_profile_btn:'Full Profile →',
+    founder_photo_accent:'Founder',
+    founder_mono_label:'Founder &amp; Lead Engineer',
+    founder_name_team:'Dimitrios Moudiotis',
+    founder_text:'Mechanical Engineer (AUTH) with ' + EXP_YEARS + '+ years of hands-on experience across robotics, safety equipment, sheet metal fabrication, and precision 3D printing. Holds five university degrees from leading institutions in Greece, France and the USA — combining deep technical expertise with strong project management and product development skills.',
+    edu_section_label:'Academic Background',
+    edu_section_heading:'5 Universities · 3 Countries',
+    val_integrity_text:'Honest estimates, full accountability from sketch to delivery. No surprises, no shortcuts.',
+    val_innovation_text:'Classical engineering meets a drive for smarter solutions — DFM geometry, cross-disciplinary insight.',
+    ticker: ['3D Design','3D Printing','Laser Cut & Engrave','Sheet Metal','Rapid Prototyping','Bill of Materials','Project Management','FEA Analysis','from vision to reality','FDM · SLA · SLS'],
+    pf_labels:['Concept','CAD Design','FEA & Simulation','Fabrication','Quality Check','Customer'],
+    pf_subs:['Requirements & brief','3D model · BOM · drawings','Stress · fatigue · manufacturing','Machining · printing · welding','Testing · inspection · sign-off','Delivery & feedback'],
+    pf_loop:'Continuous improvement loop',
+    pr_selfprint_badge:'// For Makers &amp; Designers',
+    pr_selfprint_title:'Want to Print Your Own Parts?',
+    pr_selfprint_sub:'Have your own 3D printer? Use our free cost calculator below — upload your STL or STEP file and get an instant estimate on material usage, print time, and cost. No account needed.',
+    pr_selfprint_cta:'Try the Calculator',
+    pr_est_drop_or:'or', pr_est_browse:'Browse File',
+    pr_est_lbl_material:'Material', pr_est_lbl_infill:'Infill',
+    pr_est_lbl_layer:'Layer Height', pr_est_lbl_strength:'Strength / Walls',
+    pr_est_lbl_colour:'Colour', pr_est_lbl_qty:'Quantity',
+    pr_est_single_colour:'Single Colour',
+    pr_est_ams_toggle:'Toggle AMS multicolor (+2× material)',
+    pr_est_preview_empty:'3D preview appears here',
+    pr_est_viewer_hint:'drag to rotate · scroll to zoom',
+    pr_est_price_label:'Total Quote',
+    pr_est_disclaimer:'Estimate only — final price confirmed after review.',
+    pr_est_quote_link:'Get exact quote',
+    pr_est_mat:{'pla':'PLA — Standard','pla+':'PLA+ — Enhanced','petg':'PETG — Tough','abs':'ABS — Heat-resistant'},
+    pr_est_infill:['15% — Draft','20% — Standard','40% — Strong','100% — Solid'],
+    pr_est_strength:['Light','Default','Strong','Very Strong'],
     contact_label:'// Let\'s Work Together',
     contact_heading:'Got a project in mind?',
     contact_sub:'From designing a single component to managing an entire project — Expertease is here.',
-    footer_copy:'© 2026 Expertease Designs', footer_loc:'Athens, Greece',
+    midcta_label:'// Ready to Start?',
+    midcta_heading:'Got a project in mind?',
+    midcta_sub:'From a single component to full project management — let\'s talk about what you need.',
+    midcta_btn:'Get a Free Consultation',
+    contact_label_static:'// Get in Touch',
+    contact_heading_static:'Let\'s Work Together',
+    contact_sub_static:'Have a project in mind? Fill in the form and we\'ll get back to you within one business day.',
+    form_direct_label:'Send us a direct mail!',
+    form_lbl_name:'NAME', form_lbl_email:'EMAIL',
+    form_lbl_phone:'PHONE', form_lbl_subject:'SUBJECT', form_lbl_message:'MESSAGE',
+    form_ph_name:'Your name', form_ph_message:'Tell us about your project...',
+    form_opt_default:'Select a service…',
+    form_opt_1:'Mechanical Design',
+    form_opt_2:'3D Printing',
+    form_opt_3:'Laser Cut &amp; Engrave',
+    form_opt_4:'3D Models / CAD',
+    form_opt_5:'Web Design',
+    form_opt_6:'Software',
+    form_opt_7:'General Enquiry',
+    form_submit_label:'SEND MESSAGE',
+    footer_copy:'© 2026 Expertease Designs', footer_loc:'Athens, Greece', footer_loc_bar:'Athens, Greece',
+    ec_ad_question:'Like this site?', ec_ad_cta:'Let\'s build yours', ec_label:'Designed by',
     pr_label:'Custom Fabrication · Athens, GR',
     pr_title:'3D Print<br>Laser Cut<br>&amp; Engrave',
     pr_desc:'From idea to finished part — we handle custom 3D printing, reverse engineering, and laser cutting &amp; engraving. Functional prototypes, one-off parts, and decorative work produced in-house.',
@@ -375,12 +479,61 @@ function applyLang(lang) {
   set('prin-2-title',t.prin_2_title); set('prin-2-text', isMob && t.prin_2_text_mobile ? t.prin_2_text_mobile : t.prin_2_text, !isMob);
   set('prin-3-title',t.prin_3_title); set('prin-3-text', isMob && t.prin_3_text_mobile ? t.prin_3_text_mobile : t.prin_3_text, !isMob);
   set('prin-4-title',t.prin_4_title); set('prin-4-text',t.prin_4_text,true);
-  set('team-heading',t.team_heading);
+  set('team-heading',t.team_heading); set('team-page-heading',t.team_page_heading);
+  const procExpEl = document.getElementById('proc-exp-text');
+  if(procExpEl) { const yrs = new Date().getFullYear() - 2019; const wordsEn=['Zero','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten','Eleven','Twelve']; const wordsEl=['Μηδέν','Ένα','Δύο','Τρία','Τέσσερα','Πέντε','Έξι','Επτά','Οκτώ','Εννέα','Δέκα','Έντεκα','Δώδεκα']; const word = lang==='el' ? (wordsEl[yrs]||yrs) : (wordsEn[yrs]||yrs); procExpEl.textContent = (t.proc_exp_text||'').replace('{yrs}', word); }
   set('founder-name',t.founder_name,true);
   set('founder-label',t.founder_label,true); set('founder-bio',t.founder_bio);
   set('fcs-years',t.fcs_years); set('fcs-projects',t.fcs_projects);
   set('fcs-degrees',t.fcs_degrees); set('fcs-scholarships',t.fcs_scholarships);
   set('founder-profile-btn',noArrow(t.founder_profile_btn));
+  // team.html specific
+  set('founder-photo-accent',t.founder_photo_accent);
+  set('founder-mono-label',t.founder_mono_label,true);
+  set('founder-name-team',t.founder_name_team);
+  set('founder-text',t.founder_text);
+  set('edu-section-label',t.edu_section_label);
+  set('edu-section-heading',t.edu_section_heading,true);
+  set('val-integrity-text',t.val_integrity_text);
+  set('val-innovation-text',t.val_innovation_text);
+  // process flow (index.html + team.html) — translate all instances by position
+  if(t.pf_labels){ document.querySelectorAll('.process-flow .pf-node').forEach((node,i)=>{ const lbl=node.querySelector('.pf-label'); if(lbl&&t.pf_labels[i]) lbl.textContent=t.pf_labels[i]; const sub=node.querySelector('.pf-sub'); if(sub&&t.pf_subs&&t.pf_subs[i]) sub.textContent=t.pf_subs[i]; }); }
+  document.querySelectorAll('.pf-loop-label').forEach(el=>{ if(t.pf_loop) el.textContent=t.pf_loop; });
+  // also update IDs for team.html
+  if(t.pf_labels){ t.pf_labels.forEach((lbl,i)=>{ set('pf-label-'+(i+1),lbl); }); }
+  if(t.pf_subs){   t.pf_subs.forEach((sub,i)=>{ set('pf-sub-'+(i+1),sub); }); }
+  set('pf-loop-label',t.pf_loop);
+  // ticker (index.html)
+  const tickerEl = document.getElementById('tickerInner');
+  if(tickerEl && t.ticker){ const items=t.ticker; let h=''; [0,1].forEach(()=>items.forEach(txt=>{ h+='<span class="ticker-item">'+txt+' <span>✦</span></span>'; })); tickerEl.innerHTML=h; }
+  // 3dprint.html estimator
+  set('pr-selfprint-badge',t.pr_selfprint_badge,true);
+  set('pr-selfprint-title',t.pr_selfprint_title);
+  set('pr-selfprint-sub',t.pr_selfprint_sub);
+  set('pr-selfprint-cta',t.pr_selfprint_cta);
+  set('pr-est-drop-or',t.pr_est_drop_or);
+  set('pr-est-browse',t.pr_est_browse);
+  set('pr-est-lbl-material',t.pr_est_lbl_material);
+  set('pr-est-lbl-infill',t.pr_est_lbl_infill);
+  set('pr-est-lbl-layer',t.pr_est_lbl_layer);
+  set('pr-est-lbl-strength',t.pr_est_lbl_strength);
+  set('pr-est-lbl-colour',t.pr_est_lbl_colour);
+  set('pr-est-lbl-qty',t.pr_est_lbl_qty);
+  set('pr-est-single-colour',t.pr_est_single_colour);
+  set('pr-est-ams-toggle',t.pr_est_ams_toggle);
+  set('pr-est-preview-empty',t.pr_est_preview_empty);
+  set('pr-est-viewer-hint-text',t.pr_est_viewer_hint);
+  set('pr-est-price-label',t.pr_est_price_label);
+  set('pr-est-disclaimer',t.pr_est_disclaimer); set('pr-est-quote-link',t.pr_est_quote_link);
+  // estimator material options
+  const matSel = document.getElementById('prEstMaterial');
+  if(matSel && t.pr_est_mat) { const vals=['pla','pla+','petg','abs']; vals.forEach(v=>{ const o=matSel.querySelector('option[value="'+v+'"]'); if(o) o.textContent=t.pr_est_mat[v]; }); }
+  // infill buttons
+  const infillMap = {'0.15':0,'0.20':1,'0.40':2,'1.00':3};
+  document.querySelectorAll('.pr-est-infill-btn[data-infill]').forEach(b=>{ const idx=infillMap[b.dataset.infill]; if(t.pr_est_infill && t.pr_est_infill[idx]!==undefined) b.textContent=t.pr_est_infill[idx]; });
+  // strength buttons
+  const strengthMap = {'1.0':0,'1.1':1,'1.3':2,'1.5':3};
+  document.querySelectorAll('.pr-est-strength-btn[data-strength]').forEach(b=>{ const idx=strengthMap[b.dataset.strength]; if(t.pr_est_strength && t.pr_est_strength[idx]!==undefined) b.textContent=t.pr_est_strength[idx]; });
   set('projects-heading',t.projects_heading);
   set('sw-heading',t.sw_heading); set('sw-label',t.sw_label);
   set('sw-desc',t.sw_desc);
@@ -433,7 +586,22 @@ function applyLang(lang) {
   set('pr-cta-perk1',t.pr_cta_perk1); set('pr-cta-perk2',t.pr_cta_perk2); set('pr-cta-perk3',t.pr_cta_perk3);
   set('contact-label',t.contact_label); set('contact-heading',t.contact_heading,true);
   set('contact-sub',t.contact_sub);
-  set('footer-copy',t.footer_copy); set('footer-loc',t.footer_loc);
+  set('midcta-label',t.midcta_label); set('midcta-heading',t.midcta_heading); set('midcta-sub',t.midcta_sub); set('midcta-btn',t.midcta_btn);
+  set('contact-label-static',t.contact_label_static); set('contact-heading-static',t.contact_heading_static); set('contact-sub-static',t.contact_sub_static);
+  set('form-direct-label',t.form_direct_label);
+  set('form-lbl-name',t.form_lbl_name); set('form-lbl-email',t.form_lbl_email);
+  set('form-lbl-phone',t.form_lbl_phone); set('form-lbl-subject',t.form_lbl_subject); set('form-lbl-message',t.form_lbl_message);
+  set('form-submit-label',t.form_submit_label);
+  const phName = document.getElementById('form-ph-name'); if(phName) phName.placeholder = t.form_ph_name;
+  const phMsg = document.getElementById('form-ph-message'); if(phMsg) phMsg.placeholder = t.form_ph_message;
+  const sel = document.getElementById('form-select-subject');
+  if(sel){ const opts = ['form-opt-default','form-opt-1','form-opt-2','form-opt-3','form-opt-4','form-opt-5','form-opt-6','form-opt-7'];
+    const keys = ['form_opt_default','form_opt_1','form_opt_2','form_opt_3','form_opt_4','form_opt_5','form_opt_6','form_opt_7'];
+    opts.forEach((id,i)=>{ const o=document.getElementById(id); if(o) o.textContent=t[keys[i]]; }); }
+  set('footer-copy',t.footer_copy); set('footer-loc',t.footer_loc); set('footer-loc-bar',t.footer_loc_bar);
+  document.querySelectorAll('.ec-ad-question').forEach(el => el.textContent = t.ec_ad_question);
+  document.querySelectorAll('.ec-label').forEach(el => el.textContent = t.ec_label);
+  document.querySelectorAll('.ec-ad-cta').forEach(el => { const arrow = el.querySelector('.ec-ad-arrow'); if(arrow){ el.firstChild.textContent = '\n        ' + t.ec_ad_cta + '\n        '; } else { el.textContent = t.ec_ad_cta; } });
   const mmap = {'mnav-about':t.nav_about,'mnav-projects':t.nav_projects,'mnav-software':t.nav_software,'mnav-webdesign':t.nav_webdesign,'mnav-3dprint':t.nav_3dprint,'mnav-experience':t.nav_experience,'mnav-contact':t.nav_contact};
   Object.entries(mmap).forEach(([id,val])=>{ const el=document.getElementById(id); if(el) el.textContent=val; });
   document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
@@ -1033,7 +1201,7 @@ function initProcessAnimations() {
 ═══════════════════════════════════════════════════════════════ */
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.lang-btn').forEach(b => b.addEventListener('click', () => applyLang(b.dataset.lang)));
-  applyLang('en');
+  applyLang(localStorage.getItem('lang') || 'en');
   initScroll();
   initHeroExplode();
   initPortfolio();

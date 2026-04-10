@@ -41,6 +41,32 @@
   --font-body:    'Source Sans 3', sans-serif;
 }
 
+/* Greek: Barlow Condensed matches Oswald visually and supports Greek natively */
+:lang(el) { --font-display: 'Barlow Condensed', sans-serif; }
+
+/* Ensure Barlow Condensed renders bold (like Oswald does at weight 400 visually) */
+/* Barlow Condensed has ~10% larger x-height than Oswald — scale down to match */
+:lang(el) h1, :lang(el) h2, :lang(el) h3,
+:lang(el) .hero-title, :lang(el) .contact-heading,
+:lang(el) .wd-offer-name, :lang(el) .value-title,
+:lang(el) .process-title, :lang(el) .stat-num,
+:lang(el) .founder-card-name, :lang(el) .fcs-num,
+:lang(el) .sw-title, :lang(el) .section-title,
+:lang(el) .about-heading, :lang(el) .services-heading,
+:lang(el) .projects-heading, :lang(el) .founder-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+/* Scale Barlow Condensed down ~10% to visually match Oswald's apparent size */
+:lang(el) .section-title  { font-size: clamp(43px, 4.95vw, 68px); }
+:lang(el) .stat-num       { font-size: 40px; }
+:lang(el) .value-title    { font-size: 20px; }
+:lang(el) .process-title  { font-size: 32px; }
+:lang(el) .sw-title       { font-size: 41px; }
+:lang(el) .wd-offer-name  { font-size: 20px; }
+:lang(el) .fcs-num        { font-size: 25px; }
+:lang(el) .founder-card-name { font-size: clamp(25px, 2.9vw, 43px); }
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; overflow-x: hidden; background: var(--navy); }
 body {
@@ -382,10 +408,11 @@ section { padding: 100px 64px; position: relative; z-index: 1; }
 /* VALUES GRID */
 .values-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .value-item {
-  padding: 28px 26px 26px;
+  padding: 18px 26px 16px;
   background: #fff;
   border: 1px solid var(--border);
   border-top: 3px solid transparent;
+  border-radius: 10px;
   position: relative;
   transition: transform .3s, box-shadow .3s, background .3s;
 }
@@ -405,7 +432,7 @@ section { padding: 100px 64px; position: relative; z-index: 1; }
   width: 46px; height: 46px;
   border-radius: 10px;
   display: flex; align-items: center; justify-content: center;
-  margin-bottom: 20px; flex-shrink: 0;
+  margin-bottom: 14px; flex-shrink: 0;
 }
 .value-item.v-blue  .vi-icon-wrap { background: rgba(37,99,235,.1);  color: #2563eb; }
 .value-item.v-green .vi-icon-wrap { background: rgba(5,150,105,.1);  color: #059669; }
@@ -418,7 +445,7 @@ section { padding: 100px 64px; position: relative; z-index: 1; }
   font-family: var(--font-mono); font-size: 9px; letter-spacing: 2px;
   color: var(--faint); opacity: .6;
 }
-.value-title { font-family: var(--font-display); font-size: 22px; letter-spacing: .5px; color: var(--dark); margin-bottom: 10px; line-height: 1.1; }
+.value-title { font-family: var(--font-display); font-size: 22px; font-weight: 600; letter-spacing: .5px; color: var(--dark); margin-bottom: 10px; line-height: 1.1; }
 .value-text { font-size: 13px; line-height: 1.76; color: var(--muted); }
 
 /* ── CALIPER ANIMATION ───────────────────────────────────────── */
@@ -1329,6 +1356,7 @@ section { padding: 100px 64px; position: relative; z-index: 1; }
 
 .contact-label { font-family:var(--font-mono); font-size:13px; letter-spacing:4px; text-transform:uppercase; color:var(--blue-lt); margin-bottom:18px; position:relative; opacity:.9; }
 .contact-heading { font-family:var(--font-display); font-size:clamp(30px,4vw,54px); letter-spacing:2px; color:#1e3a8a; line-height:1.1; margin-bottom:20px; position:relative; }
+:lang(el) .contact-heading { font-size:clamp(24px,3.2vw,44px); letter-spacing:1px; }
 .contact-sub { font-size:16px; color:var(--muted); line-height:1.72; margin:0 0 32px; position:relative; }
 .contact-info-row { display:flex; flex-direction:column; align-items:flex-start; gap:14px; margin-bottom:28px; }
 .contact-info-item { display:inline-flex; align-items:center; gap:8px; font-family:var(--font-mono); font-size:14px; letter-spacing:1px; color:var(--muted); text-decoration:none; transition:color .2s; white-space:nowrap; }
@@ -1687,6 +1715,7 @@ footer {
     font-size: clamp(28px, 8vw, 40px);
     letter-spacing: 1px;
   }
+  :lang(el) .contact-heading { font-size: clamp(22px, 6vw, 34px); letter-spacing: 0.5px; }
 
   /* Contact info row: stack vertically, left-aligned with indent */
   .contact-info-row { flex-direction: column; align-items: flex-start; gap: 14px; padding-left: 24px; }
@@ -2236,7 +2265,7 @@ footer {
   color: var(--blue-lt); margin-bottom: 10px;
 }
 .wd-offer-name {
-  font-family: var(--font-display); font-size: 22px; color: var(--dark);
+  font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--dark);
   letter-spacing: .5px; margin-bottom: 10px;
 }
 .wd-offer-text { font-size: 13px; line-height: 1.75; color: var(--muted); }
@@ -2828,6 +2857,7 @@ hr.ec-rule { position: relative; z-index: 2; }
   .hero-cta       { justify-content: center; }
   .process-title  { font-size: clamp(22px, 6vw, 32px); }
   .contact-heading { font-size: clamp(26px, 7.5vw, 40px); }
+  :lang(el) .contact-heading { font-size: clamp(20px, 6vw, 32px); }
 
   /* HERO 3D on small mobile — slightly more subtle */
   #hero3d { opacity: 0.50; }

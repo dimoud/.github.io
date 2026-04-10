@@ -518,6 +518,32 @@
 
 /* ── 2. COST ESTIMATOR ───────────────────────────────────────── */
 (function initEstimator() {
+  /* ── i18n helper ─────────────────────────────────────────────── */
+  const EST_STR = {
+    el: {
+      unsupported: 'Μη υποστηριζόμενος τύπος. Χρησιμοποιήστε STL, STP ή STEP.',
+      parsing: '— ανάλυση…',
+      stepNote: '— STEP: ανεβάστε STL για ακριβή εκτίμηση',
+      parseError: '— αδυναμία ανάλυσης STL.',
+      ready: '— έτοιμο',
+      threeUnavail: 'Three.js μη διαθέσιμο',
+      stepPreview: 'STEP: ανεβάστε STL για ακριβή 3D προεπισκόπηση & εκτίμηση',
+      multicolor: 'Πολύχρωμο (AMS)',
+      singleColour: 'Μονόχρωμο',
+    },
+    en: {
+      unsupported: 'Unsupported file type. Use STL, STP or STEP.',
+      parsing: '— parsing…',
+      stepNote: '— STEP: upload STL for accurate estimate',
+      parseError: '— could not parse STL.',
+      ready: '— ready',
+      threeUnavail: 'Three.js unavailable',
+      stepPreview: 'STEP: upload STL for accurate 3D preview & estimate',
+      multicolor: 'Multicolor (AMS)',
+      singleColour: 'Single Colour',
+    }
+  };
+  function estStr(key) { const lang = localStorage.getItem('lang') || 'en'; return (EST_STR[lang] || EST_STR.en)[key] || EST_STR.en[key]; }
   /* ── Constants ─────────────────────────────────────────────── */
   const FILAMENT_DENSITY  = 1.25;   // g/cm³  (PLA baseline)
   const WASTE_BUFFER      = 1.20;   // +10% purge/skirt + 10% overestimate buffer
@@ -604,7 +630,7 @@
   if (multicolorBtn) {
     multicolorBtn.addEventListener('click', () => {
       state.multicolor = !state.multicolor;
-      multicolorBtn.textContent = state.multicolor ? 'Multicolor (AMS)' : 'Single Colour';
+      multicolorBtn.querySelector('span') ? multicolorBtn.querySelector('span').textContent = (state.multicolor ? estStr('multicolor') : estStr('singleColour')) : multicolorBtn.textContent = (state.multicolor ? estStr('multicolor') : estStr('singleColour'));
       multicolorBtn.classList.toggle('pr-est-multicolor-active', state.multicolor);
       updateResult();
     });
@@ -624,8 +650,8 @@
     const name = file.name.toLowerCase();
     const isSTL  = name.endsWith('.stl');
     const isSTEP = name.endsWith('.stp') || name.endsWith('.step');
-    if (!isSTL && !isSTEP) { dropText.textContent = 'Unsupported file type. Use STL, STP or STEP.'; return; }
-    dropText.innerHTML = `<strong>${file.name}</strong> — parsing…`;
+    if (!isSTL && !isSTEP) { dropText.textContent = estStr('unsupported'); return; }
+    dropText.innerHTML = `<strong>${file.name}</strong> ${estStr('parsing')}`;
     const reader = new FileReader();
     reader.onload = e => {
       if (isSTL) {
@@ -633,7 +659,7 @@
       } else {
         state.volume = Math.max(0.5, (file.size / 1024) * 0.12);
         state.bbox   = null;
-        dropText.innerHTML = `<strong>${file.name}</strong> — STEP: upload STL for accurate estimate`;
+        dropText.innerHTML = `<strong>${file.name}</strong> ${estStr('stepNote')}`;
         showStepPlaceholder();
         updateResult();
       }
@@ -644,10 +670,10 @@
   function parseSTL(buffer, filename) {
     let geo;
     try { geo = isBinarySTL(buffer) ? parseBinarySTL(buffer) : parseAsciiSTL(buffer); }
-    catch (e) { dropText.innerHTML = `<strong>${filename}</strong> — could not parse STL.`; return; }
+    catch (e) { dropText.innerHTML = `<strong>${filename}</strong> ${estStr('parseError')}`; return; }
     state.volume = Math.abs(geo.volume) / 1000;
     state.bbox   = geo.bbox;
-    dropText.innerHTML = `<strong>${filename}</strong> — ready`;
+    dropText.innerHTML = `<strong>${filename}</strong> ${estStr('ready')}`;
     buildThreeScene(geo.vertices, geo.bbox);
     updateResult();
   }
@@ -702,7 +728,7 @@
 
   function buildThreeScene(vertices, bbox) {
     if (typeof THREE === 'undefined') {
-      if (viewerEmpty) { viewerEmpty.style.display = 'flex'; viewerEmpty.querySelector('span').textContent = 'Three.js unavailable'; }
+      if (viewerEmpty) { viewerEmpty.style.display = 'flex'; viewerEmpty.querySelector('span').textContent = estStr('threeUnavail'); }
       return;
     }
     if (renderer) { renderer.dispose(); renderer = null; }
@@ -771,7 +797,7 @@
   }
 
   function showStepPlaceholder() {
-    if (viewerEmpty) { viewerEmpty.style.display = 'flex'; viewerEmpty.querySelector('span').textContent = 'STEP: upload STL for accurate 3D preview & estimate'; }
+    if (viewerEmpty) { viewerEmpty.style.display = 'flex'; viewerEmpty.querySelector('span').textContent = estStr('stepPreview'); }
   }
 
   function updateResult() {
