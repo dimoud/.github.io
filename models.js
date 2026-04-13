@@ -33,6 +33,16 @@ let scrollExplodeActive = false, scrollExplodeT = 0, scrollTargetY = 0;
 
 let animRunning = false; // set true once initThree fires, paused when hero off-screen
 
+/* ── Gear intro slide-in ──────────────────────────────────────
+   gearIntroT: 0 → 1 over ~1s. Position lerps from rightHalfX+14
+   (off-screen right) to rightHalfX. Starts after a 0.3s delay.
+──────────────────────────────────────────────────────────────── */
+let gearIntroT = 0;
+let gearIntroElapsed = 0;
+const GEAR_INTRO_DELAY = 0.15;  // seconds before slide starts
+const GEAR_INTRO_DUR   = 0.55;  // seconds for full slide
+const GEAR_INTRO_DIST  = 5;     // world-units offset (subtle slide from right)
+
 let _machinedTex = null;
 function createMachinedTexture() {
   if (_machinedTex) return _machinedTex;          // reuse — never create twice
@@ -971,7 +981,9 @@ function loadModel() {
 
   rotGroup.rotation.x=0.32; rotGroup.rotation.y=-(25*Math.PI/180); rotGroup.scale.set(0.76,0.76,0.76);
 
-  rotGroup.position.x=rightHalfX;
+  /* Start off-screen to the right for intro animation */
+  gearIntroT = 0; gearIntroElapsed = 0;
+  rotGroup.position.x = rightHalfX + GEAR_INTRO_DIST;
 
   scene.add(rotGroup);
 
@@ -1074,12 +1086,21 @@ function animate() {
 
 
 
+  /* ── Gear intro slide easing ───────────────────────────── */
+  if (gearIntroT < 1) {
+    gearIntroElapsed += dt;
+    const t = Math.max(0, (gearIntroElapsed - GEAR_INTRO_DELAY) / GEAR_INTRO_DUR);
+    // ease-out cubic
+    gearIntroT = Math.min(1, 1 - Math.pow(1 - Math.min(t, 1), 3));
+  }
+  const gearIntroOffset = (1 - gearIntroT) * GEAR_INTRO_DIST;
+
   if (scrollExplodeActive) {
 
     /* fast snap toward the pre-explode angle */
     rotGroup.rotation.y += (scrollTargetY - rotGroup.rotation.y) * Math.min(1, dt * 14);
     rotGroup.position.y = 0;
-    rotGroup.position.x = rightHalfX;
+    rotGroup.position.x = rightHalfX + gearIntroOffset;
 
   } else if (!isDragging && currentMode==='rotate') {
 
@@ -1087,7 +1108,7 @@ function animate() {
 
     rotGroup.position.y=Math.sin(floatT*.52)*.04;
 
-    rotGroup.position.x=rightHalfX;
+    rotGroup.position.x=rightHalfX + gearIntroOffset;
 
   }
 
