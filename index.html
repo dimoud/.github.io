@@ -42,6 +42,16 @@
   "sameAs": ["https://expertease.eu"]
 }
 </script>
+<!-- Google Analytics consent defaults (must be before gtag.js loads) -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    analytics_storage: 'denied',
+    ad_storage:        'denied',
+    wait_for_update:   500
+  });
+</script>
 <link rel="dns-prefetch" href="//fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500&family=Oswald:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -134,7 +144,6 @@
 <script src="step-viewer.js" defer></script>
 <script src="eng-animations.js" defer></script>
 <script src="contact-form.js" defer></script>
-    <script src="consent.js"></script>
 </head>
 <body>
 
@@ -729,6 +738,6 @@
   Top
 </button>
 <script>(function(){var b=document.getElementById('backToTop');if(!b)return;window.addEventListener('scroll',function(){b.classList.toggle('btt-visible',window.scrollY>500);},{passive:true});b.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});})();</script>
-
+<script src="consent.js"></script>
 </body>
 </html>

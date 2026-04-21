@@ -14,7 +14,16 @@
     transition:background .2s,color .2s;}
   #btn:hover{background:rgba(180,215,240,0.95);color:#0d2e4a;}
 </style>
-    <script src="consent.js"></script>
+<!-- Google Analytics consent defaults (must be before gtag.js loads) -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    analytics_storage: 'denied',
+    ad_storage:        'denied',
+    wait_for_update:   500
+  });
+</script>
 </head>
 <body>
 <canvas id="c"></canvas>
@@ -510,5 +519,6 @@ function frame(){
 
 frame();
 </script>
+<script src="consent.js"></script>
 </body>
 </html>
