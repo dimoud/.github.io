@@ -2424,6 +2424,12 @@ footer {
   border: none; pointer-events: none;
   display: block;
 }
+.wd-proj-frame-wrap img {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: top;
+  display: block;
+}
 /* subtle dark vignette at bottom so iframe fades out gracefully */
 .wd-proj-frame-overlay {
   position: absolute; inset: 0;
