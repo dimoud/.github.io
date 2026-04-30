@@ -1582,7 +1582,9 @@ footer {
   .nav-hamburger { display: flex; }
 
   #hero { grid-template-columns: 1fr; }
-  .hero-left { padding: 56px 28px 36px; }
+  .hero-left { padding: 56px 28px 36px; align-items: center; text-align: center; }
+  .hero-desc { text-align: center; }
+  .hero-cta  { justify-content: center; }
   .hero-right { display: none; }
   #hero3d { display: none; }
   #hero3d-drag { display: none; }
