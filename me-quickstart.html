@@ -25,7 +25,31 @@
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="expertease-credit.css">
 <style>.expertease-credit{background:var(--navy,#060d1a);}
-@media(max-width:960px){.expertease-credit{margin-bottom:32px;}}</style>
+@media(max-width:960px){.expertease-credit{margin-bottom:32px;}}
+
+/* ── me-quickstart hero overrides ── */
+.sw-page #qs-title {
+  font-size: clamp(56px, 7vw, 108px);
+  letter-spacing: -3px;
+  line-height: .88;
+  margin-bottom: 28px;
+  background: linear-gradient(135deg, #ffffff 0%, #a8c8ff 55%, #5b9aff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.sw-page #qs-desc {
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: .1px;
+  line-height: 1.7;
+  color: rgba(255,255,255,.55);
+  max-width: 420px;
+  margin-bottom: 36px;
+  border-left: 2px solid rgba(125,179,255,.35);
+  padding-left: 16px;
+}
+</style>
 </head>
 <body>
 
@@ -74,7 +98,6 @@
       <div class="sw-page-label" id="qs-label">Mechanical ExpertEase · easemanual.eu</div>
       <h1 class="sw-page-title" id="qs-title">Mechanical<br>ExpertEase</h1>
       <p class="sw-page-desc" id="qs-desc">Αυτοματοποιήστε τις Μελέτες Οχημάτων Ειδικής Χρήσης και Ειδικού Σκοπού</p>
-      <p class="sw-page-desc" id="qs-desc2" style="margin-top:-14px;font-size:14px;opacity:.75;">Από τους υπολογισμούς και τα διαγράμματα μέχρι την πλήρη τεχνική μελέτη. Όλα συγκεντρωμένα σε ένα ενιαίο πρόγραμμα, σχεδιασμένο για σύγχρονα τεχνικά γραφεία και μηχανικούς.</p>
       <div class="sw-page-cta sw-page-cta--lg">
         <a href="software.html" class="btn-outline" id="qs-cta-back">← Πίσω στο Λογισμικό</a>
         <a href="https://www.easemanual.eu/user-guide/mechanical-expertease" target="_blank" rel="noopener" class="btn-primary" id="qs-cta-full">Πλήρης Τεκμηρίωση →</a>
@@ -132,8 +155,8 @@
 <style>
 /* ══ CHAPTER SECTION ═══════════════════════════════════════════ */
 .qs-chapter {
-  background: var(--bg2, #0a1528);
-  border-top: 1px solid rgba(255,255,255,.06);
+  background: #f0f4ff !important;
+  border-top: 1px solid rgba(10,30,90,.08);
   padding: 96px 56px;
 }
 .qs-chapter-inner {
@@ -152,8 +175,8 @@
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 3px;
-  color: var(--blue, #2563eb);
-  opacity: .6;
+  color: #2563eb !important;
+  opacity: .5;
   padding-top: 6px;
   flex-shrink: 0;
 }
@@ -162,7 +185,7 @@
   font-size: 9px;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: var(--blue, #2563eb);
+  color: #2563eb !important;
   margin-bottom: 12px;
   display: flex;
   align-items: center;
@@ -172,13 +195,13 @@
   content: '';
   width: 18px;
   height: 1px;
-  background: var(--blue, #2563eb);
+  background: #2563eb;
 }
 .qs-chapter-title {
   font-family: var(--font-display);
   font-size: clamp(22px, 2.8vw, 36px);
   font-weight: 600;
-  color: #f0f6ff;
+  color: #0f172a !important;
   line-height: 1.2;
   letter-spacing: -0.3px;
   margin: 0;
@@ -196,11 +219,11 @@
 .qs-chapter-text p {
   font-size: 16px;
   line-height: 1.85;
-  color: rgba(255,255,255,.62);
+  color: #4b5d82 !important;
   margin: 0;
 }
 .qs-chapter-text strong {
-  color: #f0f6ff;
+  color: #0f172a !important;
   font-weight: 600;
 }
 
@@ -215,7 +238,7 @@
   font-size: 9px;
   letter-spacing: 2.5px;
   text-transform: uppercase;
-  color: rgba(255,255,255,.35);
+  color: rgba(15,23,42,.4) !important;
 }
 .qs-includes-list {
   list-style: none;
@@ -227,7 +250,7 @@
 }
 .qs-includes-list li {
   font-size: 15px;
-  color: rgba(255,255,255,.72);
+  color: #4b5d82 !important;
   display: flex;
   align-items: baseline;
   gap: 12px;
@@ -235,7 +258,7 @@
 }
 .qs-includes-list li::before {
   content: '▸';
-  color: var(--blue, #2563eb);
+  color: #2563eb !important;
   font-size: 9px;
   flex-shrink: 0;
 }
@@ -244,13 +267,13 @@
 .qs-emphasis {
   margin: 0;
   padding: 28px 32px;
-  border-left: 3px solid var(--blue, #2563eb);
-  background: rgba(37,99,235,.06);
+  border-left: 3px solid #2563eb;
+  background: rgba(37,99,235,.07);
   border-radius: 0 8px 8px 0;
   font-family: var(--font-display);
   font-size: clamp(16px, 1.8vw, 20px);
   font-weight: 600;
-  color: #f0f6ff;
+  color: #0f172a !important;
   line-height: 1.55;
   font-style: normal;
   letter-spacing: -0.2px;
@@ -261,7 +284,7 @@
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 1.5px;
-  color: rgba(255,255,255,.35);
+  color: rgba(15,23,42,.4) !important;
   margin: 0;
 }
 
