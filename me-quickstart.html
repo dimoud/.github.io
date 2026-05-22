@@ -27,6 +27,12 @@
 <style>.expertease-credit{background:var(--navy,#060d1a);}
 @media(max-width:960px){.expertease-credit{margin-bottom:32px;}}
 
+/* ── hero image ── */
+.qs-slideshow .sw-page-img {
+  width: 300% !important;
+  margin-left: calc(-20% + 8cm) !important;
+}
+
 /* ── me-quickstart hero overrides ── */
 .sw-page #qs-title {
   font-size: clamp(56px, 7vw, 108px);
@@ -105,7 +111,7 @@
     </div>
 
     <div class="sw-page-right">
-      <img src="images/em.png" alt="Mechanical ExpertEase Software" class="sw-page-img">
+      <img src="images/em.png" alt="Mechanical ExpertEase" class="sw-page-img qs-slideshow">
     </div>
 
   </div>
@@ -125,6 +131,10 @@
 
     <div class="qs-chapter-body">
 
+      <div class="qs-chapter-img">
+        <img src="images/me-1.png" alt="Mechanical ExpertEase workflow">
+      </div>
+
       <div class="qs-chapter-text">
         <p id="qs-ch1-p1">Η καθημερινότητα των μελετών ειδικών οχημάτων απαιτεί ακρίβεια, ταχύτητα και συνεχή έλεγχο τεχνικών δεδομένων. Το <strong>Mechanical ExpertEase</strong> συγκεντρώνει όλα τα απαραίτητα εργαλεία σε ένα ενιαίο περιβάλλον εργασίας, μειώνοντας δραστικά τον χρόνο σύνταξης και ελέγχου κάθε μελέτης.</p>
 
@@ -139,12 +149,6 @@
           </ul>
         </div>
 
-        <blockquote class="qs-emphasis" id="qs-ch1-quote">
-          Λιγότερος χρόνος σε επαναλαμβανόμενες διαδικασίες.<br>
-          Περισσότερος χρόνος στην πραγματική μηχανική.
-        </blockquote>
-
-        <p class="qs-closing" id="qs-ch1-closing">Σχεδιασμένο από μηχανικούς, για πραγματικές ανάγκες τεχνικών γραφείων.</p>
       </div>
 
     </div>
@@ -152,11 +156,20 @@
   </div>
 </section>
 
+<!-- ══ EMPHASIS BAND ═════════════════════════════════════════════ -->
+<section class="qs-band">
+  <blockquote class="qs-band-quote" id="qs-ch1-quote">
+    Λιγότερος χρόνος σε επαναλαμβανόμενες διαδικασίες.<br>
+    Περισσότερος χρόνος στην πραγματική μηχανική.
+  </blockquote>
+  <p class="qs-band-closing" id="qs-ch1-closing">Σχεδιασμένο από μηχανικούς, για πραγματικές ανάγκες τεχνικών γραφείων.</p>
+</section>
+
 <style>
 /* ══ CHAPTER SECTION ═══════════════════════════════════════════ */
 .qs-chapter {
-  background: #f0f4ff !important;
-  border-top: 1px solid rgba(10,30,90,.08);
+  background: #060d1a !important;
+  border-top: 1px solid rgba(255,255,255,.05);
   padding: 96px 56px;
 }
 .qs-chapter-inner {
@@ -175,7 +188,7 @@
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 3px;
-  color: #2563eb !important;
+  color: #7db3ff !important;
   opacity: .5;
   padding-top: 6px;
   flex-shrink: 0;
@@ -185,7 +198,7 @@
   font-size: 9px;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: #2563eb !important;
+  color: #7db3ff !important;
   margin-bottom: 12px;
   display: flex;
   align-items: center;
@@ -195,21 +208,29 @@
   content: '';
   width: 18px;
   height: 1px;
-  background: #2563eb;
+  background: #7db3ff;
 }
 .qs-chapter-title {
   font-family: var(--font-display);
   font-size: clamp(22px, 2.8vw, 36px);
   font-weight: 600;
-  color: #0f172a !important;
+  color: #f0f6ff !important;
   line-height: 1.2;
   letter-spacing: -0.3px;
   margin: 0;
 }
 .qs-chapter-body {
-  display: flex;
-  flex-direction: column;
-  gap: 36px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.qs-chapter-img img {
+  width: 100%;
+  display: block;
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
 }
 .qs-chapter-text {
   display: flex;
@@ -219,11 +240,11 @@
 .qs-chapter-text p {
   font-size: 16px;
   line-height: 1.85;
-  color: #4b5d82 !important;
+  color: #8eaad4 !important;
   margin: 0;
 }
 .qs-chapter-text strong {
-  color: #0f172a !important;
+  color: #f0f6ff !important;
   font-weight: 600;
 }
 
@@ -238,7 +259,7 @@
   font-size: 9px;
   letter-spacing: 2.5px;
   text-transform: uppercase;
-  color: rgba(15,23,42,.4) !important;
+  color: rgba(255,255,255,.3) !important;
 }
 .qs-includes-list {
   list-style: none;
@@ -250,7 +271,7 @@
 }
 .qs-includes-list li {
   font-size: 15px;
-  color: #4b5d82 !important;
+  color: #8eaad4 !important;
   display: flex;
   align-items: baseline;
   gap: 12px;
@@ -258,7 +279,7 @@
 }
 .qs-includes-list li::before {
   content: '▸';
-  color: #2563eb !important;
+  color: #7db3ff !important;
   font-size: 9px;
   flex-shrink: 0;
 }
@@ -279,6 +300,48 @@
   letter-spacing: -0.2px;
 }
 
+/* ══ EMPHASIS BAND ═══════════════════════════════════════════ */
+.qs-band {
+  background: #0e1c36;
+  padding: 96px 56px;
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,.05);
+}
+.qs-band-quote {
+  margin: 0 auto 20px;
+  max-width: 900px;
+  font-family: var(--font-display);
+  font-size: clamp(18px, 2.2vw, 28px);
+  font-weight: 600;
+  color: #f0f6ff;
+  line-height: 1.35;
+  letter-spacing: -0.5px;
+  font-style: normal;
+  border-left: 3px solid #3b82f6;
+  padding-left: 28px;
+  text-align: left;
+}
+.qs-band-closing {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,.3);
+  margin: 0;
+  text-align: left;
+  max-width: 900px;
+  margin: 0 auto;
+  padding-left: 36px;
+}
+@media (max-width: 960px) {
+  .qs-band { padding: 64px 32px; }
+  .qs-band-quote { font-size: clamp(24px, 5vw, 40px); }
+}
+@media (max-width: 640px) {
+  .qs-band { padding: 48px 20px; }
+  .qs-band-quote { padding-left: 20px; border-left-width: 3px; }
+  .qs-band-closing { padding-left: 23px; }
+}
+
 /* closing line */
 .qs-closing {
   font-family: var(--font-mono);
@@ -292,6 +355,7 @@
   .qs-chapter { padding: 64px 32px; }
   .qs-chapter-header { flex-direction: column; gap: 0; }
   .qs-chapter-num { display: none; }
+  .qs-chapter-body { grid-template-columns: 1fr; gap: 36px; }
 }
 @media (max-width: 640px) {
   .qs-chapter { padding: 48px 20px; }
