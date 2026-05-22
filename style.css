@@ -2080,9 +2080,11 @@ footer {
   .sw-page-title { text-align: center; }
   .sw-page-desc { text-align: center; max-width: 100%; margin-left: auto; margin-right: auto; }
   .sw-page-feats-icon {
-    flex-direction: column;
-    gap: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 16px;
     margin-bottom: 28px;
+    flex-direction: unset;
   }
   .sw-feat-icon-item {
     flex-direction: row;
@@ -2092,6 +2094,7 @@ footer {
     align-items: center;
   }
   .sw-feat-icon-item svg { width: 24px; height: 24px; padding: 4px; border-radius: 6px; }
+  .sw-page-badge { justify-content: center; }
   .sw-page-cta--hero { flex-direction: column; gap: 12px; }
   .sw-page-cta--hero .sw-cta-primary,
   .sw-page-cta--hero .sw-cta-secondary { width: 100%; justify-content: center; box-sizing: border-box; }

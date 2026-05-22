@@ -1,0 +1,421 @@
+/* ============================================================
+   Capabilities Page — uses same tokens as styles.css
+   ============================================================ */
+
+.cap-app { min-height: 100vh; max-width: 1440px; margin: 0 auto; padding: 40px 40px 60px; }
+
+/* Top nav */
+.cap-nav {
+  display: flex; align-items: center; gap: 20px;
+  padding: 20px 0;
+}
+.cap-back {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: var(--text-dim); text-decoration: none;
+  font-size: 13px; padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  transition: color .15s, border-color .15s, background .15s;
+}
+.cap-back:hover { color: white; border-color: var(--accent); background: rgba(46,123,255,.06); }
+.cap-nav .brand { margin-left: 8px; }
+.cap-nav-cta { margin-left: auto; display: flex; gap: 10px; }
+
+/* ============================================================
+   Title
+   ============================================================ */
+.cap-title { padding: 40px 0 36px; }
+.cap-eyebrow {
+  display: inline-flex; align-items: center; gap: 12px;
+  color: var(--accent); font-size: 11px; letter-spacing: 0.18em; font-weight: 600;
+  margin-bottom: 22px;
+}
+.cap-h1 {
+  margin: 0; display: flex; flex-direction: column; gap: 4px;
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: clamp(44px, 5.4vw, 76px);
+  line-height: 0.96;
+  letter-spacing: -0.035em;
+  max-width: 1100px;
+}
+.cap-h1-accent { color: var(--accent); }
+.cap-lede {
+  margin: 24px 0 0; max-width: 720px;
+  font-size: 18px; line-height: 1.55; color: #c7d3ec;
+}
+
+.cap-stats {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 16px; margin: 38px 0 36px;
+  max-width: 880px;
+}
+.cap-stat {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 18px 20px;
+  background: linear-gradient(160deg, rgba(8,21,57,.5), rgba(5,13,34,.5));
+  position: relative;
+}
+.cap-stat::before {
+  content: ""; position: absolute; left: 18px; top: 16px;
+  width: 4px; height: 4px; background: var(--accent); border-radius: 50%;
+  box-shadow: 0 0 8px var(--accent);
+}
+.cap-stat-n {
+  font-family: 'Sora', sans-serif;
+  font-size: 34px; font-weight: 700; letter-spacing: -0.025em;
+  color: white;
+  padding-left: 14px;
+}
+.cap-stat-l {
+  margin-top: 4px;
+  font-size: 12px; letter-spacing: 0.06em;
+  color: var(--text-dim);
+  padding-left: 14px;
+}
+
+.cap-filters {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--line-soft);
+}
+.cap-chip {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 9px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--text-dim);
+  font-size: 13px; font-weight: 500;
+  background: rgba(8,21,57,.3);
+  transition: color .15s, border-color .15s, background .15s;
+}
+.cap-chip:hover { color: white; border-color: #224a8d; }
+.cap-chip.is-on { color: white; border-color: var(--accent); background: rgba(46,123,255,.12); }
+.cap-chip-n {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px; color: var(--text-mute);
+  padding: 1px 6px;
+  border: 1px solid var(--line-soft);
+  border-radius: 4px;
+}
+.cap-chip.is-on .cap-chip-n { color: var(--accent); border-color: rgba(46,123,255,.4); }
+
+/* ============================================================
+   Spotlight
+   ============================================================ */
+.cap-spotlight {
+  display: grid; grid-template-columns: 1.4fr 1fr;
+  gap: 0;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(8,21,57,.4), rgba(5,13,34,.5));
+  overflow: hidden;
+  margin: 0 0 60px;
+  scroll-margin-top: 80px;
+}
+
+.cap-spot-visual {
+  position: relative;
+  padding: 48px;
+  display: grid; place-items: center;
+  background:
+    radial-gradient(80% 60% at 50% 50%, rgba(46,123,255,.14), transparent 70%),
+    linear-gradient(135deg, #061026, #050d22 60%);
+  border-right: 1px solid var(--line);
+  min-height: 720px;
+}
+.cap-spot-visual .cap-preview-svg {
+  width: 100%; max-width: 920px;
+  height: auto;
+  min-height: 540px;
+  filter: drop-shadow(0 0 36px rgba(46,123,255,.38));
+  animation: spotIn .35s cubic-bezier(.2,.9,.3,1.05);
+}
+@keyframes spotIn {
+  from { opacity: 0; transform: scale(.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+.spot-corner {
+  position: absolute; width: 18px; height: 18px;
+  border: 1.5px solid var(--accent); opacity: .65;
+}
+.spot-corner-tl { top: 20px; left: 20px; border-right: 0; border-bottom: 0; }
+.spot-corner-br { bottom: 20px; right: 20px; border-left: 0; border-top: 0; }
+
+.spot-hud {
+  position: absolute;
+  padding: 7px 12px;
+  border: 1px solid var(--line);
+  background: rgba(5,13,34,.75); backdrop-filter: blur(6px);
+  border-radius: 999px;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px; letter-spacing: 0.1em;
+  color: var(--text-dim);
+  display: flex; align-items: center; gap: 8px;
+}
+.spot-hud-tr { top: 30px; right: 30px; }
+.spot-hud-bl { bottom: 30px; left: 30px; color: var(--accent); }
+
+.cap-spot-text {
+  padding: 50px;
+  display: flex; flex-direction: column; gap: 18px;
+  justify-content: center;
+}
+.cap-spot-num {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 13px; color: var(--accent); letter-spacing: 0.16em;
+}
+.cap-spot-h {
+  margin: 0;
+  font-size: 44px; font-weight: 700; letter-spacing: -0.03em; line-height: 1;
+}
+.cap-spot-sub {
+  margin: 0; color: var(--accent); font-size: 15px; font-weight: 500;
+  letter-spacing: 0.01em;
+}
+.cap-spot-body {
+  margin: 0; color: #c7d3ec; font-size: 15px; line-height: 1.6;
+}
+
+.cap-highlights {
+  list-style: none; padding: 0; margin: 8px 0 0;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.cap-highlights li {
+  display: flex; gap: 12px; align-items: flex-start;
+  color: var(--text); font-size: 14px; line-height: 1.5;
+}
+.hl-mark {
+  width: 20px; height: 20px; border-radius: 50%;
+  background: rgba(46,123,255,.18);
+  color: var(--accent);
+  display: grid; place-items: center; flex-shrink: 0; margin-top: 1px;
+}
+
+.cap-spot-meta {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  margin-top: 12px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line-soft);
+}
+.cap-meta-label {
+  font-size: 10px; letter-spacing: 0.18em; color: var(--text-mute);
+  font-weight: 600; margin-bottom: 10px;
+}
+.cap-meta-list {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.cap-meta-list li {
+  font-size: 13px; color: var(--text);
+  padding-left: 12px; position: relative;
+}
+.cap-meta-list li::before {
+  content: ""; position: absolute; left: 0; top: 7px;
+  width: 4px; height: 4px; background: var(--accent);
+  border-radius: 0; transform: rotate(45deg);
+}
+
+/* ============================================================
+   Grid section
+   ============================================================ */
+.cap-grid-section { padding-top: 10px; }
+.cap-grid-head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  margin-bottom: 26px;
+}
+.cap-grid-head h2 {
+  margin: 0; font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
+}
+.cap-grid-count {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 13px; color: var(--text-mute);
+}
+
+.cap-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* ============================================================
+   Carousel
+   ============================================================ */
+.cap-carousel {
+  position: relative;
+  margin: 0 -8px;
+}
+.carousel-viewport {
+  position: relative;
+  overflow: hidden;
+  padding: 8px;
+}
+.carousel-track {
+  display: flex;
+  gap: 20px;
+  will-change: transform;
+}
+.carousel-cell {
+  flex: 0 0 calc((100% - 40px) / 3);
+  max-width: calc((100% - 40px) / 3);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.carousel-cell .cap-card { width: 100%; }
+.carousel-cell .cap-card .card-preview { aspect-ratio: 5 / 2.4; }
+
+/* arrows */
+.carousel-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  z-index: 5;
+  width: 44px; height: 44px; border-radius: 50%;
+  display: grid; place-items: center;
+  color: var(--text);
+  background: rgba(8,21,57,.85);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 10px 24px rgba(0,0,0,.4);
+  transition: background .15s, border-color .15s, color .15s, transform .12s;
+}
+.carousel-arrow:hover {
+  border-color: var(--accent);
+  color: white;
+  background: rgba(46,123,255,.18);
+}
+.carousel-arrow:active { transform: translateY(-50%) scale(.94); }
+.carousel-prev { left: -8px; }
+.carousel-next { right: -8px; }
+
+/* fade edges */
+.carousel-fade {
+  position: absolute; top: 0; bottom: 0; width: 60px;
+  pointer-events: none; z-index: 3;
+}
+.carousel-fade-l {
+  left: 0;
+  background: linear-gradient(90deg, var(--bg-0), transparent);
+}
+.carousel-fade-r {
+  right: 0;
+  background: linear-gradient(-90deg, var(--bg-0), transparent);
+}
+
+.cap-card {
+  display: flex; flex-direction: column;
+  text-align: left;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(8,21,57,.4), rgba(5,13,34,.5));
+  transition: transform .18s ease, border-color .18s, box-shadow .18s;
+  cursor: pointer;
+  color: var(--text);
+}
+.cap-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  box-shadow: 0 20px 40px -20px rgba(46,123,255,.4);
+}
+.cap-card.is-active {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px rgba(46,123,255,.3), 0 20px 40px -20px rgba(46,123,255,.4);
+}
+
+.card-preview {
+  position: relative;
+  background:
+    radial-gradient(80% 60% at 50% 50%, rgba(46,123,255,.10), transparent 70%),
+    #050d22;
+  border-bottom: 1px solid var(--line-soft);
+  padding: 22px;
+  display: grid; place-items: center;
+  aspect-ratio: 5/3;
+}
+.cap-preview-svg { width: 100%; height: 100%; max-height: 200px; }
+.card-corner {
+  position: absolute; width: 12px; height: 12px;
+  border: 1px solid var(--accent); opacity: .5;
+}
+.card-corner-tl { top: 10px; left: 10px; border-right: 0; border-bottom: 0; }
+.card-corner-br { bottom: 10px; right: 10px; border-left: 0; border-top: 0; }
+
+.card-body { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 6px; }
+.card-head {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 2px;
+}
+.card-num {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 12px; color: var(--accent); letter-spacing: 0.12em;
+}
+.card-cat {
+  font-size: 10px; letter-spacing: 0.12em; color: var(--text-mute);
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border: 1px solid var(--line-soft);
+  border-radius: 4px;
+}
+.card-title {
+  margin: 0; font-size: 18px; font-weight: 600; letter-spacing: -0.015em;
+  line-height: 1.2;
+}
+.card-sub {
+  margin: 0; font-size: 13px; color: var(--text-dim); line-height: 1.45;
+}
+.card-cta {
+  margin-top: 10px;
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; color: var(--accent); font-weight: 500;
+  letter-spacing: 0.04em;
+  transition: gap .15s;
+}
+.cap-card:hover .card-cta { gap: 10px; }
+
+/* ============================================================
+   Footer band
+   ============================================================ */
+.cap-footer { padding-top: 60px; }
+.cap-footer-card {
+  display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px;
+  padding: 50px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background:
+    radial-gradient(80% 60% at 100% 0%, rgba(46,123,255,.14), transparent 60%),
+    linear-gradient(180deg, rgba(8,21,57,.6), rgba(5,13,34,.6));
+}
+.cap-footer-text h2 {
+  margin: 0; font-size: 36px; font-weight: 700; letter-spacing: -0.02em;
+  line-height: 1.1;
+  max-width: 540px;
+}
+.cap-footer-text p {
+  margin: 14px 0 0; color: #c7d3ec; font-size: 15px; line-height: 1.55;
+  max-width: 480px;
+}
+.cap-footer-cta {
+  display: flex; flex-direction: column; gap: 12px;
+  justify-content: center;
+}
+.cap-footer-cta .btn { justify-content: center; }
+.cap-footer-cta .btn span { flex: 1; text-align: center; }
+
+.cap-foot-strip {
+  display: flex; justify-content: space-between;
+  padding: 24px 6px 0;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px; color: var(--text-mute);
+  letter-spacing: 0.1em;
+}
+
+/* ============================================================
+   Responsive — keep the desktop layout on mobile; the page
+   scrolls horizontally instead of collapsing into a column.
+   ============================================================ */
+.cap-app { min-width: 1280px; }
+
+@media (max-width: 720px) {
+  .cap-app { padding: 32px 32px 60px; }
+}

@@ -570,42 +570,436 @@
     <div class="sw-detail-split">
       <div class="sw-detail-text-block">
         <div class="sw-detail-kicker" id="sw-d-kicker1">What it does</div>
-        <h2 class="sw-detail-title" id="sw-d-title">Work smart, not hard.</h2>
-        <p class="sw-detail-lead" id="sw-d-lead">Ισχυρό και εύχρηστο λογισμικό για την αυτοματοποίηση τεχνικών μελετών οχημάτων ειδικής χρήσης.<br>Από τους υπολογισμούς έως την πλήρη τεκμηρίωση, όλα ολοκληρώνονται ταχύτερα και με αξιοπιστία.</p>
+        <p class="sw-detail-lead" id="sw-d-lead">Ισχυρό και <strong>εύχρηστο λογισμικό</strong> για την <strong>αυτοματοποίηση</strong> τεχνικών μελετών οχημάτων <strong>ειδικής χρήσης</strong>. Από τους <strong>υπολογισμούς</strong> έως την πλήρη <strong>τεκμηρίωση</strong>, όλα ολοκληρώνονται <strong>ταχύτερα</strong> και με <strong>αξιοπιστία</strong>.</p>
       </div>
       <div class="sw-detail-photo sw-detail-photo--hide-mobile">
         <img src="images/me-2.png" alt="Mechanical ExpertEase — software in use" class="sw-detail-img">
       </div>
     </div>
 
-    <!-- workflow + me-1 -->
-    <div class="sw-detail-split sw-detail-split--reverse">
-      <div class="sw-detail-photo sw-detail-photo--compact">
-        <img src="images/me-1.png" alt="Mechanical ExpertEase — workflow steps" class="sw-detail-img">
-      </div>
-      <div class="sw-detail-workflow">
-        <div class="sw-detail-kicker" id="sw-d-kicker2">How it works</div>
-        <ol class="sw-workflow-list">
-          <li><span class="sw-wf-num">01</span><span id="sw-wf1">Enter vehicle technical specifications</span></li>
-          <li><span class="sw-wf-num">02</span><span id="sw-wf2">Input loads affecting axles and frame</span></li>
-          <li><span class="sw-wf-num">03</span><span id="sw-wf3">Automatic calculations execute instantly</span></li>
-          <li><span class="sw-wf-num">04</span><span id="sw-wf4">Generate shear force &amp; bending moment diagrams</span></li>
-          <li><span class="sw-wf-num">05</span><span id="sw-wf5">Review comprehensive calculation summary</span></li>
-          <li><span class="sw-wf-num">06</span><span id="sw-wf6">Create the full technical study with one click</span></li>
-        </ol>
-        <a href="https://www.easemanual.eu/user-guide/mechanical-expertease" target="_blank" rel="noopener" class="sw-detail-link" id="sw-d-link">
-          Full user guide →
-        </a>
-      </div>
-    </div>
+    <!-- ── HOW IT WORKS (full-width dark card) ── -->
+  </div>
+</section>
 
-    <!-- feature grid -->
-    <div class="sw-detail-features">
-      <div class="sw-detail-kicker" id="sw-d-kicker3">Capabilities</div>
-      <div class="sw-feat-grid">
+<section class="hiw-section" id="how-it-works">
+  <div class="hiw-app">
+    <div class="hiw-card">
+
+      <!-- doc stack (left) -->
+      <div class="hiw-stack" id="hiwStack"></div>
+
+      <!-- steps (right) -->
+      <div class="hiw-steps">
+        <div class="hiw-header">
+          <div class="hiw-eyebrow">
+            <span class="eyebrow-rule"></span>
+            <span id="sw-d-kicker2">ΠΩΣ&nbsp;&nbsp;ΛΕΙΤΟΥΡΓΕΙ</span>
+          </div>
+          <h2 class="hiw-h1">
+            <span id="hiw-h1-l1">Από τα τεχνικά</span>
+            <span id="hiw-h1-l2">χαρακτηριστικά</span>
+            <span id="hiw-h1-l3">στην τεχνική μελέτη</span>
+            <span class="hiw-h1-accent" id="hiw-h1-l4">σε έξι βήματα.</span>
+          </h2>
+        </div>
+        <ul class="hiw-list" id="hiwList"></ul>
+        <div class="hiw-cta-row">
+          <a class="hiw-cta-link" href="https://www.easemanual.eu/user-guide/mechanical-expertease" target="_blank" rel="noopener">
+            <span id="sw-d-link">Πλήρης Οδηγός Χρήσης</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" width="16" height="16"><path d="M5 12H17M13 8l4 4-4 4"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+/* ── HOW IT WORKS ─────────────────────────────────────────────────── */
+.hiw-section {
+  background:
+    radial-gradient(50% 60% at 0% 50%, rgba(46,123,255,.10), transparent 70%),
+    linear-gradient(180deg, #08153a, #050d22);
+  border-top: 1px solid #14305f;
+}
+.hiw-app {
+  display: grid; place-items: center;
+  padding: 72px 56px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.hiw-card {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+/* stack */
+.hiw-stack {
+  position:relative;
+  height:580px;
+  display:grid; place-items:center;
+}
+.hiw-doc {
+  position:absolute;
+  width:360px; height:460px;
+  transition:transform .8s cubic-bezier(.25,.8,.3,1), opacity .5s, filter .5s, box-shadow .5s;
+  filter:brightness(.45) saturate(.6);
+  pointer-events:none;
+  border-radius:6px;
+  overflow:hidden;
+}
+.hiw-doc.is-on {
+  filter:brightness(1) saturate(1);
+  box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 0 1px rgba(46,123,255,.4),0 0 50px rgba(46,123,255,.25);
+}
+.hiw-doc-svg { display:block; width:100%; height:100%; }
+.hiw-doc-tag {
+  position:absolute; top:-12px; left:-12px;
+  padding:5px 11px;
+  border-radius:999px;
+  background:#2E7BFF;
+  color:white;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px; font-weight:600; letter-spacing:.12em;
+  display:flex; align-items:center; gap:6px;
+  opacity:0; transform:scale(.7);
+  transition:opacity .35s, transform .35s;
+  box-shadow:0 8px 20px -4px rgba(46,123,255,.6);
+}
+.hiw-doc.is-on .hiw-doc-tag { opacity:1; transform:scale(1); }
+.hiw-doc-dot { width:6px; height:6px; border-radius:50%; background:white; }
+
+/* steps column */
+.hiw-eyebrow {
+  display:inline-flex; align-items:center; gap:12px;
+  color:#2E7BFF; font-size:12px; letter-spacing:.22em;
+  font-weight:600; margin-bottom:28px;
+  font-family:'IBM Plex Mono',monospace;
+}
+.eyebrow-rule { width:28px; height:1px; background:#2E7BFF; display:inline-block; }
+.hiw-h1 {
+  margin:0 0 36px;
+  display:flex; flex-direction:column; gap:2px;
+  font-family:'Barlow Condensed','Oswald',sans-serif;
+  font-weight:700;
+  font-size:clamp(34px,3.8vw,50px);
+  line-height:1.04;
+  letter-spacing:-.03em;
+  color:#e8eefb;
+}
+.hiw-h1-accent { color:#2E7BFF; }
+.hiw-list { list-style:none; padding:0; margin:0 0 38px; display:flex; flex-direction:column; gap:0; }
+.hiw-item {
+  position:relative;
+  display:grid;
+  grid-template-columns:44px 1fr 12px;
+  align-items:center; gap:20px;
+  padding:16px 0;
+  border-top:1px solid #0e2247;
+  cursor:pointer;
+}
+.hiw-item:last-child { border-bottom:1px solid #0e2247; }
+.hiw-num {
+  font-family:'IBM Plex Mono',monospace;
+  font-size:13px; font-weight:500;
+  color:#5a6f9a;
+  letter-spacing:.08em;
+  transition:color .2s;
+}
+.hiw-label {
+  font-size:16px; line-height:1.35; color:#8aa0c8;
+  transition:color .2s, transform .25s ease;
+}
+.hiw-marker {
+  width:8px; height:8px; border-radius:50%;
+  background:transparent;
+  border:1.5px solid #14305f;
+  transition:background .25s, border-color .25s;
+}
+.hiw-item.is-on .hiw-num { color:#2E7BFF; }
+.hiw-item.is-on .hiw-label { color:white; transform:translateX(4px); }
+.hiw-item.is-on .hiw-marker { background:#2E7BFF; border-color:#2E7BFF; box-shadow:0 0 0 4px rgba(46,123,255,.18); }
+.hiw-item.is-on::before {
+  content:""; position:absolute; left:0; top:0; bottom:0; width:2px;
+  background:#2E7BFF;
+  animation:hiwBar 4.5s linear forwards;
+}
+@keyframes hiwBar { from { transform:scaleY(0); transform-origin:top; } to { transform:scaleY(1); transform-origin:top; } }
+.hiw-item:hover:not(.is-on) .hiw-num { color:#8aa0c8; }
+.hiw-item:hover:not(.is-on) .hiw-label { color:#e8eefb; }
+
+.hiw-cta-row { display:flex; flex-direction:column; gap:12px; }
+.hiw-cta-link {
+  display:inline-flex; align-items:center; gap:10px;
+  color:#2E7BFF;
+  font-size:12px; font-weight:600; letter-spacing:.18em;
+  text-decoration:none;
+  text-transform:uppercase;
+  font-family:'IBM Plex Mono',monospace;
+  width:max-content;
+  transition:gap .2s, color .2s;
+}
+.hiw-cta-link:hover { gap:14px; color:white; }
+.hiw-cta-secondary { color:#5a6f9a; }
+.hiw-cta-secondary:hover { color:#2E7BFF; }
+
+@media (max-width:960px) {
+  .hiw-app { padding:48px 24px; }
+  /* single column: header → graphic → list+cta */
+  .hiw-card {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .hiw-steps {
+    display: contents; /* dissolve into grid so children become direct grid items */
+  }
+  .hiw-header {
+    order: 1;
+    text-align: center;
+    padding-bottom: 28px;
+  }
+  .hiw-eyebrow { justify-content: center; margin-bottom:16px; }
+  .hiw-stack { order: 2; height:320px; }
+  .hiw-doc { width:200px; height:256px; }
+  .hiw-list { order: 3; margin-top:28px; margin-bottom:20px; }
+  .hiw-cta-row { order: 4; align-items:center; }
+  .hiw-h1 { font-size:clamp(26px,5.5vw,38px); align-items:center; margin-bottom:0; }
+  .hiw-label { font-size:14px; }
+}
+@media (max-width:640px) {
+  .hiw-app { padding:36px 16px; }
+  .hiw-header { padding-bottom:32px; }
+  .hiw-stack { height:320px; }
+  .hiw-doc { width:180px; height:228px; }
+  .hiw-doc-tag { display:none; }
+  .hiw-h1 { font-size:clamp(30px,8vw,42px); gap:2px; }
+  .hiw-eyebrow { font-size:11px; margin-bottom:14px; }
+  .hiw-list { margin-top:48px; margin-bottom:20px; }
+  .hiw-item { padding:10px 0; gap:10px; grid-template-columns:32px 1fr 10px; }
+  .hiw-num { font-size:12px; }
+  .hiw-label { font-size:13px; line-height:1.4; }
+  .hiw-cta-row { gap:10px; }
+  .hiw-cta-link { font-size:11px; letter-spacing:.12em; }
+}
+</style>
+
+<script>
+(function(){
+const HIW_STEPS=[
+  {n:"01",label:"Εισαγωγή τεχνικών χαρακτηριστικών οχήματος",doc:"data"},
+  {n:"02",label:"Εισαγωγή φορτίων στους άξονες και το πλαίσιο",doc:"loads"},
+  {n:"03",label:"Αυτόματη εκτέλεση υπολογισμών",doc:"calc"},
+  {n:"04",label:"Δημιουργία διαγραμμάτων τεμνουσών και ροπών κάμψης",doc:"diag"},
+  {n:"05",label:"Ανασκόπηση συνοπτικού πίνακα αποτελεσμάτων",doc:"summary"},
+  {n:"06",label:"Δημιουργία πλήρους τεχνικής μελέτης με ένα κλικ",doc:"report"},
+];
+
+/* SVG documents for each step */
+const c="#2E7BFF",cS="#1a3a6b",cF="#0e2247",cT="#e8eefb",cD="#8aa0c8",cM="#5a6f9a",cG="#25d39a",cR="#ff5566";
+function g(w,h){let s='';for(let x=0;x<=w;x+=16)s+=`<line x1="${x}" y1="0" x2="${x}" y2="${h}" stroke="${cF}" stroke-width=".4"/>`;for(let y=0;y<=h;y+=16)s+=`<line x1="0" y1="${y}" x2="${w}" y2="${y}" stroke="${cF}" stroke-width=".4"/>`;return s;}
+function ds(body){return`<svg viewBox="0 0 300 380" class="hiw-doc-svg" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="380" fill="#050d22"/>${g(300,380)}${body}</svg>`;}
+
+const DOCS={
+  data:ds(`<rect x="20" y="20" width="260" height="340" rx="4" stroke="${c}" stroke-width="1" fill="rgba(46,123,255,.04)"/>
+    <rect x="20" y="20" width="260" height="32" fill="rgba(46,123,255,.18)" stroke="${c}"/>
+    <text x="30" y="40" fill="${cT}" font-family="monospace" font-size="9" font-weight="600">ΦΥΛΛΟ ΔΕΔΟΜΕΝΩΝ ΟΧΗΜΑΤΟΣ</text>
+    <text x="240" y="40" fill="${cG}" font-family="monospace" font-size="8">01/06</text>
+    ${[["Κατηγορία οχήματος","Φορτηγό Ε.Χ.",-1],["Μεταξόνιο 1-2 (mm)","3 800",0],["Μεταξόνιο 2-3 (mm)","1 350",0],["Πλάτος πλαισίου (mm)","280",0],["Υλικό πλαισίου","S355",0],["Διατομή","I — 280×10×16",-1],["Μέγ. φορτίο ωφέλιμο (kg)","4 200",0],["Ύψος φορτίου COG (mm)","900",0]].map(([k,v,flag],i)=>{
+      const y=62+i*32;
+      const bg=flag===-1?'rgba(255,85,102,.12)':'rgba(46,123,255,.06)';
+      return`<rect x="26" y="${y}" width="248" height="26" fill="${bg}"/>
+      <text x="32" y="${y+16}" fill="${cD}" font-family="monospace" font-size="7.5">${k}</text>
+      <text x="230" y="${y+16}" fill="${flag===-1?cR:cT}" font-family="monospace" font-size="8" text-anchor="end">${v}</text>`;
+    }).join('')}
+    <text x="26" y="344" fill="${cM}" font-family="monospace" font-size="6">MECHANICAL EXPERTEASE · DATASHEET</text>`),
+
+  loads:ds(`<rect x="20" y="20" width="260" height="340" rx="4" stroke="${c}" stroke-width="1" fill="rgba(46,123,255,.04)"/>
+    <rect x="20" y="20" width="260" height="32" fill="rgba(46,123,255,.18)" stroke="${c}"/>
+    <text x="30" y="40" fill="${cT}" font-family="monospace" font-size="9" font-weight="600">ΦΟΡΤΙΑ ΑΞΟΝΩΝ</text>
+    <text x="240" y="40" fill="${cG}" font-family="monospace" font-size="8">02/06</text>
+    <!-- chassis line -->
+    <line x1="40" y1="200" x2="260" y2="200" stroke="${c}" stroke-width="2"/>
+    <!-- axles -->
+    ${[[80,200],[160,200],[220,200]].map(([x,y],i)=>`
+      <line x1="${x}" y1="${y-30}" x2="${x}" y2="${y+30}" stroke="${c}" stroke-width="1.5"/>
+      <rect x="${x-8}" y="${y+18}" width="16" height="10" rx="2" stroke="${c}" fill="#06122c"/>
+      <rect x="${x-8}" y="${y-28}" width="16" height="10" rx="2" stroke="${c}" fill="#06122c"/>
+      <text x="${x}" y="${y-36}" fill="${cG}" font-family="monospace" font-size="7.5" text-anchor="middle">A${i+1}</text>`).join('')}
+    <!-- load arrows -->
+    ${[[100,110,"1 800 kg"],[180,110,"3 200 kg"]].map(([x,y,t])=>`
+      <line x1="${x}" y1="${y}" x2="${x}" y2="${y+60}" stroke="${cR}" stroke-width="1.2"/>
+      <path d="M${x-4} ${y+56} L${x} ${y+62} L${x+4} ${y+56}" stroke="${cR}" stroke-width="1.2" fill="none"/>
+      <text x="${x}" y="${y-4}" fill="${cR}" font-family="monospace" font-size="7" text-anchor="middle">${t}</text>`).join('')}
+    <text x="26" y="344" fill="${cM}" font-family="monospace" font-size="6">AXLE LOADS · DISTRIBUTION</text>`),
+
+  calc:ds(`<rect x="20" y="20" width="260" height="340" rx="4" stroke="${c}" stroke-width="1" fill="rgba(46,123,255,.04)"/>
+    <rect x="20" y="20" width="260" height="32" fill="rgba(46,123,255,.18)" stroke="${c}"/>
+    <text x="30" y="40" fill="${cT}" font-family="monospace" font-size="9" font-weight="600">ΑΠΟΤΕΛΕΣΜΑΤΑ ΥΠΟΛΟΓΙΣΜΩΝ</text>
+    <text x="240" y="40" fill="${cG}" font-family="monospace" font-size="8">03/06</text>
+    ${[
+      ["σ_max (N/mm²)","142.8",true],["σ_allow (N/mm²)","205.0",true],["SF κάμψης","1.44",true],
+      ["τ_max (N/mm²)","38.4",true],["τ_allow (N/mm²)","118.4",true],["SF διάτμησης","3.08",true],
+      ["σ_v (N/mm²)","156.1",true],["SF Hoober","1.31",true],
+      ["Φόρτιση 1ου άξ.","4 260 kg",false],["Φόρτιση 2ου άξ.","8 940 kg",false],
+    ].map(([k,v,ok],i)=>{
+      const y=64+i*27;
+      return`<rect x="26" y="${y}" width="248" height="22" fill="${i%2?'rgba(46,123,255,.05)':'transparent'}"/>
+      <text x="32" y="${y+14}" fill="${cD}" font-family="monospace" font-size="7.5">${k}</text>
+      <rect x="200" y="${y+3}" width="66" height="16" rx="2" fill="${ok?'rgba(37,211,154,.15)':'rgba(255,85,102,.15)'}"/>
+      <text x="233" y="${y+14}" fill="${ok?cG:cR}" font-family="monospace" font-size="8" text-anchor="middle">${v}</text>`;
+    }).join('')}
+    <text x="26" y="344" fill="${cM}" font-family="monospace" font-size="6">AUTO CALCULATIONS</text>`),
+
+  diag:ds(`<rect x="20" y="20" width="260" height="340" rx="4" stroke="${c}" stroke-width="1" fill="rgba(46,123,255,.04)"/>
+    <rect x="20" y="20" width="260" height="32" fill="rgba(46,123,255,.18)" stroke="${c}"/>
+    <text x="30" y="40" fill="${cT}" font-family="monospace" font-size="9" font-weight="600">ΔΙΑΓΡΑΜΜΑΤΑ M / Q</text>
+    <text x="240" y="40" fill="${cG}" font-family="monospace" font-size="8">04/06</text>
+    <!-- M diagram -->
+    <text x="30" y="70" fill="${cM}" font-family="monospace" font-size="7">ΡΟΠΗ ΚΑΜΨΗΣ M (kNm)</text>
+    <line x1="30" y1="130" x2="270" y2="130" stroke="${c}" stroke-width="1"/>
+    <line x1="30" y1="75" x2="30" y2="130" stroke="${c}" stroke-width="1"/>
+    <path d="M30 130 L80 90 L140 78 L200 95 L270 130" stroke="${c}" stroke-width="1.5" fill="rgba(46,123,255,.15)"/>
+    <path d="M30 130 L80 90 L140 78 L200 95 L270 130 Z" fill="rgba(46,123,255,.10)"/>
+    <!-- Q diagram -->
+    <text x="30" y="160" fill="${cM}" font-family="monospace" font-size="7">ΤΕΜΝΟΥΣΑ Q (kN)</text>
+    <line x1="30" y1="200" x2="270" y2="200" stroke="${c}" stroke-width="1"/>
+    <line x1="30" y1="165" x2="30" y2="230" stroke="${c}" stroke-width="1"/>
+    <path d="M30 185 L100 185 L100 200 L170 200 L170 190 L270 190" stroke="${cG}" stroke-width="1.5" fill="none"/>
+    <path d="M30 185 L100 185 L100 200 L30 200 Z" fill="rgba(37,211,154,.10)"/>
+    <!-- section marks -->
+    ${[80,140,200].map((x,i)=>`<line x1="${x}" y1="60" x2="${x}" y2="240" stroke="${cR}" stroke-width=".6" stroke-dasharray="3 2" opacity=".7"/>`).join('')}
+    <text x="26" y="344" fill="${cM}" font-family="monospace" font-size="6">SHEAR &amp; BENDING DIAGRAMS</text>`),
+
+  summary:ds(`<rect x="20" y="20" width="260" height="340" rx="4" stroke="${c}" stroke-width="1" fill="rgba(46,123,255,.04)"/>
+    <rect x="20" y="20" width="260" height="32" fill="rgba(46,123,255,.18)" stroke="${c}"/>
+    <text x="30" y="40" fill="${cT}" font-family="monospace" font-size="9" font-weight="600">ΣΥΝΟΠΤΙΚΟΣ ΠΙΝΑΚΑΣ</text>
+    <text x="240" y="40" fill="${cG}" font-family="monospace" font-size="8">05/06</text>
+    <!-- header row -->
+    <rect x="26" y="56" width="248" height="20" fill="rgba(46,123,255,.22)"/>
+    <text x="32" y="69" fill="${cT}" font-family="monospace" font-size="7.5" font-weight="600">ΕΛΕΓΧΟΣ</text>
+    <text x="180" y="69" fill="${cT}" font-family="monospace" font-size="7.5" font-weight="600">ΤΙΜΗ</text>
+    <text x="228" y="69" fill="${cT}" font-family="monospace" font-size="7.5" font-weight="600">ΑΠΟ</text>
+    ${[
+      ["Κάμψη πλαισίου","PASS"],["Διάτμηση πλαισίου","PASS"],["Hoober SF","PASS"],
+      ["Φόρτιση 1ου άξ.","PASS"],["Φόρτιση 3ου άξ.","PASS"],["Ευστάθεια","PASS"],
+      ["Πέδηση","PASS"],["Αναρτήσεις","PASS"],["Ελατήρια","WARN"],["Συγκολλήσεις","PASS"],
+    ].map(([k,v],i)=>{
+      const y=80+i*25, ok=v==="PASS";
+      return`<rect x="26" y="${y}" width="248" height="22" fill="${i%2?'rgba(46,123,255,.04)':'transparent'}"/>
+      <text x="32" y="${y+14}" fill="${cD}" font-family="monospace" font-size="7.5">${k}</text>
+      <rect x="210" y="${y+3}" width="56" height="16" rx="2" fill="${ok?'rgba(37,211,154,.18)':'rgba(255,200,0,.15)'}"/>
+      <text x="238" y="${y+14}" fill="${ok?cG:'#ffd000'}" font-family="monospace" font-size="7.5" text-anchor="middle">${v}</text>`;
+    }).join('')}
+    <text x="26" y="344" fill="${cM}" font-family="monospace" font-size="6">CALCULATION SUMMARY</text>`),
+
+  report:ds(`<rect x="20" y="20" width="260" height="340" rx="4" stroke="${c}" stroke-width="1" fill="rgba(46,123,255,.04)"/>
+    <rect x="20" y="20" width="260" height="32" fill="rgba(46,123,255,.18)" stroke="${c}"/>
+    <text x="30" y="40" fill="${cT}" font-family="monospace" font-size="9" font-weight="600">ΤΕΧΝΙΚΗ ΜΕΛΕΤΗ</text>
+    <text x="240" y="40" fill="${cG}" font-family="monospace" font-size="8">06/06</text>
+    <!-- page outline -->
+    <rect x="60" y="58" width="180" height="252" rx="2" stroke="${cS}" fill="#060e1e"/>
+    <!-- title block -->
+    <rect x="60" y="58" width="180" height="28" fill="rgba(46,123,255,.18)" stroke="${cS}"/>
+    <text x="150" y="76" fill="${cT}" font-family="monospace" font-size="7.5" text-anchor="middle" font-weight="600">ΤΕΧΝΙΚΗ ΜΕΛΕΤΗ</text>
+    <!-- text lines -->
+    ${[90,98,106,114,122,130,146,154,162,170,186,194,202,210,220,230].map((y,i)=>`<line x1="68" y1="${y}" x2="${220-i%4*8}" y2="${y}" stroke="${cS}" stroke-width="1"/>`).join('')}
+    <!-- divider labels -->
+    <text x="68" y="144" fill="${c}" font-family="monospace" font-size="6">ΑΠΟΤΕΛΕΣΜΑΤΑ ΥΠΟΛΟΓΙΣΜΩΝ</text>
+    <text x="68" y="184" fill="${c}" font-family="monospace" font-size="6">ΣΥΜΠΕΡΑΣΜΑΤΑ</text>
+    <!-- signature block -->
+    <rect x="140" y="294" width="94" height="12" fill="rgba(46,123,255,.12)" stroke="${cS}"/>
+    <text x="187" y="303" fill="${cD}" font-family="monospace" font-size="6" text-anchor="middle">ΥΠΟΓΡΑΦΗ / ΣΦΡΑΓΙΔΑ</text>
+    <!-- export badge -->
+    <rect x="30" y="270" width="48" height="24" rx="3" stroke="${cG}" fill="rgba(37,211,154,.12)"/>
+    <text x="54" y="285" fill="${cG}" font-family="monospace" font-size="8" text-anchor="middle">DOCX</text>
+    <rect x="30" y="300" width="48" height="24" rx="3" stroke="${cR}" fill="rgba(255,85,102,.12)"/>
+    <text x="54" y="315" fill="${cR}" font-family="monospace" font-size="8" text-anchor="middle">PDF</text>
+    <text x="26" y="344" fill="${cM}" font-family="monospace" font-size="6">AUTO REPORT GENERATION</text>`),
+};
+
+/* layout each doc with fanned offset */
+function layouts(activeIdx){
+  return HIW_STEPS.map((_,i)=>{
+    const d=i-activeIdx, direction=d>0?1:-1, mag=Math.abs(d);
+    const x=mag===0?0:direction*(55+mag*16);
+    const y=mag===0?0:direction*(20+mag*14);
+    const rot=mag===0?-2:direction*(4+mag*2);
+    const scale=1-mag*0.04;
+    return {x,y,rot,scale,z:HIW_STEPS.length-mag,opacity:mag>3?0:1-mag*0.12};
+  });
+}
+
+let hiwActive=0, hiwUserPicked=false;
+const stackEl=document.getElementById('hiwStack');
+const listEl=document.getElementById('hiwList');
+
+/* build docs */
+HIW_STEPS.forEach((s,i)=>{
+  const div=document.createElement('div');
+  div.className='hiw-doc';
+  div.innerHTML=`${DOCS[s.doc]}<div class="hiw-doc-tag"><span class="hiw-doc-dot"></span><span>${s.n}</span></div>`;
+  stackEl.appendChild(div);
+});
+
+/* build list */
+HIW_STEPS.forEach((s,i)=>{
+  const li=document.createElement('li');
+  li.className='hiw-item'+(i===0?' is-on':'');
+  li.innerHTML=`<span class="hiw-num">${s.n}</span><span class="hiw-label">${s.label}</span><span class="hiw-marker"></span>`;
+  li.addEventListener('mouseenter',()=>pick(i));
+  li.addEventListener('click',()=>pick(i));
+  listEl.appendChild(li);
+});
+
+function pick(i){
+  hiwUserPicked=true;
+  hiwActive=i;
+  updateHIW();
+}
+
+function updateHIW(){
+  const docs=stackEl.querySelectorAll('.hiw-doc');
+  const items=listEl.querySelectorAll('.hiw-item');
+  const L=layouts(hiwActive);
+  docs.forEach((d,i)=>{
+    const l=L[i];
+    d.style.transform=`translate(${l.x}px,${l.y}px) rotate(${l.rot}deg) scale(${l.scale})`;
+    d.style.zIndex=l.z;
+    d.style.opacity=l.opacity;
+    d.classList.toggle('is-on',i===hiwActive);
+  });
+  items.forEach((it,i)=>it.classList.toggle('is-on',i===hiwActive));
+}
+
+updateHIW();
+
+setInterval(()=>{
+  if(hiwUserPicked)return;
+  hiwActive=(hiwActive+1)%HIW_STEPS.length;
+  updateHIW();
+},4500);
+})();
+</script>
+
+<section class="fcap-section" id="capabilities">
+  <div class="fcap-inner">
+
+    <!-- left: kicker + 2×2 grid -->
+    <div class="fcap-left">
+      <div class="fcap-kicker">
+        <span class="fcap-kicker-rule"></span>
+        <span id="sw-d-kicker3">ΔΥΝΑΤΟΤΗΤΕΣ</span>
+      </div>
+      <div class="fcap-grid">
 
         <div class="sw-feat-card">
-          <div class="sw-feat-icon">🚛</div>
+          <div class="fcap-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><rect x="1" y="13" width="4" height="6" rx="1"/><rect x="6" y="9" width="4" height="10" rx="1"/><path d="M2 19h18a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1H6"/><circle cx="7" cy="21" r="1.5"/><circle cx="17" cy="21" r="1.5"/></svg>
+          </div>
           <div class="sw-feat-name" id="sw-fc1-name">Vehicle Analysis</div>
           <ul class="sw-feat-list">
             <li id="sw-fc1-1">Up to 5 axles support</li>
@@ -616,7 +1010,9 @@
         </div>
 
         <div class="sw-feat-card">
-          <div class="sw-feat-icon">📐</div>
+          <div class="fcap-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M2 22 L12 2 L22 22"/><line x1="5" y1="16" x2="19" y2="16"/></svg>
+          </div>
           <div class="sw-feat-name" id="sw-fc2-name">Frame &amp; Structure</div>
           <ul class="sw-feat-list">
             <li id="sw-fc2-1">Simple &amp; complex frame types</li>
@@ -627,7 +1023,9 @@
         </div>
 
         <div class="sw-feat-card">
-          <div class="sw-feat-icon">⚙️</div>
+          <div class="fcap-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+          </div>
           <div class="sw-feat-name" id="sw-fc3-name">Safety &amp; Stability</div>
           <ul class="sw-feat-list">
             <li id="sw-fc3-1">Braking system verification</li>
@@ -638,7 +1036,9 @@
         </div>
 
         <div class="sw-feat-card">
-          <div class="sw-feat-icon">📄</div>
+          <div class="fcap-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg>
+          </div>
           <div class="sw-feat-name" id="sw-fc4-name">Output &amp; Export</div>
           <ul class="sw-feat-list">
             <li id="sw-fc4-1">Quick PDF export</li>
@@ -651,8 +1051,500 @@
       </div>
     </div>
 
+    <!-- right: screenshot -->
+    <div class="fcap-right">
+      <img class="fcap-img-single" src="images/me-1.png" alt="Mechanical ExpertEase screenshot">
+    </div>
+
   </div>
 </section>
+
+<style>
+/* ── CAPABILITIES (new 2-col layout) ──────────────────────────── */
+.fcap-section {
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  padding: 80px 56px;
+}
+.fcap-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: center;
+}
+.fcap-kicker {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 36px;
+}
+.fcap-kicker-rule {
+  display: inline-block;
+  width: 28px;
+  height: 2px;
+  background: var(--blue);
+  flex-shrink: 0;
+}
+.fcap-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+/* override sw-feat-card for new layout */
+.fcap-section .sw-feat-card {
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  border-radius: 12px;
+  padding: 24px 22px;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: border-color .2s, transform .45s ease, box-shadow .2s, opacity .45s ease;
+}
+.fcap-section .sw-feat-card.sw-feat-card--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fcap-section .sw-feat-card:hover {
+  border-color: var(--blue);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(37,99,235,.08);
+}
+.fcap-card-icon {
+  width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--blue);
+  background: var(--blue-dim);
+  border-radius: 8px;
+  margin-bottom: 14px;
+}
+.fcap-section .sw-feat-list li::before {
+  content: '·';
+  color: var(--blue);
+  font-size: 16px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+/* right: screenshot fan */
+.fcap-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.fcap-img-single {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 1100px) {
+  .fcap-inner { grid-template-columns: 1fr; gap: 32px; }
+  .fcap-img-single { max-width: 100%; }
+}
+@media (max-width: 960px) {
+  .fcap-section { padding: 56px 24px; }
+  .fcap-grid { gap: 12px; }
+}
+@media (max-width: 640px) {
+  .fcap-section { padding: 40px 16px; }
+  .fcap-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .fcap-right { display: flex; }
+  .fcap-img-single { width: 100%; max-width: 100%; }
+}
+</style>
+
+<!-- ══ MODULES SHOWCASE ══════════════════════════════════════════ -->
+<section class="cap-section" id="modules">
+  <div class="cap-inner">
+
+    <!-- kicker -->
+
+    <!-- spotlight -->
+    <div class="cap-spotlight" id="capSpotlight">
+      <div class="cap-spot-visual">
+        <div class="spot-corner spot-corner-tl"></div>
+        <div class="spot-corner spot-corner-br"></div>
+        <div class="cap-preview-wrap" id="capSpotPreview"></div>
+        <div class="spot-hud spot-hud-tr"><span class="hud-dot"></span><span>LIVE</span></div>
+        <div class="spot-hud spot-hud-bl" id="capSpotNum"></div>
+      </div>
+      <div class="cap-spot-text">
+        <div class="cap-spot-num" id="capSpotNumBig"></div>
+        <h3 class="cap-spot-h" id="capSpotTitle"></h3>
+        <p class="cap-spot-sub" id="capSpotSub"></p>
+        <p class="cap-spot-body" id="capSpotBody"></p>
+        <ul class="cap-highlights" id="capSpotHighlights"></ul>
+      </div>
+    </div>
+
+    <!-- carousel header stays inside inner -->
+    <div class="cap-grid-head">
+      <h3 id="cap-all-label">Όλα τα Εργαλεία</h3>
+      <span class="cap-grid-count" id="capModCount"></span>
+    </div>
+
+  </div><!-- /cap-inner -->
+
+  <!-- carousel breaks out to full section width -->
+  <div class="cap-carousel-wrap">
+    <div class="cap-carousel">
+      <button class="carousel-arrow carousel-prev" id="capPrev" aria-label="Προηγούμενο">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" width="18" height="18"><path d="M19 12 H7 M11 8 L7 12 L11 16"/></svg>
+      </button>
+      <button class="carousel-arrow carousel-next" id="capNext" aria-label="Επόμενο">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" width="18" height="18"><path d="M5 12 H17 M13 8 L17 12 L13 16"/></svg>
+      </button>
+      <div class="carousel-viewport" id="capViewport">
+        <div class="carousel-track" id="capTrack"></div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<style>
+/* ── MODULES SHOWCASE ─────────────────────────────────────────── */
+.cap-section {
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  padding: 72px 56px;
+}
+.cap-inner { max-width: 1100px; margin: 0 auto; }
+
+/* spotlight */
+.cap-spotlight {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  margin-bottom: 56px;
+  padding: 36px;
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  border-radius: 14px;
+}
+.cap-spot-visual {
+  position: relative;
+  background: #060d1a;
+  border: 1px solid rgba(46,123,255,.2);
+  border-radius: 10px;
+  overflow: hidden;
+  aspect-ratio: 200/120;
+  display: flex; align-items: center; justify-content: center;
+}
+.cap-preview-wrap { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+.cap-preview-wrap svg { width: 100%; height: 100%; display: block; }
+.spot-corner {
+  position: absolute;
+  width: 14px; height: 14px;
+  border-color: rgba(46,123,255,.5);
+  border-style: solid;
+}
+.spot-corner-tl { top: 6px; left: 6px; border-width: 1.5px 0 0 1.5px; }
+.spot-corner-br { bottom: 6px; right: 6px; border-width: 0 1.5px 1.5px 0; }
+.spot-hud {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: rgba(46,123,255,.7);
+  display: flex; align-items: center; gap: 5px;
+  text-transform: uppercase;
+}
+.spot-hud-tr { top: 10px; right: 10px; }
+.spot-hud-bl { bottom: 10px; left: 10px; }
+.hud-dot { width: 5px; height: 5px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 6px #22c55e; }
+.cap-spot-num { font-family: var(--font-mono); font-size: 11px; color: var(--blue-lt); letter-spacing: 3px; margin-bottom: 10px; }
+.cap-spot-h { font-family: var(--font-display); font-size: 28px; font-weight: 700; color: var(--text); margin-bottom: 6px; line-height: 1.15; }
+.cap-spot-sub { font-family: var(--font-mono); font-size: 10px; color: var(--blue-lt); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 16px; }
+.cap-spot-body { font-size: 14px; line-height: 1.75; color: var(--muted); margin-bottom: 20px; }
+.cap-highlights { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.cap-highlights li { display: flex; align-items: baseline; gap: 8px; font-size: 13px; color: var(--muted); }
+.cap-highlights li::before { content: '✓'; color: #22c55e; font-size: 11px; flex-shrink: 0; }
+
+/* grid head */
+.cap-grid-head { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+.cap-grid-head h3 { font-family: var(--font-mono); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin: 0; }
+.cap-grid-count { font-family: var(--font-mono); font-size: 10px; color: var(--blue-lt); background: var(--blue-dim); padding: 2px 8px; border-radius: 20px; }
+
+/* carousel — full section width, no fade edges */
+.cap-carousel-wrap {
+  width: calc(100% + 112px);   /* 56px * 2 to cancel section padding */
+  margin-left: -56px;
+  margin-top: 8px;
+  position: relative;
+  overflow: hidden;
+}
+.cap-carousel { position: relative; padding: 0 64px; }
+.carousel-viewport { overflow: hidden; }
+.carousel-track { display: flex; gap: 14px; will-change: transform; }
+.carousel-cell { display: flex; flex-direction: column; gap: 14px; flex-shrink: 0; width: 220px; }
+.carousel-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  z-index: 2; width: 40px; height: 40px;
+  background: var(--bg2); border: 1px solid var(--border2); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--muted); cursor: pointer;
+  transition: background .2s, color .2s;
+}
+.carousel-arrow:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
+.carousel-prev { left: 16px; }
+.carousel-next { right: 16px; }
+
+/* module card */
+.cap-card {
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color .2s, transform .2s, box-shadow .2s;
+  width: 100%;
+}
+.cap-card:hover, .cap-card.is-active {
+  border-color: var(--blue);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37,99,235,.12);
+}
+.card-preview {
+  position: relative;
+  background: #060d1a;
+  aspect-ratio: 200/120;
+  overflow: hidden;
+}
+.card-preview svg { width: 100%; height: 100%; display: block; }
+.card-corner {
+  position: absolute;
+  width: 8px; height: 8px;
+  border-color: rgba(46,123,255,.4);
+  border-style: solid;
+}
+.card-corner-tl { top: 4px; left: 4px; border-width: 1px 0 0 1px; }
+.card-corner-br { bottom: 4px; right: 4px; border-width: 0 1px 1px 0; }
+.card-body { padding: 10px 12px; }
+.card-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 5px; }
+.card-num { font-family: var(--font-mono); font-size: 9px; color: var(--blue-lt); letter-spacing: 2px; }
+.card-cat { font-family: var(--font-mono); font-size: 8px; color: var(--faint); letter-spacing: 1px; text-transform: uppercase; }
+.card-title { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+.card-sub { font-size: 11px; color: var(--muted); line-height: 1.4; margin-bottom: 8px; }
+.card-cta { display: flex; align-items: center; gap: 5px; font-family: var(--font-mono); font-size: 9px; letter-spacing: 1px; color: var(--blue); }
+
+@media (max-width: 960px) {
+  .cap-section { padding: 48px 24px; }
+  .cap-carousel-wrap { width: calc(100% + 48px); margin-left: -24px; }
+  .cap-carousel { padding: 0 48px; }
+  .cap-spotlight { grid-template-columns: 1fr; gap: 28px; padding: 24px; }
+  .carousel-cell { width: 180px; }
+  .carousel-prev { left: 8px; }
+  .carousel-next { right: 8px; }
+}
+@media (max-width: 640px) {
+  .cap-section { padding: 36px 16px; }
+  .cap-carousel-wrap { width: calc(100% + 32px); margin-left: -16px; }
+  .cap-carousel { padding: 0 40px; }
+  .cap-spot-h { font-size: 22px; }
+  .carousel-cell { width: 160px; }
+  .carousel-prev { left: 4px; }
+  .carousel-next { right: 4px; }
+}
+</style>
+
+<script>
+(function(){
+// ── SVG previews ─────────────────────────────────────────────────
+const stroke="#2E7BFF",strokeSoft="#1a3a6b",strokeFaint="#0e2247";
+function grid(w,h){
+  let s='';
+  for(let x=0;x<=w;x+=16)s+=`<line x1="${x}" y1="0" x2="${x}" y2="${h}" stroke="${strokeFaint}" stroke-width=".5"/>`;
+  for(let y=0;y<=h;y+=16)s+=`<line x1="0" y1="${y}" x2="${w}" y2="${y}" stroke="${strokeFaint}" stroke-width=".5"/>`;
+  return s;
+}
+function svg(body){return`<svg viewBox="0 0 200 120" class="cap-preview-svg" xmlns="http://www.w3.org/2000/svg">${grid(200,120)}${body}</svg>`;}
+
+const P={
+  mnq:svg(`<path d="M10 60 H190" stroke="${stroke}" stroke-width="1.2" stroke-dasharray="3 3" opacity=".5"/><path d="M10 60 L40 60 L40 40 L80 40 L80 70 L120 70 L120 50 L160 50 L160 60 L190 60" stroke="#5aa6ff" fill="rgba(90,166,255,.15)" stroke-width="1.4"/><path d="M10 90 Q60 30 100 90 T190 90" stroke="#25d39a" fill="rgba(37,211,154,.12)" stroke-width="1.4"/>${[40,80,120,160].map((x,i)=>`<line x1="${x}" y1="10" x2="${x}" y2="100" stroke="#ff5566" stroke-width=".5" stroke-dasharray="2 2" opacity=".7"/><text x="${x+2}" y="16" fill="#ff5566" font-size="5" font-family="monospace">A${i+1}</text>`).join('')}<text x="10" y="115" fill="#5a6f9a" font-size="5" font-family="monospace">M / Q · CHASSIS</text>`),
+  axles:svg(`<rect x="30" y="40" width="140" height="40" rx="2" stroke="${stroke}" fill="rgba(46,123,255,.08)"/><rect x="30" y="40" width="30" height="40" stroke="${stroke}" fill="rgba(46,123,255,.18)"/>${[[55,32],[55,84],[120,32],[120,84],[140,32],[140,84]].map(([x,y])=>`<rect x="${x}" y="${y}" width="14" height="8" rx="1" stroke="${stroke}" fill="#06122c"/>`).join('')}${[[62,26,'5.2t'],[127,26,'9.5t'],[147,26,'9.5t']].map(([x,y,t])=>`<line x1="${x}" y1="${y-12}" x2="${x}" y2="${y-2}" stroke="#25d39a" stroke-width="1"/><path d="M${x-2} ${y-4} L${x} ${y-1} L${x+2} ${y-4}" stroke="#25d39a" stroke-width="1" fill="none"/><text x="${x-5}" y="${y-14}" fill="#25d39a" font-size="5" font-family="monospace">${t}</text>`).join('')}<text x="10" y="115" fill="#5a6f9a" font-size="5" font-family="monospace">AXLE LOADS</text>`),
+  rescue:svg(`<rect x="22" y="48" width="56" height="26" stroke="${stroke}" fill="rgba(46,123,255,.18)"/><rect x="22" y="44" width="20" height="30" stroke="${stroke}" fill="rgba(46,123,255,.30)"/><circle cx="32" cy="78" r="5" stroke="${stroke}" fill="#06122c"/><circle cx="64" cy="78" r="5" stroke="${stroke}" fill="#06122c"/><line x1="78" y1="64" x2="98" y2="64" stroke="${stroke}" stroke-width="1"/><circle cx="98" cy="64" r="2" fill="${stroke}"/><rect x="98" y="50" width="74" height="20" stroke="#5aa6ff" fill="rgba(90,166,255,.14)"/><rect x="106" y="40" width="58" height="14" stroke="#5aa6ff" fill="rgba(90,166,255,.20)"/><circle cx="118" cy="74" r="4" stroke="#5aa6ff" fill="#06122c"/><circle cx="158" cy="74" r="4" stroke="#5aa6ff" fill="#06122c"/><text x="10" y="115" fill="#5a6f9a" font-size="5" font-family="monospace">RESCUE · AXLE LOADS + TRAILER</text>`),
+  a3:svg(`<rect x="20" y="14" width="160" height="92" stroke="${stroke}" fill="#06122c"/><rect x="120" y="80" width="56" height="22" stroke="${stroke}" fill="rgba(46,123,255,.08)"/><line x1="120" y1="88" x2="176" y2="88" stroke="${stroke}" stroke-width=".5"/><path d="M26 60 L40 60 L44 50 L70 50 L70 60 L150 60 L150 56 L165 56 L165 60 L172 60" stroke="${stroke}" fill="rgba(46,123,255,.10)" stroke-width="1"/><circle cx="52" cy="64" r="4" stroke="${stroke}" fill="#06122c"/><circle cx="135" cy="64" r="4" stroke="${stroke}" fill="#06122c"/><text x="20" y="115" fill="#5a6f9a" font-size="5" font-family="monospace">A3 · PDF</text>`),
+  frame:svg(`<g transform="translate(30 30)"><path d="M0 0 H20 V4 H4 V40 H20 V44 H0 Z" stroke="${stroke}" fill="rgba(46,123,255,.15)"/><text y="56" x="2" fill="#5a6f9a" font-size="5" font-family="monospace">C</text></g><g transform="translate(70 30)"><path d="M0 0 H24 V4 H14 V40 H24 V44 H0 V40 H10 V4 H0 Z" stroke="${stroke}" fill="rgba(46,123,255,.15)"/><text y="56" x="6" fill="#5a6f9a" font-size="5" font-family="monospace">I</text></g><g transform="translate(110 30)"><rect width="24" height="44" stroke="${stroke}" fill="rgba(46,123,255,.15)"/><rect x="4" y="4" width="16" height="36" stroke="${stroke}" fill="#06122c"/><text y="56" x="6" fill="#5a6f9a" font-size="5" font-family="monospace">RHS</text></g><g transform="translate(150 30)"><circle cx="12" cy="22" r="14" stroke="${stroke}" fill="rgba(46,123,255,.15)"/><circle cx="12" cy="22" r="10" stroke="${stroke}" fill="#06122c"/><text y="56" x="8" fill="#5a6f9a" font-size="5" font-family="monospace">O</text></g><text x="10" y="115" fill="#5a6f9a" font-size="5" font-family="monospace">SECTION LIBRARY</text>`),
+  memo:svg(`<rect x="50" y="10" width="100" height="100" stroke="${stroke}" fill="#06122c"/><rect x="50" y="10" width="100" height="14" fill="rgba(46,123,255,.18)" stroke="${stroke}"/><text x="56" y="20" fill="#e8eefb" font-size="6" font-family="monospace" font-weight="600">ΤΕΧΝΙΚΗ ΜΕΛΕΤΗ</text>${[32,38,44,56,62,68,74,86,92,98].map((y,i)=>`<line x1="56" y1="${y}" x2="${140-i%3*8}" y2="${y}" stroke="#1a3a6b" stroke-width=".5"/>`).join('')}<rect x="56" y="48" width="24" height="6" fill="${stroke}" opacity=".7"/><text x="10" y="115" fill="#5a6f9a" font-size="5" font-family="monospace">AUTO REPORT · DOCX</text>`),
+  tank:svg(`<path d="M30 80 L40 80 L44 70 L60 70 L60 80 L130 80 L130 60 L70 60 L70 80" stroke="${stroke}" fill="rgba(46,123,255,.08)"/><path d="M76 60 L124 60 L120 74 L80 74 Z" stroke="#25d39a" fill="rgba(37,211,154,.18)" stroke-width="1.2"/><circle cx="45" cy="86" r="5" stroke="${stroke}" fill="#06122c"/><circle cx="115" cy="86" r="5" stroke="${stroke}" fill="#06122c"/><text x="84" y="50" fill="#25d39a" font-size="5" font-family="monospace">V = 4.8 m³</text><text x="10" y="115" fill="#5a6f9a" font-size="5" font-family="monospace">TANK VOLUME</text>`),
+  susp:svg(`<line x1="20" y1="40" x2="180" y2="40" stroke="${stroke}" stroke-width="1.5"/><line x1="20" y1="90" x2="180" y2="90" stroke="${stroke}" stroke-width="1.5"/>${[55,110,150].map((x,i)=>`<path d="M${x-15} 45 Q${x} ${i===0?58:52} ${x+15} 45" stroke="#5aa6ff" fill="none" stroke-width="1"/><rect x="${x-4}" y="80" width="8" height="10" stroke="${stroke}" fill="rgba(46,123,255,.18)"/><line x1="${x}" y1="45" x2="${x}" y2="80" stroke="${stroke}" stroke-width=".8"/><text x="${x-6}" y="100" fill="#5a6f9a" font-size="5" font-family="monospace">A${i+1}</text>`).join('')}<text x="10" y="115" fill="#5a6f9a" font-size="5" font-family="monospace">SUSPENSION</text>`),
+  spring:svg(`${[0,1,2,3,4].map(i=>`<path d="M${30+i*4} ${60+i*4} Q100 ${30-i*2} ${170-i*4} ${60+i*4}" stroke="${i===0?stroke:'#5aa6ff'}" stroke-width="1.2" fill="none" opacity="${i===0?1:0.7-i*0.1}"/>`).join('')}<circle cx="30" cy="60" r="3" stroke="${stroke}" fill="#06122c"/><circle cx="170" cy="60" r="3" stroke="${stroke}" fill="#06122c"/><line x1="100" y1="20" x2="100" y2="38" stroke="#ff5566" stroke-width="1.2"/><path d="M97 34 L100 40 L103 34" stroke="#ff5566" fill="none" stroke-width="1.2"/><text x="34" y="100" fill="#25d39a" font-size="6" font-family="monospace">k = 1.16 mm/kg</text><text x="10" y="115" fill="#5a6f9a" font-size="5" font-family="monospace">LEAF SPRING</text>`),
+  shear:svg(`<rect x="40" y="42" width="120" height="14" stroke="${stroke}" fill="rgba(46,123,255,.18)"/><rect x="40" y="62" width="120" height="14" stroke="${stroke}" fill="rgba(46,123,255,.10)"/><rect x="92" y="36" width="16" height="46" stroke="${stroke}" fill="rgba(46,123,255,.25)"/><rect x="86" y="32" width="28" height="6" stroke="${stroke}" fill="rgba(46,123,255,.35)"/><rect x="86" y="80" width="28" height="6" stroke="${stroke}" fill="rgba(46,123,255,.35)"/><line x1="20" y1="49" x2="36" y2="49" stroke="#ff5566" stroke-width="1.5"/><path d="M32 47 L36 49 L32 51" stroke="#ff5566" stroke-width="1.5" fill="none"/><text x="44" y="104" fill="#25d39a" font-size="6" font-family="monospace">τ = 9.98 N/mm²</text><text x="10" y="115" fill="#5a6f9a" font-size="5" font-family="monospace">BOLT SHEAR</text>`),
+  combined:svg(`<rect x="90" y="20" width="20" height="80" stroke="${stroke}" fill="rgba(46,123,255,.18)"/><rect x="80" y="18" width="40" height="8" stroke="${stroke}" fill="rgba(46,123,255,.3)"/><line x1="100" y1="14" x2="100" y2="2" stroke="#25d39a" stroke-width="1.5"/><path d="M97 6 L100 2 L103 6" stroke="#25d39a" stroke-width="1.5" fill="none"/><text x="106" y="8" fill="#25d39a" font-size="6" font-family="monospace">σ</text><line x1="60" y1="60" x2="84" y2="60" stroke="#ff5566" stroke-width="1.5"/><path d="M80 58 L84 60 L80 62" stroke="#ff5566" stroke-width="1.5" fill="none"/><text x="34" y="104" fill="#25d39a" font-size="6" font-family="monospace">σ_v = √(σ²+3τ²)</text><text x="10" y="115" fill="#5a6f9a" font-size="5" font-family="monospace">COMBINED STRESS</text>`),
+  weld:svg(`<rect x="20" y="20" width="80" height="46" stroke="${stroke}" fill="rgba(46,123,255,.18)"/><rect x="100" y="56" width="80" height="46" stroke="${stroke}" fill="rgba(46,123,255,.18)"/><path d="M100 50 L100 66 L84 66 Z" stroke="#25d39a" fill="rgba(37,211,154,.4)" stroke-width="1.2"/><path d="M100 50 L116 50 L100 66 Z" stroke="#25d39a" fill="rgba(37,211,154,.4)" stroke-width="1.2"/><text x="120" y="48" fill="#25d39a" font-size="6" font-family="monospace">τ = 0.42·σ</text><text x="10" y="115" fill="#5a6f9a" font-size="5" font-family="monospace">FILLET WELD</text>`),
+  turning:svg(`<circle cx="100" cy="60" r="48" stroke="${stroke}" fill="none" stroke-dasharray="3 3"/><circle cx="100" cy="60" r="28" stroke="#5aa6ff" fill="none" stroke-dasharray="2 2" opacity=".6"/><circle cx="100" cy="60" r="2" fill="${stroke}"/><rect x="140" y="46" width="24" height="28" rx="2" stroke="${stroke}" fill="rgba(46,123,255,.18)" transform="rotate(28 152 60)"/><line x1="100" y1="60" x2="148" y2="60" stroke="#25d39a" stroke-width=".8"/><text x="108" y="56" fill="#25d39a" font-size="6" font-family="monospace">R = 5.75 m</text><text x="10" y="115" fill="#5a6f9a" font-size="5" font-family="monospace">TURNING RADIUS</text>`),
+  brake:svg(`<line x1="20" y1="100" x2="180" y2="100" stroke="${stroke}" stroke-width="1"/><line x1="20" y1="20" x2="20" y2="100" stroke="${stroke}" stroke-width="1"/><path d="M20 30 Q50 30 80 50 T160 100" stroke="#25d39a" stroke-width="1.4" fill="none"/><path d="M20 30 Q50 30 80 50 T160 100 L160 100 L20 100 Z" fill="rgba(37,211,154,.12)"/><line x1="20" y1="50" x2="180" y2="50" stroke="#ff5566" stroke-width=".5" stroke-dasharray="3 3"/><text x="148" y="46" fill="#ff5566" font-size="5" font-family="monospace">a_min</text><text x="10" y="115" fill="#5a6f9a" font-size="5" font-family="monospace">BRAKING</text>`),
+  stability:svg(`<line x1="20" y1="100" x2="180" y2="100" stroke="${stroke}" stroke-width="1"/><g transform="rotate(-14 100 90)"><rect x="70" y="40" width="60" height="50" stroke="${stroke}" fill="rgba(46,123,255,.18)"/><circle cx="80" cy="92" r="6" stroke="${stroke}" fill="#06122c"/><circle cx="120" cy="92" r="6" stroke="${stroke}" fill="#06122c"/><circle cx="100" cy="56" r="2.5" fill="#25d39a"/><line x1="100" y1="56" x2="100" y2="92" stroke="#25d39a" stroke-width=".6" stroke-dasharray="2 2"/></g><line x1="60" y1="60" x2="80" y2="60" stroke="#ff5566" stroke-width="1.5"/><path d="M76 58 L80 60 L76 62" stroke="#ff5566" stroke-width="1.5" fill="none"/><text x="38" y="115" fill="#5a6f9a" font-size="5" font-family="monospace">ROLL STABILITY</text>`),
+  tipover:svg(`<line x1="20" y1="96" x2="180" y2="96" stroke="${stroke}" stroke-width="1"/><g transform="rotate(-10 100 96)"><rect x="60" y="60" width="80" height="30" stroke="${stroke}" fill="rgba(46,123,255,.18)"/><line x1="100" y1="60" x2="40" y2="28" stroke="${stroke}" stroke-width="2.5"/><circle cx="74" cy="94" r="4" stroke="${stroke}" fill="#06122c"/><circle cx="126" cy="94" r="4" stroke="${stroke}" fill="#06122c"/></g><circle cx="92" cy="68" r="3" fill="#25d39a"/><text x="10" y="115" fill="#5a6f9a" font-size="5" font-family="monospace">EQUIPMENT TIPOVER</text>`),
+  rectbase:svg(`<rect x="50" y="34" width="100" height="60" stroke="${stroke}" fill="rgba(46,123,255,.10)"/>${[[60,44],[140,44],[60,84],[140,84]].map(([x,y],i)=>`<circle cx="${x}" cy="${y}" r="5" stroke="${stroke}" fill="#06122c" stroke-width="1"/><circle cx="${x}" cy="${y}" r="2" fill="${i===1||i===3?'#ff5566':'#25d39a'}"/>`).join('')}<circle cx="100" cy="64" r="6" stroke="${stroke}" fill="rgba(46,123,255,.40)"/><path d="M100 22 L132 22" stroke="#ff5566" stroke-width="1"/><text x="108" y="18" fill="#ff5566" font-size="6" font-family="monospace">M_crane</text><text x="10" y="115" fill="#5a6f9a" font-size="5" font-family="monospace">RECT BASE</text>`),
+  boom:svg(`<rect x="20" y="80" width="160" height="14" stroke="${stroke}" fill="rgba(46,123,255,.18)"/><ellipse cx="60" cy="80" rx="22" ry="6" stroke="${stroke}" fill="rgba(46,123,255,.3)"/><line x1="60" y1="76" x2="130" y2="30" stroke="${stroke}" stroke-width="3"/><line x1="130" y1="30" x2="170" y2="36" stroke="${stroke}" stroke-width="2.5"/><rect x="166" y="32" width="14" height="10" stroke="${stroke}" fill="rgba(46,123,255,.18)"/><path d="M70 80 a18 12 0 0 0 -18 -10" stroke="#ff5566" stroke-width="1" fill="none"/><text x="62" y="100" fill="#ff5566" font-size="6" font-family="monospace">M_base</text><text x="10" y="115" fill="#5a6f9a" font-size="5" font-family="monospace">CRANE BASE · BOLT CIRCLE</text>`),
+  axial:svg(`<rect x="20" y="20" width="160" height="20" stroke="${stroke}" fill="rgba(46,123,255,.20)"/>${[44,60,76,92].map((y,i)=>`<rect x="20" y="${y}" width="160" height="14" stroke="${strokeFaint}" fill="${i%2?'rgba(46,123,255,.04)':'transparent'}"/><text x="26" y="${y+10}" fill="#c7d3ec" font-size="6" font-family="monospace">A${i+1}</text><rect x="110" y="${y+4}" width="${50-i*4}" height="6" fill="#5aa6ff" opacity="${0.8-i*0.1}"/>`).join('')}<text x="26" y="32" fill="#e8eefb" font-size="6" font-family="monospace" font-weight="600">AXLE · LOAD · %</text><text x="10" y="115" fill="#5a6f9a" font-size="5" font-family="monospace">AXIAL LOADS</text>`),
+  lateral:svg(`<rect x="60" y="36" width="80" height="50" stroke="${stroke}" fill="rgba(46,123,255,.18)"/><rect x="54" y="80" width="92" height="10" stroke="${stroke}" fill="rgba(46,123,255,.10)"/><rect x="50" y="86" width="10" height="6" stroke="${stroke}" fill="#06122c"/><rect x="140" y="86" width="10" height="6" stroke="${stroke}" fill="#06122c"/><line x1="30" y1="60" x2="56" y2="60" stroke="#ff5566" stroke-width="1.5"/><path d="M52 58 L56 60 L52 62" stroke="#ff5566" stroke-width="1.5" fill="none"/><text x="20" y="56" fill="#ff5566" font-size="6" font-family="monospace">Fy</text><text x="10" y="115" fill="#5a6f9a" font-size="5" font-family="monospace">LATERAL LOADS</text>`),
+  newstudy:svg(`<path d="M30 30 L42 30 L46 34 L70 34 L70 50 L30 50 Z" stroke="${stroke}" fill="rgba(46,123,255,.22)"/><text x="74" y="44" fill="#e8eefb" font-size="7" font-family="monospace" font-weight="600">VH-2026-04</text><path d="M44 50 L44 100 M44 60 L60 60 M44 72 L60 72 M44 84 L60 84 M44 96 L60 96" stroke="${stroke}" stroke-width=".6"/>${[['Photos',60],['Drawings',72],['Diagrams',84],['Tech Data',96]].map(([l,y])=>`<path d="M62 ${y-4} L70 ${y-4} L72 ${y-2} L90 ${y-2} L90 ${y+4} L62 ${y+4} Z" stroke="${stroke}" fill="rgba(46,123,255,.12)" stroke-width=".8"/><text x="94" y="${y+2}" fill="#c7d3ec" font-size="5.5" font-family="monospace">${l}</text>`).join('')}<text x="10" y="115" fill="#5a6f9a" font-size="5" font-family="monospace">NEW STUDY · FOLDERS</text>`),
+  importdata:svg(`<g transform="translate(20 40)"><rect width="40" height="40" stroke="${stroke}" fill="rgba(46,123,255,.18)"/><text x="6" y="14" fill="#e8eefb" font-size="6" font-family="monospace" font-weight="600">CSV</text><line x1="4" y1="20" x2="36" y2="20" stroke="${stroke}" stroke-width=".4"/><line x1="4" y1="26" x2="36" y2="26" stroke="${stroke}" stroke-width=".4"/></g><line x1="66" y1="60" x2="100" y2="60" stroke="#25d39a" stroke-width="1.4" stroke-dasharray="3 2"/><path d="M96 56 L102 60 L96 64" stroke="#25d39a" stroke-width="1.4" fill="none"/><g transform="translate(110 30)"><rect width="70" height="60" stroke="${stroke}" fill="rgba(46,123,255,.08)"/>${[0,1,2,3,4].map(i=>`<rect x="2" y="${2+i*12}" width="22" height="8" fill="rgba(46,123,255,.18)"/><rect x="26" y="${2+i*12}" width="42" height="8" fill="${i%2?'rgba(37,211,154,.18)':'rgba(46,123,255,.06)'}" />`).join('')}</g><text x="10" y="115" fill="#5a6f9a" font-size="5" font-family="monospace">CSV IMPORT</text>`),
+  finalize:svg(`<g transform="translate(64 60)"><circle r="26" stroke="${stroke}" fill="rgba(46,123,255,.12)" stroke-width="1.2"/><circle r="10" stroke="${stroke}" fill="#06122c" stroke-width="1"/>${[0,45,90,135,180,225,270,315].map(d=>`<rect x="-3" y="-30" width="6" height="8" fill="${stroke}" transform="rotate(${d})"/>`).join('')}</g>${['REFRESH','CLEAN','AUTO AXES','VALIDATE'].map((t,i)=>`<g transform="translate(110 ${30+i*14})"><rect width="10" height="10" stroke="#25d39a" fill="rgba(37,211,154,.18)"/><path d="M2 5 L4 7 L8 3" stroke="#25d39a" stroke-width="1.2" fill="none"/><text x="16" y="8" fill="#c7d3ec" font-size="5.5" font-family="monospace">${t}</text></g>`).join('')}<text x="10" y="115" fill="#5a6f9a" font-size="5" font-family="monospace">FINAL SETTINGS</text>`),
+  savejpeg:svg(`${[0,1,2].map(i=>`<g transform="translate(${52+i*14} ${30+i*6})"><rect width="76" height="50" stroke="${stroke}" fill="#06122c" stroke-width="1"/><text x="6" y="12" fill="${stroke}" font-size="5" font-family="monospace">M/Q·0${i+1}</text><rect x="56" y="40" width="14" height="6" stroke="#25d39a" fill="rgba(37,211,154,.18)"/><text x="58" y="45" fill="#25d39a" font-size="4" font-family="monospace">JPG</text></g>`).join('')}<g transform="translate(154 80)"><line x1="0" y1="0" x2="0" y2="16" stroke="#25d39a" stroke-width="1.4"/><path d="M-4 12 L0 18 L4 12" stroke="#25d39a" stroke-width="1.4" fill="none"/></g><text x="10" y="115" fill="#5a6f9a" font-size="5" font-family="monospace">EXPORT JPEG</text>`),
+  datasheet:svg(`<rect x="20" y="14" width="160" height="92" stroke="${stroke}" fill="rgba(46,123,255,.04)"/><rect x="20" y="14" width="160" height="10" fill="rgba(46,123,255,.22)" stroke="${stroke}"/><text x="26" y="21" fill="#e8eefb" font-size="5.5" font-family="monospace" font-weight="600">ΦΥΛΛΟ ΔΕΔΟΜΕΝΩΝ</text>${[0,1,2,3,4,5,6,7].map(i=>{const y=28+i*8,r=[0,2,3,6].includes(i);return`<line x1="20" y1="${y+6}" x2="180" y2="${y+6}" stroke="${strokeFaint}" stroke-width=".3"/><rect x="80" y="${y}" width="100" height="6" fill="${r?'rgba(255,85,102,.22)':'rgba(46,123,255,.06)'}"/><text x="24" y="${y+4.4}" fill="#c7d3ec" font-size="4.5" font-family="monospace">${['Όχημα','Μεταξόνιο','Πλάτος','Υλικό','Διατομή','Άξονες','Μέγ. φορτίο','Έκδοση'][i]}</text>`;}).join('')}<text x="10" y="115" fill="#5a6f9a" font-size="5" font-family="monospace">DATA SHEET</text>`),
+  control:svg(`<rect x="20" y="14" width="160" height="92" stroke="${stroke}" fill="rgba(46,123,255,.04)"/><rect x="20" y="14" width="160" height="10" fill="rgba(46,123,255,.22)" stroke="${stroke}"/><text x="26" y="21" fill="#e8eefb" font-size="5.5" font-family="monospace" font-weight="600">ΦΥΛΛΟ ΕΛΕΓΧΟΥ</text>${[['Άξονες',true],['Ελατήρια',false],['Πλαίσιο',true],['Αναρτήσεις',true],['Συγκολλήσεις',false],['Ευστάθεια',true],['Πέδηση',true]].map(([l,ok],i)=>{const y=28+i*8;return`<text x="24" y="${y+4.4}" fill="#c7d3ec" font-size="4.5" font-family="monospace">${l}</text><g transform="translate(140 ${y+1})">${ok?`<circle cx="3" cy="3" r="3" fill="rgba(37,211,154,.2)"/><path d="M1 3 L2.5 4.5 L5 1.5" stroke="#25d39a" stroke-width="1" fill="none"/>`:`<circle cx="3" cy="3" r="3" fill="rgba(255,85,102,.2)"/><path d="M1.5 1.5 L4.5 4.5 M4.5 1.5 L1.5 4.5" stroke="#ff5566" stroke-width="1" fill="none"/>`}</g>`;}).join('')}<text x="10" y="115" fill="#5a6f9a" font-size="5" font-family="monospace">CONTROL SHEET</text>`),
+};
+
+// ── Module data ───────────────────────────────────────────────────
+const MODULES=[
+  {id:'mnq',num:'01',title:'MNQ',sub:'Φορτία πλαισίου · διαγράμματα κάμψης & διάτμησης',cat:'Αντοχή',preview:'mnq',summary:'Έως 15 σημειακά και 5 κατανεμημένα φορτία. Παράγει διαγράμματα M, Q, σ, τ, διάγραμμα ελευθέρου σώματος και τριπλό συντελεστή ασφαλείας — με Wizard που προτείνει φορτία ανά τύπο οχήματος.',highlights:['Wizard με πιθανά φορτία ανά τύπο οχήματος και αυτόματη εκτίμηση βάρους.','Παράθυρο συμβουλών: πόσα kg πρέπει ακόμη να προστεθούν για ισορροπία.','Χρωματικός κώδικας: κίτρινο για φορτία εκτός πλαισίου, κόκκινο για μη έγκυρα κελιά.','Συντελεστής ασφαλείας Hoober — επιτρεπτή τιμή ≥ 1.']},
+  {id:'axles',num:'02',title:'Άξονες',sub:'Κατανομή αξονικών φορτίων',cat:'Δυναμική',preview:'axles',summary:'Έως 5 σημειακά και 5 κατανεμημένα φορτία με ρυθμιζόμενη κατανομή ζυγολογίων. Αλγόριθμος βελτιστοποίησης βρίσκει την πιθανή θέση των τεσσάρων μεγαλύτερων φορτίων που ικανοποιεί τα όρια καταπόνησης.',highlights:['Αυτόματη τοποθέτηση βάρους οδηγού/συνοδηγού και ωφέλιμου φορτίου.','Αλγόριθμος βελτιστοποίησης για τη θέση των 4 μεγαλύτερων φορτίων.','Renew Graph + Reset για άμεση επανυπολόγιση.','1ος άξονας αριστερά ή δεξιά, ανά πάσα στιγμή.']},
+  {id:'rescue',num:'03',title:'Οδική Βοήθεια',sub:'Καταπόνηση αξόνων με ρυμουλκούμενο',cat:'Δυναμική',preview:'rescue',summary:'Δύο σενάρια: μόνο από συρόμενο όχημα και πίνακας συνδυασμών με όχημα ταυτόχρονα επί του αμαξώματος.'},
+  {id:'a3',num:'04',title:'Σχέδια Α3',sub:'Κάθετη και οριζόντια διάταξη σχεδίων',cat:'Σχεδίαση',preview:'a3',summary:'Τρία φύλλα Α3 — μία κάθετη και δύο οριζόντιες διατάξεις — με σχέδια οχήματος, διαγράμματα και πίνακες φορτίων.'},
+  {id:'frame',num:'05',title:'Πλαίσιο',sub:'Πλήρης έλεγχος αντοχής διατομής',cat:'Αντοχή',preview:'frame',summary:'Έλεγχος αντοχής με κύρια και βοηθητική διατομή. Υπολογίζει ροπές αδράνειας, μέγιστες τάσεις και τρεις συντελεστές ασφαλείας — κάμψη, διάτμηση, συνδυαστικά.'},
+  {id:'memo',num:'06',title:'Τεχνικό Υπόμνημα',sub:'Αυτόματη σύνθεση τεχνικής μελέτης',cat:'Σχεδίαση',preview:'memo',summary:'Σύνθεση της τελικής μελέτης από τα δεδομένα οχήματος. Εξαγωγή σε Word ή PDF αυτόματα.'},
+  {id:'tank',num:'07',title:'Δεξαμενή Άλατος & Νερού',sub:'Όγκος εκχιονιστικών δεξαμενών',cat:'Ειδικά',preview:'tank',summary:'Όγκος δεξαμενών άλατος και αλατόνερου εκχιονιστικών οχημάτων. Δύο στάνταρ τύποι άλατος και ένας τύπος νερού.'},
+  {id:'susp',num:'08',title:'Αναρτήσεις',sub:'Καταπόνηση αναρτήσεων & συνδέσεων',cat:'Αντοχή',preview:'susp',summary:'Αυτόματος έλεγχος αναρτήσεων και πύρων σύνδεσης. Σε διαξονικά οχήματα ελέγχονται και οι δύο άξονες.'},
+  {id:'spring',num:'09',title:'Ελατήρια',sub:'Έλεγχος φυλλοειδών ελατηρίων',cat:'Αντοχή',preview:'spring',summary:'Φυλλοειδή ελατήρια τραπεζοειδούς μορφής με επιλογή υλικού από βιβλιοθήκη. Υπολογίζει σταθερά k, βέλος κάμψης και μέγιστη αναπτυσσόμενη τάση.'},
+  {id:'shear',num:'10',title:'Διάτμηση Κοχλιών & Ήλων',sub:'Γενική καταπόνηση πύρου σε διάτμηση',cat:'Αντοχή',preview:'shear',summary:'Επιλέγετε τύπο κοχλία από Μ2 μέχρι Μ100 — όλα τα γεωμετρικά στοιχεία συμπληρώνονται αυτόματα.'},
+  {id:'combined',num:'11',title:'Σύνθετη Καταπόνηση Κοχλία',sub:'Διάτμηση + εφελκυσμός ταυτόχρονα',cat:'Αντοχή',preview:'combined',summary:'Πλήρης έλεγχος κοχλία σε ταυτόχρονη διάτμηση και εφελκυσμό. Βάσει αρχών στοιχείων μηχανών.'},
+  {id:'weld',num:'12',title:'Συγκολλήσεις',sub:'Στατική & αδρανειακή καταπόνηση ραφών',cat:'Αντοχή',preview:'weld',summary:'Έλεγχος ραφών σε κάμψη, διάτμηση ή συνδυαστικά. Επιλέγετε υλικό και κατηγορία ποιότητας — οι συντελεστές ασφαλείας προσαρμόζονται αυτόματα.'},
+  {id:'turning',num:'13',title:'Ελάχιστη Ακτίνα Στροφής',sub:'Έλεγχος κύκλου στροφής',cat:'Δυναμική',preview:'turning',summary:'Ελάχιστη ακτίνα στροφής με την αναλογία του ποδηλάτου. Έλεγχος συμβατότητας με τον Κανονισμό (ΕΕ) 1230/2012.'},
+  {id:'brake',num:'14',title:'Πέδηση',sub:'Επιβράδυνση και συντελεστές ασφαλείας',cat:'Δυναμική',preview:'brake',summary:'Επιλέγετε επιθυμητή επιβράδυνση και διάμετρο ελαστικού. Υπολογίζει πεδούμενο φορτίο αξόνων και συνδυαστικό συντελεστή ασφαλείας.'},
+  {id:'stability',num:'15',title:'Ευστάθεια σε Στροφή',sub:'Μέγιστη ταχύτητα χωρίς ανατροπή',cat:'Δυναμική',preview:'stability',summary:'Από τα χαρακτηριστικά οχήματος και το θεωρητικό κέντρο βάρους, υπολογίζει μέγιστη ασφαλή ταχύτητα έμφορτο και άφορτο.'},
+  {id:'tipover',num:'16',title:'Ευστάθεια από Εξοπλισμό',sub:'Ανατροπή από κινούμενο εξοπλισμό',cat:'Δυναμική',preview:'tipover',summary:'Έλεγχος ευστάθειας σε ανατροπή για οχήματα με εξοπλισμό που μετακινείται — γερανούς, καλαθοφόρα.'},
+  {id:'rectbase',num:'17',title:'Τετράγωνη Βάση Γερανού',sub:'Καταπόνηση κοχλιών ορθογώνιας βάσης',cat:'Ειδικά',preview:'rectbase',summary:'Καταπόνηση κοχλιών ορθογώνιας βάσης γερανού στο μέγιστο επιτρεπόμενο φορτίο και απόσταση.'},
+  {id:'boom',num:'18',title:'Κυκλική Βάση Καλαθοφόρου',sub:'Καταπόνηση κοχλιών κυκλικής βάσης',cat:'Ειδικά',preview:'boom',summary:'Μοντέλο υπολογισμού για κοχλίες κυκλικής βάσης καλαθοφόρου ή γερανού. Ο δυσμενέστερος κοχλίας μεταφέρεται αυτόματα στο φύλλο Σύνθετης Καταπόνησης.'},
+  {id:'axial',num:'19',title:'Αξονικά Φορτία',sub:'Δυναμική καταπόνηση σε πέδηση',cat:'Αντοχή',preview:'axial',summary:'Δυναμική καταπόνηση συνδέσεων από αδρανειακές δυνάμεις πέδησης. Πλήρως αυτόματο.'},
+  {id:'lateral',num:'20',title:'Εγκάρσια Φορτία',sub:'Δυναμική καταπόνηση σε ελιγμούς',cat:'Αντοχή',preview:'lateral',summary:'Καταπόνηση συνδέσεων από αδρανειακές δυνάμεις σε ελιγμούς. Όλοι οι υπολογισμοί γίνονται αυτόματα.'},
+  {id:'newstudy',num:'21',title:'Νέα Μελέτη',sub:'Αυτόματη δομή φακέλων μελέτης',cat:'Ροή',preview:'newstudy',summary:'Επιλέξτε θέση και ο φάκελος με τους υποφακέλους δημιουργείται και μετονομάζεται αυτόματα με τον κωδικό μελέτης.',highlights:['Όλοι οι υποφάκελοι μετονομάζονται με τον κωδικό μελέτης.','Αντίγραφο του Word προτύπου της τεχνικής μελέτης.','Ερωτά αν θέλετε να ανοίξει το Word εκείνη τη στιγμή.','Πληροφορίες οχήματος αποθηκεύονται σε CSV.']},
+  {id:'importdata',num:'22',title:'Εισαγωγή Δεδομένων',sub:'Φόρτωση CSV από προηγούμενη μελέτη',cat:'Ροή',preview:'importdata',summary:'Διαλέξτε αρχείο CSV από προηγούμενη μελέτη και τα δεδομένα μπαίνουν αυτόματα στις σωστές θέσεις.'},
+  {id:'finalize',num:'23',title:'Τελικές Ρυθμίσεις',sub:'Προετοιμασία πριν την τεχνική μελέτη',cat:'Ροή',preview:'finalize',summary:'Σε ένα κλικ: ανανέωση όλων των διαγραμμάτων, διαγραφή κενών γραμμών, αυτόματη κλιμάκωση αξόνων.'},
+  {id:'savejpeg',num:'24',title:'Αποθήκευση Διαγραμμάτων',sub:'Εξαγωγή ως JPEG',cat:'Ροή',preview:'savejpeg',summary:'Όλα τα διαγράμματα, πίνακες φορτίων και σκαριφήματα πλαισίου αποθηκεύονται ως JPEG.'},
+  {id:'datasheet',num:'25',title:'Φύλλο Δεδομένων',sub:'Κεντρική εισαγωγή στοιχείων',cat:'Ροή',preview:'datasheet',summary:'Όλα τα στοιχεία οχήματος εισάγονται εδώ — κόκκινα κελιά = υποχρεωτικά. Κάθε κελί συνοδεύεται από επεξηγηματικά σχόλια.',highlights:['Κόκκινα κελιά = απαραίτητα για να γίνει η μελέτη.','Επεξηγηματικά σχόλια και εικόνες σε κάθε κελί.','Βιβλιοθήκη υλικών: πλαίσια, ελατήρια, χάλυβες, κοχλίες.','Κελιά εκτός εισόδων είναι κλειδωμένα — προστασία δεδομένων.']},
+  {id:'control',num:'26',title:'Φύλλο Ελέγχου',sub:'Επισκόπηση & επιλογή υπολογισμών',cat:'Ροή',preview:'control',summary:'Με μια ματιά: ποιοι υπολογισμοί ολοκληρώθηκαν σωστά. Γρήγορη πλοήγηση και επιλογή τι μεταφέρεται στην τελική μελέτη.',highlights:['Πίνακας πλοήγησης σε όλα τα φύλλα.','Άμεσος έλεγχος προβλημάτων στους υπολογισμούς.','Επιλογή τμημάτων που μεταφέρονται στο τελικό report.']},
+];
+
+// ── state ──────────────────────────────────────────────────────────
+let activeId=MODULES[0].id, userPicked=false;
+let offsetX=0, halfW=0, cardStep=0, paused=false, nudgePause=0;
+let rafId=0, lastT=0;
+
+// ── render spotlight ───────────────────────────────────────────────
+function renderSpotlight(id){
+  const m=MODULES.find(x=>x.id===id);
+  if(!m)return;
+  document.getElementById('capSpotPreview').innerHTML=P[m.preview]||'';
+  document.getElementById('capSpotNum').textContent='MODULE · '+m.num;
+  document.getElementById('capSpotNumBig').textContent=m.num;
+  document.getElementById('capSpotTitle').textContent=m.title;
+  document.getElementById('capSpotSub').textContent=m.sub;
+  document.getElementById('capSpotBody').textContent=m.summary;
+  const hl=document.getElementById('capSpotHighlights');
+  hl.innerHTML='';
+  if(m.highlights){m.highlights.forEach(h=>{const li=document.createElement('li');li.textContent=h;hl.appendChild(li);});}
+  document.querySelectorAll('.cap-card').forEach(c=>{
+    c.classList.toggle('is-active',c.dataset.id===id);
+  });
+}
+
+// ── build carousel ─────────────────────────────────────────────────
+function buildCarousel(){
+  const track=document.getElementById('capTrack');
+  const cols=[];
+  for(let i=0;i<MODULES.length;i+=2) cols.push(MODULES.slice(i,i+2));
+  const looped=[...cols,...cols];
+  track.innerHTML='';
+  looped.forEach(col=>{
+    const cell=document.createElement('div');
+    cell.className='carousel-cell';
+    col.forEach(m=>{
+      const btn=document.createElement('button');
+      btn.className='cap-card';
+      btn.dataset.id=m.id;
+      btn.innerHTML=`<div class="card-preview">${P[m.preview]||''}<div class="card-corner card-corner-tl"></div><div class="card-corner card-corner-br"></div></div><div class="card-body"><div class="card-head"><span class="card-num">${m.num}</span><span class="card-cat">${m.cat}</span></div><h3 class="card-title">${m.title}</h3><p class="card-sub">${m.sub}</p><div class="card-cta"><span>Προβολή</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" width="12" height="12"><path d="M5 12 H17 M13 8 L17 12 L13 16"/></svg></div></div>`;
+      btn.addEventListener('click',()=>{
+        userPicked=true;
+        activeId=m.id;
+        renderSpotlight(activeId);
+        const el=document.getElementById('capSpotlight');
+        if(el){window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-24,behavior:'smooth'});}
+      });
+      cell.appendChild(btn);
+    });
+    track.appendChild(cell);
+  });
+  document.getElementById('capModCount').textContent=MODULES.length;
+  measure();
+}
+
+function measure(){
+  const track=document.getElementById('capTrack');
+  if(!track)return;
+  const cells=track.querySelectorAll('.carousel-cell');
+  if(cells.length<2)return;
+  const a=cells[0].getBoundingClientRect(), b=cells[1].getBoundingClientRect();
+  cardStep=b.left-a.left;
+  halfW=cardStep*(MODULES.length/2);
+}
+
+// ── auto-scroll RAF ────────────────────────────────────────────────
+function tick(t){
+  const dt=(t-lastT)/1000; lastT=t;
+  if(halfW>0 && !paused && t>nudgePause){
+    offsetX-=22*dt;
+    if(offsetX<=-halfW) offsetX+=halfW;
+  }
+  const track=document.getElementById('capTrack');
+  if(track) track.style.transform=`translate3d(${offsetX}px,0,0)`;
+  rafId=requestAnimationFrame(tick);
+}
+
+function nudge(dir){
+  const step=cardStep||220;
+  offsetX-=dir*step;
+  if(halfW>0){
+    if(offsetX<=-halfW) offsetX+=halfW;
+    if(offsetX>0) offsetX-=halfW;
+  }
+  const track=document.getElementById('capTrack');
+  if(track){
+    track.style.transition='transform .45s cubic-bezier(.4,0,.2,1)';
+    track.style.transform=`translate3d(${offsetX}px,0,0)`;
+    setTimeout(()=>{if(track)track.style.transition='';},460);
+  }
+  nudgePause=performance.now()+1200;
+}
+
+// ── auto-cycle spotlight ───────────────────────────────────────────
+setInterval(()=>{
+  if(userPicked)return;
+  const i=MODULES.findIndex(m=>m.id===activeId);
+  activeId=MODULES[(i+1)%MODULES.length].id;
+  renderSpotlight(activeId);
+},6000);
+
+// ── init ───────────────────────────────────────────────────────────
+buildCarousel();
+renderSpotlight(activeId);
+
+const vp=document.getElementById('capViewport');
+if(vp){
+  vp.addEventListener('mouseenter',()=>{paused=true;});
+  vp.addEventListener('mouseleave',()=>{paused=false;});
+}
+document.getElementById('capPrev').addEventListener('click',()=>nudge(-1));
+document.getElementById('capNext').addEventListener('click',()=>nudge(1));
+window.addEventListener('resize',measure);
+
+lastT=performance.now();
+rafId=requestAnimationFrame(tick);
+})();
+</script>
 
 <style>
 .sw-detail {
@@ -699,6 +1591,7 @@
   color: var(--muted);
   max-width: 760px;
 }
+.sw-detail-lead strong { color: var(--blue); font-weight: 600; }
 
 .sw-detail-pricing-block {
   max-width: 760px;
