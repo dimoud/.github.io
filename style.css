@@ -1987,7 +1987,7 @@ footer {
 .sw-page-desc {
   font-size: 22px; line-height: 1.7; color: rgba(255,255,255,.75); margin-bottom: 40px; max-width: 520px;
 }
-.sw-page-desc strong { color: #fff; font-weight: 700; }
+.sw-page-desc strong { color: #3b82f6; font-weight: 700; }
 /* icon feature row — 4 columns, icon above text */
 .sw-page-feats-icon {
   display: flex; flex-direction: row; gap: 32px; margin-bottom: 44px;
