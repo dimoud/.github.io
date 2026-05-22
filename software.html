@@ -128,8 +128,9 @@
         <li id="sw-f7">Welds &amp; springs</li>
         <li id="sw-f8">Cranes &amp; platforms</li>
       </ul>
-      <div class="sw-page-cta" style="flex-wrap:nowrap;">
-        <a href="https://www.easemanual.eu" target="_blank" rel="noopener" class="btn-primary" id="sw-cta1">View Product →</a>
+      <div class="sw-page-cta sw-page-cta--lg">
+        <a href="me-quickstart.html" class="btn-primary" id="sw-cta1">View Product →</a>
+        <a href="https://www.easemanual.eu/user-guide/mechanical-expertease" target="_blank" rel="noopener" class="btn-outline" id="sw-cta4">Full Guide →</a>
         <a href="downloads.html" target="_blank" rel="noopener" class="btn-outline" id="sw-cta3">Downloads</a>
       </div>
     </div>
@@ -544,6 +545,8 @@
       </div>
     </div>
 
+
+
   </div>
 </section>
 
@@ -714,6 +717,32 @@
   color: var(--blue-lt);
   font-size: 9px;
   flex-shrink: 0;
+}
+
+
+.sw-page-cta--lg {
+  margin-top: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.sw-page-cta--lg .btn-primary,
+.sw-page-cta--lg .btn-outline {
+  padding: 16px 36px;
+  min-height: 52px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  flex: 1 1 auto;
+  text-align: center;
+  white-space: nowrap;
+}
+@media (max-width: 640px) {
+  .sw-page-cta--lg .btn-primary,
+  .sw-page-cta--lg .btn-outline {
+    padding: 14px 20px;
+    font-size: 10px;
+    min-height: 44px;
+    flex: 1 1 100%;
+  }
 }
 
 @media (max-width: 960px) {

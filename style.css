@@ -1998,8 +1998,8 @@ footer {
   display: flex; align-items: center; justify-content: center;
 }
 .sw-page-img {
-  width: 140%;
-  margin-left: calc(-20% + 5cm);
+  width: 98%;
+  margin-left: calc(-20% + 8cm);
   border-radius: 0;
   box-shadow: none;
   border: none;

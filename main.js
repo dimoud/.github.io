@@ -101,7 +101,52 @@ const LANG = {
     sw_desc:'Λογισμικό που αυτοματοποιεί την τεχνική μελέτη για άδεια κυκλοφορίας οχημάτων ειδικής χρήσης — βάσει ΥΑ 80255/4693/19/2020. Φτιαγμένο από μηχανικούς για μηχανικούς.',
     sw_f1:'Τεχνικοί υπολογισμοί', sw_f2:'Διαγράμματα φόρτισης', sw_f3:'Σχέδια A3', sw_f4:'Αυτόματη μελέτη Word',
     sw_f5:'Άξονες & εφεδρανισμοί', sw_f6:'Ευστάθεια & πέδηση', sw_f7:'Συγκολλήσεις & ελατήρια', sw_f8:'Γερανοί & καλαθοφόρα',
-    sw_cta1:'Δείτε το Προϊόν →', sw_cta2:'Τιμολόγηση', sw_cta3:'Λήψεις',
+    sw_cta1:'Δείτε το Προϊόν →', sw_cta2:'Τιμολόγηση', sw_cta3:'Λήψεις', sw_cta4:'Πλήρης Οδηγός →',
+    qs_label:'Mechanical ExpertEase · Λογισμικό',
+    qs_title:'Η μελέτη<br>γράφεται<br>μόνη της.',
+    qs_desc:'Εξειδικευμένο εργαλείο για τεχνικές μελέτες οχημάτων ειδικής χρήσης. Αυτόματοι υπολογισμοί, διαγράμματα ροπής & κάμψης, και πλήρης μελέτη Word με ένα κλικ. Το εμπιστεύονται μηχανικοί και επαγγελματίες του χώρου.',
+    qs_f1:'Φύλλα εισαγωγής δεδομένων', qs_f2:'Wizard υπολογισμών', qs_f3:'Φύλλο σχεδίου Α3', qs_f4:'Ανάλυση πλαισίου',
+    qs_f5:'Φορτία & έλεγχοι αξόνων', qs_f6:'Έλεγχος & ανασκόπηση', qs_f7:'Τεχνική μελέτη', qs_f8:'Εξαγωγή & υποβολή',
+    qs_cta_back:'← Πίσω στο Λογισμικό', qs_cta_product:'Αποκτήστε Πρόσβαση →',
+    qs_k0:'Επισκόπηση', qs_t0:'Η αρχική οθόνη.', qs_d0:'Όταν ανοίγετε το Mechanical ExpertEase βλέπετε τον κύριο πίνακα ελέγχου. Από εδώ επιλέγετε τύπο οχήματος, ανοίγετε υπάρχουσα μελέτη ή ξεκινάτε νέα. Η διεπαφή είναι οργανωμένη σε φύλλα — κάθε ένα καλύπτει ένα στάδιο υπολογισμού.',
+    qs_cap0:'// Αρχικό Φύλλο — Κύριος Πίνακας Ελέγχου',
+    qs_k1:'Εισαγωγή Δεδομένων', qs_t1:'Εισαγωγή δεδομένων οχήματος.', qs_d1:'Εισάγετε όλα τα τεχνικά χαρακτηριστικά — αριθμό αξόνων, μεταξόνιο, διαστάσεις ελαστικών, ΜΒΟ, κατανομή φορτίου και γεωμετρία υπερκατασκευής. Το φύλλο δεδομένων επαληθεύει τις εγγραφές σε πραγματικό χρόνο.',
+    qs_b1_1:'Διάταξη αξόνων έως 5', qs_b1_2:'Δεδομένα ελαστικών & ζαντών ανά άξονα', qs_b1_3:'Διαστάσεις & υλικό υπερκατασκευής', qs_b1_4:'ΜΒΟ, φορτίο, κέντρο βάρους',
+    qs_cap1:'// Φύλλο Δεδομένων',
+    qs_k2:'Υπολογισμοί', qs_t2:'Αυτόματοι υπολογισμοί.', qs_d2:'Ο wizard εκτελεί βήμα-βήμα κάθε απαιτούμενο υπολογισμό — φορτία αξόνων, τέμνουσες, ροπές κάμψης, ευστάθεια, πέδηση και άλλα. Τα αποτελέσματα τροφοδοτούν αυτόματα τα σχέδια και την τελική μελέτη.',
+    qs_b2_1:'Κατανομή & επαλήθευση φορτίων αξόνων', qs_b2_2:'Διαγράμματα τεμνουσών & ροπών κάμψης', qs_b2_3:'Έλεγχοι ευστάθειας & πέδησης', qs_b2_4:'Υπολογισμοί συγκολλήσεων, κοχλιών & ελατηρίων',
+    qs_cap2:'// Wizard Υπολογισμών',
+    qs_k3:'Βελτιστοποίηση', qs_t3:'Βελτιστοποίηση διατομής & προφίλ.', qs_d3:'Ο wizard βελτιστοποίησης προτείνει την οικονομικότερη διατομή για τα μέλη του πλαισίου. Επιλέξτε από τυποποιημένες βιβλιοθήκες — HEA, HEB, IPE, UPN — και το λογισμικό επαληθεύει αμέσως τους λόγους αξιοποίησης.',
+    qs_b3_1:'Τυποποιημένη βιβλιοθήκη χαλύβδινων προφίλ', qs_b3_2:'Άμεση ανάδραση λόγου αξιοποίησης', qs_b3_3:'Προτάσεις διατομής με γνώση κατασκευής',
+    qs_cap3:'// Wizard Βελτιστοποίησης',
+    qs_k4:'Βιβλιοθήκη Διατομών', qs_t4:'Διατομές & αυτόματα σκαριφήματα.', qs_d4:'Επιλέξτε από εκτενή βιβλιοθήκη τυποποιημένων διατομών. Το λογισμικό δημιουργεί αυτόματα διαστασιολογημένα σκαριφήματα για κάθε επιλεγμένο προφίλ — έτοιμα για ενσωμάτωση στην τεχνική μελέτη.',
+    qs_b4_1:'HEA, HEB, IPE, UPN, RHS και άλλα', qs_b4_2:'Αυτόματα διαστασιολογημένα σκαριφήματα', qs_b4_3:'Άμεσος σύνδεσμος με μονάδα υπολογισμού πλαισίου',
+    qs_cap4:'// Διαθέσιμες Διατομές & Αυτόματα Σκαριφήματα',
+    qs_k5:'Ανάλυση Αξόνων', qs_t5:'Φορτία & έλεγχοι τάσεων αξόνων.', qs_d5:'Κάθε άξονας επαληθεύεται χωριστά έναντι των ελληνικών κανονισμών. Τα αποτελέσματα τάσεων εμφανίζονται ανά ελαστικό, ανά άξονα και για ολόκληρο το όχημα. Μη συμμορφούμενες τιμές επισημαίνονται αμέσως.',
+    qs_b5_1:'Αποτελέσματα φορτίου & τάσης ανά άξονα', qs_b5_2:'Επαλήθευση πίεσης επαφής ελαστικού', qs_b5_3:'Αυτόματη σήμανση συμμόρφωσης', qs_b5_4:'Υποστήριξη άξονων διεύθυνσης, κίνησης & ρυμούλκευσης',
+    qs_cap5:'// Άξονες — Ανάλυση Αξόνων',
+    qs_k6:'Ανάλυση Πλαισίου', qs_t6:'Φύλλο υπολογισμού πλαισίου.', qs_d6:'Το φύλλο πλαισίου χειρίζεται απλές και σύνθετες διατάξεις πλαισίου. Υπολογίζει ροπές κάμψης, τέμνουσες και ορθές τάσεις για κάθε μέλος, και παράγει αυτόματα τα διαγράμματα ισορροπίας και ροπών.',
+    qs_b6_1:'Απλοί & σύνθετοι τύποι πλαισίου', qs_b6_2:'Αυτόματα διαγράμματα ροπών & τεμνουσών', qs_b6_3:'Επαλήθευση κοχλιωτών συνδέσεων και συγκολλήσεων', qs_b6_4:'Αποτελέσματα αμέσως στη μελέτη Word',
+    qs_cap6:'// Φύλλο Υπολογισμού Πλαισίου',
+    qs_k7:'Βοηθητικά Φύλλα', qs_t7:'Βοηθητικά φύλλα υπολογισμών.', qs_d7:'Πέρα από τις κύριες ενότητες, το Mechanical ExpertEase περιλαμβάνει πλήρες σύνολο βοηθητικών φύλλων — άξονες & εφεδρανισμοί, συγκολλήσεις, ελατήρια, ευστάθεια γερανού, πέδηση και άλλα. Κάθε φύλλο είναι προ-μορφοποιημένο.',
+    qs_cap7:'// Βοηθητικά Φύλλα',
+    qs_k8:'Έλεγχος', qs_t8:'Φύλλο ελέγχου & ανασκόπησης.', qs_d8:'Πριν τη δημιουργία της τελικής μελέτης, το φύλλο ελέγχου δίνει συνολική σύνοψη αποδοχής/αποτυχίας όλων των ενοτήτων. Κάθε έλεγχος εμφανίζεται με αποτέλεσμα — πράσινο για συμμόρφωση, κόκκινο για αναντιστοιχία.',
+    qs_b8_1:'Σύνοψη συμμόρφωσης σε μία οθόνη', qs_b8_2:'Αποδοχή / αποτυχία ανά έλεγχο κανονισμού', qs_b8_3:'Σύνδεσμοι πίσω στο σχετικό φύλλο',
+    qs_cap8:'// Φύλλο Ελέγχου',
+    qs_k9:'Έλεγχος Εξαγωγής', qs_t9:'Δημιουργία μελέτης με ένα κλικ.', qs_d9:'Ο πίνακας ελέγχου συγκεντρώνει όλες τις ενέργειες εξαγωγής σε ένα σημείο. Δημιουργήστε την πλήρη μελέτη Word, εξάγετε τα σχέδια Α3 ή εκτελέστε τελικό έλεγχο — με ένα κλικ.',
+    qs_b9_1:'Δημιουργία πλήρους μελέτης Word με ένα κλικ', qs_b9_2:'Εξαγωγή τεχνικών σχεδίων Α3', qs_b9_3:'Γρήγορη εξαγωγή PDF για ανασκόπηση', qs_b9_4:'Εκτέλεση τελικού ελέγχου συμμόρφωσης',
+    qs_cap9:'// Κουμπιά Ελέγχου — Πίνακας Εξαγωγής',
+    qs_k10:'Σχέδιο Α3', qs_t10:'Αυτόματο σχέδιο οχήματος Α3.', qs_d10:'Το φύλλο σχεδίου Α3 συμπληρώνεται αυτόματα από τα δεδομένα εισαγωγής — περίγραμμα οχήματος, θέσεις αξόνων, διαστάσεις και τίτλος πίνακα συμπληρώνονται χωρίς χειροκίνητο σχεδιασμό. Αποτέλεσμα: έτοιμο προς εκτύπωση τεχνικό σχέδιο Α3.',
+    qs_b10_1:'Πλήρως αυτόματο από τα δεδομένα εισαγωγής', qs_b10_2:'Σωστός πίνακας τίτλου & πεδία αναθεώρησης', qs_b10_3:'Έτοιμο προς εκτύπωση σε κλίμακα Α3', qs_b10_4:'Εξάγεται απευθείας στη μελέτη Word',
+    qs_cap10:'// Φύλλο Σχεδίου Α3',
+    qs_k11:'Εξαγωγή', qs_t11:'Η πλήρης τεχνική μελέτη.', qs_d11:'Η τελική έξοδος είναι ένα πλήρως μορφοποιημένο έγγραφο Word — η ολοκληρωμένη τεχνική μελέτη έτοιμη για υποβολή σε ΚΕΚ / ΙΕΚΕΜ. Περιέχει υπολογισμούς, διαγράμματα, σχέδια Α3 και τεχνικό υπόμνημα — αυτόματα.',
+    qs_cap11:'// Τεχνικό Υπόμνημα — Τελική Μελέτη',
+    qs_k12:'Ολοκλήρωση', qs_t12:'Έτοιμο για υποβολή.', qs_d12:'Όταν όλες οι ενότητες είναι πράσινες, η μελέτη είναι ολοκληρωμένη. Το τελικό αρχείο Word και τα σχέδια Α3 είναι έτοιμα για εξαγωγή και μορφοποιημένα σύμφωνα με ΥΑ 80255/4693/19/2020. Από εισαγωγή δεδομένων σε έτοιμη μελέτη — σε λεπτά.',
+    qs_b12_1:'Όλες οι ενότητες επαληθευμένες', qs_b12_2:'Μελέτη Word έτοιμη για υποβολή', qs_b12_3:'Σχέδια Α3 έτοιμα προς εκτύπωση', qs_b12_4:'Συμμόρφωση με ΥΑ 80255/4693/19/2020',
+    qs_cap12:'// Μελέτη Ολοκληρωμένη',
+    qs_cta_kicker:'Ξεκινήστε', qs_cta_title:'Θέλετε να το δοκιμάσετε;',
+    qs_cta_sub:'Ξεκινήστε με τη δωρεάν Triage έκδοση ή αποκτήστε απευθείας πλήρη συνδρομή. Χωρίς ρύθμιση, χωρίς πρότυπα — απλά ανοίξτε και ξεκινήστε.',
+    qs_cta_pricing:'Δείτε Τιμολόγηση →', qs_cta_site:'Επισκεφτείτε το easemanual.eu →',
     sw_d_kicker1:'Τι κάνει', sw_d_title:'Δούλεψε έξυπνα, όχι σκληρά.',
     sw_d_lead:'Ένα ισχυρό, εύχρηστο εργαλείο που αυτοματοποιεί την εκπόνηση τεχνικών μελετών για άδεια κυκλοφορίας οχημάτων ειδικής χρήσης. Αυτοματοποιεί κάθε υπολογισμό — παράγοντας αξιόπιστα αποτελέσματα και πλήρη τεκμηρίωση σε λεπτά, όχι ημέρες.',
     sw_d_kicker2:'Πώς λειτουργεί',
@@ -141,6 +186,8 @@ const LANG = {
     swpb_feat_yr_1:'Όλα του Μηνιαίου', swpb_feat_yr_2:'Προτεραιότητα υποστήριξης', swpb_feat_yr_3:'Όλες οι μελλοντικές ενημερώσεις', swpb_feat_yr_4:'Κλειδωμένη εποχιακή τιμή',
     swpb_feat_lib_1:'Πλήρη πρότυπα σχεδίων', swpb_feat_lib_2:'Βιβλιοθήκη τυποποιημένων εξαρτημάτων', swpb_feat_lib_3:'Μόνιμη πρόσβαση',
     swpb_footnote:'Υποστήριξη & ενημερώσεις για custom περιπτώσεις χρεώνονται χωριστά. <a href="contact.html" id="swpb-footnote-link">Επικοινωνήστε μαζί μας</a> για εξατομικευμένη προσφορά.',
+    sw_scr_k1:'Σχέδιο Α3', sw_scr_d1:'Το σχέδιο Α3 οχήματος παράγεται αυτόματα — χωρίς χειροκίνητο σχεδιασμό. Θέσεις αξόνων, διαστάσεις και τίτλος συμπληρώνονται από τα δεδομένα σας και εξάγονται απευθείας στη μελέτη Word.', sw_scr_cap1:'// Φύλλο Σχεδίου Α3 — Αυτόματο Σχέδιο',
+    sw_scr_k2:'Ανάλυση Πλαισίου', sw_scr_d2:'Το φύλλο υπολογισμού πλαισίου χειρίζεται απλές και σύνθετες διατάξεις πλαισίου. Ροπές κάμψης, τέμνουσες και διαγράμματα υπολογίζονται και σχεδιάζονται αυτόματα — χωρίς εξωτερικό CAD.', sw_scr_cap2:'// Φύλλο Υπολογισμού Πλαισίου',
     sw_d_kicker3:'Δυνατότητες',
     sw_fc1_name:'Ανάλυση Οχήματος', sw_fc1_1:'Υποστήριξη έως 5 αξόνων', sw_fc1_2:'Έλεγχοι τάσεων αξόνων & ελαστικών', sw_fc1_3:'Αυτόματη τοποθέτηση φορτίων', sw_fc1_4:'Αυτόματη κατασκευή διαγράμματος ισορροπίας',
     sw_fc2_name:'Πλαίσιο & Κατασκευή', sw_fc2_1:'Απλοί & σύνθετοι τύποι πλαισίου', sw_fc2_2:'Υπολογισμοί ροπών κάμψης & τεμνουσών', sw_fc2_3:'Ανάλυση κοχλιωτών συνδέσεων', sw_fc2_4:'Υπολογισμοί συγκολλήσεων υπερκατασκευής',
@@ -348,7 +395,52 @@ const LANG = {
     sw_desc:'Powerful software automating the creation of technical studies for special-purpose vehicle licensing — per Greek regulation YA 80255/4693/19/2020. Built by engineers for engineers.',
     sw_f1:'Technical calculations', sw_f2:'Load diagrams', sw_f3:'A3 vehicle drawings', sw_f4:'Automatic Word report',
     sw_f5:'Shafts & bearings', sw_f6:'Stability & braking', sw_f7:'Welds & springs', sw_f8:'Cranes & platforms',
-    sw_cta1:'View Product →', sw_cta2:'Pricing', sw_cta3:'Downloads',
+    sw_cta1:'View Product →', sw_cta2:'Pricing', sw_cta3:'Downloads', sw_cta4:'Full Guide →',
+    qs_label:'Quick Start · Mechanical ExpertEase',
+    qs_title:'From Data<br>to Study.',
+    qs_desc:'A complete walkthrough of the software — from vehicle data entry and automatic calculations to A3 drawings, frame analysis, and the final Word technical study.',
+    qs_f1:'Data entry sheets', qs_f2:'Calculation wizard', qs_f3:'A3 drawing sheet', qs_f4:'Frame analysis',
+    qs_f5:'Axle loads & checks', qs_f6:'Control & review', qs_f7:'Technical report', qs_f8:'Export & submit',
+    qs_cta_back:'← Back to Software', qs_cta_product:'Get Access →',
+    qs_k0:'Overview', qs_t0:'The starting screen.', qs_d0:'When you open Mechanical ExpertEase you are greeted by the main dashboard. From here you select vehicle type, open an existing study, or start a new one. The interface is structured into named sheets — each covering a distinct calculation stage.',
+    qs_cap0:'// Main Dashboard — Starting Screen',
+    qs_k1:'Input', qs_t1:'Vehicle data entry.', qs_d1:'Enter all technical specifications of the vehicle — axle count, wheelbase, tyre dimensions, GVW, payload distribution and superstructure geometry. The data sheet validates entries in real time and prevents invalid combinations.',
+    qs_b1_1:'Axle configuration up to 5 axles', qs_b1_2:'Tyre and rim data per axle', qs_b1_3:'Superstructure dimensions & material', qs_b1_4:'GVW, payload, centre of gravity',
+    qs_cap1:'// Data Sheet',
+    qs_k2:'Calculations', qs_t2:'Automated calculations.', qs_d2:'The wizard steps through every required calculation automatically — axle loads, shear forces, bending moments, stability, braking and more. Each module runs in sequence and the results feed directly into the drawings and the final report.',
+    qs_b2_1:'Axle load distribution & verification', qs_b2_2:'Shear force & bending moment diagrams', qs_b2_3:'Stability and braking checks', qs_b2_4:'Weld, bolt and spring calculations',
+    qs_cap2:'// Calculation Wizard',
+    qs_k3:'Optimisation', qs_t3:'Section & profile optimisation.', qs_d3:'The optimisation wizard suggests the most economical cross-section for your frame members. Select from standard profile libraries — HEA, HEB, IPE, UPN — and the software verifies utilisation ratios instantly.',
+    qs_b3_1:'Standard European steel profile library', qs_b3_2:'Instant utilisation ratio feedback', qs_b3_3:'DFM-aware section recommendations',
+    qs_cap3:'// Optimisation Wizard',
+    qs_k4:'Section Library', qs_t4:'Cross-sections & auto-sketches.', qs_d4:'Choose from an extensive library of standard cross-sections. The software automatically generates dimensioned sketches for each selected profile — ready to embed in the technical study without any manual drafting.',
+    qs_b4_1:'HEA, HEB, IPE, UPN, RHS and more', qs_b4_2:'Auto-generated dimensioned sketches', qs_b4_3:'Direct link to frame calculation module',
+    qs_cap4:'// Available Cross-sections & Auto-sketches',
+    qs_k5:'Axle Analysis', qs_t5:'Axle loads & stress checks.', qs_d5:'Every axle is verified individually against Greek regulation limits. Stress results are displayed per tyre, per axle and for the entire vehicle. Non-conforming values are highlighted immediately so you can adjust load distribution before generating the study.',
+    qs_b5_1:'Per-axle load and stress results', qs_b5_2:'Tyre contact pressure verification', qs_b5_3:'Automatic compliance flagging', qs_b5_4:'Supports steering, drive & trailer axles',
+    qs_cap5:'// Axle Analysis',
+    qs_k6:'Frame Analysis', qs_t6:'Frame calculation sheet.', qs_d6:'The frame sheet handles both simple and complex chassis configurations. It computes bending moments, shear forces and normal stresses for each frame member, and generates the full free-body and moment diagrams automatically.',
+    qs_b6_1:'Simple & complex frame types', qs_b6_2:'Automatic moment & shear diagrams', qs_b6_3:'Bolted connection and weld verification', qs_b6_4:'Results feed directly into Word report',
+    qs_cap6:'// Frame Calculation Sheet',
+    qs_k7:'Auxiliary Sheets', qs_t7:'Supporting calculation sheets.', qs_d7:'Beyond the main modules, Mechanical ExpertEase includes a full set of auxiliary sheets — shafts & bearings, welds, springs, crane stability, braking and more. Each sheet is pre-formatted and links its results into the final study automatically.',
+    qs_cap7:'// Auxiliary Sheets',
+    qs_k8:'Review', qs_t8:'Control & review sheet.', qs_d8:'Before generating the final study, the control sheet gives you a consolidated pass/fail summary across all calculation modules. Every check is listed with its result — green for compliant, red for non-conforming — so you can catch any issue in one view.',
+    qs_b8_1:'Single-view compliance summary', qs_b8_2:'Pass / fail per regulation check', qs_b8_3:'Links back to the relevant sheet',
+    qs_cap8:'// Control Sheet',
+    qs_k9:'Controls', qs_t9:'One-click study generation.', qs_d9:'The control panel brings all export actions to a single place. Generate the full Word technical study, export the A3 drawings, or run a final check — all with one click. No manual assembly, no copy-paste, no formatting.',
+    qs_b9_1:'Generate full Word study with one click', qs_b9_2:'Export A3 technical drawings', qs_b9_3:'Quick PDF export for review', qs_b9_4:'Run final compliance check',
+    qs_cap9:'// Control Panel',
+    qs_k10:'A3 Drawing', qs_t10:'Auto-generated A3 vehicle drawing.', qs_d10:'The A3 drawing sheet is populated automatically from your data inputs — vehicle outline, axle positions, dimensions and title block are all filled in without manual drafting. The result is a print-ready, regulation-compliant technical drawing at A3 scale.',
+    qs_b10_1:'Fully automatic from data inputs', qs_b10_2:'Correct title block & revision fields', qs_b10_3:'Print-ready at A3 scale', qs_b10_4:'Exports directly to the Word study',
+    qs_cap10:'// A3 Drawing Sheet',
+    qs_k11:'Output', qs_t11:'The complete technical study.', qs_d11:'The final output is a fully formatted Word document — the complete technical study ready for KEK / IEKEM submission. It contains all calculations, diagrams, A3 drawings and the official technical note, assembled automatically from your inputs.',
+    qs_cap11:'// Technical Note & Final Study',
+    qs_k12:'Complete', qs_t12:'Ready for submission.', qs_d12:'When all modules show green, the study is complete. The final Word file and A3 drawings are export-ready and formatted to meet Greek regulation YA 80255/4693/19/2020. From data entry to submission-ready study — in minutes, not days.',
+    qs_b12_1:'All modules verified and green', qs_b12_2:'Word study ready to submit', qs_b12_3:'A3 drawings included and print-ready', qs_b12_4:'Compliant with YA 80255/4693/19/2020',
+    qs_cap12:'// Study Complete',
+    qs_cta_kicker:'Get Started', qs_cta_title:'Ready to try it?',
+    qs_cta_sub:'Start with the free Triage version or go straight to a full subscription. No setup, no templates — just open and start.',
+    qs_cta_pricing:'See Pricing →', qs_cta_site:'Visit easemanual.eu →',
     sw_d_kicker1:'What it does', sw_d_title:'Work smart, not hard.',
     sw_d_lead:'A powerful, user-friendly tool that automates the creation of technical studies for special-use and special-purpose vehicle licensing. It automates every calculation process — generating reliable results and complete documentation in minutes, not days.',
     sw_d_kicker2:'How it works',
@@ -388,6 +480,8 @@ const LANG = {
     swpb_feat_yr_1:'Everything in Monthly', swpb_feat_yr_2:'Priority support', swpb_feat_yr_3:'All future updates', swpb_feat_yr_4:'Locked seasonal rate',
     swpb_feat_lib_1:'Full drawing templates', swpb_feat_lib_2:'Standard components library', swpb_feat_lib_3:'Lifetime access',
     swpb_footnote:'Support & updates for custom cases are priced separately. <a href="contact.html" id="swpb-footnote-link">Contact us</a> for a tailored quote.',
+    sw_scr_k1:'A3 Drawing', sw_scr_d1:'The A3 vehicle drawing is generated automatically — no manual drafting. Axle positions, dimensions and title block are filled from your inputs and exported directly into the Word study.', sw_scr_cap1:'// A3 Drawing Sheet — Auto Drawing',
+    sw_scr_k2:'Frame Analysis', sw_scr_d2:'The frame calculation sheet handles simple and complex chassis types. Bending moments, shear forces and moment diagrams are computed and drawn automatically — no external CAD required.', sw_scr_cap2:'// Frame Calculation Sheet',
     sw_d_kicker3:'Capabilities',
     sw_fc1_name:'Vehicle Analysis', sw_fc1_1:'Up to 5 axles support', sw_fc1_2:'Axle & tyre stress checks', sw_fc1_3:'Automatic load positioning', sw_fc1_4:'Free-body diagram generation',
     sw_fc2_name:'Frame & Structure', sw_fc2_1:'Simple & complex frame types', sw_fc2_2:'Bending moment & shear calcs', sw_fc2_3:'Bolted connection analysis', sw_fc2_4:'Superstructure weld calcs',
@@ -602,7 +696,7 @@ function applyLang(lang) {
   set('sw-heading',t.sw_heading); set('sw-label',t.sw_label);
   set('sw-desc',t.sw_desc);
   for(let i=1;i<=8;i++) set('sw-f'+i,t['sw_f'+i]);
-  set('sw-cta1',noArrow(t.sw_cta1)); set('sw-cta2',noArrow(t.sw_cta2)); set('sw-cta3',noArrow(t.sw_cta3));
+  set('sw-cta1',noArrow(t.sw_cta1)); set('sw-cta2',noArrow(t.sw_cta2)); set('sw-cta3',noArrow(t.sw_cta3)); set('sw-cta4',noArrow(t.sw_cta4));
   set('sw-d-kicker1',t.sw_d_kicker1); set('sw-d-title',t.sw_d_title); set('sw-d-lead',t.sw_d_lead);
   set('sw-d-kicker2',t.sw_d_kicker2);
   for(let i=1;i<=6;i++) set('sw-wf'+i,t['sw_wf'+i]);
@@ -624,8 +718,22 @@ function applyLang(lang) {
   set('swpb-feat-yr-1',t.swpb_feat_yr_1); set('swpb-feat-yr-2',t.swpb_feat_yr_2); set('swpb-feat-yr-3',t.swpb_feat_yr_3); set('swpb-feat-yr-4',t.swpb_feat_yr_4);
   set('swpb-feat-lib-1',t.swpb_feat_lib_1); set('swpb-feat-lib-2',t.swpb_feat_lib_2); set('swpb-feat-lib-3',t.swpb_feat_lib_3);
   set('swpb-footnote',t.swpb_footnote,true);
+  set('sw-scr-k1',t.sw_scr_k1); set('sw-scr-d1',t.sw_scr_d1); set('sw-scr-cap1',t.sw_scr_cap1);
+  set('sw-scr-k2',t.sw_scr_k2); set('sw-scr-d2',t.sw_scr_d2); set('sw-scr-cap2',t.sw_scr_cap2);
   set('sw-d-kicker3',t.sw_d_kicker3);
   for(let c=1;c<=4;c++){ set('sw-fc'+c+'-name',t['sw_fc'+c+'_name']); for(let r=1;r<=4;r++) set('sw-fc'+c+'-'+r,t['sw_fc'+c+'_'+r]); }
+  // me-quickstart.html
+  set('qs-label',t.qs_label); set('qs-title',t.qs_title,true); set('qs-desc',t.qs_desc);
+  for(let i=1;i<=8;i++) set('qs-f'+i,t['qs_f'+i]);
+  set('qs-cta-back',noArrow(t.qs_cta_back)); set('qs-cta-product',noArrow(t.qs_cta_product));
+  for(let i=0;i<=12;i++){
+    set('qs-k'+i,t['qs_k'+i]); set('qs-t'+i,t['qs_t'+i]); set('qs-d'+i,t['qs_d'+i]);
+    set('qs-cap-'+i,t['qs_cap'+i]);
+  }
+  for(let s=1;s<=12;s++) for(let b=1;b<=4;b++) set('qs-b'+s+'-'+b,t['qs_b'+s+'_'+b]);
+  set('qs-cta-kicker',t.qs_cta_kicker); set('qs-cta-title',t.qs_cta_title);
+  set('qs-cta-sub',t.qs_cta_sub);
+  set('qs-cta-pricing',noArrow(t.qs_cta_pricing)); set('qs-cta-site',noArrow(t.qs_cta_site));
   // webdesign.html
   set('wd-codebox-label',t.wd_codebox_label); set('wd-codebox-body',t.wd_codebox_body);
   set('wd-label',t.wd_label); set('wd-desc',t.wd_desc);

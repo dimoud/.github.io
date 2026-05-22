@@ -288,8 +288,232 @@
       text-transform: uppercase;
     }
 
+    /* ── T&C modal backdrop ── */
+    .tc-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(6,13,26,.7);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9998;
+      padding: 16px;
+    }
+    .tc-backdrop.hidden { display: none !important; }
+    .tc-modal {
+      background: var(--bg);
+      border: 1px solid var(--border2);
+      border-radius: 16px;
+      overflow: hidden;
+      max-width: 520px;
+      width: 100%;
+      box-shadow: 0 24px 64px rgba(6,13,26,.3);
+      display: flex;
+      flex-direction: column;
+      max-height: 90vh;
+    }
+    .tc-accent {
+      height: 3px;
+      background: linear-gradient(90deg, var(--navy), var(--blue), var(--blue-lt), var(--blue), var(--navy));
+      flex-shrink: 0;
+    }
+    .tc-header {
+      padding: 24px 28px 18px;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .tc-header-title {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .tc-header-sub {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--faint);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .tc-body {
+      padding: 20px 28px;
+      overflow-y: auto;
+      flex: 1;
+    }
+    .tc-footer {
+      padding: 16px 28px 20px;
+      border-top: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .tc-accept-btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background: var(--navy);
+      color: #fff;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: background .2s, transform .2s;
+      margin-top: 12px;
+    }
+    .tc-accept-btn:hover:not(:disabled) { background: var(--blue); transform: translateY(-1px); }
+    .tc-accept-btn:disabled { opacity: .45; cursor: not-allowed; }
+
+    /* ── request-form T&C checkbox row ── */
+    .dl-tc-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 14px;
+      cursor: pointer;
+    }
+    .dl-tc-row input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      accent-color: var(--blue);
+      cursor: pointer;
+    }
+    .dl-tc-row span {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .dl-tc-link {
+      background: none;
+      border: none;
+      padding: 0;
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--blue);
+      text-decoration: underline;
+      cursor: pointer;
+      line-height: inherit;
+    }
+    .dl-tc-link:hover { color: var(--blue-lt); }
+
     /* ── hidden utility ── */
     .hidden { display: none !important; }
+
+    /* ── Terms & Conditions modal ── */
+    .tc-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(6,13,26,.80);
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      padding: 16px;
+    }
+    .tc-modal {
+      background: var(--bg);
+      border: 1px solid var(--border2);
+      border-radius: 16px;
+      overflow: hidden;
+      max-width: 540px;
+      width: 100%;
+      max-height: 88vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 32px 80px rgba(6,13,26,.40);
+    }
+    .tc-accent { height: 3px; flex-shrink: 0; background: linear-gradient(90deg,var(--navy),var(--blue),var(--blue-lt),var(--blue),var(--navy)); }
+    .tc-header {
+      padding: 24px 28px 18px;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .tc-header-title {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .tc-lang-toggle {
+      display: flex;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+    .tc-lang-btn {
+      padding: 4px 14px;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: background .2s, color .2s, border-color .2s;
+      border: 1px solid var(--border2);
+      background: transparent;
+      color: var(--muted);
+    }
+    .tc-lang-btn.active { background: var(--navy); color: #fff; border-color: var(--navy); }
+    .tc-body {
+      padding: 20px 28px;
+      overflow-y: auto;
+      flex: 1;
+    }
+    .tc-text { display: none; }
+    .tc-text.active { display: block; }
+    .tc-text h3 {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--text);
+      margin: 16px 0 4px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .tc-text h3:first-child { margin-top: 0; }
+    .tc-text p {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 6px;
+    }
+    .tc-modal-footer {
+      padding: 16px 28px 20px;
+      border-top: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .tc-close-btn {
+      display: block;
+      width: 100%;
+      padding: 11px;
+      background: var(--navy);
+      color: #fff;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: background .2s, transform .2s;
+    }
+    .tc-close-btn:hover { background: var(--blue); transform: translateY(-1px); }
+    @media (max-width: 560px) {
+      .tc-header, .tc-body, .tc-modal-footer { padding-left: 20px; padding-right: 20px; }
+    }
 
     /* ── download confirm modal ── */
     .dl-modal-backdrop {
@@ -431,7 +655,11 @@
           <label class="dl-label" for="email-input">Your Email Address</label>
           <input type="email" id="email-input" placeholder="you@example.com"
                  onkeydown="if(event.key==='Enter') requestAccess()"/>
-          <button class="dl-btn-primary" id="request-btn" onclick="requestAccess()">
+          <label class="dl-tc-row" for="req-tc-checkbox">
+            <input type="checkbox" id="req-tc-checkbox" onchange="reqTcChanged()">
+            <span>I have read and agree to the <button type="button" class="dl-tc-link" onclick="openTC()">Terms &amp; Conditions</button></span>
+          </label>
+          <button class="dl-btn-primary" id="request-btn" onclick="requestAccess()" disabled>
             Send Me My Download Link &rarr;
           </button>
           <div class="dl-message" id="request-msg"></div>
@@ -502,6 +730,66 @@
 
   </div><!-- /.dl-wrapper -->
 </div><!-- /.dl-page -->
+
+<!-- ── Terms & Conditions modal (read-only, opened via link) ── -->
+<div class="tc-backdrop hidden" id="tc-backdrop">
+  <div class="tc-modal">
+    <div class="tc-accent"></div>
+    <div class="tc-header">
+      <div class="tc-header-title">Terms &amp; Conditions / Όροι Χρήσης</div>
+      <div class="tc-lang-toggle">
+        <button class="tc-lang-btn active" onclick="tcLang('en')">EN</button>
+        <button class="tc-lang-btn" onclick="tcLang('el')">ΕΛ</button>
+      </div>
+    </div>
+    <div class="tc-body">
+      <!-- English -->
+      <div class="tc-text active" id="tc-en">
+        <h3>1. License &amp; Permitted Use</h3>
+        <p>This software is licensed, not sold. By downloading, you are granted a personal, non-transferable license to use this product solely for your own internal purposes.</p>
+
+        <h3>2. No Redistribution</h3>
+        <p>You may not copy, share, upload, sell, sublicense, or distribute this software or any part of it to any third party, whether for free or for payment, in any form or medium.</p>
+
+        <h3>3. No Reverse Engineering or Cracking</h3>
+        <p>You may not attempt to reverse engineer, decompile, disassemble, unlock, crack, or otherwise circumvent any protection, restriction, or licensing mechanism within this software. Any attempt to use the software beyond the scope of your license — including unauthorized activation or bypassing payment controls — constitutes a violation of these terms and applicable law.</p>
+
+        <h3>4. No Piracy</h3>
+        <p>Unauthorized reproduction or distribution of this software constitutes copyright infringement and software piracy, which is prohibited by law.</p>
+
+        <h3>5. Intellectual Property</h3>
+        <p>All rights, title, and interest in and to the software remain exclusively with Mechanical ExpertEase / Expertease Designs. No ownership rights are transferred to you.</p>
+
+        <h3>6. Enforcement</h3>
+        <p>Violation of these terms may result in immediate termination of your license, legal action, and claims for damages. By downloading, you agree to be bound by these terms in full.</p>
+      </div>
+
+      <!-- Greek -->
+      <div class="tc-text" id="tc-el">
+        <h3>1. Άδεια Χρήσης &amp; Επιτρεπόμενη Χρήση</h3>
+        <p>Το λογισμικό αυτό παραχωρείται υπό άδεια χρήσης, δεν πωλείται. Με τη λήψη του, σας χορηγείται προσωπική, μη μεταβιβάσιμη άδεια χρήσης αποκλειστικά για τις δικές σας εσωτερικές ανάγκες.</p>
+
+        <h3>2. Απαγόρευση Αναδιανομής</h3>
+        <p>Δεν επιτρέπεται να αντιγράψετε, μοιραστείτε, ανεβάσετε, πουλήσετε, υποαδειοδοτήσετε ή διανείμετε το λογισμικό ή οποιοδήποτε τμήμα του σε τρίτους, δωρεάν ή έναντι αμοιβής, σε οποιαδήποτε μορφή ή μέσο.</p>
+
+        <h3>3. Απαγόρευση Αντίστροφης Μηχανικής &amp; Παραβίασης</h3>
+        <p>Δεν επιτρέπεται να προσπαθήσετε να αποσυναρμολογήσετε, αποκωδικοποιήσετε, παραβιάσετε, ξεκλειδώσετε ή να παρακάμψετε οποιοδήποτε μηχανισμό προστασίας ή αδειοδότησης του λογισμικού. Οποιαδήποτε προσπάθεια χρήσης πέραν των ορίων της άδειάς σας — συμπεριλαμβανομένης της μη εξουσιοδοτημένης ενεργοποίησης ή παράκαμψης των ελέγχων πληρωμής — αποτελεί παραβίαση των παρόντων όρων και της ισχύουσας νομοθεσίας.</p>
+
+        <h3>4. Απαγόρευση Πειρατείας</h3>
+        <p>Η μη εξουσιοδοτημένη αναπαραγωγή ή διανομή του λογισμικού αποτελεί παραβίαση πνευματικών δικαιωμάτων και πειρατεία λογισμικού, η οποία απαγορεύεται από τον νόμο.</p>
+
+        <h3>5. Πνευματική Ιδιοκτησία</h3>
+        <p>Όλα τα δικαιώματα, τίτλοι και συμφέροντα επί του λογισμικού παραμένουν αποκλειστικά στη Mechanical ExpertEase / Expertease Designs. Δεν μεταβιβάζονται δικαιώματα κυριότητας στον χρήστη.</p>
+
+        <h3>6. Επιβολή</h3>
+        <p>Η παραβίαση των παρόντων όρων μπορεί να οδηγήσει σε άμεση λήξη της άδειάς σας, νομική δράση και αξιώσεις αποζημίωσης. Με τη λήψη του λογισμικού, αποδέχεστε πλήρως τους παρόντες όρους.</p>
+      </div>
+    </div>
+    <div class="tc-modal-footer">
+      <button class="tc-close-btn" onclick="closeTC()">Close / Κλείσιμο</button>
+    </div>
+  </div>
+</div>
 
 <!-- ── Download confirm modal ── -->
 <div class="dl-modal-backdrop hidden" id="dl-modal-backdrop">
@@ -691,6 +979,32 @@
       pendingDownloadUrl = null;
     }
   });
+
+  // ── Terms & Conditions ──────────────────────────────────────────────────────
+  function tcLang(lang) {
+    document.getElementById("tc-en").classList.toggle("active", lang === "en");
+    document.getElementById("tc-el").classList.toggle("active", lang === "el");
+    document.querySelectorAll(".tc-lang-btn").forEach(function(btn) {
+      btn.classList.toggle("active", btn.textContent.trim().toUpperCase() === (lang === "en" ? "EN" : "ΕΛ"));
+    });
+  }
+
+  function openTC() {
+    document.getElementById("tc-backdrop").classList.remove("hidden");
+  }
+
+  function closeTC() {
+    document.getElementById("tc-backdrop").classList.add("hidden");
+  }
+
+  document.getElementById("tc-backdrop").addEventListener("click", function(e) {
+    if (e.target === this) closeTC();
+  });
+
+  function reqTcChanged() {
+    document.getElementById("request-btn").disabled =
+      !document.getElementById("req-tc-checkbox").checked;
+  }
 </script>
 <script src="consent.js"></script>
 </body>
