@@ -191,396 +191,6 @@
   </div>
 </div>
 
-
-<!-- ══ PRICING BANNER ════════════════════════════════════════════ -->
-<section class="sw-pricing-banner" id="pricing">
-  <div class="sw-pb-inner">
-
-    <div class="sw-pb-header">
-      <h2 class="sw-pb-title" id="swpb-title">Simple, transparent pricing plans.</h2>
-    </div>
-
-    <div class="sw-pb-cards">
-
-      <!-- Triage -->
-      <div class="sw-pb-card sw-pb-card--triage">
-        <div class="sw-pb-card-badge" id="swpb-triage-badge">Triage</div>
-        <div class="sw-pb-card-name" id="swpb-triage-name">Triage Version</div>
-        <div class="sw-pb-card-price-row">
-          <span class="sw-pb-price-main" id="swpb-triage-price">Free</span>
-        </div>
-        <p class="sw-pb-card-desc" id="swpb-triage-desc">Limited access to evaluate the software — inputs, calculations and output structure. No subscription required.</p>
-        <ul class="sw-pb-card-features" id="swpb-triage-features">
-          <li>Core calculation modules</li>
-          <li>Sample vehicle workflow</li>
-          <li>No report export</li>
-        </ul>
-        <a href="downloads.html" class="sw-pb-card-cta sw-pb-card-cta--ghost" id="swpb-triage-cta">Try Triage →</a>
-      </div>
-
-      <!-- Monthly -->
-      <div class="sw-pb-card">
-        <div class="sw-pb-card-name" id="swpb-mo-name">Monthly</div>
-        <div class="sw-pb-card-price-row">
-          <span class="sw-pb-price-main">80€</span>
-          <span class="sw-pb-price-sub" id="swpb-mo-period">+ VAT / mo</span>
-        </div>
-        <p class="sw-pb-card-desc" id="swpb-mo-desc">Full access, no long-term commitment. Cancel anytime.</p>
-        <ul class="sw-pb-card-features">
-          <li id="swpb-feat-1">All calculation modules</li>
-          <li id="swpb-feat-2">A3 drawings &amp; Word reports</li>
-          <li id="swpb-feat-3">Design library access</li>
-          <li id="swpb-feat-4">KEK / IEKEM ready</li>
-        </ul>
-        <a href="#contact" class="sw-pb-card-cta sw-pb-card-cta--ghost" id="swpb-mo-cta">Get Started →</a>
-      </div>
-
-      <!-- Annual — SEASONAL OFFER -->
-      <div class="sw-pb-card sw-pb-card--featured">
-        <div class="sw-pb-seasonal-tag" id="swpb-seasonal-tag">Seasonal Offer</div>
-        <div class="sw-pb-card-name" id="swpb-yr-name">Annual</div>
-        <div class="sw-pb-card-price-row">
-          <span class="sw-pb-price-was">400€</span>
-          <span class="sw-pb-price-main sw-pb-price-offer">380€</span>
-          <span class="sw-pb-price-sub" id="swpb-yr-period">+ VAT / yr</span>
-        </div>
-        <p class="sw-pb-card-desc" id="swpb-yr-desc">Best value. Save 50€ with the current seasonal rate — full-year access, priority support.</p>
-        <ul class="sw-pb-card-features">
-          <li id="swpb-feat-yr-1">Everything in Monthly</li>
-          <li id="swpb-feat-yr-2">Priority support</li>
-          <li id="swpb-feat-yr-3">All future updates</li>
-          <li id="swpb-feat-yr-4">Locked seasonal rate</li>
-        </ul>
-        <a href="#contact" class="sw-pb-card-cta" id="swpb-yr-cta">Get Annual →</a>
-      </div>
-
-      <!-- Library -->
-      <div class="sw-pb-card">
-        <div class="sw-pb-card-name" id="swpb-lib-name">Design Library</div>
-        <div class="sw-pb-card-price-row">
-          <span class="sw-pb-price-main">300€</span>
-          <span class="sw-pb-price-sub" id="swpb-lib-period">+ VAT one-time</span>
-        </div>
-        <p class="sw-pb-card-desc" id="swpb-lib-desc">Permanent access to the full drawing &amp; template library. Add-on to any plan.</p>
-        <ul class="sw-pb-card-features">
-          <li id="swpb-feat-lib-1">Full drawing templates</li>
-          <li id="swpb-feat-lib-2">Standard components library</li>
-          <li id="swpb-feat-lib-3">Lifetime access</li>
-        </ul>
-        <a href="#contact" class="sw-pb-card-cta sw-pb-card-cta--ghost" id="swpb-lib-cta">Add Library →</a>
-      </div>
-
-    </div>
-
-    <div class="sw-pb-offer-banner">
-      <div class="sw-pb-offer-inner">
-        <span class="sw-pb-offer-pulse"></span>
-        <span class="sw-pb-offer-text" id="swpb-footnote"><a href="contact.html" id="swpb-footnote-link">Contact us</a> for a tailored quote.</span>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<style>
-.sw-pricing-banner {
-  background: var(--bg2);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  padding: 80px 56px;
-}
-.sw-pb-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 48px;
-}
-.sw-pb-header {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.sw-pb-kicker {
-  font-family: var(--font-mono);
-  font-size: 9px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--blue);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.sw-pb-kicker::before {
-  content: '';
-  width: 18px;
-  height: 1px;
-  background: var(--blue);
-}
-.sw-pb-title {
-  font-family: var(--font-display);
-  font-size: clamp(28px, 3.5vw, 44px);
-  font-weight: 600;
-  color: var(--text);
-  margin: 0;
-  letter-spacing: 0.5px;
-}
-.sw-pb-sub {
-  font-size: 15px;
-  color: var(--muted);
-  margin: 0;
-}
-.sw-pb-cards {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  align-items: stretch;
-}
-.sw-pb-card {
-  background: var(--bg);
-  border: 1px solid var(--border2);
-  border-radius: 12px;
-  padding: 28px 24px 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  position: relative;
-  transition: border-color .2s, transform .2s, box-shadow .2s;
-}
-.sw-pb-card:hover {
-  border-color: var(--blue);
-  transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(37,99,235,.08);
-}
-.sw-pb-card--featured {
-  border-color: var(--blue);
-  background: linear-gradient(160deg, var(--bg) 0%, color-mix(in srgb, var(--blue) 5%, var(--bg)) 100%);
-  box-shadow: 0 6px 24px rgba(37,99,235,.12);
-}
-.sw-pb-card--featured:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 14px 36px rgba(37,99,235,.16);
-}
-.sw-pb-card--triage {
-  border-style: dashed;
-  opacity: 0.85;
-}
-.sw-pb-card--triage:hover { opacity: 1; }
-.sw-pb-seasonal-tag {
-  position: absolute;
-  top: -12px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--blue);
-  color: #fff;
-  font-family: var(--font-mono);
-  font-size: 8px;
-  font-weight: 500;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  padding: 4px 14px;
-  border-radius: 20px;
-  white-space: nowrap;
-}
-.sw-pb-card-badge {
-  display: inline-block;
-  font-family: var(--font-mono);
-  font-size: 8px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--muted);
-  border: 1px solid var(--border2);
-  border-radius: 4px;
-  padding: 3px 8px;
-  width: fit-content;
-}
-.sw-pb-card-name {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--text);
-}
-.sw-pb-card-price-row {
-  display: flex;
-  align-items: baseline;
-  gap: 6px;
-  flex-wrap: wrap;
-}
-.sw-pb-price-main {
-  font-family: var(--font-display);
-  font-size: 36px;
-  font-weight: 700;
-  color: var(--text);
-  line-height: 1;
-}
-.sw-pb-price-offer {
-  color: var(--blue);
-}
-.sw-pb-price-was {
-  font-family: var(--font-display);
-  font-size: 22px;
-  font-weight: 500;
-  color: var(--muted);
-  text-decoration: line-through;
-  opacity: 0.6;
-  line-height: 1;
-}
-.sw-pb-price-sub {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--muted);
-  letter-spacing: 0.5px;
-}
-.sw-pb-card-desc {
-  font-size: 13px;
-  color: var(--muted);
-  line-height: 1.65;
-  margin: 0;
-}
-.sw-pb-card-features {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-  flex: 1;
-}
-.sw-pb-card-features li {
-  font-size: 13px;
-  color: var(--muted);
-  display: flex;
-  align-items: baseline;
-  gap: 7px;
-}
-.sw-pb-card-features li::before {
-  content: '▸';
-  color: var(--blue-lt);
-  font-size: 9px;
-  flex-shrink: 0;
-}
-.sw-pb-card-cta {
-  display: block;
-  text-align: center;
-  font-family: var(--font-mono);
-  font-size: 9px;
-  font-weight: 500;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 12px 20px;
-  border-radius: 6px;
-  background: var(--blue);
-  color: #fff;
-  border: 1px solid var(--blue);
-  transition: background .2s, color .2s, border-color .2s;
-  margin-top: auto;
-}
-.sw-pb-card-cta:hover { background: var(--blue-lt); border-color: var(--blue-lt); }
-.sw-pb-card-cta--ghost {
-  background: transparent;
-  color: var(--blue);
-}
-.sw-pb-card-cta--ghost:hover { background: var(--blue); color: #fff; }
-/* offer banner */
-.sw-pb-offer-banner {
-  position: relative;
-  border-radius: 12px;
-  padding: 2px;
-  background: linear-gradient(120deg, #1d4ed8, #3b82f6, #60a5fa, #3b82f6, #1d4ed8);
-  background-size: 300% 100%;
-  animation: offerShift 4s ease infinite;
-  box-shadow: 0 0 32px rgba(59,130,246,.35);
-}
-.sw-pb-offer-inner {
-  background: linear-gradient(120deg, #0c1e4a 0%, #0e2358 50%, #0c1e4a 100%);
-  border-radius: 10px;
-  padding: 20px 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-}
-.sw-pb-offer-pulse {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #60a5fa;
-  flex-shrink: 0;
-  animation: offerPulse 1.8s ease-in-out infinite;
-  box-shadow: 0 0 0 0 rgba(96,165,250,.6);
-}
-.sw-pb-offer-text {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  color: #cfe0ff;
-}
-.sw-pb-offer-text a {
-  color: #60a5fa;
-  text-decoration: none;
-  font-weight: 700;
-}
-.sw-pb-offer-text a:hover { color: #93c5fd; }
-@keyframes offerShift {
-  0%,100% { background-position: 0% 50%; }
-  50%      { background-position: 100% 50%; }
-}
-@keyframes offerPulse {
-  0%   { box-shadow: 0 0 0 0 rgba(96,165,250,.6); }
-  70%  { box-shadow: 0 0 0 8px rgba(96,165,250,0); }
-  100% { box-shadow: 0 0 0 0 rgba(96,165,250,0); }
-}
-
-/* card entry animation */
-.sw-pb-card {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity .5s ease, transform .5s ease, border-color .2s, box-shadow .2s;
-}
-.sw-pb-card.sw-pb-card--visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-@media (max-width: 960px) {
-  .sw-pricing-banner { padding: 56px 24px; }
-  .sw-pb-cards { grid-template-columns: 1fr 1fr; }
-}
-@media (max-width: 640px) {
-  .sw-pricing-banner { padding: 40px 12px; }
-  .sw-pb-cards { grid-template-columns: 1fr 1fr; gap: 12px; }
-  .sw-pb-card { padding: 14px 12px; }
-  .sw-pb-card--triage { order: unset; }
-  .sw-pb-card-desc,
-  .sw-pb-card-features { display: none; }
-  .sw-pb-offer-banner { display: none; }
-}
-</style>
-
-<!-- ══ PRODUCT DETAIL ════════════════════════════════════════════ -->
-<section class="sw-detail">
-  <div class="sw-detail-inner">
-
-    <!-- intro + me-2 -->
-    <div class="sw-detail-split">
-      <div class="sw-detail-text-block">
-        <div class="sw-detail-kicker" id="sw-d-kicker1">What it does</div>
-        <p class="sw-detail-lead" id="sw-d-lead">Ισχυρό και <strong>εύχρηστο λογισμικό</strong> για την <strong>αυτοματοποίηση</strong> τεχνικών μελετών οχημάτων <strong>ειδικής χρήσης</strong>. Από τους <strong>υπολογισμούς</strong> έως την πλήρη <strong>τεκμηρίωση</strong>, όλα ολοκληρώνονται <strong>ταχύτερα</strong> και με <strong>αξιοπιστία</strong>.</p>
-      </div>
-      <div class="sw-detail-photo sw-detail-photo--hide-mobile">
-        <img src="images/me-2.png" alt="Mechanical ExpertEase — software in use" class="sw-detail-img">
-      </div>
-    </div>
-
-    <!-- ── HOW IT WORKS (full-width dark card) ── -->
-  </div>
-</section>
-
 <section class="hiw-section" id="how-it-works">
   <div class="hiw-app">
     <div class="hiw-card">
@@ -1158,6 +768,7 @@ setInterval(()=>{
   .fcap-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
   .fcap-right { display: flex; }
   .fcap-img-single { width: 100%; max-width: 100%; }
+  .sw-feat-list { display: none; }
 }
 </style>
 
@@ -1400,13 +1011,20 @@ setInterval(()=>{
 @media (max-width: 640px) {
   .cap-section { padding: 36px 16px; }
   .cap-carousel-wrap { width: calc(100% + 32px); margin-left: -16px; }
-  .cap-carousel { padding: 0 40px; }
+  .cap-carousel { padding: 0 32px; }
   .cap-spot-h { font-size: 26px; }
   .cap-spot-text { padding: 28px 20px; gap: 12px; }
   .cap-spot-visual { min-height: 220px; padding: 20px; }
-  .carousel-cell { width: 160px; }
-  .carousel-prev { left: 4px; }
-  .carousel-next { right: 4px; }
+  .carousel-track { gap: 10px; }
+  .carousel-cell { width: 130px; gap: 10px; }
+  .carousel-prev { left: 2px; }
+  .carousel-next { right: 2px; }
+  .card-body { padding: 10px 12px 12px; gap: 4px; }
+  .card-title { font-size: 13px; }
+  .card-sub { font-size: 11px; }
+  .card-num { font-size: 10px; }
+  .card-cat { font-size: 8px; padding: 2px 5px; }
+  .card-cta { font-size: 10px; margin-top: 6px; }
 }
 </style>
 
@@ -1585,10 +1203,6 @@ buildCarousel();
 renderSpotlight(activeId);
 
 const vp=document.getElementById('capViewport');
-if(vp){
-  vp.addEventListener('mouseenter',()=>{paused=true;});
-  vp.addEventListener('mouseleave',()=>{paused=false;});
-}
 document.getElementById('capPrev').addEventListener('click',()=>nudge(-1));
 document.getElementById('capNext').addEventListener('click',()=>nudge(1));
 window.addEventListener('resize',measure);
@@ -1913,6 +1527,416 @@ rafId=requestAnimationFrame(tick);
   /* Capabilities section: more compact */
   .sw-detail { padding: 32px 16px; }
   .sw-detail-inner { gap: 40px; }
+}
+</style>
+
+<!-- ══ PRICING BANNER ════════════════════════════════════════════ -->
+<section class="sw-pricing-banner" id="pricing">
+  <div class="sw-pb-inner">
+
+    <div class="sw-pb-layout">
+
+      <!-- left: title + cards + banner -->
+      <div class="sw-pb-left">
+        <div class="sw-pb-header">
+          <h2 class="sw-pb-title" id="swpb-title">Simple, transparent pricing plans.</h2>
+        </div>
+
+        <div class="sw-pb-cards">
+
+          <!-- Triage -->
+          <div class="sw-pb-card sw-pb-card--triage">
+            <div class="sw-pb-card-badge" id="swpb-triage-badge">Triage</div>
+            <div class="sw-pb-card-name" id="swpb-triage-name">Triage Version</div>
+            <div class="sw-pb-card-price-row">
+              <span class="sw-pb-price-main" id="swpb-triage-price">Free</span>
+            </div>
+            <p class="sw-pb-card-desc" id="swpb-triage-desc">Limited access to evaluate the software — inputs, calculations and output structure. No subscription required.</p>
+            <ul class="sw-pb-card-features" id="swpb-triage-features">
+              <li>Core calculation modules</li>
+              <li>Sample vehicle workflow</li>
+              <li>No report export</li>
+            </ul>
+            <a href="downloads.html" class="sw-pb-card-cta sw-pb-card-cta--ghost" id="swpb-triage-cta">Try Triage →</a>
+          </div>
+
+          <!-- Monthly -->
+          <div class="sw-pb-card">
+            <div class="sw-pb-card-name" id="swpb-mo-name">Monthly</div>
+            <div class="sw-pb-card-price-row">
+              <span class="sw-pb-price-main">80€</span>
+              <span class="sw-pb-price-sub" id="swpb-mo-period">+ VAT / mo</span>
+            </div>
+            <p class="sw-pb-card-desc" id="swpb-mo-desc">Full access, no long-term commitment. Cancel anytime.</p>
+            <ul class="sw-pb-card-features">
+              <li id="swpb-feat-1">All calculation modules</li>
+              <li id="swpb-feat-2">A3 drawings &amp; Word reports</li>
+              <li id="swpb-feat-3">Design library access</li>
+              <li id="swpb-feat-4">KEK / IEKEM ready</li>
+            </ul>
+            <a href="#contact" class="sw-pb-card-cta sw-pb-card-cta--ghost" id="swpb-mo-cta">Get Started →</a>
+          </div>
+
+          <!-- Annual — SEASONAL OFFER -->
+          <div class="sw-pb-card sw-pb-card--featured">
+            <div class="sw-pb-seasonal-tag" id="swpb-seasonal-tag">Seasonal Offer</div>
+            <div class="sw-pb-card-name" id="swpb-yr-name">Annual</div>
+            <div class="sw-pb-card-price-row">
+              <span class="sw-pb-price-was">400€</span>
+              <span class="sw-pb-price-main sw-pb-price-offer">380€</span>
+              <span class="sw-pb-price-sub" id="swpb-yr-period">+ VAT / yr</span>
+            </div>
+            <p class="sw-pb-card-desc" id="swpb-yr-desc">Best value. Save 50€ with the current seasonal rate — full-year access, priority support.</p>
+            <ul class="sw-pb-card-features">
+              <li id="swpb-feat-yr-1">Everything in Monthly</li>
+              <li id="swpb-feat-yr-2">Priority support</li>
+              <li id="swpb-feat-yr-3">All future updates</li>
+              <li id="swpb-feat-yr-4">Locked seasonal rate</li>
+            </ul>
+            <a href="#contact" class="sw-pb-card-cta" id="swpb-yr-cta">Get Annual →</a>
+          </div>
+
+          <!-- Library -->
+          <div class="sw-pb-card">
+            <div class="sw-pb-card-name" id="swpb-lib-name">Design Library</div>
+            <div class="sw-pb-card-price-row">
+              <span class="sw-pb-price-main">300€</span>
+              <span class="sw-pb-price-sub" id="swpb-lib-period">+ VAT one-time</span>
+            </div>
+            <p class="sw-pb-card-desc" id="swpb-lib-desc">Permanent access to the full drawing &amp; template library. Add-on to any plan.</p>
+            <ul class="sw-pb-card-features">
+              <li id="swpb-feat-lib-1">Full drawing templates</li>
+              <li id="swpb-feat-lib-2">Standard components library</li>
+              <li id="swpb-feat-lib-3">Lifetime access</li>
+            </ul>
+            <a href="#contact" class="sw-pb-card-cta sw-pb-card-cta--ghost" id="swpb-lib-cta">Add Library →</a>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- right: me-2.png -->
+      <div class="sw-pb-right">
+        <img src="images/me-2.png" alt="Mechanical ExpertEase in use" class="sw-pb-img">
+      </div>
+
+    </div>
+
+    <div class="sw-pb-offer-banner">
+      <div class="sw-pb-offer-inner">
+        <span class="sw-pb-offer-pulse"></span>
+        <span class="sw-pb-offer-text" id="swpb-footnote"><a href="contact.html" id="swpb-footnote-link">Contact us</a> for a tailored quote.</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+.sw-pricing-banner {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 80px 56px;
+}
+.sw-pb-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.sw-pb-layout {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 56px;
+  align-items: center;
+}
+.sw-pb-left {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+.sw-pb-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.sw-pb-img {
+  width: 442px;
+  height: auto;
+  display: block;
+}
+.sw-pb-header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.sw-pb-kicker {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--blue);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.sw-pb-kicker::before {
+  content: '';
+  width: 18px;
+  height: 1px;
+  background: var(--blue);
+}
+.sw-pb-title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+.sw-pb-sub {
+  font-size: 15px;
+  color: var(--muted);
+  margin: 0;
+}
+.sw-pb-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  align-items: stretch;
+}
+.sw-pb-card {
+  background: var(--bg);
+  border: 1px solid var(--border2);
+  border-radius: 12px;
+  padding: 28px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  transition: border-color .2s, transform .2s, box-shadow .2s;
+}
+.sw-pb-card:hover {
+  border-color: var(--blue);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(37,99,235,.08);
+}
+.sw-pb-card--featured {
+  border-color: var(--blue);
+  background: linear-gradient(160deg, var(--bg) 0%, color-mix(in srgb, var(--blue) 5%, var(--bg)) 100%);
+  box-shadow: 0 6px 24px rgba(37,99,235,.12);
+}
+.sw-pb-card--featured:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 36px rgba(37,99,235,.16);
+}
+.sw-pb-card--triage {
+  border-style: dashed;
+  opacity: 0.85;
+}
+.sw-pb-card--triage:hover { opacity: 1; }
+.sw-pb-seasonal-tag {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--blue);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 4px 14px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+.sw-pb-card-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  border: 1px solid var(--border2);
+  border-radius: 4px;
+  padding: 3px 8px;
+  width: fit-content;
+}
+.sw-pb-card-name {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text);
+}
+.sw-pb-card-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.sw-pb-price-main {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1;
+}
+.sw-pb-price-offer {
+  color: var(--blue);
+}
+.sw-pb-price-was {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: line-through;
+  opacity: 0.6;
+  line-height: 1;
+}
+.sw-pb-price-sub {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.5px;
+}
+.sw-pb-card-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.65;
+  margin: 0;
+}
+.sw-pb-card-features {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  flex: 1;
+}
+.sw-pb-card-features li {
+  font-size: 13px;
+  color: var(--muted);
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+}
+.sw-pb-card-features li::before {
+  content: '▸';
+  color: var(--blue-lt);
+  font-size: 9px;
+  flex-shrink: 0;
+}
+.sw-pb-card-cta {
+  display: block;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  background: var(--blue);
+  color: #fff;
+  border: 1px solid var(--blue);
+  transition: background .2s, color .2s, border-color .2s;
+  margin-top: auto;
+}
+.sw-pb-card-cta:hover { background: var(--blue-lt); border-color: var(--blue-lt); }
+.sw-pb-card-cta--ghost {
+  background: transparent;
+  color: var(--blue);
+}
+.sw-pb-card-cta--ghost:hover { background: var(--blue); color: #fff; }
+/* offer banner */
+.sw-pb-offer-banner {
+  position: relative;
+  border-radius: 12px;
+  padding: 2px;
+  background: linear-gradient(120deg, #1d4ed8, #3b82f6, #60a5fa, #3b82f6, #1d4ed8);
+  background-size: 300% 100%;
+  animation: offerShift 4s ease infinite;
+  box-shadow: 0 0 32px rgba(59,130,246,.35);
+}
+.sw-pb-offer-inner {
+  background: linear-gradient(120deg, #0c1e4a 0%, #0e2358 50%, #0c1e4a 100%);
+  border-radius: 10px;
+  padding: 20px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+.sw-pb-offer-pulse {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #60a5fa;
+  flex-shrink: 0;
+  animation: offerPulse 1.8s ease-in-out infinite;
+  box-shadow: 0 0 0 0 rgba(96,165,250,.6);
+}
+.sw-pb-offer-text {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #cfe0ff;
+}
+.sw-pb-offer-text a {
+  color: #60a5fa;
+  text-decoration: none;
+  font-weight: 700;
+}
+.sw-pb-offer-text a:hover { color: #93c5fd; }
+@keyframes offerShift {
+  0%,100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+@keyframes offerPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(96,165,250,.6); }
+  70%  { box-shadow: 0 0 0 8px rgba(96,165,250,0); }
+  100% { box-shadow: 0 0 0 0 rgba(96,165,250,0); }
+}
+
+/* card entry animation */
+.sw-pb-card {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .5s ease, transform .5s ease, border-color .2s, box-shadow .2s;
+}
+.sw-pb-card.sw-pb-card--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 1200px) {
+  .sw-pb-layout { grid-template-columns: 1fr; }
+  .sw-pb-right { display: none; }
+}
+@media (max-width: 960px) {
+  .sw-pricing-banner { padding: 56px 24px; }
+  .sw-pb-cards { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  .sw-pricing-banner { padding: 40px 16px; }
+  .sw-pb-cards { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .sw-pb-card { padding: 20px 18px; }
+  .sw-pb-card-desc,
+  .sw-pb-card-features { display: none; }
+  .sw-pb-card--triage { order: unset; }
+  .sw-pb-right { display: flex !important; margin-top: 8px; }
+  .sw-pb-img { width: 100%; max-width: 360px; margin: 0 auto; }
 }
 </style>
 
