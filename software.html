@@ -143,6 +143,319 @@
 </div>
 
 
+<!-- ══ PRICING BANNER ════════════════════════════════════════════ -->
+<section class="sw-pricing-banner">
+  <div class="sw-pb-inner">
+
+    <div class="sw-pb-header">
+      <h2 class="sw-pb-title" id="swpb-title">Simple, transparent plans.</h2>
+      <p class="sw-pb-sub" id="swpb-sub">Choose the plan that fits your workflow — or request a custom offer.</p>
+    </div>
+
+    <div class="sw-pb-cards">
+
+      <!-- Triage -->
+      <div class="sw-pb-card sw-pb-card--triage">
+        <div class="sw-pb-card-badge" id="swpb-triage-badge">Triage</div>
+        <div class="sw-pb-card-name" id="swpb-triage-name">Triage Version</div>
+        <div class="sw-pb-card-price-row">
+          <span class="sw-pb-price-main" id="swpb-triage-price">Free</span>
+        </div>
+        <p class="sw-pb-card-desc" id="swpb-triage-desc">Limited access to evaluate the software — inputs, calculations and output structure. No subscription required.</p>
+        <ul class="sw-pb-card-features" id="swpb-triage-features">
+          <li>Core calculation modules</li>
+          <li>Sample vehicle workflow</li>
+          <li>No report export</li>
+        </ul>
+        <a href="https://www.easemanual.eu" target="_blank" rel="noopener" class="sw-pb-card-cta sw-pb-card-cta--ghost" id="swpb-triage-cta">Try Triage →</a>
+      </div>
+
+      <!-- Monthly -->
+      <div class="sw-pb-card">
+        <div class="sw-pb-card-name" id="swpb-mo-name">Monthly</div>
+        <div class="sw-pb-card-price-row">
+          <span class="sw-pb-price-main">70€</span>
+          <span class="sw-pb-price-sub" id="swpb-mo-period">+ VAT / mo</span>
+        </div>
+        <p class="sw-pb-card-desc" id="swpb-mo-desc">Full access, no long-term commitment. Cancel anytime.</p>
+        <ul class="sw-pb-card-features">
+          <li id="swpb-feat-1">All calculation modules</li>
+          <li id="swpb-feat-2">A3 drawings &amp; Word reports</li>
+          <li id="swpb-feat-3">Design library access</li>
+          <li id="swpb-feat-4">KEK / IEKEM ready</li>
+        </ul>
+        <a href="https://www.easemanual.eu/pricing" target="_blank" rel="noopener" class="sw-pb-card-cta sw-pb-card-cta--ghost" id="swpb-mo-cta">Get Started →</a>
+      </div>
+
+      <!-- Annual — SEASONAL OFFER -->
+      <div class="sw-pb-card sw-pb-card--featured">
+        <div class="sw-pb-seasonal-tag" id="swpb-seasonal-tag">Seasonal Offer</div>
+        <div class="sw-pb-card-name" id="swpb-yr-name">Annual</div>
+        <div class="sw-pb-card-price-row">
+          <span class="sw-pb-price-was">400€</span>
+          <span class="sw-pb-price-main sw-pb-price-offer">380€</span>
+          <span class="sw-pb-price-sub" id="swpb-yr-period">+ VAT / yr</span>
+        </div>
+        <p class="sw-pb-card-desc" id="swpb-yr-desc">Best value. Save 50€ with the current seasonal rate — full-year access, priority support.</p>
+        <ul class="sw-pb-card-features">
+          <li id="swpb-feat-yr-1">Everything in Monthly</li>
+          <li id="swpb-feat-yr-2">Priority support</li>
+          <li id="swpb-feat-yr-3">All future updates</li>
+          <li id="swpb-feat-yr-4">Locked seasonal rate</li>
+        </ul>
+        <a href="https://www.easemanual.eu/pricing" target="_blank" rel="noopener" class="sw-pb-card-cta" id="swpb-yr-cta">Get Annual →</a>
+      </div>
+
+      <!-- Library -->
+      <div class="sw-pb-card">
+        <div class="sw-pb-card-name" id="swpb-lib-name">Design Library</div>
+        <div class="sw-pb-card-price-row">
+          <span class="sw-pb-price-main">300€</span>
+          <span class="sw-pb-price-sub" id="swpb-lib-period">+ VAT one-time</span>
+        </div>
+        <p class="sw-pb-card-desc" id="swpb-lib-desc">Permanent access to the full drawing &amp; template library. Add-on to any plan.</p>
+        <ul class="sw-pb-card-features">
+          <li id="swpb-feat-lib-1">Full drawing templates</li>
+          <li id="swpb-feat-lib-2">Standard components library</li>
+          <li id="swpb-feat-lib-3">Lifetime access</li>
+        </ul>
+        <a href="https://www.easemanual.eu/pricing" target="_blank" rel="noopener" class="sw-pb-card-cta sw-pb-card-cta--ghost" id="swpb-lib-cta">Add Library →</a>
+      </div>
+
+    </div>
+
+    <p class="sw-pb-footnote" id="swpb-footnote">Support &amp; updates for custom cases are priced separately. <a href="contact.html" id="swpb-footnote-link">Contact us</a> for a tailored quote.</p>
+
+  </div>
+</section>
+
+<style>
+.sw-pricing-banner {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 80px 56px;
+}
+.sw-pb-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+.sw-pb-header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.sw-pb-kicker {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--blue);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.sw-pb-kicker::before {
+  content: '';
+  width: 18px;
+  height: 1px;
+  background: var(--blue);
+}
+.sw-pb-title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+.sw-pb-sub {
+  font-size: 15px;
+  color: var(--muted);
+  margin: 0;
+}
+.sw-pb-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  align-items: stretch;
+}
+.sw-pb-card {
+  background: var(--bg);
+  border: 1px solid var(--border2);
+  border-radius: 12px;
+  padding: 28px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  transition: border-color .2s, transform .2s, box-shadow .2s;
+}
+.sw-pb-card:hover {
+  border-color: var(--blue);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(37,99,235,.08);
+}
+.sw-pb-card--featured {
+  border-color: var(--blue);
+  background: linear-gradient(160deg, var(--bg) 0%, color-mix(in srgb, var(--blue) 5%, var(--bg)) 100%);
+  box-shadow: 0 6px 24px rgba(37,99,235,.12);
+}
+.sw-pb-card--featured:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 36px rgba(37,99,235,.16);
+}
+.sw-pb-card--triage {
+  border-style: dashed;
+  opacity: 0.85;
+}
+.sw-pb-card--triage:hover { opacity: 1; }
+.sw-pb-seasonal-tag {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--blue);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 4px 14px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+.sw-pb-card-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  border: 1px solid var(--border2);
+  border-radius: 4px;
+  padding: 3px 8px;
+  width: fit-content;
+}
+.sw-pb-card-name {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text);
+}
+.sw-pb-card-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.sw-pb-price-main {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1;
+}
+.sw-pb-price-offer {
+  color: var(--blue);
+}
+.sw-pb-price-was {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: line-through;
+  opacity: 0.6;
+  line-height: 1;
+}
+.sw-pb-price-sub {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.5px;
+}
+.sw-pb-card-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.65;
+  margin: 0;
+}
+.sw-pb-card-features {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  flex: 1;
+}
+.sw-pb-card-features li {
+  font-size: 13px;
+  color: var(--muted);
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+}
+.sw-pb-card-features li::before {
+  content: '▸';
+  color: var(--blue-lt);
+  font-size: 9px;
+  flex-shrink: 0;
+}
+.sw-pb-card-cta {
+  display: block;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  background: var(--blue);
+  color: #fff;
+  border: 1px solid var(--blue);
+  transition: background .2s, color .2s, border-color .2s;
+  margin-top: auto;
+}
+.sw-pb-card-cta:hover { background: var(--blue-lt); border-color: var(--blue-lt); }
+.sw-pb-card-cta--ghost {
+  background: transparent;
+  color: var(--blue);
+}
+.sw-pb-card-cta--ghost:hover { background: var(--blue); color: #fff; }
+.sw-pb-footnote {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted);
+  text-align: center;
+  margin: 0;
+  letter-spacing: 0.3px;
+}
+.sw-pb-footnote a {
+  color: var(--blue);
+  text-decoration: none;
+}
+.sw-pb-footnote a:hover { text-decoration: underline; }
+
+@media (max-width: 960px) {
+  .sw-pricing-banner { padding: 56px 24px; }
+  .sw-pb-cards { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  .sw-pricing-banner { padding: 40px 16px; }
+  .sw-pb-cards { grid-template-columns: 1fr; }
+  .sw-pb-card--triage { order: 4; }
+}
+</style>
+
 <!-- ══ PRODUCT DETAIL ════════════════════════════════════════════ -->
 <section class="sw-detail">
   <div class="sw-detail-inner">
@@ -278,6 +591,31 @@
   line-height: 1.8;
   color: var(--muted);
   max-width: 760px;
+}
+
+.sw-detail-pricing-block {
+  max-width: 760px;
+  padding: 32px 0 0;
+}
+
+.sw-pricing-list {
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.sw-pricing-list li {
+  font-size: 15px;
+  color: var(--muted);
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.sw-pricing-list li strong {
+  color: var(--text);
 }
 
 /* split: two-column layout */

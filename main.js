@@ -109,6 +109,38 @@ const LANG = {
     sw_wf3:'Αυτόματη εκτέλεση υπολογισμών', sw_wf4:'Δημιουργία διαγραμμάτων τεμνουσών και ροπών κάμψης',
     sw_wf5:'Ανασκόπηση συνοπτικού πίνακα αποτελεσμάτων', sw_wf6:'Δημιουργία πλήρους τεχνικής μελέτης με ένα κλικ',
     sw_d_link:'Πλήρης παρουσίαση προϊόντος →',
+    sw_d_kicker4:'Τιμή',
+    sw_pricing_lead:'Το Mechanical ExpertEase διατίθεται από <strong>70€ + ΦΠΑ / μήνα</strong>. Επιλέξτε το πακέτο που ταιριάζει στη ροή εργασίας σας και ζητήστε προσφορά ανάλογα με την περίπτωση.',
+    sw_pricing_1:'<strong>Μηνιαία συνδρομή:</strong> 70€ + ΦΠΑ / μήνα',
+    sw_pricing_2:'<strong>Ετήσιο πακέτο:</strong> 400€ + ΦΠΑ / έτος',
+    sw_pricing_3:'<strong>Βιβλιοθήκη σχεδίων:</strong> 300€ + ΦΠΑ εφάπαξ',
+    sw_pricing_4:'<strong>Υποστήριξη & ενημερώσεις:</strong> χρέωση κατά περίπτωση',
+    swpb_kicker:'Τιμολόγηση',
+    swpb_title:'Απλά, διαφανή πακέτα.',
+    swpb_sub:'Επιλέξτε το πλάνο που ταιριάζει στη ροή εργασίας σας — <strong><a href="contact.html" style="color:inherit">ή ζητήστε προσφορά</a></strong>.',
+    swpb_triage_badge:'Δωρεάν',
+    swpb_triage_name:'Triage Έκδοση',
+    swpb_triage_price:'Δωρεάν',
+    swpb_triage_desc:'Περιορισμένη πρόσβαση για αξιολόγηση — εισαγωγές, υπολογισμοί και δομή εξόδου. Χωρίς συνδρομή.',
+    swpb_triage_features:'<li>Βασικές ενότητες υπολογισμών</li><li>Παράδειγμα ροής εργασίας οχήματος</li><li>Χωρίς εξαγωγή μελέτης</li>',
+    swpb_triage_cta:'Δοκιμάστε Triage →',
+    swpb_mo_name:'Μηνιαία',
+    swpb_mo_period:'+ ΦΠΑ / μήνα',
+    swpb_mo_desc:'Πλήρης πρόσβαση, χωρίς δέσμευση. Ακύρωση ανά πάσα στιγμή.',
+    swpb_mo_cta:'Εγγραφή →',
+    swpb_yr_name:'Ετήσια',
+    swpb_yr_period:'+ ΦΠΑ / έτος',
+    swpb_yr_desc:'Η καλύτερη αξία. Εξοικονομήστε 20€ με την τρέχουσα εποχιακή τιμή — πλήρης πρόσβαση ετησίως, προτεραιότητα υποστήριξης.',
+    swpb_yr_cta:'Ετήσια Εγγραφή →',
+    swpb_seasonal_tag:'Εποχιακή Προσφορά',
+    swpb_lib_name:'Βιβλιοθήκη Σχεδίων',
+    swpb_lib_period:'+ ΦΠΑ εφάπαξ',
+    swpb_lib_desc:'Μόνιμη πρόσβαση στη βιβλιοθήκη σχεδίων & προτύπων. Προσθήκη σε οποιοδήποτε πλάνο.',
+    swpb_lib_cta:'Προσθήκη Βιβλιοθήκης →',
+    swpb_feat_1:'Όλες οι ενότητες υπολογισμών', swpb_feat_2:'Σχέδια A3 & μελέτες Word', swpb_feat_3:'Πρόσβαση βιβλιοθήκης σχεδίων', swpb_feat_4:'Έτοιμο ΚΕΚ / ΙΕΚΕΜ',
+    swpb_feat_yr_1:'Όλα του Μηνιαίου', swpb_feat_yr_2:'Προτεραιότητα υποστήριξης', swpb_feat_yr_3:'Όλες οι μελλοντικές ενημερώσεις', swpb_feat_yr_4:'Κλειδωμένη εποχιακή τιμή',
+    swpb_feat_lib_1:'Πλήρη πρότυπα σχεδίων', swpb_feat_lib_2:'Βιβλιοθήκη τυποποιημένων εξαρτημάτων', swpb_feat_lib_3:'Μόνιμη πρόσβαση',
+    swpb_footnote:'Υποστήριξη & ενημερώσεις για custom περιπτώσεις χρεώνονται χωριστά. <a href="contact.html" id="swpb-footnote-link">Επικοινωνήστε μαζί μας</a> για εξατομικευμένη προσφορά.',
     sw_d_kicker3:'Δυνατότητες',
     sw_fc1_name:'Ανάλυση Οχήματος', sw_fc1_1:'Υποστήριξη έως 5 αξόνων', sw_fc1_2:'Έλεγχοι τάσεων αξόνων & ελαστικών', sw_fc1_3:'Αυτόματη τοποθέτηση φορτίων', sw_fc1_4:'Αυτόματη κατασκευή διαγράμματος ισορροπίας',
     sw_fc2_name:'Πλαίσιο & Κατασκευή', sw_fc2_1:'Απλοί & σύνθετοι τύποι πλαισίου', sw_fc2_2:'Υπολογισμοί ροπών κάμψης & τεμνουσών', sw_fc2_3:'Ανάλυση κοχλιωτών συνδέσεων', sw_fc2_4:'Υπολογισμοί συγκολλήσεων υπερκατασκευής',
@@ -324,6 +356,38 @@ const LANG = {
     sw_wf3:'Automatic calculations execute instantly', sw_wf4:'Generate shear force & bending moment diagrams',
     sw_wf5:'Review comprehensive calculation summary', sw_wf6:'Create the full technical study with one click',
     sw_d_link:'Full product details →',
+    sw_d_kicker4:'Pricing',
+    sw_pricing_lead:'Mechanical ExpertEase is available from <strong>70€ + VAT / month</strong>. Choose the plan that matches your workflow and request a custom offer depending on your case.',
+    sw_pricing_1:'<strong>Monthly subscription:</strong> 70€ + VAT / month',
+    sw_pricing_2:'<strong>Annual package:</strong> 400€ + VAT / year',
+    sw_pricing_3:'<strong>Design library:</strong> 300€ + VAT one-time',
+    sw_pricing_4:'<strong>Support & updates:</strong> priced case-by-case',
+    swpb_kicker:'Pricing',
+    swpb_title:'Simple, transparent plans.',
+    swpb_sub:'Choose the plan that fits your workflow — <strong><a href="contact.html" style="color:inherit">or request a custom offer</a></strong>.',
+    swpb_triage_badge:'Free',
+    swpb_triage_name:'Triage Version',
+    swpb_triage_price:'Free',
+    swpb_triage_desc:'Limited access to evaluate the software — inputs, calculations and output structure. No subscription required.',
+    swpb_triage_features:'<li>Core calculation modules</li><li>Sample vehicle workflow</li><li>No report export</li>',
+    swpb_triage_cta:'Try Triage →',
+    swpb_mo_name:'Monthly',
+    swpb_mo_period:'+ VAT / mo',
+    swpb_mo_desc:'Full access, no long-term commitment. Cancel anytime.',
+    swpb_mo_cta:'Get Started →',
+    swpb_yr_name:'Annual',
+    swpb_yr_period:'+ VAT / yr',
+    swpb_yr_desc:'Best value. Save 20€ with the current seasonal rate — full-year access, priority support.',
+    swpb_yr_cta:'Get Annual →',
+    swpb_seasonal_tag:'Seasonal Offer',
+    swpb_lib_name:'Design Library',
+    swpb_lib_period:'+ VAT one-time',
+    swpb_lib_desc:'Permanent access to the full drawing & template library. Add-on to any plan.',
+    swpb_lib_cta:'Add Library →',
+    swpb_feat_1:'All calculation modules', swpb_feat_2:'A3 drawings & Word reports', swpb_feat_3:'Design library access', swpb_feat_4:'KEK / IEKEM ready',
+    swpb_feat_yr_1:'Everything in Monthly', swpb_feat_yr_2:'Priority support', swpb_feat_yr_3:'All future updates', swpb_feat_yr_4:'Locked seasonal rate',
+    swpb_feat_lib_1:'Full drawing templates', swpb_feat_lib_2:'Standard components library', swpb_feat_lib_3:'Lifetime access',
+    swpb_footnote:'Support & updates for custom cases are priced separately. <a href="contact.html" id="swpb-footnote-link">Contact us</a> for a tailored quote.',
     sw_d_kicker3:'Capabilities',
     sw_fc1_name:'Vehicle Analysis', sw_fc1_1:'Up to 5 axles support', sw_fc1_2:'Axle & tyre stress checks', sw_fc1_3:'Automatic load positioning', sw_fc1_4:'Free-body diagram generation',
     sw_fc2_name:'Frame & Structure', sw_fc2_1:'Simple & complex frame types', sw_fc2_2:'Bending moment & shear calcs', sw_fc2_3:'Bolted connection analysis', sw_fc2_4:'Superstructure weld calcs',
@@ -543,6 +607,23 @@ function applyLang(lang) {
   set('sw-d-kicker2',t.sw_d_kicker2);
   for(let i=1;i<=6;i++) set('sw-wf'+i,t['sw_wf'+i]);
   set('sw-d-link',noArrow(t.sw_d_link));
+  set('sw-d-kicker4',t.sw_d_kicker4);
+  set('sw-pricing-lead',t.sw_pricing_lead,true);
+  set('sw-pricing-1',t.sw_pricing_1,true); set('sw-pricing-2',t.sw_pricing_2,true);
+  set('sw-pricing-3',t.sw_pricing_3,true); set('sw-pricing-4',t.sw_pricing_4,true);
+  // pricing banner
+  set('swpb-kicker',t.swpb_kicker); set('swpb-title',t.swpb_title); set('swpb-sub',t.swpb_sub,true);
+  set('swpb-triage-badge',t.swpb_triage_badge); set('swpb-triage-name',t.swpb_triage_name);
+  set('swpb-triage-price',t.swpb_triage_price); set('swpb-triage-desc',t.swpb_triage_desc);
+  set('swpb-triage-features',t.swpb_triage_features,true); set('swpb-triage-cta',noArrow(t.swpb_triage_cta));
+  set('swpb-mo-name',t.swpb_mo_name); set('swpb-mo-period',t.swpb_mo_period); set('swpb-mo-desc',t.swpb_mo_desc); set('swpb-mo-cta',noArrow(t.swpb_mo_cta));
+  set('swpb-yr-name',t.swpb_yr_name); set('swpb-yr-period',t.swpb_yr_period); set('swpb-yr-desc',t.swpb_yr_desc); set('swpb-yr-cta',noArrow(t.swpb_yr_cta));
+  set('swpb-seasonal-tag',t.swpb_seasonal_tag);
+  set('swpb-lib-name',t.swpb_lib_name); set('swpb-lib-period',t.swpb_lib_period); set('swpb-lib-desc',t.swpb_lib_desc); set('swpb-lib-cta',noArrow(t.swpb_lib_cta));
+  set('swpb-feat-1',t.swpb_feat_1); set('swpb-feat-2',t.swpb_feat_2); set('swpb-feat-3',t.swpb_feat_3); set('swpb-feat-4',t.swpb_feat_4);
+  set('swpb-feat-yr-1',t.swpb_feat_yr_1); set('swpb-feat-yr-2',t.swpb_feat_yr_2); set('swpb-feat-yr-3',t.swpb_feat_yr_3); set('swpb-feat-yr-4',t.swpb_feat_yr_4);
+  set('swpb-feat-lib-1',t.swpb_feat_lib_1); set('swpb-feat-lib-2',t.swpb_feat_lib_2); set('swpb-feat-lib-3',t.swpb_feat_lib_3);
+  set('swpb-footnote',t.swpb_footnote,true);
   set('sw-d-kicker3',t.sw_d_kicker3);
   for(let c=1;c<=4;c++){ set('sw-fc'+c+'-name',t['sw_fc'+c+'_name']); for(let r=1;r<=4;r++) set('sw-fc'+c+'-'+r,t['sw_fc'+c+'_'+r]); }
   // webdesign.html
