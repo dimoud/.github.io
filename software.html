@@ -585,6 +585,10 @@ function buildHiwList(){
     li.addEventListener('click',()=>pick(i));
     listEl.appendChild(li);
   });
+  // if section already slid in (desktop), keep items visible
+  if(window.innerWidth > 960 && listEl.dataset.revealed === '1'){
+    listEl.querySelectorAll('.hiw-item').forEach(el => el.classList.add('hiw-item--in'));
+  }
 }
 buildHiwList();
 window.refreshHIW=function(){ buildHiwList(); updateHIW(); };
@@ -634,6 +638,8 @@ setInterval(()=>{
     else        hiwActive = (hiwActive - 1 + HIW_STEPS.length) % HIW_STEPS.length;
     updateHIW();
     buildHiwList();
+    // make sure rebuilt items are immediately visible (bypasses slide-in CSS)
+    listEl.querySelectorAll('.hiw-item').forEach(el => el.classList.add('hiw-item--in'));
   }
 
   /* mouse */
@@ -657,6 +663,7 @@ setInterval(()=>{
   const io = new IntersectionObserver(entries => {
     if(!entries[0].isIntersecting) return;
     io.disconnect();
+    listEl.dataset.revealed = '1';
     // stagger each item from right
     listEl.querySelectorAll('.hiw-item').forEach((el, i) => {
       setTimeout(() => el.classList.add('hiw-item--in'), i * 120);
@@ -1430,10 +1437,10 @@ function dragStart(x){
 function dragMove(x){
   if(!dragActive) return;
   const dx=x-dragStartX;
-  offsetX=dragStartOff-dx;
+  offsetX=dragStartOff+dx;
   // track velocity
   const now=performance.now(), dt2=(now-lastDragT)||1;
-  velocity=-(x-lastDragX)/dt2*1000;
+  velocity=(x-lastDragX)/dt2*1000;
   lastDragX=x; lastDragT=now;
 }
 function dragEnd(){
