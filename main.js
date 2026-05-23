@@ -1,7 +1,7 @@
 /* ═══════════════════════════════════════════════════════════════
    LANGUAGE DATA
 ═══════════════════════════════════════════════════════════════ */
-const EXP_YEARS = new Date().getFullYear() - 2019;
+const EXP_YEARS = new Date().getFullYear() - 2016;
 
 const LANG = {
   el: {
@@ -27,7 +27,8 @@ const LANG = {
     val_2_title:'Πλήρης Κύκλος', val_2_text:'Από σκίτσο ως συναρμολόγηση — σχεδιασμός, BOM, κατασκευή και παράδοση. Παραδίδουμε, δεν μεταβιβάζουμε.', val_2_text_mobile:'Σχεδιασμός, BOM, κατασκευή, παράδοση. Παραδίδουμε — δεν μεταβιβάζουμε.',
     val_3_title:'Διεθνή Πρότυπα', val_3_text:'Σπουδές σε 3 χώρες. Διεθνής μηχανολογική αυστηρότητα εφαρμοσμένη σε κάθε τοπικό έργο.', val_3_text_mobile:'Σπουδές σε 3 χώρες. Διεθνής αυστηρότητα, τοπικά εφαρμοσμένη.',
     val_4_title:'Σχεδιασμός για Κατασκευή', val_4_text:'Σχεδιασμός για κατασκευή από την πρώτη μέρα. Σχέδια βελτιστοποιημένα για γρήγορη παραγωγή, ελάχιστα απόβλητα και πραγματική συναρμολόγηση.', val_4_text_mobile:'DFM από την πρώτη μέρα. Γρήγορη παραγωγή, ελάχιστα απόβλητα.',
-    about_bullets:'<li>7+ χρόνια μηχανολογικός σχεδιασμός, 3D printing & κατασκευή</li><li>Πλήρης κύκλος: CAD → BOM → κατασκευή → ποιοτικός έλεγχος</li><li>FEA & σχεδιασμός για κατασκευή από την πρώτη μέρα</li>',
+    about_bullets:'<li>10+ χρόνια μηχανολογικός σχεδιασμός, 3D printing & κατασκευή</li><li>Πλήρης κύκλος: CAD → BOM → κατασκευή → ποιοτικός έλεγχος</li><li>FEA & σχεδιασμός για κατασκευή από την πρώτη μέρα</li>',
+    about_bullets_mobile:'',
     proc_label:'Πώς Δουλεύουμε',
     proc_1_title:'Brief', proc_1_text:'Αφιερώνουμε χρόνο να κατανοήσουμε τις ανάγκες, τους περιορισμούς και τους στόχους σας πριν πάρουμε οποιαδήποτε σχεδιαστική απόφαση — γιατί ένα σωστό brief οδηγεί σε σωστό αποτέλεσμα.',
     proc_2_title:'Σχεδιασμός', proc_2_text:'3D μοντέλο σε SolidWorks, FEA, πλήρες BOM και τεχνικά σχέδια (εξαρτημάτων, συναρμολόγησης, οδηγίες) — όλα έτοιμα για παραγωγή.',
@@ -158,7 +159,9 @@ const LANG = {
     sw_ch9:'Διάτμηση', sw_ch10:'Σύνθετη Καταπόνηση Κοχλία', sw_ch11:'Συγκολλήσεις', sw_ch12:'Ελάχιστη Ακτίνα Στροφής',
     sw_ch13:'Πέδηση', sw_ch14:'Ευστάθεια σε Στροφή', sw_ch15:'Κυκλική Βάση Καλαθοφόρου/Γερανού', sw_ch16:'Αξονικά Φορτία', sw_ch17:'Εγκάρσια Φορτία',
     team_heading:'Ομάδα', team_page_heading:'Ομάδα',
-    proc_exp_text:'{yrs} χρόνια σε ρομποτική, εξοπλισμό ασφαλείας και ακριβή κατασκευή — πέντε πτυχία, τρεις χώρες.',
+    proc_exp_text:'{yrs} χρόνια σε ρομποτική, εξοπλισμό ασφαλείας και ακριβή κατασκευή — πέντε πτυχία, τρεις χώρες.', proc_exp_text_mobile:'{yrs} χρόνια εμπειρίας — ρομποτική, ασφάλεια, κατασκευή.',
+    pillar_2_text:'Ειλικρινείς εκτιμήσεις, διαφανής επικοινωνία και πλήρης υπευθυνότητα από το πρώτο σκίτσο ως την τελική παράδοση. Χωρίς εκπλήξεις, χωρίς συντομεύσεις.', pillar_2_text_mobile:'Ειλικρινείς εκτιμήσεις, πλήρης υπευθυνότητα. Χωρίς εκπλήξεις, χωρίς συντομεύσεις.',
+    pillar_3_text:'Κλασική μηχανολογική βάση και διάθεση για έξυπνες λύσεις. Από DFM γεωμετρία ως διεπιστημονική σκέψη — κάθε έργο είναι ευκαιρία για καλύτερο αποτέλεσμα.', pillar_3_text_mobile:'Κλασική βάση, έξυπνες λύσεις. DFM από την αρχή, κάθε φορά.',
     founder_name:'Δημήτρης<br>Μουδιώτης',
     founder_label:'Ιδρυτής &amp; Επικεφαλής Μηχανικός',
     founder_bio:'Μηχανολόγος Μηχανικός (ΑΠΘ) με ' + EXP_YEARS + '+ χρόνια εμπειρίας σε ρομποτική, εξοπλισμό ασφαλείας, βιομηχανικά μηχανήματα και ακριβή κατασκευή. Σπούδασε σε πέντε πανεπιστήμια στην Ελλάδα, τη Γαλλία και τις ΗΠΑ.',
@@ -261,6 +264,10 @@ const LANG = {
     pr_cta_price_from:'Ξεκινάμε από',
     pr_cta_btn1:'Ζητήστε Προσφορά →',
     pr_cta_perk1:'✓ Custom σχεδιασμός συμπεριλαμβάνεται', pr_cta_perk2:'✓ Γρήγορη παράδοση', pr_cta_perk3:'✓ Διαθέσιμη αντίστροφη μηχανική',
+    hiw_h1_l1:'Από τα δεδομένα,', hiw_h1_l3:'στην τεχνική μελέτη', hiw_h1_l4:'σε έξι βήματα.',
+    cap_all_label:'Όλα τα Εργαλεία',
+    fcap_heading_l1:'Χαρακτηριστικά', fcap_heading_l2:'Υπολογισμών',
+    contact_location:'Παγκράτι, Αθήνα',
   },
   en: {
     nav_about:'About', nav_projects:'Projects', nav_software:'Software',
@@ -285,7 +292,8 @@ const LANG = {
     val_2_title:'Full Lifecycle', val_2_text:'From sketch to assembly — design, BOM, fabrication, and handover. We deliver, we don\'t hand off.', val_2_text_mobile:'Design, BOM, fabrication, handover. We deliver — we don\'t hand off.',
     val_3_title:'Global Standards', val_3_text:'Educated across 3 countries. International engineering rigour applied to every local project.', val_3_text_mobile:'Educated across 3 countries. International rigour, applied locally.',
     val_4_title:'Built to Make', val_4_text:'Design for Manufacturability from day one. Designs optimised for fast fabrication, minimal waste, and real-world assembly.', val_4_text_mobile:'DFM from day one. Fast to fabricate, minimal waste, fits first time.',
-    about_bullets:'<li>7+ years mechanical design, 3D printing & fabrication</li><li>Full cycle: CAD → BOM → fabrication → quality control</li><li>FEA simulation & Design for Manufacturability from day one</li>',
+    about_bullets:'<li>10+ years mechanical design, 3D printing & fabrication</li><li>Full cycle: CAD → BOM → fabrication → quality control</li><li>FEA simulation & Design for Manufacturability from day one</li>',
+    about_bullets_mobile:'',
     proc_label:'How We Work',
     proc_1_title:'Brief', proc_1_text:'We take time to understand your requirements, constraints, and goals before committing to any design direction — because the right brief leads to the right outcome.',
     proc_2_title:'Design', proc_2_text:'Full 3D model in SolidWorks, FEA validation, complete BOM, and technical drawings (part, assembly, instructions) — every deliverable ready for production.',
@@ -416,7 +424,9 @@ const LANG = {
     sw_ch9:'Shear', sw_ch10:'Combined Bolt Stress', sw_ch11:'Welds', sw_ch12:'Minimum Turning Radius',
     sw_ch13:'Braking', sw_ch14:'Cornering Stability', sw_ch15:'Circular Base Basket/Crane', sw_ch16:'Axial Loads', sw_ch17:'Transverse Loads',
     team_heading:'Team', team_page_heading:'Team',
-    proc_exp_text:'Nine years across robotics, safety equipment and precision fabrication — five degrees, three countries.',
+    proc_exp_text:'{yrs} years across robotics, safety equipment and precision fabrication — five degrees, three countries.', proc_exp_text_mobile:'{yrs} years — robotics, safety equipment, precision fabrication.',
+    pillar_2_text:'Honest estimates, transparent communication, and full accountability from first sketch to final delivery. No surprises, no shortcuts — only what was promised, done properly.', pillar_2_text_mobile:'Honest estimates, full accountability. No surprises, no shortcuts.',
+    pillar_3_text:'A classical engineering foundation meets a genuine drive to find smarter solutions. From DFM-optimised geometry to cross-disciplinary insight, every project is an opportunity to do it better.', pillar_3_text_mobile:'Classical foundation, smarter solutions. DFM-optimised, every time.',
     founder_name:'Dimitrios<br>Moudiotis',
     founder_label:'Founder &amp; Lead Engineer',
     founder_bio:'Mechanical Engineer (AUTH) with ' + EXP_YEARS + '+ years of experience across robotics, safety equipment, industrial machinery, and precision fabrication. Studied at five universities in Greece, France, and the USA.',
@@ -519,13 +529,17 @@ const LANG = {
     pr_cta_price_from:'Starting from',
     pr_cta_btn1:'Get a Quote →',
     pr_cta_perk1:'✓ Custom design included', pr_cta_perk2:'✓ Fast turnaround', pr_cta_perk3:'✓ Reverse engineering available',
+    hiw_h1_l1:'From data,', hiw_h1_l3:'to the technical study', hiw_h1_l4:'in six steps.',
+    cap_all_label:'All Tools',
+    fcap_heading_l1:'Calculation', fcap_heading_l2:'Capabilities',
+    contact_location:'Pagrati, Athens',
   }
 };
 
 /* ═══════════════════════════════════════════════════════════════
    LANGUAGE APPLY
 ═══════════════════════════════════════════════════════════════ */
-let currentLang = 'en';
+let currentLang = 'el';
 
 function applyLang(lang) {
   currentLang = lang;
@@ -555,7 +569,7 @@ function applyLang(lang) {
   set('val-2-title',t.val_2_title); set('val-2-text', isMob && t.val_2_text_mobile ? t.val_2_text_mobile : t.val_2_text);
   set('val-3-title',t.val_3_title); set('val-3-text', isMob && t.val_3_text_mobile ? t.val_3_text_mobile : t.val_3_text);
   set('val-4-title',t.val_4_title); set('val-4-text', isMob && t.val_4_text_mobile ? t.val_4_text_mobile : t.val_4_text);
-  set('about-bullets',t.about_bullets,true);
+  set('about-bullets', isMob && t.about_bullets_mobile !== undefined ? t.about_bullets_mobile : t.about_bullets, true);
   set('proc-label',t.proc_label);
   set('proc-1-title',t.proc_1_title); set('proc-1-text',t.proc_1_text);
   set('proc-2-title',t.proc_2_title); set('proc-2-text',t.proc_2_text);
@@ -565,9 +579,11 @@ function applyLang(lang) {
   set('prin-2-title',t.prin_2_title); set('prin-2-text', isMob && t.prin_2_text_mobile ? t.prin_2_text_mobile : t.prin_2_text, !isMob);
   set('prin-3-title',t.prin_3_title); set('prin-3-text', isMob && t.prin_3_text_mobile ? t.prin_3_text_mobile : t.prin_3_text, !isMob);
   set('prin-4-title',t.prin_4_title); set('prin-4-text',t.prin_4_text,true);
+  set('pillar-2-text', isMob && t.pillar_2_text_mobile ? t.pillar_2_text_mobile : t.pillar_2_text);
+  set('pillar-3-text', isMob && t.pillar_3_text_mobile ? t.pillar_3_text_mobile : t.pillar_3_text);
   set('team-heading',t.team_heading); set('team-page-heading',t.team_page_heading);
   const procExpEl = document.getElementById('proc-exp-text');
-  if(procExpEl) { const yrs = new Date().getFullYear() - 2019; const wordsEn=['Zero','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten','Eleven','Twelve']; const wordsEl=['Μηδέν','Ένα','Δύο','Τρία','Τέσσερα','Πέντε','Έξι','Επτά','Οκτώ','Εννέα','Δέκα','Έντεκα','Δώδεκα']; const word = lang==='el' ? (wordsEl[yrs]||yrs) : (wordsEn[yrs]||yrs); procExpEl.textContent = (t.proc_exp_text||'').replace('{yrs}', word); }
+  if(procExpEl) { const yrs = new Date().getFullYear() - 2016; const wordsEn=['Zero','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten','Eleven','Twelve']; const wordsEl=['Μηδέν','Ένα','Δύο','Τρία','Τέσσερα','Πέντε','Έξι','Επτά','Οκτώ','Εννέα','Δέκα','Έντεκα','Δώδεκα']; const word = lang==='el' ? (wordsEl[yrs]||yrs) : (wordsEn[yrs]||yrs); const src = isMob ? (t.proc_exp_text_mobile||t.proc_exp_text) : t.proc_exp_text; procExpEl.textContent = (src||'').replace('{yrs}', word); }
   set('founder-name',t.founder_name,true);
   set('founder-label',t.founder_label,true); set('founder-bio',t.founder_bio);
   set('fcs-years',t.fcs_years); set('fcs-projects',t.fcs_projects);
@@ -716,6 +732,13 @@ function applyLang(lang) {
   Object.entries(mmap).forEach(([id,val])=>{ const el=document.getElementById(id); if(el) el.textContent=val; });
   document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
   localStorage.setItem('lang',lang);
+  // software.html — How It Works heading + modules section
+  set('hiw-h1-l1',t.hiw_h1_l1); set('hiw-h1-l3',t.hiw_h1_l3); set('hiw-h1-l4',t.hiw_h1_l4);
+  set('cap-all-label',t.cap_all_label);
+  set('fcap-heading-l1',t.fcap_heading_l1); set('fcap-heading-l2',t.fcap_heading_l2);
+  if (typeof refreshModules === 'function') refreshModules();
+  if (typeof refreshHIW === 'function') refreshHIW();
+  document.querySelectorAll('.contact-location-text').forEach(el => { el.textContent = t.contact_location; });
   renderPortfolio();
 }
 
@@ -1311,7 +1334,7 @@ function initProcessAnimations() {
 ═══════════════════════════════════════════════════════════════ */
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.lang-btn').forEach(b => b.addEventListener('click', () => applyLang(b.dataset.lang)));
-  applyLang(localStorage.getItem('lang') || 'en');
+  applyLang(localStorage.getItem('lang') || 'el');
   initScroll();
   initHeroExplode();
   initPortfolio();

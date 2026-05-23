@@ -47,7 +47,7 @@
 /* Ensure Barlow Condensed renders bold (like Oswald does at weight 400 visually) */
 /* Barlow Condensed has ~10% larger x-height than Oswald — scale down to match */
 :lang(el) h1, :lang(el) h2, :lang(el) h3,
-:lang(el) .hero-title, :lang(el) .contact-heading,
+:lang(el) .contact-heading,
 :lang(el) .wd-offer-name, :lang(el) .value-title,
 :lang(el) .process-title, :lang(el) .stat-num,
 :lang(el) .founder-card-name, :lang(el) .fcs-num,
@@ -58,7 +58,6 @@
   font-weight: 600;
 }
 /* Scale Barlow Condensed down ~10% to visually match Oswald's apparent size */
-:lang(el) .hero-title     { font-size: clamp(13px, 1.45vw, 18px); font-style: normal; }
 :lang(el) .section-title  { font-size: clamp(43px, 4.95vw, 68px); }
 :lang(el) .stat-num       { font-size: 40px; }
 :lang(el) .value-title    { font-size: 20px; }
@@ -642,14 +641,7 @@ section { padding: 100px 64px; position: relative; z-index: 1; }
   font-size: 24px; letter-spacing: .5px;
   color: #fff; line-height: 1.15;
 }
-.value-bilingual .el {
-  font-family: var(--font-display);
-  font-size: 14px; letter-spacing: 2px;
-  line-height: 1; opacity: .5;
-}
-.vc-blue  .value-bilingual .el { color: var(--blue-lt); }
-.vc-red   .value-bilingual .el { color: #f97316; }
-.vc-green .value-bilingual .el { color: #34d399; }
+.value-bilingual .el { display: none; }
 
 /* Divider row between pillar and principle cards */
 .values-row-divider {
@@ -2036,7 +2028,7 @@ footer {
 .sw-page-right { display: flex; align-items: center; justify-content: flex-end; overflow: visible; }
 .sw-crane-img {
   width: 160%; max-width: 2400px;
-  margin-left: 10%; margin-right: -20%;
+  margin-left: 16%; margin-right: -26%;
   filter: drop-shadow(0 0 60px rgba(37,99,235,.45)) drop-shadow(0 0 20px rgba(96,165,250,.2));
 }
 /* hide legacy elements */
@@ -2956,8 +2948,9 @@ hr.ec-rule { position: relative; z-index: 2; }
   .hero-name      { font-size: clamp(55px, 17.25vw, 92px); text-align: center; }
   .hero-name span { color: #a8d8ff; -webkit-text-fill-color: #a8d8ff; background: none; }
   .hero-title     { text-align: center; font-size: clamp(9px, 2.6vw, 14px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  :lang(el) .hero-title { font-size: clamp(12px, 3.2vw, 15px); white-space: normal; overflow: visible; text-overflow: clip; }
   .hero-tagline   { text-align: center; }
-  .hero-desc      { text-align: center; max-width: 340px; }
+  .hero-desc      { display: none; }
   .hero-cta       { justify-content: center; width: 100%; }
   .hero-cta-phone { display: inline-flex; }
   .process-title  { font-size: clamp(22px, 6vw, 32px); }
@@ -3064,7 +3057,6 @@ hr.ec-rule { position: relative; z-index: 2; }
     margin-bottom: 8px;
   }
   .value-bilingual .en { font-size: 15px; }
-  .value-bilingual .el { font-size: 10px; }
   .value-heading { font-size: 15px; margin-bottom: 8px; }
   .value-card .value-text {
     font-size: 11px;

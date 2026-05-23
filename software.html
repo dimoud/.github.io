@@ -133,8 +133,8 @@
       <li><a href="contact.html"  id="nav-contact">Contact</a></li>
     </ul>
     <div class="lang-toggle">
-      <button class="lang-btn"        data-lang="el">🇬🇷 ΕΛ</button>
-      <button class="lang-btn active" data-lang="en">🇬🇧 EN</button>
+      <button class="lang-btn active" data-lang="el">🇬🇷 ΕΛ</button>
+      <button class="lang-btn"        data-lang="en">🇬🇧 EN</button>
     </div>
   </div>
   <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
@@ -200,7 +200,7 @@
 
       <!-- steps (right) -->
       <div class="hiw-steps">
-        <div class="hiw-header">
+        <div class="hiw-header reveal-up">
           <div class="hiw-eyebrow">
             <span class="eyebrow-rule"></span>
             <span id="sw-d-kicker2">ΠΩΣ&nbsp;&nbsp;ΛΕΙΤΟΥΡΓΕΙ</span>
@@ -211,8 +211,8 @@
             <span class="hiw-h1-accent" id="hiw-h1-l4">σε έξι βήματα.</span>
           </h2>
         </div>
-        <ul class="hiw-list" id="hiwList"></ul>
-        <div class="hiw-cta-row">
+        <ul class="hiw-list reveal-up" id="hiwList"></ul>
+        <div class="hiw-cta-row reveal-up">
           <a class="hiw-cta-link" href="https://www.easemanual.eu/user-guide/mechanical-expertease" target="_blank" rel="noopener">
             <span id="sw-d-link">Πλήρης Οδηγός Χρήσης</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" width="16" height="16"><path d="M5 12H17M13 8l4 4-4 4"/></svg>
@@ -285,10 +285,13 @@
 /* steps column */
 .hiw-eyebrow {
   display:inline-flex; align-items:center; gap:14px;
-  color:#2E7BFF; font-size:13px; letter-spacing:3px;
+  color:#2E7BFF; font-size:26px; letter-spacing:3px;
   font-weight:700; margin-bottom:28px;
   font-family:'JetBrains Mono',ui-monospace,monospace;
   text-transform:uppercase;
+}
+@media (max-width:960px) {
+  .hiw-eyebrow { font-size:16px; }
 }
 .eyebrow-rule { width:28px; height:2px; background:#2E7BFF; display:inline-block; flex-shrink:0; }
 .hiw-h1 {
@@ -400,12 +403,12 @@
 <script>
 (function(){
 const HIW_STEPS=[
-  {n:"01",label:"Εισαγωγή τεχνικών χαρακτηριστικών οχήματος",doc:"data"},
-  {n:"02",label:"Εισαγωγή φορτίων στους άξονες και το πλαίσιο",doc:"loads"},
-  {n:"03",label:"Αυτόματη εκτέλεση υπολογισμών",doc:"calc"},
-  {n:"04",label:"Δημιουργία διαγραμμάτων τεμνουσών και ροπών κάμψης",doc:"diag"},
-  {n:"05",label:"Ανασκόπηση συνοπτικού πίνακα αποτελεσμάτων",doc:"summary"},
-  {n:"06",label:"Δημιουργία πλήρους τεχνικής μελέτης με ένα κλικ",doc:"report"},
+  {n:"01",label:"Εισαγωγή τεχνικών χαρακτηριστικών οχήματος",labelEn:"Enter vehicle technical specifications",doc:"data"},
+  {n:"02",label:"Εισαγωγή φορτίων στους άξονες και το πλαίσιο",labelEn:"Input loads affecting axles and frame",doc:"loads"},
+  {n:"03",label:"Αυτόματη εκτέλεση υπολογισμών",labelEn:"Automatic calculations execute instantly",doc:"calc"},
+  {n:"04",label:"Δημιουργία διαγραμμάτων τεμνουσών και ροπών κάμψης",labelEn:"Generate shear force & bending moment diagrams",doc:"diag"},
+  {n:"05",label:"Ανασκόπηση συνοπτικού πίνακα αποτελεσμάτων",labelEn:"Review comprehensive calculation summary",doc:"summary"},
+  {n:"06",label:"Δημιουργία πλήρους τεχνικής μελέτης με ένα κλικ",labelEn:"Create the full technical study with one click",doc:"report"},
 ];
 
 /* SVG documents for each step */
@@ -547,7 +550,9 @@ let hiwActive=0, hiwUserPicked=false;
 const stackEl=document.getElementById('hiwStack');
 const listEl=document.getElementById('hiwList');
 
-/* build docs */
+function hiwLang(){ return localStorage.getItem('lang')||'el'; }
+
+/* build docs (once) */
 HIW_STEPS.forEach((s,i)=>{
   const div=document.createElement('div');
   div.className='hiw-doc';
@@ -555,15 +560,22 @@ HIW_STEPS.forEach((s,i)=>{
   stackEl.appendChild(div);
 });
 
-/* build list */
-HIW_STEPS.forEach((s,i)=>{
-  const li=document.createElement('li');
-  li.className='hiw-item'+(i===0?' is-on':'');
-  li.innerHTML=`<span class="hiw-num">${s.n}</span><span class="hiw-label">${s.label}</span><span class="hiw-marker"></span>`;
-  li.addEventListener('mouseenter',()=>pick(i));
-  li.addEventListener('click',()=>pick(i));
-  listEl.appendChild(li);
-});
+/* build/rebuild list */
+function buildHiwList(){
+  const lang=hiwLang();
+  listEl.innerHTML='';
+  HIW_STEPS.forEach((s,i)=>{
+    const lbl=lang==='en'&&s.labelEn?s.labelEn:s.label;
+    const li=document.createElement('li');
+    li.className='hiw-item'+(i===hiwActive?' is-on':'');
+    li.innerHTML=`<span class="hiw-num">${s.n}</span><span class="hiw-label">${lbl}</span><span class="hiw-marker"></span>`;
+    li.addEventListener('mouseenter',()=>pick(i));
+    li.addEventListener('click',()=>pick(i));
+    listEl.appendChild(li);
+  });
+}
+buildHiwList();
+window.refreshHIW=function(){ buildHiwList(); updateHIW(); };
 
 function pick(i){
   hiwUserPicked=true;
@@ -592,18 +604,55 @@ setInterval(()=>{
   hiwActive=(hiwActive+1)%HIW_STEPS.length;
   updateHIW();
 },4500);
+
+/* ── drag / swipe on doc stack ─────────────────────────────────── */
+(function(){
+  const el = stackEl;
+  const THRESHOLD = 40;
+  let startX = 0, startY = 0, dragging = false;
+
+  function onStart(x, y){ startX = x; startY = y; dragging = true; }
+  function onEnd(x){
+    if(!dragging) return;
+    dragging = false;
+    const dx = x - startX;
+    if(Math.abs(dx) < THRESHOLD) return;
+    hiwUserPicked = true;
+    if(dx < 0) hiwActive = (hiwActive + 1) % HIW_STEPS.length;
+    else        hiwActive = (hiwActive - 1 + HIW_STEPS.length) % HIW_STEPS.length;
+    updateHIW();
+    buildHiwList();
+  }
+
+  /* mouse */
+  el.addEventListener('mousedown', e => onStart(e.clientX, e.clientY));
+  window.addEventListener('mouseup',  e => { if(dragging) onEnd(e.clientX); });
+
+  /* touch */
+  el.addEventListener('touchstart', e => onStart(e.touches[0].clientX, e.touches[0].clientY), {passive:true});
+  el.addEventListener('touchend',   e => onEnd(e.changedTouches[0].clientX), {passive:true});
+
+  el.style.cursor = 'grab';
+  el.addEventListener('mousedown', () => { el.style.cursor = 'grabbing'; });
+  window.addEventListener('mouseup', () => { el.style.cursor = 'grab'; });
+})();
+
 })();
 </script>
 
 <section class="fcap-section" id="capabilities">
   <div class="fcap-inner">
 
-    <!-- left: kicker + 2×2 grid -->
+    <!-- left: kicker + heading + 2×2 grid -->
     <div class="fcap-left">
-      <div class="fcap-kicker">
+      <div class="fcap-kicker reveal-up">
         <span class="fcap-kicker-rule"></span>
         <span id="sw-d-kicker3">ΔΥΝΑΤΟΤΗΤΕΣ</span>
       </div>
+      <h2 class="fcap-heading reveal-up" id="fcap-heading">
+        <span id="fcap-heading-l1">Χαρακτηριστικά</span>
+        <span id="fcap-heading-l2">Υπολογισμών</span>
+      </h2>
       <div class="fcap-grid">
 
         <div class="sw-feat-card">
@@ -661,9 +710,12 @@ setInterval(()=>{
       </div>
     </div>
 
-    <!-- right: screenshot -->
+    <!-- right: screenshots stacked -->
     <div class="fcap-right">
-      <img class="fcap-img-single" src="images/me-1.png" alt="Mechanical ExpertEase screenshot">
+      <div class="fcap-img-stack">
+        <img class="fcap-img fcap-img-1" src="images/me-1.png" alt="Mechanical ExpertEase screenshot">
+        <img class="fcap-img fcap-img-2" src="images/me-2.png" alt="Mechanical ExpertEase screenshot 2">
+      </div>
     </div>
 
   </div>
@@ -689,12 +741,15 @@ setInterval(()=>{
   align-items: center;
   gap: 14px;
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 26px;
   font-weight: 700;
   letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--blue);
   margin-bottom: 36px;
+}
+@media (max-width: 960px) {
+  .fcap-kicker { font-size: 16px; }
 }
 .fcap-kicker-rule {
   display: inline-block;
@@ -742,22 +797,58 @@ setInterval(()=>{
   line-height: 1;
   flex-shrink: 0;
 }
-/* right: screenshot fan */
+/* capabilities heading (hiw-h1 style) */
+.fcap-heading {
+  margin: 0 0 36px;
+  display: flex; flex-direction: row; gap: 0.28em;
+  font-family: 'Barlow Condensed', 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: clamp(34px, 3.8vw, 50px);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  color: #2E7BFF;
+  flex-wrap: wrap;
+}
+
+/* right: screenshot stack */
 .fcap-right {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.fcap-img-single {
+.fcap-img-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 85%;
+  margin-left: auto;
+}
+.fcap-img {
   width: 100%;
-  max-width: 100%;
   height: auto;
   display: block;
+  border-radius: 8px;
+  opacity: 0;
+}
+/* me-1: slides in from left */
+.fcap-img-1 {
+  transform: translateX(-70px) translateY(-12px);
+  transition: opacity .75s ease, transform .75s cubic-bezier(.19,1,.22,1);
+}
+/* me-2: slides in from right, delayed */
+.fcap-img-2 {
+  transform: translateX(70px) translateY(12px);
+  transition: opacity .75s ease, transform .75s cubic-bezier(.19,1,.22,1);
+  transition-delay: .45s;
+}
+.fcap-img.fcap-img--visible {
+  opacity: 1;
+  transform: translateX(0) translateY(0);
 }
 
 @media (max-width: 1100px) {
   .fcap-inner { grid-template-columns: 1fr; gap: 32px; }
-  .fcap-img-single { max-width: 100%; }
+  .fcap-img-stack { max-width: 100%; width: 100%; margin-left: 0; }
 }
 @media (max-width: 960px) {
   .fcap-section { padding: 56px 24px; }
@@ -767,8 +858,9 @@ setInterval(()=>{
   .fcap-section { padding: 40px 16px; }
   .fcap-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
   .fcap-right { display: flex; }
-  .fcap-img-single { width: 100%; max-width: 100%; }
+  .fcap-img-stack { width: 100%; }
   .sw-feat-list { display: none; }
+  .fcap-heading { font-size: clamp(26px, 7vw, 36px); margin-bottom: 24px; flex-direction: row; flex-wrap: wrap; gap: 0.25em; }
 }
 </style>
 
@@ -779,7 +871,7 @@ setInterval(()=>{
     <!-- kicker -->
 
     <!-- spotlight -->
-    <div class="cap-spotlight" id="capSpotlight">
+    <div class="cap-spotlight reveal-up" id="capSpotlight">
       <div class="cap-spot-visual">
         <div class="spot-corner spot-corner-tl"></div>
         <div class="spot-corner spot-corner-br"></div>
@@ -797,7 +889,7 @@ setInterval(()=>{
     </div>
 
     <!-- carousel header stays inside inner -->
-    <div class="cap-grid-head">
+    <div class="cap-grid-head reveal-up">
       <h3 id="cap-all-label">Όλα τα Εργαλεία</h3>
       <span class="cap-grid-count" id="capModCount"></span>
     </div>
@@ -1071,38 +1163,120 @@ const P={
 
 // ── Module data ───────────────────────────────────────────────────
 const MODULES=[
-  {id:'mnq',num:'01',title:'MNQ',sub:'Φορτία πλαισίου · διαγράμματα κάμψης & διάτμησης',cat:'Αντοχή',preview:'mnq',summary:'Έως 15 σημειακά και 5 κατανεμημένα φορτία. Παράγει διαγράμματα M, Q, σ, τ, διάγραμμα ελευθέρου σώματος και τριπλό συντελεστή ασφαλείας — με Wizard που προτείνει φορτία ανά τύπο οχήματος.',highlights:['Wizard με πιθανά φορτία ανά τύπο οχήματος και αυτόματη εκτίμηση βάρους.','Παράθυρο συμβουλών: πόσα kg πρέπει ακόμη να προστεθούν για ισορροπία.','Χρωματικός κώδικας: κίτρινο για φορτία εκτός πλαισίου, κόκκινο για μη έγκυρα κελιά.','Συντελεστής ασφαλείας Hoober — επιτρεπτή τιμή ≥ 1.']},
-  {id:'axles',num:'02',title:'Άξονες',sub:'Κατανομή αξονικών φορτίων',cat:'Δυναμική',preview:'axles',summary:'Έως 5 σημειακά και 5 κατανεμημένα φορτία με ρυθμιζόμενη κατανομή ζυγολογίων. Αλγόριθμος βελτιστοποίησης βρίσκει την πιθανή θέση των τεσσάρων μεγαλύτερων φορτίων που ικανοποιεί τα όρια καταπόνησης.',highlights:['Αυτόματη τοποθέτηση βάρους οδηγού/συνοδηγού και ωφέλιμου φορτίου.','Αλγόριθμος βελτιστοποίησης για τη θέση των 4 μεγαλύτερων φορτίων.','Renew Graph + Reset για άμεση επανυπολόγιση.','1ος άξονας αριστερά ή δεξιά, ανά πάσα στιγμή.']},
-  {id:'rescue',num:'03',title:'Οδική Βοήθεια',sub:'Καταπόνηση αξόνων με ρυμουλκούμενο',cat:'Δυναμική',preview:'rescue',summary:'Δύο σενάρια: μόνο από συρόμενο όχημα και πίνακας συνδυασμών με όχημα ταυτόχρονα επί του αμαξώματος.'},
-  {id:'a3',num:'04',title:'Σχέδια Α3',sub:'Κάθετη και οριζόντια διάταξη σχεδίων',cat:'Σχεδίαση',preview:'a3',summary:'Τρία φύλλα Α3 — μία κάθετη και δύο οριζόντιες διατάξεις — με σχέδια οχήματος, διαγράμματα και πίνακες φορτίων.'},
-  {id:'frame',num:'05',title:'Πλαίσιο',sub:'Πλήρης έλεγχος αντοχής διατομής',cat:'Αντοχή',preview:'frame',summary:'Έλεγχος αντοχής με κύρια και βοηθητική διατομή. Υπολογίζει ροπές αδράνειας, μέγιστες τάσεις και τρεις συντελεστές ασφαλείας — κάμψη, διάτμηση, συνδυαστικά.'},
-  {id:'memo',num:'06',title:'Τεχνικό Υπόμνημα',sub:'Αυτόματη σύνθεση τεχνικής μελέτης',cat:'Σχεδίαση',preview:'memo',summary:'Σύνθεση της τελικής μελέτης από τα δεδομένα οχήματος. Εξαγωγή σε Word ή PDF αυτόματα.'},
-  {id:'tank',num:'07',title:'Δεξαμενή Άλατος & Νερού',sub:'Όγκος εκχιονιστικών δεξαμενών',cat:'Ειδικά',preview:'tank',summary:'Όγκος δεξαμενών άλατος και αλατόνερου εκχιονιστικών οχημάτων. Δύο στάνταρ τύποι άλατος και ένας τύπος νερού.'},
-  {id:'susp',num:'08',title:'Αναρτήσεις',sub:'Καταπόνηση αναρτήσεων & συνδέσεων',cat:'Αντοχή',preview:'susp',summary:'Αυτόματος έλεγχος αναρτήσεων και πύρων σύνδεσης. Σε διαξονικά οχήματα ελέγχονται και οι δύο άξονες.'},
-  {id:'spring',num:'09',title:'Ελατήρια',sub:'Έλεγχος φυλλοειδών ελατηρίων',cat:'Αντοχή',preview:'spring',summary:'Φυλλοειδή ελατήρια τραπεζοειδούς μορφής με επιλογή υλικού από βιβλιοθήκη. Υπολογίζει σταθερά k, βέλος κάμψης και μέγιστη αναπτυσσόμενη τάση.'},
-  {id:'shear',num:'10',title:'Διάτμηση Κοχλιών & Ήλων',sub:'Γενική καταπόνηση πύρου σε διάτμηση',cat:'Αντοχή',preview:'shear',summary:'Επιλέγετε τύπο κοχλία από Μ2 μέχρι Μ100 — όλα τα γεωμετρικά στοιχεία συμπληρώνονται αυτόματα.'},
-  {id:'combined',num:'11',title:'Σύνθετη Καταπόνηση Κοχλία',sub:'Διάτμηση + εφελκυσμός ταυτόχρονα',cat:'Αντοχή',preview:'combined',summary:'Πλήρης έλεγχος κοχλία σε ταυτόχρονη διάτμηση και εφελκυσμό. Βάσει αρχών στοιχείων μηχανών.'},
-  {id:'weld',num:'12',title:'Συγκολλήσεις',sub:'Στατική & αδρανειακή καταπόνηση ραφών',cat:'Αντοχή',preview:'weld',summary:'Έλεγχος ραφών σε κάμψη, διάτμηση ή συνδυαστικά. Επιλέγετε υλικό και κατηγορία ποιότητας — οι συντελεστές ασφαλείας προσαρμόζονται αυτόματα.'},
-  {id:'turning',num:'13',title:'Ελάχιστη Ακτίνα Στροφής',sub:'Έλεγχος κύκλου στροφής',cat:'Δυναμική',preview:'turning',summary:'Ελάχιστη ακτίνα στροφής με την αναλογία του ποδηλάτου. Έλεγχος συμβατότητας με τον Κανονισμό (ΕΕ) 1230/2012.'},
-  {id:'brake',num:'14',title:'Πέδηση',sub:'Επιβράδυνση και συντελεστές ασφαλείας',cat:'Δυναμική',preview:'brake',summary:'Επιλέγετε επιθυμητή επιβράδυνση και διάμετρο ελαστικού. Υπολογίζει πεδούμενο φορτίο αξόνων και συνδυαστικό συντελεστή ασφαλείας.'},
-  {id:'stability',num:'15',title:'Ευστάθεια σε Στροφή',sub:'Μέγιστη ταχύτητα χωρίς ανατροπή',cat:'Δυναμική',preview:'stability',summary:'Από τα χαρακτηριστικά οχήματος και το θεωρητικό κέντρο βάρους, υπολογίζει μέγιστη ασφαλή ταχύτητα έμφορτο και άφορτο.'},
-  {id:'tipover',num:'16',title:'Ευστάθεια από Εξοπλισμό',sub:'Ανατροπή από κινούμενο εξοπλισμό',cat:'Δυναμική',preview:'tipover',summary:'Έλεγχος ευστάθειας σε ανατροπή για οχήματα με εξοπλισμό που μετακινείται — γερανούς, καλαθοφόρα.'},
-  {id:'rectbase',num:'17',title:'Τετράγωνη Βάση Γερανού',sub:'Καταπόνηση κοχλιών ορθογώνιας βάσης',cat:'Ειδικά',preview:'rectbase',summary:'Καταπόνηση κοχλιών ορθογώνιας βάσης γερανού στο μέγιστο επιτρεπόμενο φορτίο και απόσταση.'},
-  {id:'boom',num:'18',title:'Κυκλική Βάση Καλαθοφόρου',sub:'Καταπόνηση κοχλιών κυκλικής βάσης',cat:'Ειδικά',preview:'boom',summary:'Μοντέλο υπολογισμού για κοχλίες κυκλικής βάσης καλαθοφόρου ή γερανού. Ο δυσμενέστερος κοχλίας μεταφέρεται αυτόματα στο φύλλο Σύνθετης Καταπόνησης.'},
-  {id:'axial',num:'19',title:'Αξονικά Φορτία',sub:'Δυναμική καταπόνηση σε πέδηση',cat:'Αντοχή',preview:'axial',summary:'Δυναμική καταπόνηση συνδέσεων από αδρανειακές δυνάμεις πέδησης. Πλήρως αυτόματο.'},
-  {id:'lateral',num:'20',title:'Εγκάρσια Φορτία',sub:'Δυναμική καταπόνηση σε ελιγμούς',cat:'Αντοχή',preview:'lateral',summary:'Καταπόνηση συνδέσεων από αδρανειακές δυνάμεις σε ελιγμούς. Όλοι οι υπολογισμοί γίνονται αυτόματα.'},
-  {id:'newstudy',num:'21',title:'Νέα Μελέτη',sub:'Αυτόματη δομή φακέλων μελέτης',cat:'Ροή',preview:'newstudy',summary:'Επιλέξτε θέση και ο φάκελος με τους υποφακέλους δημιουργείται και μετονομάζεται αυτόματα με τον κωδικό μελέτης.',highlights:['Όλοι οι υποφάκελοι μετονομάζονται με τον κωδικό μελέτης.','Αντίγραφο του Word προτύπου της τεχνικής μελέτης.','Ερωτά αν θέλετε να ανοίξει το Word εκείνη τη στιγμή.','Πληροφορίες οχήματος αποθηκεύονται σε CSV.']},
-  {id:'importdata',num:'22',title:'Εισαγωγή Δεδομένων',sub:'Φόρτωση CSV από προηγούμενη μελέτη',cat:'Ροή',preview:'importdata',summary:'Διαλέξτε αρχείο CSV από προηγούμενη μελέτη και τα δεδομένα μπαίνουν αυτόματα στις σωστές θέσεις.'},
-  {id:'finalize',num:'23',title:'Τελικές Ρυθμίσεις',sub:'Προετοιμασία πριν την τεχνική μελέτη',cat:'Ροή',preview:'finalize',summary:'Σε ένα κλικ: ανανέωση όλων των διαγραμμάτων, διαγραφή κενών γραμμών, αυτόματη κλιμάκωση αξόνων.'},
-  {id:'savejpeg',num:'24',title:'Αποθήκευση Διαγραμμάτων',sub:'Εξαγωγή ως JPEG',cat:'Ροή',preview:'savejpeg',summary:'Όλα τα διαγράμματα, πίνακες φορτίων και σκαριφήματα πλαισίου αποθηκεύονται ως JPEG.'},
-  {id:'datasheet',num:'25',title:'Φύλλο Δεδομένων',sub:'Κεντρική εισαγωγή στοιχείων',cat:'Ροή',preview:'datasheet',summary:'Όλα τα στοιχεία οχήματος εισάγονται εδώ — κόκκινα κελιά = υποχρεωτικά. Κάθε κελί συνοδεύεται από επεξηγηματικά σχόλια.',highlights:['Κόκκινα κελιά = απαραίτητα για να γίνει η μελέτη.','Επεξηγηματικά σχόλια και εικόνες σε κάθε κελί.','Βιβλιοθήκη υλικών: πλαίσια, ελατήρια, χάλυβες, κοχλίες.','Κελιά εκτός εισόδων είναι κλειδωμένα — προστασία δεδομένων.']},
-  {id:'control',num:'26',title:'Φύλλο Ελέγχου',sub:'Επισκόπηση & επιλογή υπολογισμών',cat:'Ροή',preview:'control',summary:'Με μια ματιά: ποιοι υπολογισμοί ολοκληρώθηκαν σωστά. Γρήγορη πλοήγηση και επιλογή τι μεταφέρεται στην τελική μελέτη.',highlights:['Πίνακας πλοήγησης σε όλα τα φύλλα.','Άμεσος έλεγχος προβλημάτων στους υπολογισμούς.','Επιλογή τμημάτων που μεταφέρονται στο τελικό report.']},
+  {id:'mnq',num:'01',
+    title:'MNQ',sub:'Φορτία πλαισίου · διαγράμματα κάμψης & διάτμησης',cat:'Αντοχή',summary:'Έως 15 σημειακά και 5 κατανεμημένα φορτία. Παράγει διαγράμματα M, Q, σ, τ, διάγραμμα ελευθέρου σώματος και τριπλό συντελεστή ασφαλείας — με Wizard που προτείνει φορτία ανά τύπο οχήματος.',highlights:['Wizard με πιθανά φορτία ανά τύπο οχήματος και αυτόματη εκτίμηση βάρους.','Παράθυρο συμβουλών: πόσα kg πρέπει ακόμη να προστεθούν για ισορροπία.','Χρωματικός κώδικας: κίτρινο για φορτία εκτός πλαισίου, κόκκινο για μη έγκυρα κελιά.','Συντελεστής ασφαλείας Hoober — επιτρεπτή τιμή ≥ 1.'],
+    titleEn:'MNQ',subEn:'Frame loads · bending & shear diagrams',catEn:'Strength',summaryEn:'Up to 15 point loads and 5 distributed loads. Generates M, Q, σ, τ diagrams, free-body diagram, and triple safety factor — with a Wizard that suggests loads per vehicle type.',highlightsEn:['Wizard with probable loads per vehicle type and automatic weight estimation.','Advisory panel: how many kg still needed for balance.','Colour coding: yellow for loads outside the frame, red for invalid cells.','Hoober safety factor — allowable value ≥ 1.'],
+    preview:'mnq'},
+  {id:'axles',num:'02',
+    title:'Άξονες',sub:'Κατανομή αξονικών φορτίων',cat:'Δυναμική',summary:'Έως 5 σημειακά και 5 κατανεμημένα φορτία με ρυθμιζόμενη κατανομή ζυγολογίων. Αλγόριθμος βελτιστοποίησης βρίσκει την πιθανή θέση των τεσσάρων μεγαλύτερων φορτίων που ικανοποιεί τα όρια καταπόνησης.',highlights:['Αυτόματη τοποθέτηση βάρους οδηγού/συνοδηγού και ωφέλιμου φορτίου.','Αλγόριθμος βελτιστοποίησης για τη θέση των 4 μεγαλύτερων φορτίων.','Renew Graph + Reset για άμεση επανυπολόγιση.','1ος άξονας αριστερά ή δεξιά, ανά πάσα στιγμή.'],
+    titleEn:'Axles',subEn:'Axle load distribution',catEn:'Dynamics',summaryEn:'Up to 5 point and 5 distributed loads with adjustable weighbridge distribution. Optimisation algorithm finds the probable position of the four largest loads that satisfies stress limits.',highlightsEn:['Automatic placement of driver/co-driver weight and payload.','Optimisation algorithm for the position of the 4 largest loads.','Renew Graph + Reset for instant recalculation.','1st axle left or right, at any time.'],
+    preview:'axles'},
+  {id:'rescue',num:'03',
+    title:'Οδική Βοήθεια',sub:'Καταπόνηση αξόνων με ρυμουλκούμενο',cat:'Δυναμική',summary:'Δύο σενάρια: μόνο από συρόμενο όχημα και πίνακας συνδυασμών με όχημα ταυτόχρονα επί του αμαξώματος.',
+    titleEn:'Roadside Assistance',subEn:'Axle stress with towed vehicle',catEn:'Dynamics',summaryEn:'Two scenarios: towed vehicle only, and combination table with a vehicle simultaneously on the bodywork.',
+    preview:'rescue'},
+  {id:'a3',num:'04',
+    title:'Σχέδια Α3',sub:'Κάθετη και οριζόντια διάταξη σχεδίων',cat:'Σχεδίαση',summary:'Τρία φύλλα Α3 — μία κάθετη και δύο οριζόντιες διατάξεις — με σχέδια οχήματος, διαγράμματα και πίνακες φορτίων.',
+    titleEn:'A3 Drawings',subEn:'Portrait and landscape drawing layouts',catEn:'Drafting',summaryEn:'Three A3 sheets — one portrait and two landscape layouts — with vehicle drawings, diagrams, and load tables.',
+    preview:'a3'},
+  {id:'frame',num:'05',
+    title:'Πλαίσιο',sub:'Πλήρης έλεγχος αντοχής διατομής',cat:'Αντοχή',summary:'Έλεγχος αντοχής με κύρια και βοηθητική διατομή. Υπολογίζει ροπές αδράνειας, μέγιστες τάσεις και τρεις συντελεστές ασφαλείας — κάμψη, διάτμηση, συνδυαστικά.',
+    titleEn:'Frame',subEn:'Full cross-section strength check',catEn:'Strength',summaryEn:'Strength check with primary and secondary cross-section. Calculates moments of inertia, maximum stresses, and three safety factors — bending, shear, combined.',
+    preview:'frame'},
+  {id:'memo',num:'06',
+    title:'Τεχνικό Υπόμνημα',sub:'Αυτόματη σύνθεση τεχνικής μελέτης',cat:'Σχεδίαση',summary:'Σύνθεση της τελικής μελέτης από τα δεδομένα οχήματος. Εξαγωγή σε Word ή PDF αυτόματα.',
+    titleEn:'Technical Note',subEn:'Automatic technical study assembly',catEn:'Drafting',summaryEn:'Assembles the final technical study from vehicle data. Export to Word or PDF automatically.',
+    preview:'memo'},
+  {id:'tank',num:'07',
+    title:'Δεξαμενή Άλατος & Νερού',sub:'Όγκος εκχιονιστικών δεξαμενών',cat:'Ειδικά',summary:'Όγκος δεξαμενών άλατος και αλατόνερου εκχιονιστικών οχημάτων. Δύο στάνταρ τύποι άλατος και ένας τύπος νερού.',
+    titleEn:'Salt & Water Tank',subEn:'Volume of snow-clearing tanks',catEn:'Special',summaryEn:'Volume of salt and brine tanks for snow-clearing vehicles. Two standard salt types and one water type.',
+    preview:'tank'},
+  {id:'susp',num:'08',
+    title:'Αναρτήσεις',sub:'Καταπόνηση αναρτήσεων & συνδέσεων',cat:'Αντοχή',summary:'Αυτόματος έλεγχος αναρτήσεων και πύρων σύνδεσης. Σε διαξονικά οχήματα ελέγχονται και οι δύο άξονες.',
+    titleEn:'Suspension',subEn:'Suspension & connection stress',catEn:'Strength',summaryEn:'Automatic check of suspension assemblies and connection pins. On tandem-axle vehicles both axles are checked.',
+    preview:'susp'},
+  {id:'spring',num:'09',
+    title:'Ελατήρια',sub:'Έλεγχος φυλλοειδών ελατηρίων',cat:'Αντοχή',summary:'Φυλλοειδή ελατήρια τραπεζοειδούς μορφής με επιλογή υλικού από βιβλιοθήκη. Υπολογίζει σταθερά k, βέλος κάμψης και μέγιστη αναπτυσσόμενη τάση.',
+    titleEn:'Springs',subEn:'Leaf spring check',catEn:'Strength',summaryEn:'Trapezoidal leaf springs with material selection from library. Calculates spring constant k, deflection, and maximum developed stress.',
+    preview:'spring'},
+  {id:'shear',num:'10',
+    title:'Διάτμηση Κοχλιών & Ήλων',sub:'Γενική καταπόνηση πύρου σε διάτμηση',cat:'Αντοχή',summary:'Επιλέγετε τύπο κοχλία από Μ2 μέχρι Μ100 — όλα τα γεωμετρικά στοιχεία συμπληρώνονται αυτόματα.',
+    titleEn:'Bolt & Pin Shear',subEn:'General pin shear stress',catEn:'Strength',summaryEn:'Select bolt type from M2 to M100 — all geometric properties are filled in automatically.',
+    preview:'shear'},
+  {id:'combined',num:'11',
+    title:'Σύνθετη Καταπόνηση Κοχλία',sub:'Διάτμηση + εφελκυσμός ταυτόχρονα',cat:'Αντοχή',summary:'Πλήρης έλεγχος κοχλία σε ταυτόχρονη διάτμηση και εφελκυσμό. Βάσει αρχών στοιχείων μηχανών.',
+    titleEn:'Combined Bolt Stress',subEn:'Shear + tension simultaneously',catEn:'Strength',summaryEn:'Full bolt check under simultaneous shear and tension. Based on machine element principles.',
+    preview:'combined'},
+  {id:'weld',num:'12',
+    title:'Συγκολλήσεις',sub:'Στατική & αδρανειακή καταπόνηση ραφών',cat:'Αντοχή',summary:'Έλεγχος ραφών σε κάμψη, διάτμηση ή συνδυαστικά. Επιλέγετε υλικό και κατηγορία ποιότητας — οι συντελεστές ασφαλείας προσαρμόζονται αυτόματα.',
+    titleEn:'Welds',subEn:'Static & inertial weld stress',catEn:'Strength',summaryEn:'Weld check under bending, shear, or combined loading. Select material and quality class — safety factors adjust automatically.',
+    preview:'weld'},
+  {id:'turning',num:'13',
+    title:'Ελάχιστη Ακτίνα Στροφής',sub:'Έλεγχος κύκλου στροφής',cat:'Δυναμική',summary:'Ελάχιστη ακτίνα στροφής με την αναλογία του ποδηλάτου. Έλεγχος συμβατότητας με τον Κανονισμό (ΕΕ) 1230/2012.',
+    titleEn:'Min. Turning Radius',subEn:'Turning circle check',catEn:'Dynamics',summaryEn:'Minimum turning radius using bicycle analogy. Compliance check with Regulation (EU) 1230/2012.',
+    preview:'turning'},
+  {id:'brake',num:'14',
+    title:'Πέδηση',sub:'Επιβράδυνση και συντελεστές ασφαλείας',cat:'Δυναμική',summary:'Επιλέγετε επιθυμητή επιβράδυνση και διάμετρο ελαστικού. Υπολογίζει πεδούμενο φορτίο αξόνων και συνδυαστικό συντελεστή ασφαλείας.',
+    titleEn:'Braking',subEn:'Deceleration and safety factors',catEn:'Dynamics',summaryEn:'Select desired deceleration and tyre diameter. Calculates braked axle loads and combined safety factor.',
+    preview:'brake'},
+  {id:'stability',num:'15',
+    title:'Ευστάθεια σε Στροφή',sub:'Μέγιστη ταχύτητα χωρίς ανατροπή',cat:'Δυναμική',summary:'Από τα χαρακτηριστικά οχήματος και το θεωρητικό κέντρο βάρους, υπολογίζει μέγιστη ασφαλή ταχύτητα έμφορτο και άφορτο.',
+    titleEn:'Cornering Stability',subEn:'Max speed without rollover',catEn:'Dynamics',summaryEn:'From vehicle characteristics and theoretical centre of gravity, calculates maximum safe speed laden and unladen.',
+    preview:'stability'},
+  {id:'tipover',num:'16',
+    title:'Ευστάθεια από Εξοπλισμό',sub:'Ανατροπή από κινούμενο εξοπλισμό',cat:'Δυναμική',summary:'Έλεγχος ευστάθειας σε ανατροπή για οχήματα με εξοπλισμό που μετακινείται — γερανούς, καλαθοφόρα.',
+    titleEn:'Equipment Stability',subEn:'Rollover from moving equipment',catEn:'Dynamics',summaryEn:'Rollover stability check for vehicles with moving equipment — cranes, aerial work platforms.',
+    preview:'tipover'},
+  {id:'rectbase',num:'17',
+    title:'Τετράγωνη Βάση Γερανού',sub:'Καταπόνηση κοχλιών ορθογώνιας βάσης',cat:'Ειδικά',summary:'Καταπόνηση κοχλιών ορθογώνιας βάσης γερανού στο μέγιστο επιτρεπόμενο φορτίο και απόσταση.',
+    titleEn:'Rect. Crane Base',subEn:'Rectangular base bolt stress',catEn:'Special',summaryEn:'Bolt stress on rectangular crane base at maximum allowable load and outreach.',
+    preview:'rectbase'},
+  {id:'boom',num:'18',
+    title:'Κυκλική Βάση Καλαθοφόρου',sub:'Καταπόνηση κοχλιών κυκλικής βάσης',cat:'Ειδικά',summary:'Μοντέλο υπολογισμού για κοχλίες κυκλικής βάσης καλαθοφόρου ή γερανού. Ο δυσμενέστερος κοχλίας μεταφέρεται αυτόματα στο φύλλο Σύνθετης Καταπόνησης.',
+    titleEn:'Circular Basket Base',subEn:'Circular base bolt stress',catEn:'Special',summaryEn:'Calculation model for circular base bolts of an aerial platform or crane. The critical bolt is automatically transferred to the Combined Bolt Stress sheet.',
+    preview:'boom'},
+  {id:'axial',num:'19',
+    title:'Αξονικά Φορτία',sub:'Δυναμική καταπόνηση σε πέδηση',cat:'Αντοχή',summary:'Δυναμική καταπόνηση συνδέσεων από αδρανειακές δυνάμεις πέδησης. Πλήρως αυτόματο.',
+    titleEn:'Axial Loads',subEn:'Dynamic stress under braking',catEn:'Strength',summaryEn:'Dynamic stress on connections from braking inertial forces. Fully automatic.',
+    preview:'axial'},
+  {id:'lateral',num:'20',
+    title:'Εγκάρσια Φορτία',sub:'Δυναμική καταπόνηση σε ελιγμούς',cat:'Αντοχή',summary:'Καταπόνηση συνδέσεων από αδρανειακές δυνάμεις σε ελιγμούς. Όλοι οι υπολογισμοί γίνονται αυτόματα.',
+    titleEn:'Lateral Loads',subEn:'Dynamic stress during manoeuvres',catEn:'Strength',summaryEn:'Connection stress from inertial forces during manoeuvres. All calculations are fully automatic.',
+    preview:'lateral'},
+  {id:'newstudy',num:'21',
+    title:'Νέα Μελέτη',sub:'Αυτόματη δομή φακέλων μελέτης',cat:'Ροή',summary:'Επιλέξτε θέση και ο φάκελος με τους υποφακέλους δημιουργείται και μετονομάζεται αυτόματα με τον κωδικό μελέτης.',highlights:['Όλοι οι υποφάκελοι μετονομάζονται με τον κωδικό μελέτης.','Αντίγραφο του Word προτύπου της τεχνικής μελέτης.','Ερωτά αν θέλετε να ανοίξει το Word εκείνη τη στιγμή.','Πληροφορίες οχήματος αποθηκεύονται σε CSV.'],
+    titleEn:'New Study',subEn:'Automatic study folder structure',catEn:'Workflow',summaryEn:'Select a location and the folder with subfolders is created and renamed automatically with the study code.',highlightsEn:['All subfolders are renamed with the study code.','A copy of the Word technical study template is included.','Prompts whether to open Word immediately.','Vehicle information is saved to CSV.'],
+    preview:'newstudy'},
+  {id:'importdata',num:'22',
+    title:'Εισαγωγή Δεδομένων',sub:'Φόρτωση CSV από προηγούμενη μελέτη',cat:'Ροή',summary:'Διαλέξτε αρχείο CSV από προηγούμενη μελέτη και τα δεδομένα μπαίνουν αυτόματα στις σωστές θέσεις.',
+    titleEn:'Import Data',subEn:'Load CSV from a previous study',catEn:'Workflow',summaryEn:'Select a CSV file from a previous study and the data is automatically placed into the correct fields.',
+    preview:'importdata'},
+  {id:'finalize',num:'23',
+    title:'Τελικές Ρυθμίσεις',sub:'Προετοιμασία πριν την τεχνική μελέτη',cat:'Ροή',summary:'Σε ένα κλικ: ανανέωση όλων των διαγραμμάτων, διαγραφή κενών γραμμών, αυτόματη κλιμάκωση αξόνων.',
+    titleEn:'Final Settings',subEn:'Preparation before the technical study',catEn:'Workflow',summaryEn:'One click: refresh all diagrams, delete blank rows, auto-scale axes.',
+    preview:'finalize'},
+  {id:'savejpeg',num:'24',
+    title:'Αποθήκευση Διαγραμμάτων',sub:'Εξαγωγή ως JPEG',cat:'Ροή',summary:'Όλα τα διαγράμματα, πίνακες φορτίων και σκαριφήματα πλαισίου αποθηκεύονται ως JPEG.',
+    titleEn:'Save Diagrams',subEn:'Export as JPEG',catEn:'Workflow',summaryEn:'All diagrams, load tables, and frame sketches are saved as JPEG.',
+    preview:'savejpeg'},
+  {id:'datasheet',num:'25',
+    title:'Φύλλο Δεδομένων',sub:'Κεντρική εισαγωγή στοιχείων',cat:'Ροή',summary:'Όλα τα στοιχεία οχήματος εισάγονται εδώ — κόκκινα κελιά = υποχρεωτικά. Κάθε κελί συνοδεύεται από επεξηγηματικά σχόλια.',highlights:['Κόκκινα κελιά = απαραίτητα για να γίνει η μελέτη.','Επεξηγηματικά σχόλια και εικόνες σε κάθε κελί.','Βιβλιοθήκη υλικών: πλαίσια, ελατήρια, χάλυβες, κοχλίες.','Κελιά εκτός εισόδων είναι κλειδωμένα — προστασία δεδομένων.'],
+    titleEn:'Data Sheet',subEn:'Central data entry',catEn:'Workflow',summaryEn:'All vehicle data is entered here — red cells = mandatory. Each cell has explanatory comments.',highlightsEn:['Red cells = required for the study to be generated.','Explanatory comments and images on each cell.','Material library: frames, springs, steels, bolts.','Non-input cells are locked — data protection.'],
+    preview:'datasheet'},
+  {id:'control',num:'26',
+    title:'Φύλλο Ελέγχου',sub:'Επισκόπηση & επιλογή υπολογισμών',cat:'Ροή',summary:'Με μια ματιά: ποιοι υπολογισμοί ολοκληρώθηκαν σωστά. Γρήγορη πλοήγηση και επιλογή τι μεταφέρεται στην τελική μελέτη.',highlights:['Πίνακας πλοήγησης σε όλα τα φύλλα.','Άμεσος έλεγχος προβλημάτων στους υπολογισμούς.','Επιλογή τμημάτων που μεταφέρονται στο τελικό report.'],
+    titleEn:'Control Sheet',subEn:'Overview & calculation selection',catEn:'Workflow',summaryEn:'At a glance: which calculations completed correctly. Quick navigation and selection of what transfers to the final study.',highlightsEn:['Navigation table across all sheets.','Instant check for calculation issues.','Select sections transferred to the final report.'],
+    preview:'control'},
 ];
 
 // ── state ──────────────────────────────────────────────────────────
 let activeId=MODULES[0].id, userPicked=false;
 let offsetX=0, halfW=0, cardStep=0, paused=false, nudgePause=0;
 let rafId=0, lastT=0;
+
+// ── helpers ────────────────────────────────────────────────────────
+function modLang(){ return localStorage.getItem('lang') || (typeof currentLang!=='undefined'?currentLang:null) || 'el'; }
+function mT(m,field){ const en=modLang()==='en'; return en && m[field+'En'] ? m[field+'En'] : m[field]; }
 
 // ── render spotlight ───────────────────────────────────────────────
 function renderSpotlight(id){
@@ -1111,12 +1285,13 @@ function renderSpotlight(id){
   document.getElementById('capSpotPreview').innerHTML=P[m.preview]||'';
   document.getElementById('capSpotNum').textContent='MODULE · '+m.num;
   document.getElementById('capSpotNumBig').textContent=m.num;
-  document.getElementById('capSpotTitle').textContent=m.title;
-  document.getElementById('capSpotSub').textContent=m.sub;
-  document.getElementById('capSpotBody').textContent=m.summary;
+  document.getElementById('capSpotTitle').textContent=mT(m,'title');
+  document.getElementById('capSpotSub').textContent=mT(m,'sub');
+  document.getElementById('capSpotBody').textContent=mT(m,'summary');
   const hl=document.getElementById('capSpotHighlights');
   hl.innerHTML='';
-  if(m.highlights){m.highlights.forEach(h=>{const li=document.createElement('li');li.textContent=h;hl.appendChild(li);});}
+  const hls=mT(m,'highlights');
+  if(hls){hls.forEach(h=>{const li=document.createElement('li');li.textContent=h;hl.appendChild(li);});}
   document.querySelectorAll('.cap-card').forEach(c=>{
     c.classList.toggle('is-active',c.dataset.id===id);
   });
@@ -1125,6 +1300,7 @@ function renderSpotlight(id){
 // ── build carousel ─────────────────────────────────────────────────
 function buildCarousel(){
   const track=document.getElementById('capTrack');
+  const viewLabel=modLang()==='en'?'View':'Προβολή';
   const cols=[];
   for(let i=0;i<MODULES.length;i+=2) cols.push(MODULES.slice(i,i+2));
   const looped=[...cols,...cols];
@@ -1136,7 +1312,7 @@ function buildCarousel(){
       const btn=document.createElement('button');
       btn.className='cap-card';
       btn.dataset.id=m.id;
-      btn.innerHTML=`<div class="card-preview">${P[m.preview]||''}<div class="card-corner card-corner-tl"></div><div class="card-corner card-corner-br"></div></div><div class="card-body"><div class="card-head"><span class="card-num">${m.num}</span><span class="card-cat">${m.cat}</span></div><h3 class="card-title">${m.title}</h3><p class="card-sub">${m.sub}</p><div class="card-cta"><span>Προβολή</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" width="12" height="12"><path d="M5 12 H17 M13 8 L17 12 L13 16"/></svg></div></div>`;
+      btn.innerHTML=`<div class="card-preview">${P[m.preview]||''}<div class="card-corner card-corner-tl"></div><div class="card-corner card-corner-br"></div></div><div class="card-body"><div class="card-head"><span class="card-num">${m.num}</span><span class="card-cat">${mT(m,'cat')}</span></div><h3 class="card-title">${mT(m,'title')}</h3><p class="card-sub">${mT(m,'sub')}</p><div class="card-cta"><span>${viewLabel}</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" width="12" height="12"><path d="M5 12 H17 M13 8 L17 12 L13 16"/></svg></div></div>`;
       btn.addEventListener('click',()=>{
         userPicked=true;
         activeId=m.id;
@@ -1151,6 +1327,13 @@ function buildCarousel(){
   document.getElementById('capModCount').textContent=MODULES.length;
   measure();
 }
+
+// ── refresh modules on language change ────────────────────────────
+function refreshModules(){
+  buildCarousel();
+  renderSpotlight(activeId);
+}
+window.refreshModules = refreshModules;
 
 function measure(){
   const track=document.getElementById('capTrack');
@@ -1207,8 +1390,48 @@ document.getElementById('capPrev').addEventListener('click',()=>nudge(-1));
 document.getElementById('capNext').addEventListener('click',()=>nudge(1));
 window.addEventListener('resize',measure);
 
+// ── mobile touch swipe on carousel ────────────────────────────────
+(function(){
+  const track=document.getElementById('capTrack');
+  if(!track) return;
+  let tx=0, dragging=false, startX=0, startOffX=0;
+  const wrap=document.querySelector('.cap-carousel-wrap');
+  if(!wrap) return;
+  wrap.addEventListener('touchstart',e=>{
+    dragging=true;
+    startX=e.touches[0].clientX;
+    startOffX=offsetX;
+    paused=true;
+  },{passive:true});
+  wrap.addEventListener('touchmove',e=>{
+    if(!dragging) return;
+    const dx=e.touches[0].clientX-startX;
+    offsetX=startOffX-dx;
+    if(halfW>0){
+      if(offsetX<=-halfW) offsetX+=halfW;
+      if(offsetX>0) offsetX-=halfW;
+    }
+    track.style.transform=`translate3d(${offsetX}px,0,0)`;
+  },{passive:true});
+  wrap.addEventListener('touchend',e=>{
+    dragging=false;
+    paused=false;
+    nudgePause=performance.now()+2000;
+  },{passive:true});
+})();
+
 lastT=performance.now();
 rafId=requestAnimationFrame(tick);
+})();
+
+// ── slide-in animation for fcap images ────────────────────────────
+(function(){
+  const imgs=document.querySelectorAll('.fcap-img');
+  if(!imgs.length) return;
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('fcap-img--visible'); });
+  },{threshold:0.15});
+  imgs.forEach(img=>io.observe(img));
 })();
 </script>
 
@@ -1538,7 +1761,7 @@ rafId=requestAnimationFrame(tick);
 
       <!-- left: title + cards + banner -->
       <div class="sw-pb-left">
-        <div class="sw-pb-header">
+        <div class="sw-pb-header reveal-up">
           <h2 class="sw-pb-title" id="swpb-title">Simple, transparent pricing plans.</h2>
         </div>
 
@@ -1616,10 +1839,6 @@ rafId=requestAnimationFrame(tick);
 
       </div>
 
-      <!-- right: me-2.png -->
-      <div class="sw-pb-right">
-        <img src="images/me-2.png" alt="Mechanical ExpertEase in use" class="sw-pb-img">
-      </div>
 
     </div>
 
@@ -1649,7 +1868,7 @@ rafId=requestAnimationFrame(tick);
 }
 .sw-pb-layout {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr;
   gap: 56px;
   align-items: center;
 }
@@ -1944,13 +2163,13 @@ rafId=requestAnimationFrame(tick);
   <div class="contact-cols">
     <!-- LEFT: info + map -->
     <div class="contact-cols-left">
-      <p class="contact-label" id="contact-label-static">// Contact</p>
-      <h2 class="contact-heading" id="contact-heading-static">Let's Work Together</h2>
+      <p class="contact-label reveal-up" id="contact-label-static">// Contact</p>
+      <h2 class="contact-heading reveal-up" id="contact-heading-static">Let's Work Together</h2>
       <p class="contact-sub" id="contact-sub-static"></p>
       <div class="contact-info-row">
         <span class="contact-info-item contact-location">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-          Pagrati, Athens
+          <span class="contact-location-text">Παγκράτι, Αθήνα</span>
         </span>
         <a href="tel:+302107561836" class="contact-info-item contact-phone-link">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
@@ -2104,6 +2323,17 @@ rafId=requestAnimationFrame(tick);
   }
   animateCards('.sw-pb-card',   'sw-pb-card--visible',   0.12, 80);
   animateCards('.sw-feat-card', 'sw-feat-card--visible', 0.15, 100);
+
+  // scroll-reveal for section headings and key blocks
+  var revEls = document.querySelectorAll('.reveal-up');
+  if(revEls.length){
+    var revIO = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('revealed'); revIO.unobserve(e.target); }
+      });
+    },{threshold: 0.10});
+    revEls.forEach(function(el){ revIO.observe(el); });
+  }
 })();
 </script>
 

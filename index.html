@@ -234,8 +234,8 @@
       <li><a href="contact.html"  id="nav-contact">Contact</a></li>
     </ul>
     <div class="lang-toggle">
-      <button class="lang-btn"        data-lang="el">🇬🇷 ΕΛ</button>
-      <button class="lang-btn active" data-lang="en">🇬🇧 EN</button>
+      <button class="lang-btn active" data-lang="el">🇬🇷 ΕΛ</button>
+      <button class="lang-btn"        data-lang="en">🇬🇧 EN</button>
     </div>
   </div>
   <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
@@ -401,7 +401,7 @@
     <div class="sm-inner">
       <span class="sm-arr">◄</span>
       <div class="sm-rule"></div>
-      <span class="sm-label">STUDIO SPAN · <strong><span id="sec-meas-exp">7</span>+ YRS FIELD EXPERIENCE</strong></span>
+      <span class="sm-label">STUDIO SPAN · <strong><span id="sec-meas-exp">10</span>+ YRS FIELD EXPERIENCE</strong></span>
       <div class="sm-rule"></div>
       <span class="sm-arr">►</span>
     </div>
@@ -469,7 +469,7 @@
             <span class="en">Knowledge</span>
             <span class="el">Γνώση</span>
           </div>
-          <p class="value-text" id="proc-exp-text">Seven years of hands-on engineering across robotics, safety equipment, and precision fabrication — backed by five university degrees from three countries. Deep technical knowledge applied to every brief.</p>
+          <p class="value-text" id="proc-exp-text"></p>
         </div>
         <div class="value-card vc-red">
           <div class="value-icon">02</div>
@@ -477,7 +477,7 @@
             <span class="en">Integrity</span>
             <span class="el">Ακεραιότητα</span>
           </div>
-          <p class="value-text">Honest estimates, transparent communication, and full accountability from first sketch to final delivery. No surprises, no shortcuts — only what was promised, done properly.</p>
+          <p class="value-text" id="pillar-2-text"></p>
         </div>
         <div class="value-card vc-green">
           <div class="value-icon">03</div>
@@ -485,7 +485,7 @@
             <span class="en">Innovation</span>
             <span class="el">Καινοτομία</span>
           </div>
-          <p class="value-text">A classical engineering foundation meets a genuine drive to find smarter solutions. From DFM-optimised geometry to cross-disciplinary insight, every project is an opportunity to do it better.</p>
+          <p class="value-text" id="pillar-3-text"></p>
         </div>
 
         <!-- ── Divider ── -->
@@ -610,7 +610,7 @@
       <div class="contact-info-row">
         <span class="contact-info-item contact-location">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-          Pagrati, Athens
+          <span class="contact-location-text">Παγκράτι, Αθήνα</span>
         </span>
         <a href="tel:+302107561836" class="contact-info-item contact-phone-link">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
@@ -719,7 +719,7 @@
   <div class="footer-contact-mobile">
     <span class="footer-contact-item">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-      Pagrati, Athens
+      <span class="contact-location-text">Παγκράτι, Αθήνα</span>
     </span>
     <a href="tel:+302107561836" class="footer-contact-item">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
@@ -748,17 +748,13 @@
 
 <script>
 (function(){
-  var yrs = new Date().getFullYear() - 2019;
+  var yrs = new Date().getFullYear() - 2016;
   /* hero stat */
   var h = document.getElementById('hero-exp-stat');
   if(h){ h.childNodes[0].textContent = yrs; }
   /* founder card stat */
   var c = document.getElementById('card-exp-stat');
   if(c){ c.childNodes[0].textContent = yrs; }
-  /* process value card — word-form for small numbers, digit otherwise */
-  var words = ['Zero','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten'];
-  var p = document.getElementById('proc-exp-text');
-  if(p){ p.textContent = p.textContent.replace('Seven', yrs < 11 ? words[yrs] : yrs); }
   /* sec-meas label */
   var m = document.getElementById('sec-meas-exp');
   if(m){ m.textContent = yrs; }
