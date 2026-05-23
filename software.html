@@ -316,6 +316,18 @@
   cursor:pointer;
 }
 .hiw-item:last-child { border-bottom:1px solid #0e2247; }
+/* desktop slide-in */
+@media (min-width:961px){
+  .hiw-item {
+    opacity:0;
+    transform:translateX(48px);
+    transition:opacity .5s ease, transform .5s cubic-bezier(.19,1,.22,1);
+  }
+  .hiw-item.hiw-item--in {
+    opacity:1;
+    transform:translateX(0);
+  }
+}
 .hiw-num {
   font-family:'IBM Plex Mono',monospace;
   font-size:13px; font-weight:500;
@@ -637,6 +649,56 @@ setInterval(()=>{
   window.addEventListener('mouseup', () => { el.style.cursor = 'grab'; });
 })();
 
+/* ── desktop: slide-in steps one by one on section enter ──────── */
+(function(){
+  if(window.innerWidth <= 960) return;
+  const section = document.querySelector('.hiw-section');
+  if(!section) return;
+  const io = new IntersectionObserver(entries => {
+    if(!entries[0].isIntersecting) return;
+    io.disconnect();
+    // stagger each item from right
+    listEl.querySelectorAll('.hiw-item').forEach((el, i) => {
+      setTimeout(() => el.classList.add('hiw-item--in'), i * 120);
+    });
+  }, { threshold: 0.25 });
+  io.observe(section);
+  // re-apply on list rebuild (language switch)
+  const origRefresh = window.refreshHIW;
+  window.refreshHIW = function(){
+    origRefresh && origRefresh();
+    if(window.innerWidth > 960){
+      listEl.querySelectorAll('.hiw-item').forEach((el, i) => {
+        setTimeout(() => el.classList.add('hiw-item--in'), i * 80);
+      });
+    }
+  };
+})();
+
+/* ── mobile: scroll-driven doc advance ────────────────────────── */
+(function(){
+  if(window.innerWidth > 960) return;
+  const section = document.querySelector('.hiw-section');
+  if(!section) return;
+  let lastStep = -1;
+  function onScroll(){
+    const rect = section.getBoundingClientRect();
+    const vh = window.innerHeight;
+    // progress 0→1 as section scrolls from entering bottom to leaving top
+    const progress = Math.max(0, Math.min(1, (vh - rect.top) / (rect.height + vh)));
+    const step = Math.min(HIW_STEPS.length - 1, Math.floor(progress * HIW_STEPS.length));
+    if(step !== lastStep){
+      lastStep = step;
+      hiwActive = step;
+      updateHIW();
+      // sync list highlight without full rebuild
+      listEl.querySelectorAll('.hiw-item').forEach((it, i) => it.classList.toggle('is-on', i === step));
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
 })();
 </script>
 
@@ -899,12 +961,6 @@ setInterval(()=>{
   <!-- carousel breaks out to full section width -->
   <div class="cap-carousel-wrap">
     <div class="cap-carousel">
-      <button class="carousel-arrow carousel-prev" id="capPrev" aria-label="Προηγούμενο">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" width="18" height="18"><path d="M19 12 H7 M11 8 L7 12 L11 16"/></svg>
-      </button>
-      <button class="carousel-arrow carousel-next" id="capNext" aria-label="Επόμενο">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" width="18" height="18"><path d="M5 12 H17 M13 8 L17 12 L13 16"/></svg>
-      </button>
       <div class="carousel-viewport" id="capViewport">
         <div class="carousel-track" id="capTrack"></div>
       </div>
@@ -1020,23 +1076,11 @@ setInterval(()=>{
   position: relative;
   overflow: hidden;
 }
-.cap-carousel { position: relative; padding: 0 64px; }
-.carousel-viewport { overflow: hidden; }
-.carousel-track { display: flex; gap: 20px; will-change: transform; }
+.cap-carousel { position: relative; padding: 0; }
+.carousel-viewport { overflow: hidden; cursor: grab; }
+.carousel-viewport.is-dragging { cursor: grabbing; }
+.carousel-track { display: flex; gap: 20px; will-change: transform; user-select: none; }
 .carousel-cell { display: flex; flex-direction: column; gap: 20px; flex-shrink: 0; width: 220px; }
-.carousel-arrow {
-  position: absolute; top: 50%; transform: translateY(-50%);
-  z-index: 2; width: 44px; height: 44px;
-  background: rgba(8,21,57,.85); border: 1px solid #14305f; border-radius: 50%;
-  display: grid; place-items: center;
-  color: #e8eefb; cursor: pointer;
-  backdrop-filter: blur(8px);
-  box-shadow: 0 10px 24px rgba(0,0,0,.4);
-  transition: background .15s, border-color .15s, color .15s;
-}
-.carousel-arrow:hover { border-color: #2E7BFF; background: rgba(46,123,255,.18); }
-.carousel-prev { left: 16px; }
-.carousel-next { right: 16px; }
 
 /* module card */
 .cap-card {
@@ -1097,8 +1141,6 @@ setInterval(()=>{
   .cap-spot-h { font-size: 32px; }
   .cap-spot-text { padding: 36px 32px; }
   .carousel-cell { width: 180px; }
-  .carousel-prev { left: 8px; }
-  .carousel-next { right: 8px; }
 }
 @media (max-width: 640px) {
   .cap-section { padding: 36px 16px; }
@@ -1109,8 +1151,6 @@ setInterval(()=>{
   .cap-spot-visual { min-height: 220px; padding: 20px; }
   .carousel-track { gap: 10px; }
   .carousel-cell { width: 130px; gap: 10px; }
-  .carousel-prev { left: 2px; }
-  .carousel-next { right: 2px; }
   .card-body { padding: 10px 12px 12px; gap: 4px; }
   .card-title { font-size: 13px; }
   .card-sub { font-size: 11px; }
@@ -1271,7 +1311,7 @@ const MODULES=[
 
 // ── state ──────────────────────────────────────────────────────────
 let activeId=MODULES[0].id, userPicked=false;
-let offsetX=0, halfW=0, cardStep=0, paused=false, nudgePause=0;
+let offsetX=0, halfW=0, cardStep=0;
 let rafId=0, lastT=0;
 
 // ── helpers ────────────────────────────────────────────────────────
@@ -1345,32 +1385,77 @@ function measure(){
   halfW=cardStep*(MODULES.length/2);
 }
 
-// ── auto-scroll RAF ────────────────────────────────────────────────
+// ── drag state ─────────────────────────────────────────────────────
+let dragActive=false, dragStartX=0, dragStartOff=0;
+let velocity=0, lastDragX=0, lastDragT=0;
+const AUTO_SPEED=22; // px/s base scroll
+
+// ── RAF loop ───────────────────────────────────────────────────────
 function tick(t){
-  const dt=(t-lastT)/1000; lastT=t;
-  if(halfW>0 && !paused && t>nudgePause){
-    offsetX-=22*dt;
-    if(offsetX<=-halfW) offsetX+=halfW;
-  }
+  const dt=Math.min((t-lastT)/1000, 0.05); lastT=t;
   const track=document.getElementById('capTrack');
-  if(track) track.style.transform=`translate3d(${offsetX}px,0,0)`;
+  if(!track){ rafId=requestAnimationFrame(tick); return; }
+
+  if(dragActive){
+    // position driven by pointer — just wrap
+  } else {
+    // momentum decay after drag
+    if(Math.abs(velocity)>0.5){
+      offsetX+=velocity*dt;
+      velocity*=0.92; // friction
+    } else {
+      velocity=0;
+      // base auto-scroll always runs
+      offsetX-=AUTO_SPEED*dt;
+    }
+  }
+
+  // infinite loop wrap
+  if(halfW>0){
+    if(offsetX<=-halfW) offsetX+=halfW;
+    if(offsetX>0)       offsetX-=halfW;
+  }
+  track.style.transform=`translate3d(${offsetX}px,0,0)`;
   rafId=requestAnimationFrame(tick);
 }
 
-function nudge(dir){
-  const step=cardStep||220;
-  offsetX-=dir*step;
-  if(halfW>0){
-    if(offsetX<=-halfW) offsetX+=halfW;
-    if(offsetX>0) offsetX-=halfW;
-  }
-  const track=document.getElementById('capTrack');
-  if(track){
-    track.style.transition='transform .45s cubic-bezier(.4,0,.2,1)';
-    track.style.transform=`translate3d(${offsetX}px,0,0)`;
-    setTimeout(()=>{if(track)track.style.transition='';},460);
-  }
-  nudgePause=performance.now()+1200;
+// ── pointer drag (mouse + touch unified) ──────────────────────────
+const vp=document.getElementById('capViewport');
+
+function dragStart(x){
+  dragActive=true; dragStartX=x; dragStartOff=offsetX;
+  lastDragX=x; lastDragT=performance.now(); velocity=0;
+  if(vp) vp.classList.add('is-dragging');
+}
+function dragMove(x){
+  if(!dragActive) return;
+  const dx=x-dragStartX;
+  offsetX=dragStartOff-dx;
+  // track velocity
+  const now=performance.now(), dt2=(now-lastDragT)||1;
+  velocity=-(x-lastDragX)/dt2*1000;
+  lastDragX=x; lastDragT=now;
+}
+function dragEnd(){
+  if(!dragActive) return;
+  dragActive=false;
+  if(vp) vp.classList.remove('is-dragging');
+  // clamp absurd velocities
+  velocity=Math.max(-2000,Math.min(2000,velocity));
+}
+
+// mouse
+if(vp){
+  vp.addEventListener('mousedown',e=>{ dragStart(e.clientX); e.preventDefault(); });
+  window.addEventListener('mousemove',e=>{ dragMove(e.clientX); });
+  window.addEventListener('mouseup',()=>{ dragEnd(); });
+}
+// touch
+const wrap=document.querySelector('.cap-carousel-wrap');
+if(wrap){
+  wrap.addEventListener('touchstart',e=>{ dragStart(e.touches[0].clientX); },{passive:true});
+  wrap.addEventListener('touchmove', e=>{ dragMove(e.touches[0].clientX); },{passive:true});
+  wrap.addEventListener('touchend',  ()=>{ dragEnd(); },{passive:true});
 }
 
 // ── auto-cycle spotlight ───────────────────────────────────────────
@@ -1384,42 +1469,7 @@ setInterval(()=>{
 // ── init ───────────────────────────────────────────────────────────
 buildCarousel();
 renderSpotlight(activeId);
-
-const vp=document.getElementById('capViewport');
-document.getElementById('capPrev').addEventListener('click',()=>nudge(-1));
-document.getElementById('capNext').addEventListener('click',()=>nudge(1));
 window.addEventListener('resize',measure);
-
-// ── mobile touch swipe on carousel ────────────────────────────────
-(function(){
-  const track=document.getElementById('capTrack');
-  if(!track) return;
-  let tx=0, dragging=false, startX=0, startOffX=0;
-  const wrap=document.querySelector('.cap-carousel-wrap');
-  if(!wrap) return;
-  wrap.addEventListener('touchstart',e=>{
-    dragging=true;
-    startX=e.touches[0].clientX;
-    startOffX=offsetX;
-    paused=true;
-  },{passive:true});
-  wrap.addEventListener('touchmove',e=>{
-    if(!dragging) return;
-    const dx=e.touches[0].clientX-startX;
-    offsetX=startOffX-dx;
-    if(halfW>0){
-      if(offsetX<=-halfW) offsetX+=halfW;
-      if(offsetX>0) offsetX-=halfW;
-    }
-    track.style.transform=`translate3d(${offsetX}px,0,0)`;
-  },{passive:true});
-  wrap.addEventListener('touchend',e=>{
-    dragging=false;
-    paused=false;
-    nudgePause=performance.now()+2000;
-  },{passive:true});
-})();
-
 lastT=performance.now();
 rafId=requestAnimationFrame(tick);
 })();
@@ -1805,8 +1855,8 @@ rafId=requestAnimationFrame(tick);
             <div class="sw-pb-seasonal-tag" id="swpb-seasonal-tag">Seasonal Offer</div>
             <div class="sw-pb-card-name" id="swpb-yr-name">Annual</div>
             <div class="sw-pb-card-price-row">
-              <span class="sw-pb-price-was">400€</span>
-              <span class="sw-pb-price-main sw-pb-price-offer">380€</span>
+              <span class="sw-pb-price-was">499€</span>
+              <span class="sw-pb-price-main sw-pb-price-offer">399€</span>
               <span class="sw-pb-price-sub" id="swpb-yr-period">+ VAT / yr</span>
             </div>
             <p class="sw-pb-card-desc" id="swpb-yr-desc">Best value. Save 50€ with the current seasonal rate — full-year access, priority support.</p>
@@ -1845,7 +1895,7 @@ rafId=requestAnimationFrame(tick);
     <div class="sw-pb-offer-banner">
       <div class="sw-pb-offer-inner">
         <span class="sw-pb-offer-pulse"></span>
-        <span class="sw-pb-offer-text" id="swpb-footnote"><a href="contact.html" id="swpb-footnote-link">Contact us</a> for a tailored quote.</span>
+        <span class="sw-pb-offer-text" id="swpb-footnote">Special pricing available for 2+ licences — <a href="contact.html" id="swpb-footnote-link">contact us</a> for a quote.</span>
       </div>
     </div>
 
