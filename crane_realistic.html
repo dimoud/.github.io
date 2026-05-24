@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+<title>Crane Truck — Realistic 3D</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:transparent; overflow:hidden; cursor:grab; }
+  body:active { cursor:grabbing; }
+  canvas { display:block; }
+  #hint { display:none; }
+  #loading { display:none; }
+</style>
+</head>
+<body>
+<div id="loading"></div>
+<div id="hint">DRAG TO ORBIT · SCROLL TO ZOOM</div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+
+// ════════════════ RENDERER ════════════════
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+renderer.setSize(innerWidth, innerHeight);
+renderer.setPixelRatio(Math.min(devicePixelRatio, 1));
+renderer.shadowMap.enabled = false;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.15;
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.setClearColor(0x000000, 0);
+document.body.appendChild(renderer.domElement);
+
+// ════════════════ SCENE & CAMERA ════════════════
+const scene = new THREE.Scene();
+// transparent background — blends with parent page hero gradient
+
+const camera = new THREE.PerspectiveCamera(40, innerWidth / innerHeight, 0.1, 200);
+camera.position.set(8, 5.5, 12);
+
+const pmrem = new THREE.PMREMGenerator(renderer);
+scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+
+// ════════════════ LIGHTS ════════════════
+scene.add(new THREE.AmbientLight(0xc8d6e8, 1.1));
+const key = new THREE.DirectionalLight(0xffffff, 3.0);
+key.position.set(7, 14, 9);
+scene.add(key);
+const rim = new THREE.DirectionalLight(0x3a8bff, 1.6); rim.position.set(-8, 6, -8); scene.add(rim);
+const fill = new THREE.DirectionalLight(0xffffff, 1.0); fill.position.set(-4, 4, 10); scene.add(fill);
+
+// ════════════════ MATERIALS ════════════════
+const M = {
+  body:    new THREE.MeshStandardMaterial({ color:0x1f63c4, metalness:0.5, roughness:0.38, envMapIntensity:0.95 }),
+  bodyDark:new THREE.MeshStandardMaterial({ color:0x123a72, metalness:0.5, roughness:0.5 }),
+  steel:   new THREE.MeshStandardMaterial({ color:0x9aa6b5, metalness:0.85, roughness:0.42, envMapIntensity:1.0 }),
+  chrome:  new THREE.MeshStandardMaterial({ color:0xc8d0da, metalness:1.0, roughness:0.2, envMapIntensity:1.2 }),
+  boom:    new THREE.MeshStandardMaterial({ color:0x2a6fc8, metalness:0.55, roughness:0.4, envMapIntensity:0.95 }),
+  glass:   new THREE.MeshPhysicalMaterial({ color:0x0e1a26, metalness:0.1, roughness:0.06, transmission:0.3, transparent:true, opacity:0.85, ior:1.5, reflectivity:0.7, envMapIntensity:1.9, clearcoat:1.0, clearcoatRoughness:0.04 }),
+  tactical:new THREE.MeshStandardMaterial({ color:0x1c2229, metalness:0.7, roughness:0.45, envMapIntensity:0.9 }),
+  matte:   new THREE.MeshStandardMaterial({ color:0x12151a, metalness:0.35, roughness:0.72 }),
+  mesh:    new THREE.MeshStandardMaterial({ color:0x0a0c10, metalness:0.5, roughness:0.6 }),
+  tire:    new THREE.MeshStandardMaterial({ color:0x23272f, metalness:0.1, roughness:0.85 }),
+  rim:     new THREE.MeshStandardMaterial({ color:0xb4bcc8, metalness:0.92, roughness:0.28 }),
+  hose:    new THREE.MeshStandardMaterial({ color:0x1a1d22, metalness:0.2, roughness:0.7 }),
+  rope:    new THREE.MeshStandardMaterial({ color:0x6b6f78, metalness:0.6, roughness:0.5 }),
+  light:   new THREE.MeshStandardMaterial({ color:0xffffff, emissive:0xddeeff, emissiveIntensity:2.5, roughness:0.2 }),
+  lightR:  new THREE.MeshStandardMaterial({ color:0xff4422, emissive:0xff3311, emissiveIntensity:2 }),
+  amber:   new THREE.MeshStandardMaterial({ color:0xffaa22, emissive:0xff9900, emissiveIntensity:1.8 }),
+};
+
+// ════════════════ HELPERS ════════════════
+const truck = new THREE.Group();
+truck.scale.set(0.85, 0.85, 0.85);
+truck.position.set(0.9, 1.1, 0);
+scene.add(truck);
+
+function rb(w,h,d,r=0.06){ return new RoundedBoxGeometry(w,h,d,4,Math.min(r,w/2.05,h/2.05,d/2.05)); }
+
+function P(geo,mat,x,y,z,rx=0,ry=0,rz=0,grp=truck){
+  const m=new THREE.Mesh(geo,mat);
+  m.position.set(x,y,z); m.rotation.set(rx,ry,rz);
+  grp.add(m); return m;
+}
+
+// extrude a 2D profile that lives in (length=shapeX, height=shapeY) and
+// extrude across width → returns geom oriented: length→+Z, height→+Y, width→X(centered)
+function sideExtrude(shape, width, bevel=0.04){
+  const g=new THREE.ExtrudeGeometry(shape,{depth:width,bevelEnabled:true,bevelThickness:bevel,bevelSize:bevel,bevelSegments:2,curveSegments:32});
+  g.translate(0,0,-width/2);
+  g.rotateY(-Math.PI/2);
+  g.computeVertexNormals();
+  return g;
+}
+
+// tube along a list of [x,y,z] points
+function tube(points,r,seg=24,rad=6){
+  const curve=new THREE.CatmullRomCurve3(points.map(p=>new THREE.Vector3(...p)));
+  return new THREE.TubeGeometry(curve,seg,r,rad,false);
+}
+
+// ════════════════ CHASSIS ════════════════
+P(rb(1.3,0.26,5.2,0.05), M.steel, 0,0.98,0.2);
+P(rb(0.14,0.34,5.2,0.04), M.bodyDark, 0.66,0.98,0.2);
+P(rb(0.14,0.34,5.2,0.04), M.bodyDark, -0.66,0.98,0.2);
+[-1.6,-0.8,0,0.8,1.6].forEach(z=>P(rb(1.34,0.1,0.1,0.03),M.steel,0,0.9,z));
+
+// ════════════════ CAB (sculpted side profile) ════════════════
+// profile: shapeX = front(-1.15) → back(+1.15); shapeY = floor(0) → roof
+const cabShape = new THREE.Shape();
+cabShape.moveTo(-1.15, 0);
+cabShape.lineTo(-1.15, 1.02);                              // front wall (cab-over)
+cabShape.quadraticCurveTo(-1.12, 1.45, -0.72, 1.74);       // windshield rake
+cabShape.quadraticCurveTo(-0.55, 1.86, -0.1, 1.9);         // roof front dome
+cabShape.quadraticCurveTo(0.55, 1.95, 0.95, 1.86);         // roof crown
+cabShape.quadraticCurveTo(1.12, 1.8, 1.15, 1.5);           // roof to rear
+cabShape.lineTo(1.15, 0.12);                               // rear wall
+cabShape.quadraticCurveTo(1.15, 0, 1.0, 0);                // rear bottom fillet
+cabShape.lineTo(-1.0, 0);
+cabShape.quadraticCurveTo(-1.15, 0, -1.15, 0);
+const cab = P(sideExtrude(cabShape, 1.5, 0.05), M.body, 0, 1.1, -1.0);
+
+// Windshield — correctly raked back, set proud with a dark seal so it reads as glass
+P(rb(1.34, 0.96, 0.06, 0.02), M.matte,  0, 2.46, -1.92, 0.52);    // frame/seal
+P(rb(1.24, 0.86, 0.05, 0.02), M.glass,  0, 2.47, -1.96, 0.52);    // glass
+P(rb(0.04, 0.86, 0.06, 0.01), M.tactical, 0, 2.47, -1.96, 0.52);  // center divider
+// Side door windows (framed)
+[0.756,-0.756].forEach(s=>{
+  P(rb(0.05, 0.58, 0.74, 0.02), M.matte, s, 2.13, -1.3);
+  P(rb(0.045, 0.5, 0.66, 0.02), M.glass, s*1.005, 2.14, -1.3);
+});
+// Quarter windows behind doors
+[0.756,-0.756].forEach(s=>{
+  P(rb(0.05, 0.44, 0.34, 0.02), M.matte, s, 2.14, -0.66);
+  P(rb(0.045, 0.36, 0.26, 0.02), M.glass, s*1.005, 2.15, -0.66);
+});
+// Door panels + handles
+P(rb(0.06, 0.95, 0.85, 0.05), M.bodyDark, 0.74, 1.62, -1.1);
+P(rb(0.06, 0.95, 0.85, 0.05), M.bodyDark, -0.74, 1.62, -1.1);
+P(rb(0.03,0.05,0.2,0.015), M.chrome, 0.79,1.62,-0.85);
+P(rb(0.03,0.05,0.2,0.015), M.chrome, -0.79,1.62,-0.85);
+
+// ── Tactical mesh grille (oriented across the width, not the length)
+P(rb(1.32,0.62,0.1,0.05), M.tactical, 0,1.5,-2.13);                                   // housing
+[-0.2,-0.07,0.06,0.19].forEach(o=>P(rb(1.24,0.045,0.05,0.015),M.matte,0,1.5+o,-2.18)); // horizontal slats
+for(let i=-5;i<=5;i++) P(rb(0.045,0.58,0.045,0.012), M.mesh, i*0.11,1.5,-2.19);         // vertical mesh bars
+P(rb(1.16,0.13,0.05,0.03), M.chrome, 0,1.86,-2.16);                                    // brand bar
+
+// ── Tactical front air intakes (oriented across the width)
+P(rb(1.1,0.42,0.07,0.02), M.tactical, 0,1.1,-2.18);                                   // lower intake surround
+for(let i=0;i<5;i++) P(rb(1.0,0.035,0.045,0.01), M.mesh, 0,0.95+i*0.075,-2.22, 0.18); // louver slats
+// side cab air scoops (ram-air corners)
+[0.66,-0.66].forEach(s=>{
+  P(rb(0.13,0.42,0.32,0.04), M.tactical, s,1.92,-2.04);
+  for(let i=0;i<4;i++) P(rb(0.12,0.022,0.28,0.005), M.mesh, s,1.8+i*0.08,-2.1);
+});
+
+// ── Bumper (chrome, curved valance)
+const bumperShape=new THREE.Shape();
+bumperShape.moveTo(-0.16,0); bumperShape.lineTo(-0.16,0.34);
+bumperShape.quadraticCurveTo(-0.16,0.42,-0.05,0.42);
+bumperShape.lineTo(0.18,0.42); bumperShape.quadraticCurveTo(0.24,0.42,0.24,0.3);
+bumperShape.lineTo(0.24,0.05); bumperShape.quadraticCurveTo(0.24,0,0.14,0);
+bumperShape.lineTo(-0.16,0);
+P(sideExtrude(bumperShape,1.5,0.03), M.chrome, 0,0.66,-2.46);
+
+// ── Round headlights + fog lights
+[0.5,-0.5].forEach(x=>{
+  P(rb(0.18,0.3,0.08,0.05), M.bodyDark, x,1.32,-2.18);
+  P(new THREE.CylinderGeometry(0.085,0.09,0.06,14), M.light, x,1.36,-2.24, Math.PI/2);
+  P(new THREE.CylinderGeometry(0.06,0.06,0.05,12), M.light, x*0.82,0.84,-2.5, Math.PI/2);
+});
+
+// ── Tactical bull bar / brush guard (tubular steel hoop)
+const bbz=-2.74;
+P(tube([[-0.72,0.62,bbz],[-0.74,1.46,bbz],[-0.52,1.66,bbz],[0.52,1.66,bbz],[0.74,1.46,bbz],[0.72,0.62,bbz]],0.042,90,12), M.tactical,0,0,0);
+P(tube([[-0.74,1.06,bbz],[0.74,1.06,bbz]],0.038,16,12), M.tactical,0,0,0);
+[-0.42,0,0.42].forEach(x=>P(tube([[x,0.62,bbz],[x,1.66,bbz]],0.034,16,10), M.tactical,0,0,0));
+[0.5,-0.5].forEach(x=>P(rb(0.1,0.12,0.55,0.02), M.tactical, x,0.8,-2.5));   // mounts
+// front recovery winch
+P(new THREE.CylinderGeometry(0.13,0.13,0.5,16), M.tactical, 0,1.0,-2.57,0,0,Math.PI/2);
+for(let i=0;i<7;i++) P(new THREE.TorusGeometry(0.15,0.017,8,14), M.rope, -0.18+i*0.06,1.0,-2.57,0,Math.PI/2,0);
+P(rb(0.28,0.2,0.07,0.02), M.tactical, 0,1.0,-2.69);                          // fairlead
+// auxiliary spotlights on the hoop
+[0.5,-0.5].forEach(x=>P(new THREE.CylinderGeometry(0.075,0.075,0.07,12), M.light, x,1.68,bbz+0.03, Math.PI/2));
+P(new THREE.CylinderGeometry(0.05,0.05,0.06,16), M.light, 0,1.68,bbz+0.03, Math.PI/2);
+// front skid plate
+P(rb(1.1,0.05,0.75,0.03), M.tactical, 0,0.6,-2.05, 0.14);
+
+// ── Front fenders (curved arches over front wheels)
+function fender(px,cz,innerR,thick,wid){
+  const s=new THREE.Shape();
+  s.absarc(0,0,innerR+thick,Math.PI*0.04,Math.PI*0.96,false);
+  s.absarc(0,0,innerR,Math.PI*0.96,Math.PI*0.04,true);
+  const g=new THREE.ExtrudeGeometry(s,{depth:wid,bevelEnabled:true,bevelThickness:0.015,bevelSize:0.015,bevelSegments:2,curveSegments:28});
+  g.translate(0,0,-wid/2); g.rotateY(-Math.PI/2); g.computeVertexNormals();
+  P(g, M.body, px,0.45,cz);
+}
+fender(0.78,-1.7,0.56,0.1,0.46); fender(-0.78,-1.7,0.56,0.1,0.46);
+
+// ── Mirrors (curved tube arms)
+[1,-1].forEach(s=>{
+  P(tube([[s*0.7,2.35,-1.4],[s*0.92,2.36,-1.46],[s*1.02,2.1,-1.5],[s*1.02,1.78,-1.5]],0.022,32,8), M.bodyDark, 0,0,0);
+  P(rb(0.05,0.46,0.18,0.03), M.bodyDark, s*1.06,2.0,-1.5);
+  P(rb(0.02,0.4,0.14,0.01), M.glass, s*1.04,2.0,-1.46);
+});
+
+// ── Exhaust stack + heat shield
+P(new THREE.CylinderGeometry(0.06,0.06,1.55,12), M.chrome, -0.7,2.42,-1.5);
+P(new THREE.CylinderGeometry(0.085,0.06,0.14,12), M.chrome, -0.7,3.22,-1.5);
+
+// ── Fuel + air tanks
+P(new THREE.CylinderGeometry(0.21,0.21,1.1,16), M.chrome, 0.74,1.0,-0.35,0,0,Math.PI/2);
+P(new THREE.CylinderGeometry(0.21,0.21,1.1,16), M.chrome, -0.74,1.0,-0.35,0,0,Math.PI/2);
+P(new THREE.CylinderGeometry(0.21,0.21,0.06,16), M.steel, 0.74,1.0,0.22,0,0,Math.PI/2);
+P(new THREE.CylinderGeometry(0.21,0.21,0.06,16), M.steel, -0.74,1.0,0.22,0,0,Math.PI/2);
+
+// ── Snorkel (raised air intake) up the A-pillar
+P(tube([[0.87,1.0,-1.98],[0.91,1.6,-1.97],[0.91,2.45,-1.93],[0.89,3.08,-1.86]],0.06,60,12), M.matte,0,0,0);
+P(new THREE.CylinderGeometry(0.085,0.07,0.24,18), M.matte, 0.89,3.2,-1.86);
+P(rb(0.18,0.13,0.16,0.03), M.matte, 0.97,3.24,-1.86);          // ram-air head
+
+// ── Roof: tactical LED light bar, equipment rack, antennas, horns, visor
+P(rb(1.3,0.06,0.18,0.02), M.tactical, 0,2.92,-1.74, 0.5);                          // sun visor (raked)
+// LED light bar
+P(rb(1.26,0.13,0.17,0.03), M.tactical, 0,3.0,-1.5);
+for(let i=0;i<7;i++) P(rb(0.12,0.085,0.04,0.01), M.light, -0.48+i*0.16,3.0,-1.585);
+// roof equipment rack
+P(rb(1.26,0.04,1.35,0.02), M.tactical, 0,3.05,-0.72);
+[-0.59,0.59].forEach(x=>P(rb(0.04,0.1,1.35,0.02), M.tactical, x,3.1,-0.72));
+[-1.36,-0.08].forEach(z=>P(rb(1.26,0.04,0.04,0.01), M.tactical, 0,3.1,z));
+// air horns
+P(new THREE.CylinderGeometry(0.045,0.045,0.42,16), M.chrome, 0.2,3.16,-0.35,0,0,Math.PI/2);
+P(new THREE.CylinderGeometry(0.045,0.045,0.34,16), M.chrome, -0.05,3.16,-0.35,0,0,Math.PI/2);
+// whip antennas at rear of cab
+P(tube([[0.56,3.06,0.0],[0.61,3.5,0.05],[0.63,3.98,0.0]],0.01,32,6), M.matte,0,0,0);
+P(tube([[-0.56,3.06,0.0],[-0.51,3.55,-0.05],[-0.49,4.02,0.0]],0.01,32,6), M.matte,0,0,0);
+// amber cab markers
+[-0.45,-0.15,0.15,0.45].forEach(x=>P(new THREE.SphereGeometry(0.045,12,12),M.amber,x,2.97,-1.92));
+// grab handle by door
+P(tube([[0.8,1.2,-0.78],[0.84,1.55,-0.78],[0.84,1.95,-0.78]],0.018,24,8), M.chrome,0,0,0);
+P(tube([[-0.8,1.2,-0.78],[-0.84,1.55,-0.78],[-0.84,1.95,-0.78]],0.018,24,8), M.chrome,0,0,0);
+// steps
+P(rb(0.48,0.05,0.36,0.02), M.steel, 0.52,0.95,-1.96);
+P(rb(0.48,0.05,0.36,0.02), M.steel, -0.52,0.95,-1.96);
+
+// ════════════════ WHEELS ════════════════
+function wheel(x,z){
+  const g=new THREE.Group();
+  const tire=new THREE.Mesh(new THREE.CylinderGeometry(0.45,0.45,0.34,14),M.tire);
+  tire.rotation.z=Math.PI/2; g.add(tire);
+  // rounded sidewalls
+  [0.15,-0.15].forEach(o=>{const t=new THREE.Mesh(new THREE.TorusGeometry(0.4,0.06,8,14),M.tire);t.rotation.y=Math.PI/2;t.position.x=o;g.add(t);});
+  // rim
+  const rimm=new THREE.Mesh(new THREE.CylinderGeometry(0.27,0.27,0.36,16),M.rim);
+  rimm.rotation.z=Math.PI/2; g.add(rimm);
+  // dish + hub
+  const dish=new THREE.Mesh(new THREE.CylinderGeometry(0.24,0.24,0.04,16),M.rim); dish.rotation.z=Math.PI/2; dish.position.x=0.17; g.add(dish);
+  const hub=new THREE.Mesh(new THREE.CylinderGeometry(0.09,0.09,0.42,12),M.chrome); hub.rotation.z=Math.PI/2; g.add(hub);
+  // spokes
+  for(let i=0;i<6;i++){const a=(i/6)*Math.PI*2;const sp=new THREE.Mesh(new THREE.BoxGeometry(0.04,0.32,0.05),M.rim);sp.position.set(0.17,Math.sin(a)*0.15,Math.cos(a)*0.15);sp.rotation.x=-a;g.add(sp);}
+  // lug nuts
+  for(let i=0;i<8;i++){const a=(i/8)*Math.PI*2;const lug=new THREE.Mesh(new THREE.CylinderGeometry(0.028,0.028,0.44,6),M.steel);lug.rotation.z=Math.PI/2;lug.position.set(0,Math.sin(a)*0.18,Math.cos(a)*0.18);g.add(lug);}
+  g.position.set(x,0.45,z); truck.add(g);
+}
+wheel(0.78,-1.7); wheel(-0.78,-1.7);
+[0.6,1.45].forEach(z=>{wheel(0.75,z);wheel(-0.75,z);wheel(1.06,z);wheel(-1.06,z);});
+
+// rear fenders over tandem + mud flaps
+[0.6,1.45].forEach(z=>{ fender(0.9,z,0.56,0.09,0.78); fender(-0.9,z,0.56,0.09,0.78); });
+P(rb(0.02,0.32,0.5,0.01), M.hose, 1.18,0.3,1.78); P(rb(0.02,0.32,0.5,0.01), M.hose, -1.18,0.3,1.78);
+
+// ════════════════ OUTRIGGERS (H-style, hydraulic) ════════════════
+function outrigger(sx,z){
+  P(rb(0.9,0.18,0.2,0.04), M.steel, sx*0.28,0.62,z);                          // beam
+  P(new THREE.CylinderGeometry(0.09,0.09,0.55,12), M.steel, sx*0.78,0.42,z);  // jack barrel
+  P(new THREE.CylinderGeometry(0.06,0.06,0.4,12), M.chrome, sx*0.78,0.18,z);  // chrome rod
+  P(new THREE.CylinderGeometry(0.2,0.2,0.07,14), M.bodyDark, sx*0.78,0.04,z); // float pad
+  P(tube([[sx*0.5,0.7,z],[sx*0.66,0.66,z],[sx*0.78,0.5,z]],0.022,24,8), M.hose,0,0,0); // hydraulic hose
+}
+outrigger(1,-1.15); outrigger(-1,-1.15); outrigger(1,1.8); outrigger(-1,1.8);
+
+// ════════════════ CRANE BODY ════════════════
+// slew ring (turntable) with bolt circle
+P(new THREE.CylinderGeometry(0.82,0.86,0.18,12), M.steel, 0,1.16,1.2);
+P(new THREE.CylinderGeometry(0.7,0.7,0.22,12), M.bodyDark, 0,1.2,1.2);
+for(let i=0;i<24;i++){const a=(i/24)*Math.PI*2;P(new THREE.CylinderGeometry(0.025,0.025,0.2,6),M.chrome,Math.cos(a)*0.78,1.18,1.2+Math.sin(a)*0.78);}
+P(rb(1.3,0.16,1.72,0.05), M.bodyDark, 0,1.0,1.2);
+
+// superstructure housing (engine/winch cover) with rounded top
+const houseShape=new THREE.Shape();
+houseShape.moveTo(-0.78,0); houseShape.lineTo(-0.78,0.5);
+houseShape.quadraticCurveTo(-0.78,0.68,-0.6,0.68);
+houseShape.lineTo(0.6,0.68); houseShape.quadraticCurveTo(0.78,0.68,0.78,0.5);
+houseShape.lineTo(0.78,0); houseShape.lineTo(-0.78,0);
+P(sideExtrude(houseShape,1.4,0.04), M.body, 0.1,1.28,1.18);
+
+// operator cab (lots of glass)
+P(rb(0.6,0.78,0.86,0.06), M.body, -0.5,1.9,0.95);
+P(rb(0.05,0.6,0.66,0.02), M.glass, -0.81,1.96,0.95);
+P(rb(0.5,0.6,0.05,0.02), M.glass, -0.5,1.96,0.55);
+P(rb(0.5,0.05,0.66,0.02), M.glass, -0.5,2.26,0.95);
+
+// winch drum (axis along X) with neatly wound rope coils
+P(new THREE.CylinderGeometry(0.18,0.18,0.72,16), M.steel, 0,1.5,1.5,0,0,Math.PI/2);
+P(new THREE.CylinderGeometry(0.21,0.21,0.05,16), M.steel, 0.36,1.5,1.5,0,0,Math.PI/2);
+P(new THREE.CylinderGeometry(0.21,0.21,0.05,16), M.steel, -0.36,1.5,1.5,0,0,Math.PI/2);
+for(let i=0;i<9;i++) P(new THREE.TorusGeometry(0.2,0.022,8,16), M.rope, -0.28+i*0.07,1.5,1.5, 0,Math.PI/2,0);
+
+// counterweight — stacked plates
+for(let i=0;i<3;i++) P(rb(1.34,0.26,0.96-i*0.02,0.04), M.bodyDark, 0,1.0+i*0.28,2.12);
+for(let i=-1;i<=1;i++)for(let j=0;j<3;j++)P(new THREE.CylinderGeometry(0.045,0.045,0.04,12),M.chrome,i*0.42,0.95+j*0.28,2.62,Math.PI/2);
+
+// rear lights
+[0.5,-0.5].forEach(x=>P(rb(0.12,0.32,0.06,0.02),M.lightR,x,0.95,2.66));
+
+// ════════════════ A-FRAME MAST ════════════════
+const mZ=0.95,mY=2.2;
+P(rb(0.11,1.5,0.11,0.04), M.steel, 0.44,mY+0.62,mZ+0.12,0.2);
+P(rb(0.11,1.5,0.11,0.04), M.steel, -0.44,mY+0.62,mZ+0.12,0.2);
+P(new THREE.CylinderGeometry(0.1,0.1,1.05,14), M.chrome, 0,mY+1.42,mZ+0.42,0,0,Math.PI/2);
+P(rb(0.08,1.0,0.08,0.03), M.steel, 0.44,mY+0.12,mZ+0.45,-0.26);
+P(rb(0.08,1.0,0.08,0.03), M.steel, -0.44,mY+0.12,mZ+0.45,-0.26);
+
+// ════════════════ MAIN BOOM (oval telescoping sections) ════════════════
+const boom=new THREE.Group();
+boom.position.set(0,1.05,0.4);
+boom.rotation.x=0.52;
+truck.add(boom);
+
+// rounded oval cross-section, extruded along local +Y, base at y=0
+function ovalShape(w,h,r){
+  const s=new THREE.Shape(); const x=w/2,y=h/2;
+  s.moveTo(-x+r,-y); s.lineTo(x-r,-y); s.quadraticCurveTo(x,-y,x,-y+r);
+  s.lineTo(x,y-r); s.quadraticCurveTo(x,y,x-r,y); s.lineTo(-x+r,y);
+  s.quadraticCurveTo(-x,y,-x,y-r); s.lineTo(-x,-y+r); s.quadraticCurveTo(-x,-y,-x+r,-y);
+  return s;
+}
+function boomSec(w,h,len,baseY){
+  const g=new THREE.ExtrudeGeometry(ovalShape(w,h,Math.min(w,h)*0.45),{depth:len,bevelEnabled:false,curveSegments:16});
+  g.rotateX(-Math.PI/2); g.computeVertexNormals();  // extrude Z → +Y
+  P(g, M.boom, 0, baseY, 0, 0,0,0, boom);
+}
+// boom foot pivot
+P(new THREE.CylinderGeometry(0.3,0.3,0.52,16), M.steel, 0,0.05,0,0,0,Math.PI/2, boom);
+boomSec(0.36,0.46,2.5,0.2);
+boomSec(0.29,0.38,2.0,2.4);
+boomSec(0.23,0.31,1.6,4.1);
+boomSec(0.17,0.24,1.2,5.4);
+
+// head + sheave pulleys
+P(new THREE.CylinderGeometry(0.17,0.17,0.3,16), M.chrome, 0,6.55,0,Math.PI/2,0,0, boom);
+P(new THREE.CylinderGeometry(0.18,0.18,0.05,16), M.steel, 0.13,6.55,0,Math.PI/2,0,0, boom);
+P(new THREE.CylinderGeometry(0.18,0.18,0.05,16), M.steel, -0.13,6.55,0,Math.PI/2,0,0, boom);
+P(rb(0.26,0.4,0.34,0.04), M.steel, 0,6.45,0,0,0,0, boom);
+
+// hydraulic hoses along underside of boom (local space)
+P(tube([[0.12,0.3,0.2],[0.13,1.5,0.18],[0.1,3,0.15],[0.08,4.5,0.12],[0.06,5.8,0.1]],0.025,80,8), M.hose, 0,0,0,0,0,0, boom);
+P(tube([[-0.12,0.3,0.2],[-0.13,1.5,0.18],[-0.1,3,0.15],[-0.08,4.5,0.12],[-0.06,5.8,0.1]],0.025,80,8), M.hose, 0,0,0,0,0,0, boom);
+
+// ════════════════ LUFFING HYDRAULIC CYLINDER ════════════════
+const ram=new THREE.Group();
+ram.position.set(0,1.05,0.4);
+ram.rotation.x=0.92;
+truck.add(ram);
+P(new THREE.CylinderGeometry(0.16,0.16,1.7,16), M.steel, 0,0.9,0,0,0,0, ram);
+P(new THREE.CylinderGeometry(0.1,0.1,1.5,16), M.chrome, 0,2.1,0,0,0,0, ram);
+P(new THREE.CylinderGeometry(0.13,0.13,0.16,12), M.bodyDark, 0,0.05,0,0,0,0, ram);
+
+// ════════════════ HOIST ROPE + HOOK BLOCK + HOOK ════════════════
+// rope from head sheave down (boom-local)
+P(new THREE.CylinderGeometry(0.022,0.022,1.55,8), M.rope, 0,5.85,0, 0,0,0, boom);
+// hook block
+P(rb(0.28,0.34,0.26,0.04), M.steel, 0,5.05,0, 0,0,0, boom);
+P(new THREE.CylinderGeometry(0.12,0.12,0.28,14), M.chrome, 0,5.05,0, Math.PI/2,0,0, boom);
+// big crane hook via tube along a curve, hanging below the block
+const hookPts=[[0,4.86,0],[0,4.62,0],[0.02,4.4,0.02],[0.12,4.28,0.06],[0.2,4.36,0.06],[0.2,4.5,0.02],[0.14,4.56,0]];
+P(tube(hookPts,0.045,48,12), M.chrome, 0,0,0, 0,0,0, boom);
+P(new THREE.ConeGeometry(0.05,0.12,12), M.chrome, 0.14,4.6,0, Math.PI, 0,0, boom);
+P(new THREE.CylinderGeometry(0.07,0.07,0.16,16), M.steel, 0,4.78,0, 0,0,0, boom); // hook shank
+
+// ════════════════ FINE DETAILS ════════════════
+const plateMat = new THREE.MeshStandardMaterial({ color:0xe9e9da, metalness:0.1, roughness:0.55 });
+const haz      = new THREE.MeshStandardMaterial({ color:0xf2c200, metalness:0.2, roughness:0.55 });
+
+// Windshield wipers
+P(tube([[-0.56,1.93,-2.07],[-0.08,2.14,-2.0]],0.014,20,6), M.matte,0,0,0);
+P(new THREE.CylinderGeometry(0.02,0.02,0.05,10), M.matte, -0.5,1.9,-2.08);
+P(tube([[0.06,1.93,-2.0],[0.52,2.14,-1.93]],0.014,20,6), M.matte,0,0,0);
+P(new THREE.CylinderGeometry(0.02,0.02,0.05,10), M.matte, 0.5,2.13,-1.93);
+
+// Rear cab window (framed)
+P(rb(0.72,0.42,0.05,0.02), M.matte, 0,2.28,0.12);
+P(rb(0.6,0.32,0.05,0.02), M.glass, 0,2.28,0.14);
+
+// Amber rotating beacons (cab roof + crane cab)
+function beacon(x,y,z,grp){
+  P(new THREE.CylinderGeometry(0.05,0.06,0.04,16), M.matte, x,y,z,0,0,0,grp||truck);
+  P(new THREE.SphereGeometry(0.06,16,12,0,Math.PI*2,0,Math.PI/2), M.amber, x,y+0.04,z,0,0,0,grp||truck);
+}
+beacon(-0.5,2.98,-1.32); beacon(0.5,2.98,-1.32);
+beacon(-0.5,2.34,0.95);
+
+// Headlight chrome trim rings
+[0.5,-0.5].forEach(x=>P(new THREE.TorusGeometry(0.092,0.012,8,14), M.chrome, x,1.36,-2.23));
+// mirror indicator lights
+[1,-1].forEach(s=>P(new THREE.SphereGeometry(0.025,10,10), M.amber, s*1.06,1.82,-1.56));
+
+// License plates (front on bull bar, rear on counterweight)
+P(rb(0.36,0.13,0.02,0.01), plateMat, 0,0.72,-2.76);
+P(rb(0.36,0.13,0.02,0.01), plateMat, 0,0.78,2.68);
+
+// Side reflectors along the chassis
+[-1.5,-0.4,0.7].forEach(z=>{
+  P(rb(0.03,0.08,0.16,0.01), M.amber, 0.7,0.86,z);
+  P(rb(0.03,0.08,0.16,0.01), M.amber, -0.7,0.86,z);
+});
+// rear corner reflectors (red)
+[0.62,-0.62].forEach(x=>P(rb(0.04,0.16,0.1,0.01), M.lightR, x,0.6,2.66));
+
+// Door ID placards
+P(rb(0.02,0.13,0.32,0.005), plateMat, 0.785,1.86,-1.1);
+P(rb(0.02,0.13,0.32,0.005), plateMat, -0.785,1.86,-1.1);
+
+// Crane access ladder + handrail (operator side)
+P(rb(0.035,0.72,0.035,0.01), M.steel, -0.86,1.38,0.5);
+P(rb(0.035,0.72,0.035,0.01), M.steel, -0.86,1.38,0.82);
+[0,0.18,0.36,0.54].forEach(o=>P(rb(0.04,0.03,0.34,0.01), M.steel, -0.86,1.06+o,0.66));
+P(tube([[-0.83,1.74,0.48],[-0.82,2.0,0.5],[-0.82,2.02,1.0]],0.015,28,6), M.steel,0,0,0);
+
+// Hydraulic control levers near operator cab
+P(rb(0.16,0.2,0.26,0.02), M.matte, -0.72,1.55,1.5);
+[-0.07,0,0.07].forEach(o=>{
+  P(new THREE.CylinderGeometry(0.01,0.01,0.16,8), M.chrome, -0.72,1.72,1.5+o);
+  P(new THREE.SphereGeometry(0.022,10,10), M.lightR, -0.72,1.8,1.5+o);
+});
+
+// Hook safety latch (boom-local)
+P(tube([[0,4.7,0],[0.16,4.42,0.03]],0.012,14,6), M.steel, 0,0,0,0,0,0, boom);
+
+// Rear hazard chevrons on the counterweight
+for(let i=0;i<7;i++) P(rb(0.12,0.46,0.012,0.004), (i%2?haz:M.matte), -0.6+i*0.2,1.32,2.665, 0,0,0.5);
+
+// Small engine-bay vents on the crane housing
+[0.3,0.45,0.6].forEach(z=>P(rb(0.02,0.18,0.4,0.005), M.mesh, 0.86,1.3,z));
+
+// ════════════════ EXTRA FINE DETAILS ════════════════
+// Windshield tinted sun-strip (top band)
+P(rb(1.2,0.14,0.055,0.02), M.tactical, 0,2.82,-2.04, 0.52);
+
+// Rear tail-light clusters (brake/turn) + reverse + plate light
+[0.52,-0.52].forEach(x=>{
+  P(rb(0.14,0.4,0.05,0.02), M.matte, x,0.85,2.67);
+  P(rb(0.1,0.16,0.05,0.015), M.lightR, x,0.93,2.69);     // brake / tail
+  P(rb(0.1,0.1,0.05,0.015), M.amber, x,0.77,2.69);       // turn signal
+});
+P(rb(0.1,0.07,0.05,0.015), M.light, 0.34,0.66,2.69);     // reverse light
+P(new THREE.SphereGeometry(0.02,8,8), M.light, 0,0.66,2.71); // plate lamp
+
+// Boom-tip warning beacon (aviation red)
+P(new THREE.SphereGeometry(0.05,12,12), M.lightR, 0,6.82,0, 0,0,0, boom);
+
+// Fuel filler caps on the tanks
+P(new THREE.CylinderGeometry(0.06,0.06,0.05,16), M.chrome, 0.74,1.22,-0.05);
+P(new THREE.CylinderGeometry(0.06,0.06,0.05,16), M.chrome, -0.74,1.22,-0.05);
+
+// GPS / comms dome on the roof rack
+P(new THREE.SphereGeometry(0.07,16,12,0,Math.PI*2,0,Math.PI/2), plateMat, 0,3.09,-0.4);
+
+// Anti-slip ridges on the cab steps
+[0.52,-0.52].forEach(x=>{ for(let i=0;i<3;i++) P(rb(0.42,0.012,0.03,0.004), M.steel, x,0.99,-2.08+i*0.1); });
+
+// Tie-down D-rings on the rear deck
+[[0.58,1.6],[-0.58,1.6],[0.58,2.0],[-0.58,2.0]].forEach(([x,z])=>P(new THREE.TorusGeometry(0.04,0.012,8,16), M.steel, x,1.07,z, Math.PI/2,0,0));
+
+// Fire extinguisher on the operator side (utility)
+P(new THREE.CylinderGeometry(0.05,0.05,0.26,16), M.lightR, -0.87,1.45,0.15);
+P(new THREE.CylinderGeometry(0.03,0.03,0.04,12), M.matte, -0.87,1.6,0.15);
+P(rb(0.04,0.18,0.1,0.01), M.matte, -0.9,1.45,0.15);
+
+// Rear-view camera pod on the counterweight
+P(rb(0.1,0.08,0.08,0.02), M.matte, 0,1.78,2.6);
+P(new THREE.CylinderGeometry(0.025,0.025,0.04,12), M.glass, 0,1.78,2.66, Math.PI/2);
+
+// Outrigger control box on the side
+P(rb(0.16,0.22,0.1,0.02), M.matte, 0.72,1.1,1.5);
+[-0.05,0.05].forEach(o=>P(new THREE.SphereGeometry(0.018,8,8), M.amber, 0.78,1.15,1.5+o));
+
+// Windshield washer jets on the cowl
+P(new THREE.SphereGeometry(0.015,8,8), M.matte, 0.2,1.92,-1.98);
+P(new THREE.SphereGeometry(0.015,8,8), M.matte, -0.2,1.92,-1.98);
+
+// ════════════════ CONTROLS ════════════════
+const controls=new OrbitControls(camera,renderer.domElement);
+controls.enableDamping=true; controls.dampingFactor=0.06;
+controls.target.set(0,2.7,0.5);
+controls.enableZoom=false;
+controls.enablePan=false;
+controls.maxPolarAngle=Math.PI*0.52;
+controls.autoRotate=false;
+controls.update();
+
+// ════════════════ SCROLL-DRIVEN ROTATION ════════════════
+// parent page posts { type:'scroll', ratio:0..1 } messages
+const INIT_ROT = -(100 * Math.PI / 180); // 100° counter-clockwise
+let scrollRot = INIT_ROT, targetRot = INIT_ROT;
+truck.rotation.y = INIT_ROT;
+window.addEventListener('message', e => {
+  if (e.data && e.data.type === 'scroll') {
+    targetRot = INIT_ROT + e.data.ratio * Math.PI * 6;
+  }
+});
+
+// ════════════════ LOOP ════════════════
+function tick(){
+  requestAnimationFrame(tick);
+  // smooth lerp toward scroll target
+  scrollRot += (targetRot - scrollRot) * 0.08;
+  truck.rotation.y = scrollRot;
+  controls.update();
+  renderer.render(scene,camera);
+}
+tick();
+window.addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);});
+</script>
+</body>
+</html>
