@@ -521,19 +521,35 @@ let scrollRot = INIT_ROT, targetRot = INIT_ROT;
 truck.rotation.y = INIT_ROT;
 window.addEventListener('message', e => {
   if (e.data && e.data.type === 'scroll') {
-    targetRot = INIT_ROT + e.data.ratio * Math.PI * 6;
+    targetRot = INIT_ROT + e.data.ratio * Math.PI * 1.5;
   }
 });
 
 // ════════════════ LOOP ════════════════
+let active = true;
 function tick(){
+  if (!active) return;
   requestAnimationFrame(tick);
-  // smooth lerp toward scroll target
-  scrollRot += (targetRot - scrollRot) * 0.08;
-  truck.rotation.y = scrollRot;
+  var diff = targetRot - scrollRot;
+  if (Math.abs(diff) > 0.001) {
+    scrollRot += diff * 0.08;
+    truck.rotation.y = scrollRot;
+  }
   controls.update();
   renderer.render(scene,camera);
 }
+
+// pause when tab hidden or iframe scrolled out of view
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) { active = false; }
+  else { active = true; tick(); }
+});
+new IntersectionObserver(entries => {
+  const vis = entries[0].isIntersecting;
+  if (vis && !active) { active = true; tick(); }
+  else if (!vis) { active = false; }
+}, { threshold: 0 }).observe(document.documentElement);
+
 tick();
 window.addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);});
 </script>

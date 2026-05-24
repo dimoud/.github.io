@@ -2023,22 +2023,21 @@ footer {
   color: rgba(96,165,250,.65);
 }
 .sw-page-badge svg { flex-shrink: 0; stroke: rgba(96,165,250,.65); }
-/* crane 3D iframe — desktop */
+/* crane image — desktop */
 .sw-crane-mobile { display: none; }
-.sw-page-right {
-  display: flex; align-items: stretch; justify-content: flex-end;
-  position: relative; overflow: hidden;
-  min-height: calc(100vh - 70px);
+.sw-page-right { display: flex; align-items: center; justify-content: flex-end; overflow: visible; }
+.sw-crane-img {
+  width: 160%; max-width: 2400px;
+  margin-left: 16%; margin-right: -26%;
+  filter: drop-shadow(0 0 60px rgba(37,99,235,.45)) drop-shadow(0 0 20px rgba(96,165,250,.2));
+  animation: cranePulse 4s ease-in-out infinite;
 }
-#craneFrame {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  border: none; background: transparent;
-  pointer-events: all;
+@keyframes cranePulse {
+  0%, 100% { filter: drop-shadow(0 0 40px rgba(37,99,235,.3)) drop-shadow(0 0 10px rgba(96,165,250,.1)); transform: scale(1); }
+  50%       { filter: drop-shadow(0 0 120px rgba(37,99,235,.9)) drop-shadow(0 0 60px rgba(96,165,250,.6)); transform: scale(1.04); }
 }
 /* hide legacy elements */
 .sw-page-features { display: none; }
-.sw-crane-img { display: none; }
 .sw-page-img:not(.sw-crane-img) { display: none; }
 
 /* CTA row — push down from feats */
@@ -2067,14 +2066,12 @@ footer {
   .sw-page-right { display: none; }
   .sw-crane-mobile {
     display: block;
-    width: 156%; max-width: 936px;
-    height: 504px;
+    width: 130%; max-width: 780px;
     position: relative;
     left: 50%;
-    transform: translateX(-62%);
+    transform: translateX(-50%);
     margin-bottom: 8px;
-    border: none; background: transparent;
-    pointer-events: none;
+    filter: drop-shadow(0 0 48px rgba(37,99,235,.5)) drop-shadow(0 0 16px rgba(96,165,250,.25));
   }
   .sw-page-inner { grid-template-columns: 1fr; padding: 72px 24px 48px; }
   .sw-page-title { text-align: center; }
@@ -2103,7 +2100,7 @@ footer {
   .sw-page-inner { padding: 60px 20px 40px; }
   .sw-page-title { font-size: clamp(88px, 24vw, 128px); text-align: center; }
   .sw-page-desc { text-align: center; }
-  .sw-crane-mobile { width: 156%; max-width: 936px; left: 50%; transform: translateX(-62%); }
+  .sw-crane-mobile { width: 130%; max-width: 780px; left: 50%; transform: translateX(-50%); }
 }
 
 /* ── SOFTWARE TOOLKIT SECTION ───────────────────────────────── */

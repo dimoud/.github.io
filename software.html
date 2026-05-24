@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<script>(function(){var l=localStorage.getItem('lang');if(l)document.documentElement.lang=l;})();</script>
+<script>localStorage.setItem('lang','el');document.documentElement.lang='el';</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mechanical ExpertEase — Λογισμικό Τεχνικής Μελέτης Οχημάτων Ειδικής Χρήσης | Expertease Designs</title>
 <meta name="description" content="Mechanical ExpertEase: λογισμικό αυτοματοποίησης τεχνικών μελετών για οχήματα ειδικής χρήσης και ειδικού σκοπού. Υπολογισμοί, διαγράμματα, σχέδια Α3 και μελέτη Word έτοιμη για ΚΕΚ/ΙΕΚΕΜ. Βάσει ΥΑ 80255/4693/19/2020.">
@@ -164,7 +164,7 @@
       <h1 class="sw-page-title sw-anim sw-anim--title">Mechanical<br>Expert<span class="sw-title-accent">Ease</span></h1>
       <p class="sw-page-desc sw-anim sw-anim--desc" id="sw-desc">Λογισμικό <strong>αυτοματοποίησης</strong> τεχνικών μελετών για οχήματα <strong>ειδικής χρήσης</strong> και <strong>ειδικού σκοπού</strong>.</p>
 
-      <iframe id="craneFrameMobile" src="crane_realistic.html" scrolling="no" tabindex="-1" aria-hidden="true" title="3D crane truck model" class="sw-crane-mobile sw-anim sw-anim--crane"></iframe>
+      <img src="images/mechanical_Expertease/4fd9983c-6abf-4e4e-862e-9d64fa9254f7.png" alt="" class="sw-crane-mobile sw-anim sw-anim--crane" aria-hidden="true">
 
       <div class="sw-page-feats-icon sw-anim sw-anim--feats">
         <div class="sw-feat-icon-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 6h7M14 12h7M14 18h7"/></svg><span id="sw-fi1">Υπολογισμοί</span></div>
@@ -185,7 +185,7 @@
     </div>
 
     <div class="sw-page-right">
-      <iframe id="craneFrame" src="crane_realistic.html" scrolling="no" tabindex="-1" aria-hidden="true" title="3D crane truck model"></iframe>
+      <img src="images/mechanical_Expertease/4fd9983c-6abf-4e4e-862e-9d64fa9254f7.png" alt="Mechanical ExpertEase — crane truck" class="sw-page-img sw-crane-img sw-anim sw-anim--crane">
     </div>
 
   </div>
@@ -2402,22 +2402,6 @@ rafId=requestAnimationFrame(tick);
 
 <script src="consent.js"></script>
 <script>
-(function(){
-  var frames = [
-    document.getElementById('craneFrame'),
-    document.getElementById('craneFrameMobile')
-  ].filter(Boolean);
-  var hero = document.querySelector('.sw-page');
-  function sendScroll(){
-    var h = hero ? hero.offsetHeight : window.innerHeight;
-    var ratio = Math.min(1, Math.max(0, window.scrollY / h));
-    frames.forEach(function(f){
-      try { f.contentWindow.postMessage({ type:'scroll', ratio: ratio }, '*'); } catch(e){}
-    });
-  }
-  window.addEventListener('scroll', sendScroll, { passive:true });
-  frames.forEach(function(f){ f.addEventListener('load', sendScroll); });
-})();
 </script>
 </body>
 </html>
