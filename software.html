@@ -164,7 +164,7 @@
       <h1 class="sw-page-title sw-anim sw-anim--title">Mechanical<br>Expert<span class="sw-title-accent">Ease</span></h1>
       <p class="sw-page-desc sw-anim sw-anim--desc" id="sw-desc">Λογισμικό <strong>αυτοματοποίησης</strong> τεχνικών μελετών για οχήματα <strong>ειδικής χρήσης</strong> και <strong>ειδικού σκοπού</strong>.</p>
 
-      <img src="images/mechanical_Expertease/4fd9983c-6abf-4e4e-862e-9d64fa9254f7.png" alt="" class="sw-crane-mobile sw-anim sw-anim--crane" aria-hidden="true">
+      <iframe src="crane_realistic.html" class="sw-crane-mobile sw-crane-iframe sw-anim sw-anim--crane" id="craneMobileIframe" scrolling="no" frameborder="0" allowtransparency="true" title="" aria-hidden="true"></iframe>
 
       <div class="sw-page-feats-icon sw-anim sw-anim--feats">
         <div class="sw-feat-icon-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 6h7M14 12h7M14 18h7"/></svg><span id="sw-fi1">Υπολογισμοί</span></div>
@@ -185,7 +185,7 @@
     </div>
 
     <div class="sw-page-right">
-      <img src="images/mechanical_Expertease/4fd9983c-6abf-4e4e-862e-9d64fa9254f7.png" alt="Mechanical ExpertEase — crane truck" class="sw-page-img sw-crane-img sw-anim sw-anim--crane">
+      <iframe src="crane_realistic.html" class="sw-crane-iframe sw-anim sw-anim--crane" id="craneDesktopIframe" scrolling="no" frameborder="0" allowtransparency="true" title="Crane 3D model" aria-hidden="true"></iframe>
     </div>
 
   </div>
@@ -682,23 +682,65 @@ setInterval(()=>{
   };
 })();
 
-/* ── mobile: scroll-driven doc advance ────────────────────────── */
+/* ── desktop: scroll-driven doc advance (hover-gated) ─────────── */
+(function(){
+  if(window.innerWidth <= 960) return;
+  const section = document.querySelector('.hiw-section');
+  const card    = document.querySelector('.hiw-card');
+  if(!section || !card) return;
+
+  let hovering = false;
+  let scrollBase = null;   // scroll Y when hover started
+  let stepBase   = 0;      // hiwActive when hover started
+  const PX_PER_STEP = 220; // pixels of scroll travel to advance one step
+
+  card.addEventListener('mouseenter', () => {
+    hovering   = true;
+    scrollBase = window.scrollY;
+    stepBase   = hiwActive;
+  });
+  card.addEventListener('mouseleave', () => { hovering = false; scrollBase = null; });
+
+  window.addEventListener('scroll', () => {
+    if(!hovering || scrollBase === null) return;
+    const delta = window.scrollY - scrollBase;
+    const steps = Math.round(delta / PX_PER_STEP);
+    const target = Math.max(0, Math.min(HIW_STEPS.length - 1, stepBase + steps));
+    if(target !== hiwActive){
+      hiwUserPicked = true;
+      hiwActive = target;
+      updateHIW();
+      listEl.querySelectorAll('.hiw-item').forEach((it, i) => it.classList.toggle('is-on', i === target));
+    }
+  }, { passive: true });
+})();
+
+/* ── mobile: scroll-driven doc advance (visible-gated) ────────── */
 (function(){
   if(window.innerWidth > 960) return;
   const section = document.querySelector('.hiw-section');
   if(!section) return;
   let lastStep = -1;
+  let unlocked = false; // don't start until section is well into view
+
   function onScroll(){
     const rect = section.getBoundingClientRect();
-    const vh = window.innerHeight;
-    // progress 0→1 as section scrolls from entering bottom to leaving top
+    const vh   = window.innerHeight;
+    // visible fraction of the section inside the viewport
+    const visiblePx = Math.min(rect.bottom, vh) - Math.max(rect.top, 0);
+    const visFrac   = visiblePx / Math.min(rect.height, vh);
+
+    // unlock once at least 40% of the section (or viewport) is visible
+    if(!unlocked && visFrac >= 0.4) unlocked = true;
+    if(!unlocked) return;
+
+    // progress 0→1 across the locked-in window
     const progress = Math.max(0, Math.min(1, (vh - rect.top) / (rect.height + vh)));
     const step = Math.min(HIW_STEPS.length - 1, Math.floor(progress * HIW_STEPS.length));
     if(step !== lastStep){
       lastStep = step;
       hiwActive = step;
       updateHIW();
-      // sync list highlight without full rebuild
       listEl.querySelectorAll('.hiw-item').forEach((it, i) => it.classList.toggle('is-on', i === step));
     }
   }
@@ -782,8 +824,8 @@ setInterval(()=>{
     <!-- right: screenshots stacked -->
     <div class="fcap-right">
       <div class="fcap-img-stack">
-        <img class="fcap-img fcap-img-1" src="images/me-1.png" alt="Mechanical ExpertEase screenshot">
-        <img class="fcap-img fcap-img-2" src="images/me-2.png" alt="Mechanical ExpertEase screenshot 2">
+        <img class="fcap-img fcap-img-1" src="images/me-1.png" alt="Mechanical ExpertEase screenshot" role="button" tabindex="0" onclick="openLightbox(this)">
+        <img class="fcap-img fcap-img-2" src="images/me-2.png" alt="Mechanical ExpertEase screenshot 2" role="button" tabindex="0" onclick="openLightbox(this)">
       </div>
     </div>
 
@@ -914,6 +956,57 @@ setInterval(()=>{
   opacity: 1;
   transform: translateX(0) translateY(0);
 }
+.fcap-img { cursor: zoom-in; }
+
+/* ── Image lightbox ── */
+.img-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(4,9,22,.92);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s ease;
+}
+.img-lightbox.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.img-lightbox img {
+  max-width: 92vw;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 32px 96px rgba(0,0,0,.7);
+  transform: scale(.94);
+  transition: transform .28s cubic-bezier(.19,1,.22,1);
+}
+.img-lightbox.is-open img { transform: scale(1); }
+.img-lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.18);
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .15s;
+}
+.img-lightbox-close:hover { background: rgba(255,255,255,.22); }
 
 @media (max-width: 1100px) {
   .fcap-inner { grid-template-columns: 1fr; gap: 32px; }
@@ -2400,8 +2493,78 @@ rafId=requestAnimationFrame(tick);
 </button>
 <script>(function(){var b=document.getElementById('backToTop');if(!b)return;window.addEventListener('scroll',function(){b.classList.toggle('btt-visible',window.scrollY>500);},{passive:true});b.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});})();</script>
 
+<!-- ── Image lightbox ── -->
+<div class="img-lightbox" id="imgLightbox" role="dialog" aria-modal="true">
+  <button class="img-lightbox-close" id="imgLightboxClose" aria-label="Close">&#x2715;</button>
+  <img id="imgLightboxImg" src="" alt="">
+</div>
+
+<script>
+(function () {
+  var lb    = document.getElementById('imgLightbox');
+  var lbImg = document.getElementById('imgLightboxImg');
+  var lbClose = document.getElementById('imgLightboxClose');
+
+  window.openLightbox = function (el) {
+    lbImg.src = el.src;
+    lbImg.alt = el.alt;
+    lb.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  };
+
+  function close() {
+    lb.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  lbClose.addEventListener('click', close);
+  lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+
+  // keyboard open on the images themselves
+  document.querySelectorAll('.fcap-img').forEach(function (img) {
+    img.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(img); }
+    });
+  });
+})();
+</script>
+
 <script src="consent.js"></script>
 <script>
+/* ── Crane iframe scroll driver ───────────────────────────────────
+   Posts { type:'scroll', ratio:0..1 } to both crane iframes.
+   ratio is based on the hero section's scroll progress so the model
+   rotates predictably as the user scrolls past the hero.           */
+(function () {
+  var hero = document.querySelector('.sw-page');
+  if (!hero) return;
+
+  var iframes = [
+    document.getElementById('craneDesktopIframe'),
+    document.getElementById('craneMobileIframe')
+  ];
+
+  function send(ratio) {
+    var msg = { type: 'scroll', ratio: Math.max(0, Math.min(1, ratio)) };
+    iframes.forEach(function (f) {
+      if (f && f.contentWindow) {
+        try { f.contentWindow.postMessage(msg, '*'); } catch (e) {}
+      }
+    });
+  }
+
+  function onScroll() {
+    var rect = hero.getBoundingClientRect();
+    var vh   = window.innerHeight;
+    /* 0 when hero top is at bottom of viewport, 1 when hero bottom is at top */
+    var ratio = (vh - rect.top) / (rect.height + vh);
+    send(ratio);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
 </script>
 </body>
 </html>

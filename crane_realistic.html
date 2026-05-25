@@ -50,7 +50,7 @@ const scene = new THREE.Scene();
 // transparent background — blends with parent page hero gradient
 
 const camera = new THREE.PerspectiveCamera(40, innerWidth / innerHeight, 0.1, 200);
-camera.position.set(8, 5.5, 12);
+camera.position.set(5.11, 3.52, 7.67);
 
 const pmrem = new THREE.PMREMGenerator(renderer);
 scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
@@ -281,7 +281,7 @@ wheel(0.78,-1.7); wheel(-0.78,-1.7);
 [0.6,1.45].forEach(z=>{wheel(0.75,z);wheel(-0.75,z);wheel(1.06,z);wheel(-1.06,z);});
 
 // rear fenders over tandem + mud flaps
-[0.6,1.45].forEach(z=>{ fender(0.9,z,0.56,0.09,0.78); fender(-0.9,z,0.56,0.09,0.78); });
+[0.6,1.45].forEach(z=>{ fender(0.9,z,0.56,0.09,0.38); fender(-0.9,z,0.56,0.09,0.38); });
 P(rb(0.02,0.32,0.5,0.01), M.hose, 1.18,0.3,1.78); P(rb(0.02,0.32,0.5,0.01), M.hose, -1.18,0.3,1.78);
 
 // ════════════════ OUTRIGGERS (H-style, hydraulic) ════════════════
@@ -339,7 +339,7 @@ P(rb(0.08,1.0,0.08,0.03), M.steel, -0.44,mY+0.12,mZ+0.45,-0.26);
 // ════════════════ MAIN BOOM (oval telescoping sections) ════════════════
 const boom=new THREE.Group();
 boom.position.set(0,1.05,0.4);
-boom.rotation.x=0.52;
+boom.rotation.x=0.38;
 truck.add(boom);
 
 // rounded oval cross-section, extruded along local +Y, base at y=0
@@ -357,25 +357,25 @@ function boomSec(w,h,len,baseY){
 }
 // boom foot pivot
 P(new THREE.CylinderGeometry(0.3,0.3,0.52,16), M.steel, 0,0.05,0,0,0,Math.PI/2, boom);
-boomSec(0.36,0.46,2.5,0.2);
-boomSec(0.29,0.38,2.0,2.4);
-boomSec(0.23,0.31,1.6,4.1);
-boomSec(0.17,0.24,1.2,5.4);
+boomSec(0.36,0.46,1.8,0.2);
+boomSec(0.29,0.38,1.4,1.8);
+boomSec(0.23,0.31,1.1,3.0);
+boomSec(0.17,0.24,0.85,3.9);
 
 // head + sheave pulleys
-P(new THREE.CylinderGeometry(0.17,0.17,0.3,16), M.chrome, 0,6.55,0,Math.PI/2,0,0, boom);
-P(new THREE.CylinderGeometry(0.18,0.18,0.05,16), M.steel, 0.13,6.55,0,Math.PI/2,0,0, boom);
-P(new THREE.CylinderGeometry(0.18,0.18,0.05,16), M.steel, -0.13,6.55,0,Math.PI/2,0,0, boom);
-P(rb(0.26,0.4,0.34,0.04), M.steel, 0,6.45,0,0,0,0, boom);
+P(new THREE.CylinderGeometry(0.17,0.17,0.3,16), M.chrome, 0,4.7,0,Math.PI/2,0,0, boom);
+P(new THREE.CylinderGeometry(0.18,0.18,0.05,16), M.steel, 0.13,4.7,0,Math.PI/2,0,0, boom);
+P(new THREE.CylinderGeometry(0.18,0.18,0.05,16), M.steel, -0.13,4.7,0,Math.PI/2,0,0, boom);
+P(rb(0.26,0.4,0.34,0.04), M.steel, 0,4.6,0,0,0,0, boom);
 
 // hydraulic hoses along underside of boom (local space)
-P(tube([[0.12,0.3,0.2],[0.13,1.5,0.18],[0.1,3,0.15],[0.08,4.5,0.12],[0.06,5.8,0.1]],0.025,80,8), M.hose, 0,0,0,0,0,0, boom);
-P(tube([[-0.12,0.3,0.2],[-0.13,1.5,0.18],[-0.1,3,0.15],[-0.08,4.5,0.12],[-0.06,5.8,0.1]],0.025,80,8), M.hose, 0,0,0,0,0,0, boom);
+P(tube([[0.12,0.3,0.2],[0.13,1.1,0.18],[0.1,2.2,0.15],[0.08,3.2,0.12],[0.06,4.2,0.1]],0.025,80,8), M.hose, 0,0,0,0,0,0, boom);
+P(tube([[-0.12,0.3,0.2],[-0.13,1.1,0.18],[-0.1,2.2,0.15],[-0.08,3.2,0.12],[-0.06,4.2,0.1]],0.025,80,8), M.hose, 0,0,0,0,0,0, boom);
 
 // ════════════════ LUFFING HYDRAULIC CYLINDER ════════════════
 const ram=new THREE.Group();
 ram.position.set(0,1.05,0.4);
-ram.rotation.x=0.92;
+ram.rotation.x=0.75;
 truck.add(ram);
 P(new THREE.CylinderGeometry(0.16,0.16,1.7,16), M.steel, 0,0.9,0,0,0,0, ram);
 P(new THREE.CylinderGeometry(0.1,0.1,1.5,16), M.chrome, 0,2.1,0,0,0,0, ram);
@@ -383,15 +383,15 @@ P(new THREE.CylinderGeometry(0.13,0.13,0.16,12), M.bodyDark, 0,0.05,0,0,0,0, ram
 
 // ════════════════ HOIST ROPE + HOOK BLOCK + HOOK ════════════════
 // rope from head sheave down (boom-local)
-P(new THREE.CylinderGeometry(0.022,0.022,1.55,8), M.rope, 0,5.85,0, 0,0,0, boom);
+P(new THREE.CylinderGeometry(0.022,0.022,1.55,8), M.rope, 0,4.0,0, 0,0,0, boom);
 // hook block
-P(rb(0.28,0.34,0.26,0.04), M.steel, 0,5.05,0, 0,0,0, boom);
-P(new THREE.CylinderGeometry(0.12,0.12,0.28,14), M.chrome, 0,5.05,0, Math.PI/2,0,0, boom);
+P(rb(0.28,0.34,0.26,0.04), M.steel, 0,3.2,0, 0,0,0, boom);
+P(new THREE.CylinderGeometry(0.12,0.12,0.28,14), M.chrome, 0,3.2,0, Math.PI/2,0,0, boom);
 // big crane hook via tube along a curve, hanging below the block
-const hookPts=[[0,4.86,0],[0,4.62,0],[0.02,4.4,0.02],[0.12,4.28,0.06],[0.2,4.36,0.06],[0.2,4.5,0.02],[0.14,4.56,0]];
+const hookPts=[[0,3.0,0],[0,2.76,0],[0.02,2.54,0.02],[0.12,2.42,0.06],[0.2,2.5,0.06],[0.2,2.64,0.02],[0.14,2.7,0]];
 P(tube(hookPts,0.045,48,12), M.chrome, 0,0,0, 0,0,0, boom);
-P(new THREE.ConeGeometry(0.05,0.12,12), M.chrome, 0.14,4.6,0, Math.PI, 0,0, boom);
-P(new THREE.CylinderGeometry(0.07,0.07,0.16,16), M.steel, 0,4.78,0, 0,0,0, boom); // hook shank
+P(new THREE.ConeGeometry(0.05,0.12,12), M.chrome, 0.14,2.74,0, Math.PI, 0,0, boom);
+P(new THREE.CylinderGeometry(0.07,0.07,0.16,16), M.steel, 0,2.92,0, 0,0,0, boom); // hook shank
 
 // ════════════════ FINE DETAILS ════════════════
 const plateMat = new THREE.MeshStandardMaterial({ color:0xe9e9da, metalness:0.1, roughness:0.55 });
@@ -472,7 +472,7 @@ P(rb(0.1,0.07,0.05,0.015), M.light, 0.34,0.66,2.69);     // reverse light
 P(new THREE.SphereGeometry(0.02,8,8), M.light, 0,0.66,2.71); // plate lamp
 
 // Boom-tip warning beacon (aviation red)
-P(new THREE.SphereGeometry(0.05,12,12), M.lightR, 0,6.82,0, 0,0,0, boom);
+P(new THREE.SphereGeometry(0.05,12,12), M.lightR, 0,4.97,0, 0,0,0, boom);
 
 // Fuel filler caps on the tanks
 P(new THREE.CylinderGeometry(0.06,0.06,0.05,16), M.chrome, 0.74,1.22,-0.05);
@@ -506,51 +506,110 @@ P(new THREE.SphereGeometry(0.015,8,8), M.matte, -0.2,1.92,-1.98);
 
 // ════════════════ CONTROLS ════════════════
 const controls=new OrbitControls(camera,renderer.domElement);
-controls.enableDamping=true; controls.dampingFactor=0.06;
+controls.enableDamping=true; controls.dampingFactor=0.08;
 controls.target.set(0,2.7,0.5);
 controls.enableZoom=false;
 controls.enablePan=false;
 controls.maxPolarAngle=Math.PI*0.52;
 controls.autoRotate=false;
+// allow touch orbit + pinch-zoom on mobile
+controls.touches = {
+  ONE: THREE.TOUCH.ROTATE,
+  TWO: THREE.TOUCH.ROTATE
+};
 controls.update();
 
-// ════════════════ SCROLL-DRIVEN ROTATION ════════════════
-// parent page posts { type:'scroll', ratio:0..1 } messages
-const INIT_ROT = -(100 * Math.PI / 180); // 100° counter-clockwise
-let scrollRot = INIT_ROT, targetRot = INIT_ROT;
+// ════════════════ ROTATION STATE ════════════════
+const INIT_ROT       = -(100 * Math.PI / 180);
+const MAX_SCROLL_ROT  = Math.PI * 2; // 360°
+const AUTO_SPEED      = 0.0008;      // rad/frame auto-rotate (slow clockwise)
+
 truck.rotation.y = INIT_ROT;
+
+let userInteracting  = false;
+let scrollActive     = false;
+let scrollBase       = INIT_ROT; // truck.rotation.y when scroll first fires
+let lastScrollRatio  = null;     // null = not yet received
+
+// Trapezoidal easing: slow ramp-in (0–15%), constant (15–85%), slow ramp-out (85–100%)
+function trapEase(t) {
+  t = Math.max(0, Math.min(1, t));
+  const r0 = 0.15, r1 = 0.85;
+  if (t < r0)       return (t / r0) * (t / r0) * 0.5 * r0;          // ease-in quadratic
+  if (t > r1)       return 1 - (((1 - t) / (1 - r1)) * ((1 - t) / (1 - r1)) * 0.5 * (1 - r1));
+  // linear mid section — map [r0,r1]→[eased(r0), eased(r1)]
+  const e0 = 0.5 * r0, e1 = 1 - 0.5 * (1 - r1);
+  return e0 + (t - r0) / (r1 - r0) * (e1 - e0);
+}
+
+// ── Scroll-driven rotation ──────────────────────────────────────
+// Uses raw ratio deltas so the first message never causes a jump —
+// the model just continues from wherever it currently sits.
 window.addEventListener('message', e => {
-  if (e.data && e.data.type === 'scroll') {
-    targetRot = INIT_ROT + e.data.ratio * Math.PI * 1.5;
+  if (!e.data || e.data.type !== 'scroll' || userInteracting) return;
+  const ratio = e.data.ratio;
+
+  if (!scrollActive) {
+    // First message: latch both the current angle and ratio so delta = 0
+    scrollActive    = true;
+    scrollBase      = truck.rotation.y;
+    lastScrollRatio = ratio;
+    wakeLoop();
+    return;
   }
+
+  // Delta-based: apply only the change since the last message, eased
+  const prevEased = trapEase(lastScrollRatio);
+  const curEased  = trapEase(ratio);
+  const delta     = (curEased - prevEased) * MAX_SCROLL_ROT;
+  lastScrollRatio = ratio;
+
+  truck.rotation.y = Math.min(
+    truck.rotation.y + delta,
+    scrollBase + MAX_SCROLL_ROT
+  );
+  wakeLoop();
 });
+
+// ── User orbit interaction ──────────────────────────────────────
+renderer.domElement.addEventListener('mousedown', () => { userInteracting = true; wakeLoop(); });
+window.addEventListener('mouseup',   () => { userInteracting = false; });
+renderer.domElement.addEventListener('touchstart', () => { userInteracting = true; wakeLoop(); }, { passive: true });
+renderer.domElement.addEventListener('touchend',   () => { userInteracting = false; }, { passive: true });
 
 // ════════════════ LOOP ════════════════
 let active = true;
-function tick(){
-  if (!active) return;
-  requestAnimationFrame(tick);
-  var diff = targetRot - scrollRot;
-  if (Math.abs(diff) > 0.001) {
-    scrollRot += diff * 0.08;
-    truck.rotation.y = scrollRot;
-  }
-  controls.update();
-  renderer.render(scene,camera);
+let rafId  = null;
+
+function wakeLoop() {
+  if (active && rafId === null) rafId = requestAnimationFrame(tick);
 }
 
-// pause when tab hidden or iframe scrolled out of view
-document.addEventListener('visibilitychange', () => {
-  if (document.hidden) { active = false; }
-  else { active = true; tick(); }
-});
+function tick() {
+  rafId = null;
+  if (!active) return;
+
+  // Auto-rotate slowly clockwise until scroll takes over
+  if (!scrollActive && !userInteracting) {
+    truck.rotation.y += AUTO_SPEED;
+  }
+
+  controls.update();
+  renderer.render(scene, camera);
+  rafId = requestAnimationFrame(tick);
+}
+
+// ── Visibility management — kill the engine when not on screen ──
+function pause()  { active = false; if (rafId !== null) { cancelAnimationFrame(rafId); rafId = null; } }
+function resume() { if (!active) { active = true; wakeLoop(); } }
+
+document.addEventListener('visibilitychange', () => { document.hidden ? pause() : resume(); });
+
 new IntersectionObserver(entries => {
-  const vis = entries[0].isIntersecting;
-  if (vis && !active) { active = true; tick(); }
-  else if (!vis) { active = false; }
+  entries[0].isIntersecting ? resume() : pause();
 }, { threshold: 0 }).observe(document.documentElement);
 
-tick();
+wakeLoop();
 window.addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);});
 </script>
 </body>
