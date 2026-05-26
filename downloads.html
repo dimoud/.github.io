@@ -402,6 +402,34 @@
     }
     .dl-tc-link:hover { color: var(--blue-lt); }
 
+    /* ── licensed-only notice ── */
+    .dl-licensed-notice {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: rgba(37,99,235,.08);
+      border: 1px solid rgba(37,99,235,.28);
+      border-left: 4px solid var(--blue);
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-bottom: 18px;
+    }
+    .dl-licensed-notice-icon {
+      font-size: 18px;
+      line-height: 1;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .dl-licensed-notice-text {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .dl-licensed-notice-text strong {
+      color: var(--blue);
+    }
+
     /* ── hidden utility ── */
     .hidden { display: none !important; }
 
@@ -637,6 +665,14 @@
       </a>
     </div>
 
+    <!-- Language toggle -->
+    <div style="text-align:right; margin-bottom:14px;">
+      <div class="tc-lang-toggle" style="display:inline-flex;">
+        <button class="tc-lang-btn" id="page-lang-en" onclick="pageLang('en')">EN</button>
+        <button class="tc-lang-btn active" id="page-lang-el" onclick="pageLang('el')">ΕΛ</button>
+      </div>
+    </div>
+
     <div class="dl-badge">
       <span>ExpertEase Designs — Email Engine</span>
     </div>
@@ -648,25 +684,38 @@
       <div id="state-request">
         <div class="dl-card-header">
           <div class="dl-icon">🔐</div>
-          <h1>Licensed Downloads</h1>
-          <p>Enter your registered email to receive a secure, single-use download link.</p>
+          <h1 data-en="Licensed Downloads" data-el="Λήψη Αρχείων με Άδεια">Λήψη Αρχείων με Άδεια</h1>
+          <p data-en="Enter your registered email to receive a secure, single-use download link."
+             data-el="Εισάγετε το εγγεγραμμένο email σας για να λάβετε έναν ασφαλή, μίας χρήσης σύνδεσμο λήψης.">Εισάγετε το εγγεγραμμένο email σας για να λάβετε έναν ασφαλή, μίας χρήσης σύνδεσμο λήψης.</p>
         </div>
         <div class="dl-card-body">
-          <label class="dl-label" for="email-input">Your Email Address</label>
+          <div class="dl-licensed-notice">
+            <div class="dl-licensed-notice-icon">🔒</div>
+            <div class="dl-licensed-notice-text">
+              <strong data-en="Registered users only." data-el="Μόνο για εγγεγραμμένους χρήστες.">Μόνο για εγγεγραμμένους χρήστες.</strong>
+              <span data-en=' Access is available only to users whose email is registered in our database. To register, please <a href="index.html#contact" class="dl-tc-link">contact us</a> first.'
+                    data-el=' Η πρόσβαση επιτρέπεται μόνο σε χρήστες με εγγεγραμμένο email στη βάση δεδομένων μας. Για εγγραφή, παρακαλώ <a href="index.html#contact" class="dl-tc-link">επικοινωνήστε μαζί μας</a> πρώτα.'> Η πρόσβαση επιτρέπεται μόνο σε χρήστες με εγγεγραμμένο email στη βάση δεδομένων μας. Για εγγραφή, παρακαλώ <a href="index.html#contact" class="dl-tc-link">επικοινωνήστε μαζί μας</a> πρώτα.</span>
+            </div>
+          </div>
+          <label class="dl-label" for="email-input" data-en="Your Email Address" data-el="Η Διεύθυνση Email σας">Η Διεύθυνση Email σας</label>
           <input type="email" id="email-input" placeholder="you@example.com"
                  onkeydown="if(event.key==='Enter') requestAccess()"/>
           <label class="dl-tc-row" for="req-tc-checkbox">
             <input type="checkbox" id="req-tc-checkbox" onchange="reqTcChanged()">
-            <span>I have read and agree to the <button type="button" class="dl-tc-link" onclick="openTC()">Terms &amp; Conditions</button></span>
+            <span data-en='I have read and agree to the <button type="button" class="dl-tc-link" onclick="openTC()">Terms &amp; Conditions</button>'
+                  data-el='Έχω διαβάσει και αποδέχομαι τους <button type="button" class="dl-tc-link" onclick="openTC()">Όρους Χρήσης</button>'>Έχω διαβάσει και αποδέχομαι τους <button type="button" class="dl-tc-link" onclick="openTC()">Όρους Χρήσης</button></span>
           </label>
-          <button class="dl-btn-primary" id="request-btn" onclick="requestAccess()" disabled>
-            Send Me My Download Link &rarr;
+          <button class="dl-btn-primary" id="request-btn" onclick="requestAccess()" disabled
+                  data-en="Send Me My Download Link →" data-el="Αποστολή Συνδέσμου Λήψης →">
+            Αποστολή Συνδέσμου Λήψης →
           </button>
           <div class="dl-message" id="request-msg"></div>
         </div>
         <div class="dl-card-footer">
-          Access is available to <strong>licensed users only</strong>.<br/>
-          Powered by the <strong>ExpertEase Designs Email Engine</strong>.
+          <span data-en="Access is available only to users with a" data-el="Η πρόσβαση επιτρέπεται μόνο σε χρήστες με">Η πρόσβαση επιτρέπεται μόνο σε χρήστες με</span>
+          <strong data-en="registered email in our database" data-el="εγγεγραμμένο email στη βάση δεδομένων μας">εγγεγραμμένο email στη βάση δεδομένων μας</strong>.<br/>
+          <span data-en="Powered by the" data-el="Με την τεχνολογία του">Με την τεχνολογία του</span>
+          <strong>ExpertEase Designs Email Engine</strong>.
         </div>
       </div>
 
@@ -674,8 +723,9 @@
       <div id="state-verifying" class="hidden">
         <div class="dl-card-header">
           <div class="dl-icon">⏳</div>
-          <h1>Verifying your link…</h1>
-          <p>Please wait while we validate your session.</p>
+          <h1 data-en="Verifying your link…" data-el="Επαλήθευση συνδέσμου…">Επαλήθευση συνδέσμου…</h1>
+          <p data-en="Please wait while we validate your session."
+             data-el="Παρακαλώ περιμένετε ενώ επαληθεύουμε τη σύνοδό σας.">Παρακαλώ περιμένετε ενώ επαληθεύουμε τη σύνοδό σας.</p>
         </div>
         <div class="dl-card-body" style="text-align:center;padding-top:24px;padding-bottom:24px;">
           <div class="dl-spinner"></div>
@@ -686,22 +736,26 @@
       <div id="state-downloads" class="hidden">
         <div class="dl-card-header">
           <div class="dl-icon">✅</div>
-          <h1>Your File</h1>
-          <p id="downloads-subtitle">Identity verified. Your licensed file is ready below.</p>
+          <h1 data-en="Your File" data-el="Το Αρχείο σας">Το Αρχείο σας</h1>
+          <p id="downloads-subtitle" data-en="Identity verified. Your licensed file is ready below."
+             data-el="Ταυτότητα επαληθεύτηκε. Το αρχείο σας με άδεια είναι έτοιμο παρακάτω.">Ταυτότητα επαληθεύτηκε. Το αρχείο σας με άδεια είναι έτοιμο παρακάτω.</p>
         </div>
         <div class="dl-card-body">
           <div class="dl-timer-wrap">
             <div class="dl-timer-bar-bg">
               <div class="dl-timer-bar" id="timer-bar"></div>
             </div>
-            <p class="dl-timer-label" id="timer-label">Session expires in 15:00</p>
+            <p class="dl-timer-label" id="timer-label"></p>
           </div>
           <div class="dl-file-list" id="file-list"></div>
           <div class="dl-message" id="download-msg"></div>
         </div>
         <div class="dl-card-footer">
-          This file is for your personal use only. <strong>Do not share</strong> this link.<br/>
-          Powered by the <strong>ExpertEase Designs Email Engine</strong>.
+          <span data-en="This file is for your personal use only." data-el="Αυτό το αρχείο προορίζεται αποκλειστικά για προσωπική σας χρήση.">Αυτό το αρχείο προορίζεται αποκλειστικά για προσωπική σας χρήση.</span>
+          <strong data-en="Do not share" data-el="Μην κοινοποιείτε">Μην κοινοποιείτε</strong>
+          <span data-en=" this link." data-el=" αυτόν τον σύνδεσμο."> αυτόν τον σύνδεσμο.</span><br/>
+          <span data-en="Powered by the" data-el="Με την τεχνολογία του">Με την τεχνολογία του</span>
+          <strong>ExpertEase Designs Email Engine</strong>.
         </div>
       </div>
 
@@ -709,16 +763,19 @@
       <div id="state-error" class="hidden">
         <div class="dl-card-header">
           <div class="dl-icon">⛔</div>
-          <h1>Link Invalid</h1>
-          <p id="error-msg-text">This link has expired or has already been used.</p>
+          <h1 data-en="Link Invalid" data-el="Μη Έγκυρος Σύνδεσμος">Μη Έγκυρος Σύνδεσμος</h1>
+          <p id="error-msg-text" data-en="This link has expired or has already been used."
+             data-el="Αυτός ο σύνδεσμος έχει λήξει ή έχει ήδη χρησιμοποιηθεί.">Αυτός ο σύνδεσμος έχει λήξει ή έχει ήδη χρησιμοποιηθεί.</p>
         </div>
         <div class="dl-card-body" style="text-align:center;">
-          <button class="dl-btn-primary" onclick="resetToRequest()">
-            Request a New Link &rarr;
+          <button class="dl-btn-primary" onclick="resetToRequest()"
+                  data-en="Request a New Link →" data-el="Αίτηση Νέου Συνδέσμου →">
+            Αίτηση Νέου Συνδέσμου →
           </button>
         </div>
         <div class="dl-card-footer">
-          Powered by the <strong>ExpertEase Designs Email Engine</strong>.
+          <span data-en="Powered by the" data-el="Με την τεχνολογία του">Με την τεχνολογία του</span>
+          <strong>ExpertEase Designs Email Engine</strong>.
         </div>
       </div>
 
@@ -736,15 +793,15 @@
   <div class="tc-modal">
     <div class="tc-accent"></div>
     <div class="tc-header">
-      <div class="tc-header-title">Terms &amp; Conditions / Όροι Χρήσης</div>
+      <div class="tc-header-title">Όροι Χρήσης / Terms &amp; Conditions</div>
       <div class="tc-lang-toggle">
-        <button class="tc-lang-btn active" onclick="tcLang('en')">EN</button>
-        <button class="tc-lang-btn" onclick="tcLang('el')">ΕΛ</button>
+        <button class="tc-lang-btn" id="tc-btn-en" onclick="tcLang('en')">EN</button>
+        <button class="tc-lang-btn active" id="tc-btn-el" onclick="tcLang('el')">ΕΛ</button>
       </div>
     </div>
     <div class="tc-body">
       <!-- English -->
-      <div class="tc-text active" id="tc-en">
+      <div class="tc-text" id="tc-en">
         <h3>1. License &amp; Permitted Use</h3>
         <p>This software is licensed, not sold. By downloading, you are granted a personal, non-transferable license to use this product solely for your own internal purposes.</p>
 
@@ -774,7 +831,7 @@
       </div>
 
       <!-- Greek -->
-      <div class="tc-text" id="tc-el">
+      <div class="tc-text active" id="tc-el">
         <h3>1. Άδεια Χρήσης &amp; Επιτρεπόμενη Χρήση</h3>
         <p>Το λογισμικό αυτό παραχωρείται υπό άδεια χρήσης, δεν πωλείται. Με τη λήψη του, σας χορηγείται προσωπική, μη μεταβιβάσιμη άδεια χρήσης αποκλειστικά για τις δικές σας εσωτερικές ανάγκες.</p>
 
@@ -804,7 +861,7 @@
       </div>
     </div>
     <div class="tc-modal-footer">
-      <button class="tc-close-btn" onclick="closeTC()">Close / Κλείσιμο</button>
+      <button class="tc-close-btn" onclick="closeTC()" data-en="Close" data-el="Κλείσιμο">Κλείσιμο</button>
     </div>
   </div>
 </div>
@@ -815,15 +872,17 @@
     <div class="dl-modal-accent"></div>
     <div class="dl-modal-body">
       <div class="dl-modal-icon">⏳</div>
-      <div class="dl-modal-title">File Loading from Server</div>
+      <div class="dl-modal-title" data-en="File Loading from Server" data-el="Φόρτωση Αρχείου από Διακομιστή">Φόρτωση Αρχείου από Διακομιστή</div>
       <p class="dl-modal-text">
-        Your file is hosted on a secure server.<br>
-        Please allow <strong>up to one minute</strong> for the download to begin after clicking confirm.
+        <span data-en="Your file is hosted on a secure server." data-el="Το αρχείο σας φιλοξενείται σε ασφαλή διακομιστή.">Το αρχείο σας φιλοξενείται σε ασφαλή διακομιστή.</span><br>
+        <span data-en="Please allow" data-el="Παρακαλώ περιμένετε">Παρακαλώ περιμένετε</span>
+        <strong data-en="up to one minute" data-el="έως ένα λεπτό">έως ένα λεπτό</strong>
+        <span data-en=" for the download to begin after clicking confirm." data-el=" για να ξεκινήσει η λήψη μετά την επιβεβαίωση."> για να ξεκινήσει η λήψη μετά την επιβεβαίωση.</span>
       </p>
-      <p class="dl-modal-note">Do not close this tab while loading</p>
+      <p class="dl-modal-note" data-en="Do not close this tab while loading" data-el="Μην κλείσετε αυτή την καρτέλα κατά τη φόρτωση">Μην κλείσετε αυτή την καρτέλα κατά τη φόρτωση</p>
       <div class="dl-modal-actions">
-        <button class="dl-modal-cancel" id="dl-modal-cancel">Cancel</button>
-        <button class="dl-modal-confirm" id="dl-modal-confirm">Confirm Download →</button>
+        <button class="dl-modal-cancel" id="dl-modal-cancel" data-en="Cancel" data-el="Ακύρωση">Ακύρωση</button>
+        <button class="dl-modal-confirm" id="dl-modal-confirm" data-en="Confirm Download →" data-el="Επιβεβαίωση Λήψης →">Επιβεβαίωση Λήψης →</button>
       </div>
     </div>
   </div>
@@ -833,14 +892,76 @@
   const SCRIPT_URL   = "https://script.google.com/macros/s/AKfycbzSMyPJSQmENEt2z7SwqYIaIW4GFKCFrCtKupHULmxb3t6Gq2rVRtC0YLmwbI6WJ-7r/exec";
   const SECURITY_KEY = "Xp9#mK2$vL8@nQ4!wR7&jT3^hY6*cF1%bN5+zD0-eA";
 
-  document.getElementById("year").textContent = new Date().getFullYear();
-
+  let currentLang = "el";
   let timerInterval = null;
 
+  const T = {
+    en: {
+      sending:           "Sending…",
+      sendBtn:           "Send Me My Download Link →",
+      noEmail:           "Please enter your email address.",
+      notFound:          'This email is not registered in our database. Please <a href="index.html#contact" style="color:inherit;font-weight:600;">contact us</a> to register your email before attempting to download.',
+      sent:              "A secure download link has been sent to your inbox. Please check your email and spam folder.",
+      error:             "Something went wrong. Please try again.",
+      invalidLink:       "This link is invalid or has expired.",
+      sessionExpired:    "Your download session has expired. Please request a new link.",
+      verifiedPrefix:    "Verified: ",
+      verifiedSuffix:    ". Your licensed file is ready below.",
+      sessionExpires:    "Session expires in ",
+      downloadBtn:       "Download",
+      fileMeta:          "EXE — Windows Executable",
+      requestNewLink:    "Request a New Link →",
+    },
+    el: {
+      sending:           "Αποστολή…",
+      sendBtn:           "Αποστολή Συνδέσμου Λήψης →",
+      noEmail:           "Παρακαλώ εισάγετε τη διεύθυνση email σας.",
+      notFound:          'Αυτό το email δεν είναι εγγεγραμμένο στη βάση δεδομένων μας. Παρακαλώ <a href="index.html#contact" style="color:inherit;font-weight:600;">επικοινωνήστε μαζί μας</a> για να εγγράψετε το email σας πριν επιχειρήσετε λήψη.',
+      sent:              "Ένας ασφαλής σύνδεσμος λήψης έχει σταλεί στα εισερχόμενά σας. Ελέγξτε το email και τον φάκελο spam.",
+      error:             "Κάτι πήγε στραβά. Παρακαλώ δοκιμάστε ξανά.",
+      invalidLink:       "Αυτός ο σύνδεσμος δεν είναι έγκυρος ή έχει λήξει.",
+      sessionExpired:    "Η σύνοδος λήψης έληξε. Παρακαλώ ζητήστε νέο σύνδεσμο.",
+      verifiedPrefix:    "Επαληθεύτηκε: ",
+      verifiedSuffix:    ". Το αρχείο σας με άδεια είναι έτοιμο παρακάτω.",
+      sessionExpires:    "Η σύνοδος λήγει σε ",
+      downloadBtn:       "Λήψη",
+      fileMeta:          "EXE — Εκτελέσιμο Windows",
+      requestNewLink:    "Αίτηση Νέου Συνδέσμου →",
+    }
+  };
+
+  function t(key) { return T[currentLang][key]; }
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+
   window.addEventListener("load", () => {
+    pageLang("el");
     const token = new URLSearchParams(window.location.search).get("token");
     if (token) verifyToken(token);
   });
+
+  // ── Page language switch ────────────────────────────────────────────────────
+  function pageLang(lang) {
+    currentLang = lang;
+
+    document.getElementById("page-lang-en").classList.toggle("active", lang === "en");
+    document.getElementById("page-lang-el").classList.toggle("active", lang === "el");
+
+    // Switch all data-en / data-el text nodes
+    document.querySelectorAll("[data-en][data-el]").forEach(function(el) {
+      const val = el.getAttribute("data-" + lang);
+      if (val === null) return;
+      // Use innerHTML for any element whose translation contains markup
+      if (val.indexOf("<") !== -1) {
+        el.innerHTML = val;
+      } else {
+        el.textContent = val;
+      }
+    });
+
+    // Sync the T&C modal language to match page language
+    tcLang(lang);
+  }
 
   // ── Request magic link ──────────────────────────────────────────────────────
   async function requestAccess() {
@@ -848,10 +969,10 @@
     const btn   = document.getElementById("request-btn");
     const msg   = document.getElementById("request-msg");
 
-    if (!email) { showMessage(msg, "error", "Please enter your email address."); return; }
+    if (!email) { showMessage(msg, "error", t("noEmail")); return; }
 
     btn.disabled    = true;
-    btn.textContent = "Sending…";
+    btn.textContent = t("sending");
 
     try {
       const res  = await fetch(SCRIPT_URL, {
@@ -862,18 +983,18 @@
       const data = await res.json();
 
       if (data.result === "not_found") {
-        showMessage(msg, "error", data.message || "This email is not registered. Please contact us if you believe this is an error.");
+        showMessageHTML(msg, "error", t("notFound"));
       } else if (data.result === "success") {
-        showMessage(msg, "success", "A secure download link has been sent to your inbox. Please check your email and spam folder.");
+        showMessage(msg, "success", t("sent"));
       } else {
-        showMessage(msg, "error", data.message || "Something went wrong. Please try again.");
+        showMessage(msg, "error", data.message || t("error"));
       }
     } catch (err) {
-      showMessage(msg, "error", "Something went wrong. Please try again.");
+      showMessage(msg, "error", t("error"));
     }
 
     btn.disabled    = false;
-    btn.textContent = "Send Me My Download Link →";
+    btn.textContent = t("sendBtn");
   }
 
   // ── Verify token ────────────────────────────────────────────────────────────
@@ -890,10 +1011,10 @@
       if (data.result === "success") {
         showDownloads(data.email, data.files, data.windowMinutes || 15);
       } else {
-        showError(data.message || "This link is invalid or has expired.");
+        showError(data.message || t("invalidLink"));
       }
     } catch (err) {
-      showError("Something went wrong. Please try again.");
+      showError(t("error"));
     }
   }
 
@@ -901,25 +1022,24 @@
   function showDownloads(email, files, windowMinutes) {
     show("state-downloads");
     document.getElementById("downloads-subtitle").textContent =
-      "Verified: " + email + ". Your licensed file is ready below.";
+      t("verifiedPrefix") + email + t("verifiedSuffix");
 
     const list = document.getElementById("file-list");
     list.innerHTML = "";
 
-    files.forEach(file => {
+    files.forEach(function(file) {
       const item = document.createElement("div");
       item.className = "dl-file-item";
       item.innerHTML =
         '<div class="dl-file-icon">📊</div>' +
         '<div class="dl-file-info">' +
           '<div class="dl-file-name">' + file.name + '</div>' +
-          '<div class="dl-file-meta">EXE &mdash; Windows Executable</div>' +
+          '<div class="dl-file-meta">' + t("fileMeta") + '</div>' +
         '</div>' +
-        '<button class="dl-file-btn" onclick="confirmDownload(\'' + file.url + '\')">Download</button>';
+        '<button class="dl-file-btn" onclick="confirmDownload(\'' + file.url + '\')">' + t("downloadBtn") + '</button>';
       list.appendChild(item);
     });
 
-    // Countdown timer
     const totalSeconds = windowMinutes * 60;
     let remaining = totalSeconds;
 
@@ -929,14 +1049,14 @@
       const label = document.getElementById("timer-label");
       const bar   = document.getElementById("timer-bar");
 
-      label.textContent = "Session expires in " + mins + ":" + secs;
+      label.textContent = t("sessionExpires") + mins + ":" + secs;
       label.className   = "dl-timer-label" + (remaining <= 60 ? " urgent" : "");
       bar.style.width   = (remaining / totalSeconds * 100) + "%";
       bar.style.background = remaining <= 60 ? "#dc2626" : "var(--blue)";
 
       if (remaining <= 0) {
         clearInterval(timerInterval);
-        showError("Your download session has expired. Please request a new link.");
+        showError(t("sessionExpired"));
         return;
       }
       remaining--;
@@ -967,6 +1087,12 @@
   function showMessage(el, type, text) {
     el.className     = "dl-message " + type;
     el.textContent   = text;
+    el.style.display = "block";
+  }
+
+  function showMessageHTML(el, type, html) {
+    el.className    = "dl-message " + type;
+    el.innerHTML    = html;
     el.style.display = "block";
   }
 
@@ -1002,9 +1128,8 @@
   function tcLang(lang) {
     document.getElementById("tc-en").classList.toggle("active", lang === "en");
     document.getElementById("tc-el").classList.toggle("active", lang === "el");
-    document.querySelectorAll(".tc-lang-btn").forEach(function(btn) {
-      btn.classList.toggle("active", btn.textContent.trim().toUpperCase() === (lang === "en" ? "EN" : "ΕΛ"));
-    });
+    document.getElementById("tc-btn-en").classList.toggle("active", lang === "en");
+    document.getElementById("tc-btn-el").classList.toggle("active", lang === "el");
   }
 
   function openTC() {
