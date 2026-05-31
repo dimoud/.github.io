@@ -2025,7 +2025,7 @@ footer {
 .sw-page-badge svg { flex-shrink: 0; stroke: rgba(96,165,250,.65); }
 /* crane 3D iframe — desktop */
 .sw-crane-mobile { display: none; }
-.sw-page-right { display: flex; align-items: center; justify-content: flex-end; overflow: visible; }
+.sw-page-right { display: flex; align-items: center; justify-content: flex-start; overflow: visible; }
 .sw-crane-iframe {
   border: none;
   background: transparent;
@@ -2036,8 +2036,8 @@ footer {
   width: 160%;
   aspect-ratio: 1 / 0.75;
   max-width: 900px;
-  margin-left: 0;
-  margin-right: -26%;
+  margin-left: -10%;
+  margin-right: 0;
 }
 /* hide legacy elements */
 .sw-page-features { display: none; }
@@ -2054,6 +2054,10 @@ footer {
 @keyframes swFadeIn {
   to { opacity: 1; }
 }
+@keyframes swSlideFromRight {
+  from { opacity: 0; transform: translateX(100vw); }
+  to   { opacity: 1; transform: translateX(0); }
+}
 .sw-anim {
   opacity: 0;
   transform: translateY(32px);
@@ -2063,8 +2067,16 @@ footer {
 .sw-anim--feats  { animation: swSlideUp .75s cubic-bezier(.22,1,.36,1) .38s forwards; }
 .sw-anim--cta    { animation: swSlideUp .75s cubic-bezier(.22,1,.36,1) .52s forwards; }
 .sw-anim--badge  { animation: swSlideUp .75s cubic-bezier(.22,1,.36,1) .64s forwards; }
-.sw-anim--crane  { transform: none; animation: swFadeIn 1.4s ease .25s forwards; }
+/* trapezoidal velocity: linear() ramps up over ~20%, full speed middle ~60%, ramps down ~20% */
+.sw-anim--crane  {
+  transform: translateX(100vw);
+  animation: swSlideFromRight 1.8s linear(0, 0.15 20%, 0.85 80%, 1) .3s forwards;
+}
 
+@keyframes swSlideFromRightMobile {
+  from { opacity: 0; transform: translateX(calc(-62% + 100vw)); }
+  to   { opacity: 1; transform: translateX(-62%); }
+}
 @media (max-width: 960px) {
   /* hide desktop right column, show inline crane */
   .sw-page-right { display: none; }
@@ -2079,6 +2091,10 @@ footer {
     margin-bottom: 8px;
     pointer-events: auto;
     touch-action: none;
+  }
+  .sw-crane-mobile.sw-anim--crane {
+    transform: translateX(calc(-62% + 140px));
+    animation: swSlideFromRightMobile 1.8s linear(0, 0.15 20%, 0.85 80%, 1) .3s forwards;
   }
   .sw-page-inner { grid-template-columns: 1fr; padding: 72px 24px 48px; }
   .sw-page-title { text-align: center; }
