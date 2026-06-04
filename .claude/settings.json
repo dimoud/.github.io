@@ -1,5 +1,9 @@
 {
   "permissions": {
+    "allow": [
+      "Read(//c/Users/moudi/AppData/Local/Temp/flyer_extract/flyer/project/**)",
+      "Read(//c/Users/moudi/AppData/Local/Temp/flyer_extract/flyer/chats/**)"
+    ],
     "additionalDirectories": [
       "a:\\WORK_PROJECTS\\WEBSITES\\github\\gkouvelis.github.io\\github",
       "a:\\WORK_PROJECTS\\WEBSITES\\github\\liapis.github.io"
