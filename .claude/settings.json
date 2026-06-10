@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Read(//c/Users/moudi/AppData/Local/Temp/flyer_extract/flyer/project/**)",
-      "Read(//c/Users/moudi/AppData/Local/Temp/flyer_extract/flyer/chats/**)"
+      "Read(//c/Users/moudi/AppData/Local/Temp/flyer_extract/flyer/chats/**)",
+      "Bash(start \"\" \"a:\\\\WORK_PROJECTS\\\\WEBSITES\\\\github\\\\moudiotis.github.io\\\\index.html\")"
     ],
     "additionalDirectories": [
       "a:\\WORK_PROJECTS\\WEBSITES\\github\\gkouvelis.github.io\\github",
