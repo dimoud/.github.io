@@ -9,7 +9,7 @@ const LANG = {
     nav_webdesign:'Web Design', nav_3dprint:'3D Print', nav_experience:'Ομάδα', nav_contact:'Επικοινωνία',
     hero_tag:'// Μηχανολογικό Studio — Αθήνα',
     hero_title:'Μηχανολογικός Σχεδιασμός · 3D Printing · Laser Cut & Engrave · Web Design',
-    hero_desc:'Η <strong>Expertease Designs</strong> είναι studio μηχανολογικού σχεδιασμού και 3D printing — από την ιδέα ως την κατασκευή.',
+    hero_desc:'Η <strong>Expertease Designs</strong> είναι το studio <strong>μηχανολόγου σχεδιαστή</strong> για μηχανολογικό σχέδιο, 3D printing και κατασκευή ιστοσελίδων — από την ιδέα ως την κατασκευή.',
     hero_cta_work:'Δείτε τα Έργα →', hero_cta_contact:'Επικοινωνήστε',
     stat_years:'Χρόνια Εμπειρίας', stat_projects:'Παραδοθέντα Έργα', stat_degrees:'Μεταπτυχιακά',
     edu_strip:'Ιδρυτής — Δημήτριος Μουδιώτης · 5 Πανεπιστήμια, 3 Χώρες',
@@ -39,6 +39,9 @@ const LANG = {
     prin_3_title:'Πλήρης Ανάληψη', prin_3_text:'Από τον σχεδιασμό, τους υπολογισμούς και τις προσομοιώσεις ως τον συντονισμό κατασκευής, την επικοινωνία με προμηθευτές, την επίβλεψη συναρμολόγησης και τον <span class="accent-red">τελικό έλεγχο</span> — ένας μηχανικός, πλήρης υπευθυνότητα.', prin_3_text_mobile:'Ένας μηχανικός — από τον σχεδιασμό ως τον τελικό έλεγχο.',
     prin_4_title:'Web Design', prin_4_text:'Φτιάχνουμε <span class="accent-green">πλήρως custom ιστοσελίδες</span> — χειρόγραφο κώδικα, χωρίς templates, χωρίς builders. <a href="webdesign.html" class="principle-cta" id="prin-4-cta-el">Δείτε τις Υπηρεσίες Web Design →</a>',
     wd_label:'Αποκλειστικό Digital · Χωρίς Templates',
+    wd_title:'Κατασκευή Ιστοσελίδων',
+    cad_label:'Μηχανολογικός Σχεδιασμός · Αρχεία STEP',
+    cad_title:'Μηχανολογικό Σχέδιο<br>3D Viewer',
     wd_desc:'Φτιάχνουμε πλήρως custom ιστοσελίδες από το μηδέν — χωρίς templates, χωρίς page builders, χωρίς συμβιβασμούς. Κάθε pixel είναι σκόπιμο. Κάθε αλληλεπίδραση σχεδιάζεται.',
     wd_f1:'Custom HTML & CSS', wd_f2:'Διαδραστικά animations',
     wd_f3:'WebGL / 3D στοιχεία', wd_f4:'Mobile-first layout',
@@ -223,7 +226,7 @@ const LANG = {
     footer_copy:'© 2026 Expertease Designs', footer_loc:'Αθήνα, Ελλάδα', footer_loc_bar:'Αθήνα, Ελλάδα',
     ec_ad_question:'Σας άρεσε το site;', ec_ad_cta:'Φτιάξτε το δικό σας', ec_label:'Σχεδιάστηκε από',
     pr_label:'Εξατομικευμένη Κατασκευή · Αθήνα',
-    pr_title:'3D Print<br>Laser Cut<br>&amp; Engrave',
+    pr_title:'Τρισδιάστατη Εκτύπωση <span class="pr-hero-slash">/ / /</span> Κοπή Laser <span class="pr-hero-slash">/ / /</span> Χάραξη&nbsp;Laser',
     pr_desc:'Από ιδέα σε έτοιμο εξάρτημα — αναλαμβάνουμε εξατομικευμένο 3D printing, αντίστροφη μηχανική και laser cutting &amp; engraving. Λειτουργικά πρωτότυπα, μεμονωμένα εξαρτήματα και διακοσμητικές εργασίες εσωτερικά.',
     pr_f1:'FDM 3D Printing', pr_f2:'Custom Σχέδια',
     pr_f3:'Αντίστροφη Μηχανική', pr_f4:'Laser Cutting',
@@ -274,7 +277,7 @@ const LANG = {
     nav_webdesign:'Web Design', nav_3dprint:'3D Print', nav_experience:'Team', nav_contact:'Contact',
     hero_tag:'// Mechanical Design & 3D Printing Studio — Athens, GR',
     hero_title:'Mechanical Design · 3D Printing · Laser Cut & Engrave · Web Design',
-    hero_desc:'<strong>Expertease Designs</strong>: machine design &bull; sheet metal &bull; rapid prototyping &bull; BOM',
+    hero_desc:'<strong>Expertease Designs</strong> is a mechanical design engineer studio: technical drawings &bull; sheet metal &bull; rapid prototyping &bull; BOM',
     hero_cta_work:'View Projects →', hero_cta_contact:'Get in Touch',
     stat_years:'Years Experience', stat_projects:'Projects Delivered', stat_degrees:'University Degrees',
     edu_strip:'Founder — Dimitrios Moudiotis · 5 Universities in 3 Countries',
@@ -304,6 +307,9 @@ const LANG = {
     prin_3_title:'Full Ownership', prin_3_text:'From design, calculations, and simulations through manufacturing coordination, supplier communication, assembly oversight, and <span class="accent-red">final verification</span> — one engineer, full accountability.', prin_3_text_mobile:'One engineer — from design and simulation through fabrication and final verification.',
     prin_4_title:'Web Design', prin_4_text:'We also build <span class="accent-green">fully custom websites</span> — hand-coded from scratch. No templates, no builders, no limits. <a href="webdesign.html" class="principle-cta" id="prin-4-cta-en">See our Web Design →</a>',
     wd_label:'Bespoke Digital · No Templates',
+    wd_title:'Web Design',
+    cad_label:'Mechanical Design · STEP Files',
+    cad_title:'3D CAD Model<br>Viewer',
     wd_desc:'We build fully custom websites from scratch — no templates, no page builders, no shortcuts. Every pixel is intentional. Every interaction is designed.',
     wd_f1:'Custom HTML & CSS', wd_f2:'Interactive animations',
     wd_f3:'WebGL / 3D elements', wd_f4:'Mobile-first layout',
@@ -488,7 +494,7 @@ const LANG = {
     footer_copy:'© 2026 Expertease Designs', footer_loc:'Athens, Greece', footer_loc_bar:'Athens, Greece',
     ec_ad_question:'Like this site?', ec_ad_cta:'Let\'s build yours', ec_label:'Designed by',
     pr_label:'Custom Fabrication · Athens, GR',
-    pr_title:'3D Print<br>Laser Cut<br>&amp; Engrave',
+    pr_title:'3D Printing <span class="pr-hero-slash">/ / /</span> Laser Cut <span class="pr-hero-slash">/ / /</span> Laser&nbsp;Engrave',
     pr_desc:'From idea to finished part — we handle custom 3D printing, reverse engineering, and laser cutting &amp; engraving. Functional prototypes, one-off parts, and decorative work produced in-house.',
     pr_f1:'FDM 3D Printing', pr_f2:'Custom Designs',
     pr_f3:'Reverse Engineering', pr_f4:'Laser Cutting',
@@ -673,7 +679,8 @@ function applyLang(lang) {
   for(let i=1;i<=17;i++) set('sw-ch'+i,t['sw_ch'+i]);
   // webdesign.html
   set('wd-codebox-label',t.wd_codebox_label); set('wd-codebox-body',t.wd_codebox_body);
-  set('wd-label',t.wd_label); set('wd-desc',t.wd_desc);
+  set('wd-label',t.wd_label); set('wd-title',t.wd_title); set('wd-desc',t.wd_desc);
+  set('cad-label',t.cad_label); set('cad-title',t.cad_title,true);
   for(let i=1;i<=8;i++) set('wd-f'+i,t['wd_f'+i]);
   set('wd-cta1',noArrow(t.wd_cta1)); set('wd-cta2',noArrow(t.wd_cta2));
   set('wd-off-label',t.wd_off_label);
