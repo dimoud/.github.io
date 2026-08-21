@@ -3,7 +3,12 @@
     "allow": [
       "Read(//c/Users/moudi/AppData/Local/Temp/flyer_extract/flyer/project/**)",
       "Read(//c/Users/moudi/AppData/Local/Temp/flyer_extract/flyer/chats/**)",
-      "Bash(start \"\" \"a:\\\\WORK_PROJECTS\\\\WEBSITES\\\\github\\\\moudiotis.github.io\\\\index.html\")"
+      "Bash(start \"\" \"a:\\\\WORK_PROJECTS\\\\WEBSITES\\\\github\\\\moudiotis.github.io\\\\index.html\")",
+      "Bash(dir \"a:\\\\ΔΙΑΤΡΟΦΗ\\\\diatrofi\\\\\")",
+      "Read(//a/��������/**)",
+      "Bash(start \"a:\\\\ΔΙΑΤΡΟΦΗ\\\\diatrofi\\\\index.html\")",
+      "PowerShell(node --check \"a:\\\\��������\\\\diatrofi\\\\script.js\" 2>&1)",
+      "Bash(node -e ' *)"
     ],
     "additionalDirectories": [
       "a:\\WORK_PROJECTS\\WEBSITES\\github\\gkouvelis.github.io\\github",
